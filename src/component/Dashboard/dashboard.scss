@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imgContainer {
+    width: 17%;
+    margin:20px 1.5%;
+    box-shadow: 0px 5px 5px 2px rgba(222,213,222,1);
+    border-radius: 2px;
+
+    img{
+        width: 100%;
+        border-radius: 2px;
+    }
+    div{
+        text-align: center;
+        padding: 10px 0;
+        font-weight: 600;
+    }
+
+}
+
+.imgContainer{
+      &:hover {
+        cursor: pointer;
+        transition: all 0.4s ease-out;
+        transform: scale(1.1);
+      }
+}

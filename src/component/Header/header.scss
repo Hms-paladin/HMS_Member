@@ -1,0 +1,33 @@
+// fixed header css
+
+#components-layout-demo-fixed .logo {
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 24px 16px 0;
+    float: left;
+}
+
+.site-layout .site-layout-background {
+    background: #fff;
+}
+
+.ant-layout-header,.ant-menu.ant-menu-dark {
+    background:#fff !important;
+    box-shadow: -2px 0px 5px 0px rgba(222,213,222,1);
+}
+
+.ant-layout-header{
+    height: 66px !important;
+}
+
+// custom css
+
+.HMSlogo{
+    position: fixed;
+    left: 6px;
+    top: 3px;
+    width: 67px;
+}
+
+  
