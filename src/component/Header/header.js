@@ -1,10 +1,10 @@
 import React from "react";
 import { Layout, Menu } from 'antd';
 import Logo from "../../images/Logo.png";
-
 import "./header.scss";
+import Search from "antd/lib/input/Search";
+import { Content, Header } from "antd/lib/layout/layout";
 
-const { Header, Content } = Layout;
 
 function HeaderLayout (props) {
     return(
@@ -17,8 +17,11 @@ function HeaderLayout (props) {
                 <Menu.Item key="1"><div>Home</div></Menu.Item>
                 <Menu.Item key="2">Shopping</Menu.Item>
                 <Menu.Item key="3">One Watch</Menu.Item>
+                <Menu.Item key="3">
+                </Menu.Item>
             </Menu>
             </Header>
+
             <Content className="site-layout" style={{ marginTop: 64 }}>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
                 {props.children}
