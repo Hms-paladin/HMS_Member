@@ -19,6 +19,10 @@ import insurance from "../../images/insurance.svg";
 import smartphone from "../../images/smartphone.svg";
 import avatar from "../../images/user.png";
 import self from "../../images/self.png";
+import prescription from "../../images/prescription.png";
+
+import { Collapse } from 'antd';
+const { Panel } = Collapse;
 
 
 
@@ -206,6 +210,52 @@ function Myprofile(props) {
               </div>
              
       </div>
+      <div className="healthtip_collapse">
+      <Collapse bordered={false} defaultActiveKey={['1']}>
+    <Panel header="Health Tips" key="1">
+        <div className="healthtip_content">
+            <div className="subhead">Plan your meals and snacks</div>
+            <div className="msg">Eating a healthy breakfast and allocating more calories earlier in the day reduces cardiovascular disease risk. 
+                People who skip breakfast are more likely to be obese, have inadequate nutrition, show evidence of impaired glucose
+                 metabolism or be diagnosed with diabetes</div>
+        </div>
+    
+        <div className="healthtip_content">
+        <div className="subhead">Work up a sweat</div> 
+        <div className="msg">To improve overall cardiovascular health, the AHA suggests 30 minutes of moderate exercise, five days per week.
+         You can even divide this time into two or three segments of 10 to 15 minutes per day.</div>
+               </div>
+   
+        <div className="healthtip_content">
+        <div className="subhead">Start small</div> 
+
+        <div className="msg">Walking is the simplest positive change you can make to improve your heart health. In addition to reducing heart disease
+         and stroke risks, walking also improves blood pressure, enhances your mental well-being, and reduces risk for breast and colon cancer.
+         </div>
+        </div>
+    </Panel>
+    </Collapse>
+    </div>
+    <div className="prescription_collapse">
+      <Collapse bordered={false} defaultActiveKey={['1']}>
+    <Panel header="Prescription" key="1">
+        <div className="prescription_content">
+            <div className="prescription_box">
+                <div className="pres_img"><img src={prescription}/></div>
+                <div>Dhina</div>
+
+            </div>
+            <div className="prescription_box">
+                <div className="pres_img"><img src={prescription}/></div>
+                <div>Dhina</div>
+
+            </div>
+        </div>
+    
+       
+    </Panel>
+    </Collapse>
+    </div>
         </div>
     )
 }
