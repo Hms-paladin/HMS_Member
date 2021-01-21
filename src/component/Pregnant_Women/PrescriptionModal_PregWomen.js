@@ -6,7 +6,7 @@ import { Card } from "@material-ui/core";
 import Labelbox from '../../helpers/labelbox/labelbox'
 import { useHistory } from 'react-router-dom';
 
-function PrescriptionModal(props) {
+function PrescriptionModal_PregWomen(props) {
     const history = useHistory();
     // function ProfileHome(){
     //     alert("welcome")
@@ -76,4 +76,4 @@ function PrescriptionModal(props) {
     </div>
   );
 }
-export default PrescriptionModal;
+export default PrescriptionModal_PregWomen;

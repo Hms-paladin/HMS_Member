@@ -5,7 +5,7 @@ import { Button, Modal } from "antd";
 import "./Pregnant_Mother.scss";
 import { Layout, Menu } from "antd";
 import Card from "@material-ui/core/Card";
-import EditProfileModal from "./EditProfileModal";
+import EditProfile_PregWomen from "./EditProfile_PregWomen";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import Grid from "@material-ui/core/Grid";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
@@ -25,7 +25,7 @@ import Labelbox from "../../helpers/labelbox/labelbox";
 
 import { Tabs } from "antd";
 import PrescriptionModal from "./PrescriptionModal";
-function PregnantMotherProfile() {
+function PregnantWomen_Profile() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showDetails, ShowdetailsTrue] = useState(false);
   // const [prescriptionDetails,prescriptionModalTrue]=useState(false);
@@ -1054,9 +1054,9 @@ function PregnantMotherProfile() {
         footer={null}
       >
         <PrescriptionModal/>
-        {/* {((<EditProfileModal />)||(<PrescriptionModal/>))} */}
+        {/* {((<EditProfile_PregWomen />)||(<PrescriptionModal/>))} */}
       </Modal>
     </div>
   );
 }
-export default PregnantMotherProfile;
+export default PregnantWomen_Profile;
