@@ -22,6 +22,7 @@ import self from "../../images/self.png";
 import prescription from "../../images/prescription.png";
 
 import { Collapse } from 'antd';
+import Labelbox from "../../helpers/labelbox/labelbox";
 const { Panel } = Collapse;
 
 
@@ -94,6 +95,26 @@ function Myprofile(props) {
                 <div>Family Members</div>
                 <img style={{cursor:"pointer"}} src={Plus}/>
             </div>
+            {/* Form starts here */}
+            <div className="add_memberform">
+                <div className="img_cont">
+                     <img src={avatar}/>
+                     <span>Add photo</span>
+                </div>
+                <div className="name_cont">
+                    <div className="name"><Labelbox type="text" labelname="Name"/></div>
+                    <div className="gender"><Labelbox type="select" labelname="Gender"/> <Labelbox type="text" labelname="Date of Birth"/></div>
+                    <div className="number"><Labelbox type="text" labelname="Mobile number"/></div>
+
+                </div>
+                <div className="relationship_cont">
+                    <div className="relation"><Labelbox type="select" labelname="Relationship"/></div>
+                    <div className="height"><Labelbox type="text" labelname="Height"/><span className="unit">cm</span> <Labelbox type="text" labelname="Weight"/><span className="unit">kg</span></div>
+                    <div className="addmemberbtn"><Button className="cancelbtn">Cancel</Button><Button className="submitbtn">Submit</Button></div>
+
+                </div>
+            </div>
+            {/* form ends here */}
             <div className="familymember_imgs">
             {images.map((data)=>{
             return(
@@ -112,6 +133,7 @@ function Myprofile(props) {
             {icons.map((data)=>{
             return(
                 <div className="minicard">
+                    
                    <div className="minicard_icon"> <img src={data.img}/></div>
                     <div>
                         <div className="name">{data.variant}</div>

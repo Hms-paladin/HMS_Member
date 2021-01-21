@@ -51,8 +51,75 @@
     padding-left: 50px;
     padding-right: 30px;
 }
-.familymember{
-    
+
+.add_memberform{
+    padding: 20px 30px 20px 50px;
+    background: #ddd;
+    border-bottom: 2px dashed #bbb;
+    display: flex;
+    justify-content: space-between;
+
+}
+.addmemberbtn{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.addmemberbtn .cancelbtn{
+    border: 1px solid grey;
+    border-radius: 25px;
+    width: 45%;
+    font-weight: 500 !important;
+    color: grey !important;
+    height: 45px;
+}
+.addmemberbtn .submitbtn{
+    border-radius: 25px;
+    width: 45%;
+    font-weight: 500 !important;
+    color: #fff !important;
+    background-color: #83AF40 !important;
+    height: 45px;
+}
+.add_memberform .img_cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 20px;
+    width: 15%;
+}
+.add_memberform .name_cont{
+    margin: 0px 20px;
+    width: 30%;
+
+}
+.add_memberform     .relationship_cont{
+    margin: 0px 20px;
+    width: 30%;
+}
+.relationship_cont .height{
+ display: flex;
+ justify-content: space-between;
+}
+.height .unit{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: 500;
+    color: grey;
+}
+.add_memberform .name_cont .name{
+// width: 300px;
+}
+.add_memberform .name_cont .gender{
+    display: flex;
+    justify-content: space-between;
+}
+.add_memberform .img_cont img{
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
 }
 .familymemberheader{
     display: flex;

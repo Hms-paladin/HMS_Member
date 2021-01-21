@@ -9,6 +9,8 @@ import "./header.scss";
 import Button from '@material-ui/core/Button'
 import Searchresult from "../Searchresult/searchresult";
 import Myprofile from "../Myprofile/myprofile";
+import Editprofile from "../Myprofile/editprofile";
+
 const { Search } = Input;
 
 
@@ -68,6 +70,7 @@ function HeaderLayout (props) {
                 {/* {props.children} */}
                 {/* <Searchresult/> */}
                 <Myprofile/>
+                {/* <Editprofile/> */}
             </div>
             </Content>
         </Layout>
