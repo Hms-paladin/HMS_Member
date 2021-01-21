@@ -1,7 +1,6 @@
 import React from "react";
 import { Layout, Menu } from 'antd';
 import Logo from "../../images/Logo.png";
-
 import "./header.scss";
 
 const { Header, Content } = Layout;
