@@ -5,6 +5,7 @@ import Labelbox from '../../../helpers/labelbox/labelbox'
 import { Switch,Input} from 'antd';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
+import Percentage from '../../../images/percentage.svg'
 import Paper from '@material-ui/core/Paper';
 import RangeCalendar from './RangeCalendar'
 import './nursehistory.scss'
@@ -29,8 +30,7 @@ export default function Nursehistory(){
                 <div style={{marginTop:"15px"}}><Labelbox type="select" labelname="Nationality" errmsg={errmsg}/></div>
                 <div className="mnth_cost" style={{marginTop:"15px"}}>
                     <Labelbox type="select" labelname="Gender" errmsg={errmsg}/>
-                    <div><div className="fli">Duty Hours</div> <Switch checked={toggleOpen} onChange={settoggleOpen} unCheckedChil
-                    dren={settoggleOpen&&"8 Hrs"} checkedChildren={toggleOpen&&"12 Hrs"}/></div>
+                    <div><div className="fli">Duty Hours</div> <Switch checked={toggleOpen} onChange={settoggleOpen} unCheckedChildren={settoggleOpen&&"8 Hrs"} checkedChildren={toggleOpen&&"12 Hrs"}/></div>
                 </div>
             </div>
             <div className="filter_fstdiv" style={{marginTop:"10px"}}>
@@ -54,7 +54,7 @@ export default function Nursehistory(){
                 <label className="permnth_amt">480 KWD / Month</label>
                 <div style={{padding:"40px 0px 0px 25px",display:"flex",justifyContent:"flex-end"}}>
                     <div className="review_div"><div className="nur_reviews">4.0</div><div className="count_review">15 Reviews</div></div>
-                    <div className="off_per"><p>5%</p><p className="off_txt">off</p></div>
+                    <div style={{position:"relative",top:"-7px",left:"3px"}}><img src={Percentage} style={{width:"45px"}}/><div className="off_per"><p>5%</p><p className="off_txt">off</p></div></div>
                     </div>
                </div>                    
 

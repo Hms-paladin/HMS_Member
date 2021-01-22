@@ -13,13 +13,16 @@
     justify-content: center;
 }
 .nurse_de_fstgrid{
-    text-align: center;
+    padding-left:3%;
 }
-.nurse_de_fstitems{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.nurse_de_parent .formdiv .Errormsg{
+   display: none !important;
 }
+// .nurse_de_fstitems{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
 .review_per{
     padding: 5px 10px 0px 10px;
     color: #83AF40;
@@ -45,6 +48,9 @@ padding: 7px 15px;
 font-weight: 600;
 border-radius: 3px;
 }
+.nurse_de_fstdiv{
+    padding-left: 25px;
+}
 .nurse_thirdgrid{
     padding-top: 32px;
     display: flex;
@@ -66,10 +72,10 @@ border-radius: 3px;
 .nurse_detl{
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 .nurse_de_icons{
-    margin-right: 3%;
+    margin-right: 4%;
 }
 .nurse_dehead{
     font-size: 17px;
@@ -77,101 +83,23 @@ border-radius: 3px;
 }
 .nurse_detl p{
     margin-bottom: 6px !important;
-    font-size: 15px !important;
+    font-size: 18px !important;
 }
 .nurse_duties_container{
-    padding:3% 5%;
+    padding:3% 12%;
 }
-// nurse Duties
-.nur_duties{
-   box-shadow: 0px 3px 16px #00000029;
-   border-radius: 14px;
-   padding:20px;
-}
-.nur_duties_div{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    width:100%;
-}
-.duty_addbox{
-    fill:#83AF40 !important;
-    width:2em !important;
-    height:1.3em !important;
-}
-.nur_duties_div .formdiv .brdrcls{
-    padding:6px !important
-}
-.date_pic_div{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;   
-}
-.nurse_de_parent .formdiv:first-child{
-   padding-right: 15px;
-}
-// tagcss
-.close_tag{
-    background-color: #83AE40 !important;
-    font-size:12px;
-    color:#fff !important;
-    padding: 5px 10px !important;
-    border-radius: 50px !important;
+.nurse_de_fstgrid {
+    position: relative;
+    top:-44px;
 
-}
-// labelbox css
-.nurse_de_parent .formdiv .MuiFormControl-marginNormal{
-    border:1px solid #CCCCCC !important;
-    border-radius: 2px !important;
-}
-.nurse_de_parent .formdiv .MuiInputBase-inputAdornedEnd{
-    color:none !important;
-}
-.nurse_de_parent .formdiv .MuiInput-underline:before{
-    border-bottom: 0px !important;
-}
-.nurse_de_parent .formdiv .MuiInputBase-input{
-    padding:7px 0px 7px 7px !important; 
-    font-size: 13px !important;
-    color:#ABA9A9 !important;
-}
-.nurse_de_parent .formdiv .labeltxt{
-    color:#333333 !important;
-    font-size: 15px !important;
-    margin-bottom: 3px;
-    font-weight: 600;
-}
-.nurse_de_parent .formdiv .MuiSvgIcon-root{
-    fill:#C7C7C7 !important;
-}
-// excleded days
-.excl_parent_div{
-    display: flex;
-    align-items: center;
-}
-.excl_dot{
-    width:20px;
-    height: 20px;
-    background-color: #83AE40;
-    border-radius: 50px;
-    margin-right: 10px;
-}
-// button
-.proceed{
-border-radius: 50px !important;
-text-transform: none !important;
-background-color: #83AF40 !important;
-color: #fff !important;
-font-weight:600 !important;
-min-width: 35% !important;
-}
-.proceed_div{
-    text-align: center;
-    margin-top: 10px;
 }
 .star_fill{
     fill:#83AE40 !important;
 }
 .start_emp_fill{
     color:#ABA9A9 !important;
+}
+.booking_confr{
+    box-shadow: 0px 3px 16px #00000029;
+    border-radius: 14px;   
 }

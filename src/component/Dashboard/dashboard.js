@@ -40,7 +40,7 @@ function Dashboard(props) {
         {images.map((data,pathname)=>{
             return(
              <div className="imgContainer">
-                 <NavLink to={"/nursedetails"}><img src = {data.img} /></NavLink>
+                 <NavLink to={"/orderdetails"}><img src = {data.img} /></NavLink>
                 <div className="imgTitle">{data.title}</div>
             </div> 
             ) 

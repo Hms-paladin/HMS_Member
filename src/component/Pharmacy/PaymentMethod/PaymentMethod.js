@@ -7,6 +7,8 @@ import Left from '../../../images/back.svg'
 import Right from '../../../images/right.svg'
 import Atm from '../../../images/atm.png'
 import Logo from "../../../images/Logo.png";
+import Knet from '../../../images/knet.jpg'
+import Credit from '../../../images/credit.jpg'
 import Labelbox from '../../../helpers/labelbox/labelbox';
 import {NavLink} from 'react-router-dom'
 import { Tabs, Radio } from 'antd';
@@ -73,7 +75,7 @@ export default class CancelPayment extends React.Component{
         <Tabs defaultActiveKey="1" tabPosition={mode} style={{ height: 260 }}>
           {/* {[...Array(3).keys()].map(i => (
             <TabPane tab={`${i===0?"Credit":i===1?"Knet":i===2?"Credit":""}`} key={i}> */}
-              <TabPane tab={<span><label className="l_list">Credit</label><img src={Logo} className="l_pay"/></span>} key={1}>
+              <TabPane tab={<span><label className="l_list">Wallet</label><img src={Logo} className="l_pay"/></span>} key={1}>
               <div className="divider_line"></div>
                              <div className="payment_method_list">
                                  <Labelbox type="text" labelname="Card Number"/>
@@ -92,10 +94,10 @@ export default class CancelPayment extends React.Component{
                              
                         
             </TabPane>
-            <TabPane tab={<span><label className="l_list">Knet</label><img src={Logo} className="l_pay"/></span>} key={2}> 
+            <TabPane tab={<span><label style={{paddingRight:"23px"}}>Knet</label><img src={Credit} className="l_pay"/></span>} key={2}> 
 
             </TabPane>
-            <TabPane tab={<span><label className="l_list">Credit</label><img src={Logo} className="l_pay"/></span>} key={3}> 
+            <TabPane tab={<span><label style={{paddingRight:"18px"}}>Credit</label><img src={Knet} className="l_pay"/></span>} key={3}> 
             </TabPane>
           {/* ))} */}
         </Tabs>

@@ -6,6 +6,11 @@
 .nusre_hisparent{
     padding:0px 10%;
 }
+.off_per{
+    position: absolute;
+    top:6px;
+    left:13px;    
+}
 .srch_his{
     border-radius: 20px !important;
     border:1px solid #7070707d !important;
@@ -115,4 +120,7 @@ background-color: #83AF40 !important;
 }
 .count_review{
     font-size: 12px;
+}
+.ant-progress-success-bg, .ant-progress-bg{
+    background-color: #83AF40 !important;
 }

@@ -8,13 +8,9 @@ import Qualification from '../../../images/qualification.svg'
 import Language from '../../../images/language.svg'
 import Skills from '../../../images/skills.svg'
 import StarIcon from '@material-ui/icons/Star';
-import Labelbox from '../../../helpers/labelbox/labelbox'
-import AddBoxIcon from '@material-ui/icons/AddBox';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import { Tag } from 'antd';
-import Calendar from '../NurseHistory/RangeCalendar'
 import BookingConfirmation from './BookingConfirmation'
+import DesignDuties from './DesignDuties'
 import './NurseDetails.scss'
 export default function NurseDetails(){
     const [proceed,setproceed]=React.useState(false)
@@ -30,9 +26,11 @@ export default function NurseDetails(){
         </div>
         <Grid container>
             <Grid item sm={4} md={4} className="nurse_de_fstgrid">
-            <div><img src={Nurse_circle}/></div><div className="nurse_de_fstitems"><div className="nurse_star_rating"><label>4.0</label><StarIcon/></div></div>
+            <div><img src={Nurse_circle} style={{width:"125px"}}/></div>
+            <div className="nurse_de_fstdiv"><div className="nurse_de_fstitems"><div className="nurse_star_rating"><label>4.0</label><StarIcon/></div></div>
             <div className="nurs_review">161 Reviews</div>
-            <div style={{marginTop:"10px"}}><img src={Thumb} style={{width:"25px"}}/><label className="review_per">93%</label><label>(15 reviews)</label></div>
+            <div style={{marginTop:"23px"}}><img src={Thumb} style={{width:"25px"}}/><label className="review_per">93%</label><label>(15 reviews)</label></div>
+            </div>
             </Grid>
             <Grid item sm={4} md={4} className="grid_seconditem">
                 <div style={{textAlign:"center"}}>
@@ -53,25 +51,18 @@ export default function NurseDetails(){
             {/* nurse information */}
             <Grid container className="nurse_duties_container">
             <Grid item sm={6} md={6}>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Flag} style={{width:"30px"}}/></div><div><p className="nurse_dehead">Nationality</p><p>India</p></div></div>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Qualification} style={{width:"30px"}}/></div><div><p className="nurse_dehead">Qualification</p><p>B.Sc.Nursing</p></div></div>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Language} style={{width:"30px"}}/></div><div><p className="nurse_dehead">Languages</p><p>English,Malayalam,Arabic</p></div></div>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Skills} style={{width:"30px"}}/></div><div><p className="nurse_dehead">Skills</p><p>Baby Care,Elderly Care</p></div></div>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Flag} style={{width:"30px"}}/></div><div><p className="nurse_dehead">Duty Hours</p><p>12:00 Hrs</p></div></div>
+                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Flag} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Nationality</p><p>India</p></div></div>
+                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Qualification} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Qualification</p><p>B.Sc.Nursing</p></div></div>
+                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Language} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Languages</p><p>English,Malayalam,Arabic</p></div></div>
+                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Skills} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Skills</p><p>Baby Care,Elderly Care</p></div></div>
+                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Flag} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Duty Hours</p><p>12:00 Hrs</p></div></div>
             </Grid>
             {/* design duties */}
             
-            <Grid item sm={6} md={6} className="nur_duties">
+            <Grid item sm={6} md={6}>
                 {proceed===false?
-                <div>
-                <div className="nur_duties_div"><div style={{width:"100%"}}><Labelbox type="text" placeholder="Design Duties"/></div><AddBoxIcon className="duty_addbox"/></div>
-                <Tag closable className="close_tag">Caring</Tag>
-                <div className="date_pic_div"><Labelbox type="datepicker" labelname="Start Date"/><Labelbox type="text" labelname="End Date"/></div>
-                <div  className="date_pic_div"><Labelbox type="timepicker" labelname="Start Time"/><Labelbox type="text" labelname="End Time"/></div>
-                <Calendar/>
-                <div className="excl_parent_div"><div className="excl_dot"></div><label style={{color:"#504D5D",fontWeight:"600"}}>Excluded Days</label></div>
-                <div className="proceed_div"><Button className="proceed" onClick={ProceedClick}>Proceed</Button></div></div>:
-                <BookingConfirmation/>}
+                <DesignDuties ProceedClick={ProceedClick}/>:
+                <div className="booking_confr"><BookingConfirmation/></div>}
             </Grid>
         </Grid>
         

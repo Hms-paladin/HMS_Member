@@ -35,7 +35,7 @@ function PrescriptionHistory(props){
              <div className="advance_flt_div"><label>Advance Filter</label><CloseIcon onClick={filterClose} style={{cursor:"pointer"}}/></div>
              <div style={{margin:"20px 0px"}}>
                  <Button className={BtnOpen===true?"flt_btns":"flt_btns_change"} onClick={BtnClick}>Out for Delivery</Button>
-                 <Button className={BtnOpen===true?"flt_btns":"flt_btns_change"} onClick={BtnClick}>Delivered</Button>
+                 <Button className={BtnOpen===true?"flt_btns":"flt_btns_change"} >Delivered</Button>
                  <Button className="flt_btns">Cancelled</Button>
                  <Button className="flt_btns">packed</Button>
              </div>
