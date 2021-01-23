@@ -1,8 +1,7 @@
 import React from "react";
-import { Progress } from 'antd';
 import Grid from '@material-ui/core/Grid';
 import Labelbox from '../../../helpers/labelbox/labelbox'
-import { Switch,Input} from 'antd';
+import { Switch,Input,Slider,Progress} from 'antd';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
 import Percentage from '../../../images/percentage.svg'
@@ -22,10 +21,10 @@ export default function Nursehistory(){
             <div className="filter_fstdiv">
                 <div className="fli_head">Filter</div>
                 <div className="mnth_cost"><label className="fli">Monthly Cost Range</label><label className="mnth_amt">500 KWD</label></div>
-                <div> <Progress percent={50} showInfo={false} /></div>
+                <div> <Slider defaultValue={30}/></div>
                 <div className="mnth_secondcost"><label className="mnth_samt">200 KWD</label><label className="mnth_samt">600 KWD</label></div>
                 <div className="mnth_cost"><label className="fli">Experience</label><label className="mnth_amt">5 Years</label></div>
-                <div> <Progress percent={50} showInfo={false} /></div>
+                <div> <Slider defaultValue={30}/></div>
                 <div className="mnth_cost"><label className="mnth_samt">1 Year</label><label className="mnth_samt">25 Years</label></div>
                 <div style={{marginTop:"15px"}}><Labelbox type="select" labelname="Nationality" errmsg={errmsg}/></div>
                 <div className="mnth_cost" style={{marginTop:"15px"}}>

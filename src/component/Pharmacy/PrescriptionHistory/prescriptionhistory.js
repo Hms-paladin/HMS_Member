@@ -8,9 +8,25 @@ import { NavLink} from "react-router-dom";
 function PrescriptionHistory(props){
     const [Open,Close]=React.useState(false)
     const [BtnOpen,setBtnOpen]=React.useState(true)
-    function BtnClick(){
-        setBtnOpen(clrchanged=>!clrchanged)
-
+    const [BtnOpenOut,setBtnOpenOut]=React.useState(true)
+    const [BtnDelivery,setBtnDelivery]=React.useState(true)
+    const [BtnCancel,setBtnCancel]=React.useState(true)
+    const [BtnPacked,setBtnPacked]=React.useState(true)
+    function BtnClick(data){
+        // setBtnOpen(clrchanged=>!clrchanged)
+        if(data==="outDelivery"){
+            setBtnOpenOut(!BtnOpenOut)
+        }
+        if(data==="Delivered"){
+            setBtnDelivery(!BtnDelivery)
+        }
+        if(data==="Cancelled"){
+            setBtnCancel(!BtnCancel)
+        }
+        if(data==="Packed"){
+            setBtnPacked(!BtnPacked)
+        }
+        
     }
     function filterOpen(){
        Close(true)
@@ -34,10 +50,10 @@ function PrescriptionHistory(props){
             <div className="history_list">
              <div className="advance_flt_div"><label>Advance Filter</label><CloseIcon onClick={filterClose} style={{cursor:"pointer"}}/></div>
              <div style={{margin:"20px 0px"}}>
-                 <Button className={BtnOpen===true?"flt_btns":"flt_btns_change"} onClick={BtnClick}>Out for Delivery</Button>
-                 <Button className={BtnOpen===true?"flt_btns":"flt_btns_change"} >Delivered</Button>
-                 <Button className="flt_btns">Cancelled</Button>
-                 <Button className="flt_btns">packed</Button>
+                 <Button className={BtnOpenOut?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("outDelivery")}>Out for Delivery</Button>
+                 <Button className={BtnDelivery?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("Delivered")} >Delivered</Button>
+                 <Button className={BtnCancel?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("Cancelled")}>Cancelled</Button>
+                 <Button className={BtnPacked?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("Packed")}>packed</Button>
              </div>
              <div style={{display:"flex"}}>
                  <div style={{marginRight:"20px"}}><Labelbox type="datepicker" labelname="From Date"/></div>

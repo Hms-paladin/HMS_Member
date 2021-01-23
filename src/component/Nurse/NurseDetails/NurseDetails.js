@@ -14,8 +14,12 @@ import DesignDuties from './DesignDuties'
 import './NurseDetails.scss'
 export default function NurseDetails(){
     const [proceed,setproceed]=React.useState(false)
+    const [Duties,setDuties]=React.useState(false)
     function ProceedClick(){
         setproceed(true)
+    }
+    function DutiesClick(){
+        setDuties(true)
     }
     return(
         <div style={{width:"100%"}} className="nurse_de_parent">
@@ -61,11 +65,12 @@ export default function NurseDetails(){
             
             <Grid item sm={6} md={6}>
                 {proceed===false?
-                <DesignDuties ProceedClick={ProceedClick}/>:
-                <div className="booking_confr"><BookingConfirmation/></div>}
+                <DesignDuties ProceedClick={ProceedClick} />:
+                <div className="booking_confr"><BookingConfirmation DesignDuties={DutiesClick} Duties={Duties}/></div>}
+                
             </Grid>
         </Grid>
-        
+
        
         </div>
     )

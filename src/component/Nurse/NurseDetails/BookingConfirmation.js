@@ -12,7 +12,19 @@ import EditIcon from '@material-ui/icons/Edit';
 import SaveIcon from '@material-ui/icons/Save';
 import './BookingConfirmation.scss'
 import DesignDuties from './DesignDuties'
-export default function BookingConfirmation(){
+import ConfirmationModal from './ConfirmationModal'
+import AddMember from './AddMember'
+import {Modal} from 'antd'
+export default function BookingConfirmation(props){
+  // modal functions
+  const [modalOpen,setmodalOpen]=React.useState(false)
+  const ModalOpenClick=()=>{
+     setmodalOpen(true)
+  }
+  const ModalCloseClick=()=>{
+     setmodalOpen(false)
+  }
+  // end
     const images = [
         {img:Nurseimage1,name:"Lina"},
         {img:Nurseimage2,name:"Aysa"},
@@ -20,6 +32,7 @@ export default function BookingConfirmation(){
     ]
     const[editOpen,seteditOpen]=React.useState(false)
     const[DutiesOpen,setDutiesOpen]=React.useState(true)
+    const[BookOpen,setBookOpen]=React.useState(false)
     function EditClick(){
       seteditOpen(true)
     }
@@ -28,6 +41,12 @@ export default function BookingConfirmation(){
     }
     function DutiesClick(){
       setDutiesOpen(false)
+    }
+    function BookClick(){
+      setBookOpen(true)
+    }
+    function BookClose(){
+      setBookOpen(false)
     }
    
     return(
@@ -43,10 +62,11 @@ export default function BookingConfirmation(){
             ) 
     
         })}
-             <div><div className="add_member"><AddIcon/></div>
+             <div><div className="add_member" onClick={BookClick}><AddIcon/></div>
                  <div className="mem_name">New</div>
             </div>
         </div>
+        {BookOpen===true?<AddMember BookClose={BookClose}/>:null}
         <div className="confir_div"><div style={{fontSize:"18px",fontWeight:"600"}}>BookingConfirmation</div><div style={{color:"#83AE40",fontWeight:"600"}}>Rose</div></div>
         {/* form details */}
        
@@ -119,8 +139,19 @@ export default function BookingConfirmation(){
         </Col>
       </FormGroup>
       </Form> 
-       <div style={{textAlign:"center",padding:"10px 10px"}}><Button className="nurse_cancel" onClick={DutiesClick}>Edit</Button><Button className="nurse_book_btn">Book</Button></div>
-       {/* {DutiesOpen===false?<DesignDuties/>:null} */}
+       <div style={{textAlign:"center",padding:"10px 10px"}}><Button className="nurse_cancel" onClick={()=>props.DesignDuties()}>Edit</Button><Button className="nurse_book_btn" onClick={ModalOpenClick}>Book</Button></div>
+       {/* {props.Duties?<div><DesignDuties/></div>:null}  */}
+       <Modal
+        title={false}
+        visible={modalOpen}
+        footer={false}
+        onCancel={ModalCloseClick}
+        className="confirm_modal"
+        // maxWidth={"md"}
+        // style={{width:"800px"}}
+       >
+         <ConfirmationModal ModalCloseClick={ModalCloseClick}/>
+       </Modal>
         </div>
        
     )

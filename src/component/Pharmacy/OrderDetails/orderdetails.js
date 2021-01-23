@@ -29,13 +29,7 @@ function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-  createData('Dolo 650', 6, <span>25<DeleteIcon style={{fill:"#D11A2A",cursor:"pointer",position:"relative",top:"5px"}}/></span>),
-  createData('Naproxen', 10,<span>25<DeleteIcon style={{fill:"#D11A2A",cursor:"pointer",position:"relative",top:"5px"}}/></span>),
-  createData('Tylenol', 20,<span>30<DeleteIcon style={{fill:"#D11A2A",cursor:"pointer",position:"relative",top:"5px"}}/></span>),
-  createData('Paracetamol', 6,<span>15<DeleteIcon style={{fill:"#D11A2A",cursor:"pointer",position:"relative",top:"5px"}}/></span>),
-  
-];
+
 
 export default function OrderTable(props) {
   const classes = useStyles();
@@ -53,6 +47,13 @@ export default function OrderTable(props) {
  const EditClose=()=>{
    seteditOpen(true)
  }
+ const rows = [
+  createData('Dolo 650', 6, <span>25<DeleteIcon onClick={ModalOpenClick} style={{fill:"#D11A2A",cursor:"pointer",position:"relative"}}/></span>),
+  createData('Naproxen', 10,<span>25<DeleteIcon onClick={ModalOpenClick} style={{fill:"#D11A2A",cursor:"pointer",position:"relative"}}/></span>),
+  createData('Tylenol', 20,<span>30<DeleteIcon onClick={ModalOpenClick} style={{fill:"#D11A2A",cursor:"pointer",position:"relative"}}/></span>),
+  createData('Paracetamol', 6,<span>15<DeleteIcon onClick={ModalOpenClick} style={{fill:"#D11A2A",cursor:"pointer",position:"relative"}}/></span>),
+  
+];
   return (
       <div className="order_de">  
           <div style={{fontSize:"20px",color:"#333",fontWeight:"bold",marginBottom:"25px"}}>Pharmacy - Order Details</div>
@@ -90,7 +91,7 @@ export default function OrderTable(props) {
         </TableBody>
       </Table>
     </TableContainer>
-    <div className="t_amt_parent" onClick={ModalOpenClick}><div className="t_amt_child"><div className="t_amt"><label style={{color:"#333",fontSize:"18px",fontWeight:"bold"}}>Total Amount :</label><label style={{color:"#939393",fontSize:"18px",fontWeight:"bold",paddingLeft:"7px"}}>80 KWD</label></div></div></div>
+    <div className="t_amt_parent"><div className="t_amt_child"><div className="t_amt"><label style={{color:"#333",fontSize:"18px",fontWeight:"bold"}}>Total Amount :</label><label style={{color:"#939393",fontSize:"18px",fontWeight:"bold",paddingLeft:"7px"}}>80 KWD</label></div></div></div>
     <Modal
         title={false}
         visible={modalOpen}

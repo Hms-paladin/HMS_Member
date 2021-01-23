@@ -35,6 +35,7 @@
 .mnth_samt{
     font-size: 10px;
 }
+
 .mnth_secondcost{
     display: flex;
     justify-content: space-between;
@@ -112,7 +113,6 @@ background-color: #83AF40 !important;
   margin-bottom: 0px !important;
   font-weight: bold;
   color: #fff;
-  background-color: red;
 }
 .off_txt{
  font-size: 10px;
@@ -121,6 +121,27 @@ background-color: #83AF40 !important;
 .count_review{
     font-size: 12px;
 }
-.ant-progress-success-bg, .ant-progress-bg{
+.nusre_hisparent .ant-progress-success-bg, .ant-progress-bg{
     background-color: #83AF40 !important;
+}
+.nusre_hisparent .ant-switch{
+    background-color: #83AF40 !important;
+}
+// slider css
+.nusre_hisparent .ant-slider-track{
+    background-color: #83AE40 !important;
+    height:7px !important;
+}
+.nusre_hisparent .ant-slider-handle{
+    border: solid 2px #83AE40 !important;
+}
+.nusre_hisparent .ant-slider-rail{
+    height:8px !important;
+}
+.nusre_hisparent .ant-slider-handle{
+    width:17px !important;
+    height:17px !important;
+}
+.nusre_hisparent .ant-slider{
+    margin:0px 0px 12px !important;
 }
