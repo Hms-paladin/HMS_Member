@@ -124,8 +124,8 @@ function PregnantMotherProfile() {
           <TabPane tab="Next Appointment" key="2"></TabPane>
           <TabPane tab="Medication" key="3"></TabPane>
           <TabPane tab="Health Tips" key="5"></TabPane>
-          <TabPane onClick={prescriptionModal} tab="Prescription" key="6">
-            
+          <TabPane tab="Prescription" key="6">
+            <img src={prescription}/>
           </TabPane>
           <TabPane tab="Devices" key="7"></TabPane>
          
@@ -347,7 +347,7 @@ function PregnantMotherProfile() {
                 </div>
               </Grid>
               <Grid item xs={12} sm container>
-                <Grid item xs container yspacing={16}>
+                <Grid item xs container spacing={16}>
                   <Grid item xs={8}>
                     <Labelbox type="text" labelname="Name"></Labelbox>
                   </Grid>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import bg_image from "../../images/PregnantMother/bg_mother.jpg";
 import profile_icon from "../../images/PregnantMother/PregnantMother.png";
 import { Button, Modal } from "antd";
-import "./Pregnant_Mother.scss";
+import "../Pregnant_Mother/Pregnant_Mother.scss";
 import { Layout, Menu } from "antd";
 import Card from "@material-ui/core/Card";
 import EditProfile_PregWomen from "./EditProfile_PregWomen";
@@ -24,7 +24,7 @@ import up_arrow from "../../images/PregnantMother/double-up-arrow.svg";
 import Labelbox from "../../helpers/labelbox/labelbox";
 
 import { Tabs } from "antd";
-import PrescriptionModal from "./PrescriptionModal";
+import PrescriptionModal_PregWomen from './PrescriptionModal_PregWomen'
 function PregnantWomen_Profile() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showDetails, ShowdetailsTrue] = useState(false);
@@ -120,14 +120,14 @@ function PregnantWomen_Profile() {
         </Menu> */}
 
         <Tabs defaultActiveKey="1" onChange={callback}>
-          <TabPane tab="Next Vaccination" key="1"></TabPane>
+          <TabPane tab="Family Member" key="1"></TabPane>
           <TabPane tab="Next Appointment" key="2"></TabPane>
           <TabPane tab="Medication" key="3"></TabPane>
-          <TabPane tab="Health Tips" key="5"></TabPane>
-          <TabPane onClick={prescriptionModal} tab="Prescription" key="6">
+          <TabPane tab="Health Tips" key="4"></TabPane>
+          <TabPane onClick={prescriptionModal} tab="Prescription History" key="5">
             
           </TabPane>
-          <TabPane tab="Devices" key="7"></TabPane>
+         
          
         </Tabs>
       </div>
@@ -1053,7 +1053,7 @@ function PregnantWomen_Profile() {
         onCancel={handleCancel}
         footer={null}
       >
-        <PrescriptionModal/>
+        <PrescriptionModal_PregWomen/>
         {/* {((<EditProfile_PregWomen />)||(<PrescriptionModal/>))} */}
       </Modal>
     </div>
