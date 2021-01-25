@@ -11,6 +11,24 @@ import Searchresult from "../Searchresult/searchresult";
 import Myprofile from "../Myprofile/myprofile";
 import Editprofile from "../Myprofile/editprofile";
 
+import Dashboard from "../Dashboard/dashboard.js";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+
+// pharmacy
+import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory.js";
+import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
+import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
+import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
+import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
+// nurse
+import Nursehistory from '../Nurse/NurseHistory/nursehistory'
+import NurseDetails from '../Nurse/NurseDetails/NurseDetails'
+import BookingConfirmation from '../Nurse/NurseDetails/BookingConfirmation'
+import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
+import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js";
+var hashHistory = require('react-router-redux')
+
 const { Search } = Input;
 
 
@@ -30,6 +48,9 @@ function HeaderLayout (props) {
                 <Menu.Item key="1"><div>Home</div></Menu.Item>
                 <Menu.Item key="2">Shopping</Menu.Item>
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
+                <Menu.Item key="3">One Watch</Menu.Item>
+                <Menu.Item key="3">
+                </Menu.Item>
             </Menu>
             <Dropdown className="search_dropdown">
   <Dropdown.Toggle  id="dropdown-basic">
@@ -65,12 +86,37 @@ function HeaderLayout (props) {
   </Dropdown.Menu>
 </Dropdown>
             </Header>
+
             <Content className="site-layout" style={{ marginTop: 64 }}>
             <div className="site-layout-background" style={{  minHeight: 380 }}>
                 {/* {props.children} */}
                 {/* <Searchresult/> */}
-                <Myprofile/>
+                {/* <Myprofile/> */}
                 {/* <Editprofile/> */}
+
+                <Router history={hashHistory} basename="Hms/?/">
+                        
+                    <Switch>
+                        {/* <Route to="/dashboard" component={Dashboard} exact />
+                        <Route path="/" component={Dashboard} exact/> */}
+                        {/* Pharmacy */}
+                        <Route path="/" component={Dashboard} exact />
+
+                        <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
+                        <Route path="/orderdetails" component={OrderTable} exact/> 
+                        <Route path="/paymentreceive" component={PaymentReceived} exact/>
+                        <Route path="/paymentmethod" component={PaymentMethod} exact/>
+                        <Route path="/orderpacking" component={OrderPacking} exact/>
+                        {/* Nurse */}
+                        <Route path="/nursehistory" component={Nursehistory} exact/>
+                        <Route path="/nursedetails" component={NurseDetails} exact/>
+                        <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
+
+                        <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
+                        <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
+                    </Switch>
+                 </Router>
+
             </div>
             </Content>
         </Layout>
