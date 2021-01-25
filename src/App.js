@@ -13,7 +13,8 @@ import OrderPacking from './component/Pharmacy/OrderDetailsPacked/OrderDetails-P
 // nurse
 import Nursehistory from './component/Nurse/NurseHistory/nursehistory'
 import NurseDetails from './component/Nurse/NurseDetails/NurseDetails'
-import BookingConfirmation from './component/Nurse/NurseDetails/BookingConfirmation'
+import Bookings from './component/Nurse/Bookings/Bookings'
+import RescheduleBookings from './component/Nurse/RescheduleBooking/RescheduleBooking'
 var hashHistory = require('react-router-redux')
 function App() {
   return (
@@ -31,8 +32,8 @@ function App() {
         {/* Nurse */}
         <Route path="/nursehistory" component={Nursehistory}/>
         <Route path="/nursedetails" component={NurseDetails}/>
-        <Route path="/bookingconfirmation" component={BookingConfirmation}/>
-
+        <Route path="/bookings" component={Bookings}/>
+        <Route path="/reschedulebookings" component={RescheduleBookings}/>
       </Switch>
       </HeaderLayout>
     </Router>
