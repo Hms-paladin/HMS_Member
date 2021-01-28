@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import "./Pregnant_Mother.scss";
+import '../Pregnant_Mother/Pregnant_Mother.scss'
 import dalal from "../../images/PregnantMother/bg_mother.jpg"
 import Plus from "../../images/plus.png";
 
@@ -25,7 +25,7 @@ import smart_watch from "../../images/PregnantMother/smart_watch.png"
 import {Modal} from 'antd'
 import { Collapse } from 'antd';
 import Labelbox from "../../helpers/labelbox/labelbox";
-import EditprofileModal from './EditProfileModal'
+import EditMother_Profile from './EditMother_Profile'
 import Grid from '@material-ui/core/Grid'
 const { Panel } = Collapse;
 
@@ -58,7 +58,7 @@ const icons = [
 ]
                   
 
-function PregnantMotherprofile(props) {
+function MotherProfile(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showDetails, ShowdetailsTrue] = useState(false);
   // const [prescriptionDetails,prescriptionModalTrue]=useState(false);
@@ -384,10 +384,10 @@ function PregnantMotherprofile(props) {
         footer={null}
       >
         {/* <PrescriptionModal/> */}
-        <EditprofileModal/>
+        <EditMother_Profile/>
       </Modal>
         </div>
     )
 }
 
-export default PregnantMotherprofile;
+export default MotherProfile;

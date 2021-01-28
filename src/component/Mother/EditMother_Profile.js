@@ -1,10 +1,10 @@
 import React from "react";
-import '../Pregnant_Mother/Editprofile.scss';
+import '../Pregnant_Mother/Editprofile.scss'
 import Labelbox from '../../helpers/labelbox/labelbox'
 import avatar from '../../images/PregnantMother/user.png'
 
 
-function EditPreg_WomenModal(props) {
+function EditMother_Profile(props) {
     return(
         <div>
             <div className="editprofile_cont">
@@ -48,4 +48,4 @@ function EditPreg_WomenModal(props) {
             </div>
         </div>
     )}
-    export default EditPreg_WomenModal;
+    export default EditMother_Profile;
