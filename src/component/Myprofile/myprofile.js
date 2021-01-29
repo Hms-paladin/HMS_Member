@@ -20,7 +20,7 @@ import smartphone from "../../images/smartphone.svg";
 import avatar from "../../images/user.png";
 import self from "../../images/self.png";
 import prescription from "../../images/prescription.png";
-
+import {useHistory} from 'react-router-dom'
 import { Collapse } from 'antd';
 import Labelbox from "../../helpers/labelbox/labelbox";
 const { Panel } = Collapse;
@@ -56,6 +56,10 @@ const icons = [
                   
 
 function Myprofile(props) {
+    let history = useHistory();
+    function handleEditProfile(){
+        history.push("/doctorEdit")
+    }
 
     const [showForm,setShowForm] = useState(false)
 
@@ -83,7 +87,7 @@ function Myprofile(props) {
                     
                 </div>
                 <div>
-                    <Button className="editbtn">Edit profile</Button>
+                    <Button onClick={handleEditProfile} className="editbtn">Edit profile</Button>
                 </div>
 
 
@@ -294,4 +298,4 @@ function Myprofile(props) {
     )
 }
 
-export default Myprofile;
+export default Myprofile
