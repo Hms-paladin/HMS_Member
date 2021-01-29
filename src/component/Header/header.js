@@ -12,7 +12,7 @@ import Myprofile from "../Myprofile/myprofile";
 import Editprofile from "../Myprofile/editprofile";
 
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route,useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,Link } from "react-router-dom";
 
 
 // pharmacy
@@ -38,10 +38,7 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
-    let history = useHistory();
-    function doctorProfile(){
-        history.push("/profile");
-    }
+    
     return(
         <Layout>
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
@@ -69,8 +66,8 @@ function HeaderLayout (props) {
      </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1"><Button className="categorybtn">Doctor</Button></Dropdown.Item>
-    <Dropdown.Item href="#/action-2"><Button className="categorybtn">Speciality</Button></Dropdown.Item>
+    <Dropdown.Item href="/search"><Button className="categorybtn">Doctor</Button></Dropdown.Item>
+    <Dropdown.Item href="/search"><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
   </Dropdown.Menu>
@@ -82,7 +79,7 @@ function HeaderLayout (props) {
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1" onclick={doctorProfile}>Profile</Dropdown.Item>
+    <Dropdown.Item href="/profile" component={Link} to="/profile">Profile</Dropdown.Item>
     <Dropdown.Item href="#/action-2">My Appointments</Dropdown.Item>
     <Dropdown.Item href="#/action-3">My Bookings</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
@@ -120,6 +117,8 @@ function HeaderLayout (props) {
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
                         <Route path="/profile" component={Myprofile} exact/>
                         <Route path="/doctorEdit" component={Editprofile} exact/>
+                        <Route path="/search" component={Searchresult} exact/>
+
                     </Switch>
                  </Router>
 
