@@ -1,0 +1,40 @@
+.rdrCalendarWrapper{
+   width:100% !important;
+}
+.rdrDateInput:nth-child(2){
+    display:none;
+}
+.rdrDateDisplayItem{
+    border-radius: 3px !important;
+    background-color: #83AF40 !important;
+    box-shadow: none !important;
+    border:0px !important;
+    color:#fff !important;
+}
+.curr_date{
+    padding: 15px 5px 15px 16px;  
+    background-color: #83AF40 !important;
+    border-radius: 2px;
+    font-size: 15px;
+    color:#fff;
+    font-weight: 600;
+}    
+.rdrDateDisplayWrapper{
+    display:none;
+}
+.rdrDateDisplayItem input{
+    color:#fff !important;
+}
+.rdrDateDisplay{
+    margin:2px !important;
+}
+.rdrMonthAndYearWrapper{
+    height:50px !important;
+    padding-top: none !important;
+}
+.rdrWeekDay:nth-child(6){
+    color:red;
+}
+.rdrDays .rdrDayNumber span:nth-child(6){
+    color:red !important;
+}

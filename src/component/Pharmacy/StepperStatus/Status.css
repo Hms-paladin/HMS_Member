@@ -1,0 +1,26 @@
+.stepper_container .comp_sta_icon{
+    font-size: 1.5rem !important;
+}
+
+.stepper_container .MuiStepConnector-alternativeLabel{
+    top:52px !important;
+}
+.stepper_container .top_step{
+    text-align: center;
+}
+.MuiStepLabel-label.MuiStepLabel-alternativeLabel{
+  font-weight: 600;
+  font-size: 10px !important;
+
+}
+.MuiStepLabel-label.MuiStepLabel-completed{
+  color:#333333 !important;
+  font-weight: 600 !important;
+}
+.MuiStepLabel-label.MuiStepLabel-active{
+  font-weight: 600 !important;
+}
+.stepper_container .top_step{
+    font-weight: 600;
+    font-size: 12px;
+}

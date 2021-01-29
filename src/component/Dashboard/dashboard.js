@@ -9,11 +9,20 @@ import Pharmacy from "../../images/pharmacy.png";
 import Lab from "../../images/lab.png";
 import Physotheropy from "../../images/physotheropy.png";
 import BookRoom from "../../images/bookroom.png";
-
+import { NavLink} from "react-router-dom";
 import "./dashboard.scss";
-
+import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// routes path
+import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory";
+import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
+import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
+import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
+function routepush(props){
+    props.history.push("/paymentreceived")
+}
 const images = [
-                    {img:Doctor,title:"Doctor Apponintment"},
+                    {img:Doctor,title:"Doctor Apponintment",pathname:"/PrescriptionHistory"},
                     {img:Nurse,title:"Nursing"},
                     {img:Report,title:"Report"},
                     {img:Trainer,title:"Trainer"},
@@ -28,14 +37,20 @@ const images = [
 function Dashboard(props) {
     return(
         <div className="container">
-        {images.map((data)=>{
+        {images.map((data,pathname)=>{
             return(
-            <div className="imgContainer">
-                <img src = {data.img} />
+             <div className="imgContainer">
+                 <NavLink to={"/orderdetails"}><img src = {data.img} /></NavLink>
                 <div className="imgTitle">{data.title}</div>
             </div> 
-            )  
+            ) 
+    
         })}
+        <div>
+        <Route exact path={`${props.match.path}/prescriptionhistory`} component={PrescriptionHistory} />
+        <Route exact path={`${props.match.path}/orderdetails`} component={OrderTable} />
+       
+        </div>
         </div>
     )
 }
