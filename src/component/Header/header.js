@@ -12,7 +12,7 @@ import Myprofile from "../Myprofile/myprofile";
 import Editprofile from "../Myprofile/editprofile";
 import { push } from 'connected-react-router';
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 
 
 // pharmacy
@@ -41,8 +41,12 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
+
+  let history = useHistory();
+
     const HistoryPush=()=>{
-        props.history.push("/bookings")
+      history.push("/bookings");
+      window.location.reload()
       }
     return(
         <Layout>
@@ -67,7 +71,6 @@ function HeaderLayout (props) {
       style={{ width: 300, margin: '0 10px' }}
     /> 
                 <img className="searchico"src={search} />
-                <img src={Calendar} style={{width:"20px"}} onClick={HistoryPush}/>
 
      </Dropdown.Toggle>
 
@@ -78,6 +81,9 @@ function HeaderLayout (props) {
 
   </Dropdown.Menu>
 </Dropdown>
+
+<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={HistoryPush}/>
+
 
             <Dropdown className="avatar_cont">
   <Dropdown.Toggle  id="dropdown-basic">
