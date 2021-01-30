@@ -26,6 +26,8 @@ import Nursehistory from '../Nurse/NurseHistory/nursehistory'
 import NurseDetails from '../Nurse/NurseDetails/NurseDetails'
 import BookingConfirmation from '../Nurse/NurseDetails/BookingConfirmation'
 import Bookings from '../Nurse/Bookings/Bookings'
+import BookingHistory from '../Nurse/Bookings/BookingHistory'
+
 import RescheduleBookings from '../Nurse/RescheduleBooking/RescheduleBooking'
 
 import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
@@ -41,8 +43,9 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
+  let history = useHistory();
     const HistoryPush=()=>{
-        props.history.push("/bookings")
+        history.push("/bookings")
       }
     return(
         <Layout>
@@ -67,6 +70,7 @@ function HeaderLayout (props) {
       style={{ width: 300, margin: '0 10px' }}
     /> 
                 <img className="searchico"src={search} />
+
                 <img src={Calendar} style={{width:"20px"}} onClick={HistoryPush}/>
 
      </Dropdown.Toggle>
@@ -119,6 +123,8 @@ function HeaderLayout (props) {
                         <Route path="/nursedetails" component={NurseDetails} exact/>
                         <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
                         <Route path="/bookings" component={Bookings}/>
+                        <Route path="/bookinghistory" component={BookingHistory}/>
+                        <Route path="/reschedulebookings" component={RescheduleBookings}/>
 
                         <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
