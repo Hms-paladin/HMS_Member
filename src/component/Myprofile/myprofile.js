@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./myprofile.scss";
 import Doctor from "../../images/doctorappoinment.png";
 import Plus from "../../images/plus.png";
@@ -20,7 +20,7 @@ import smartphone from "../../images/smartphone.svg";
 import avatar from "../../images/user.png";
 import self from "../../images/self.png";
 import prescription from "../../images/prescription.png";
-
+import {useHistory} from 'react-router-dom'
 import { Collapse } from 'antd';
 import Labelbox from "../../helpers/labelbox/labelbox";
 const { Panel } = Collapse;
@@ -56,6 +56,20 @@ const icons = [
                   
 
 function Myprofile(props) {
+    let history = useHistory();
+    function handleEditProfile(){
+        history.push("/doctorEdit")
+    }
+
+    const [showForm,setShowForm] = useState(false)
+
+    const openForm = () => {
+        setShowForm(true)
+    }
+
+    const closeForm = () => {
+        setShowForm(false)
+    }
     return(
         <div>
             <div className="cover_image_cont">
@@ -73,7 +87,7 @@ function Myprofile(props) {
                     
                 </div>
                 <div>
-                    <Button className="editbtn">Edit profile</Button>
+                    <Button onClick={handleEditProfile} className="editbtn">Edit profile</Button>
                 </div>
 
 
@@ -93,10 +107,11 @@ function Myprofile(props) {
             <div className="familymember">
             <div className="familymemberheader">
                 <div>Family Members</div>
-                <img style={{cursor:"pointer"}} src={Plus}/>
+
+                {!showForm && <img style={{cursor:"pointer"}} src={Plus} onClick={openForm} /> }
             </div>
             {/* Form starts here */}
-            <div className="add_memberform">
+          {showForm &&  <div className="add_memberform">
                 <div className="img_cont">
                      <img src={avatar}/>
                      <span>Add photo</span>
@@ -110,10 +125,11 @@ function Myprofile(props) {
                 <div className="relationship_cont">
                     <div className="relation"><Labelbox type="select" labelname="Relationship"/></div>
                     <div className="height"><Labelbox type="text" labelname="Height"/><span className="unit">cm</span> <Labelbox type="text" labelname="Weight"/><span className="unit">kg</span></div>
-                    <div className="addmemberbtn"><Button className="cancelbtn">Cancel</Button><Button className="submitbtn">Submit</Button></div>
+                    <div className="addmemberbtn"><Button className="cancelbtn" onClick={closeForm}>Cancel</Button>
+                    <Button className="submitbtn" onClick={closeForm}>Submit</Button></div>
 
                 </div>
-            </div>
+            </div>}
             {/* form ends here */}
             <div className="familymember_imgs">
             {images.map((data)=>{
@@ -282,4 +298,4 @@ function Myprofile(props) {
     )
 }
 
-export default Myprofile;
+export default Myprofile

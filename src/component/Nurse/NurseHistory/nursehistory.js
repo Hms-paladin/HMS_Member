@@ -5,6 +5,7 @@ import { Switch,Input,Slider,Progress} from 'antd';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
 import Nurse_2 from '../../../images/lab.png'
+import search from '../../../images/search.svg'
 import Percentage from '../../../images/percentage.svg'
 import {NavLink} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
@@ -78,7 +79,8 @@ export default function Nursehistory(){
 
         </Grid>
         <Grid item xs={12} md={8} spacing={2}>
-        <Input type="search " placeholder={"Search"} className="srch_his"/>
+     
+        <div style={{position:"relative"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"7px",right:"17px"}}/></div>
         <div className="nurse_dts"><div><label className="nur_age">Age</label><label>Experience</label></div><div><label className="nur_age">Cost</label><label>Rating</label></div></div>
         {NurseHistory.map((data,index)=>
          <Paper className="nurse_list_div">

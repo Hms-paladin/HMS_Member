@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Menu } from 'antd';
 import Logo from "../../images/Logo.png";
 import search from "../../images/loupe.png";
-
+import Calendar from '../../images/calendar_b.svg'
 import { Dropdown } from 'react-bootstrap'
 import { Input } from 'antd';
 import "./header.scss";
@@ -10,9 +10,9 @@ import Button from '@material-ui/core/Button'
 import Searchresult from "../Searchresult/searchresult";
 import Myprofile from "../Myprofile/myprofile";
 import Editprofile from "../Myprofile/editprofile";
-
+import { push } from 'connected-react-router';
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink} from "react-router-dom";
 
 
 // pharmacy
@@ -24,11 +24,10 @@ import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
 // nurse
 import Nursehistory from '../Nurse/NurseHistory/nursehistory'
 import NurseDetails from '../Nurse/NurseDetails/NurseDetails'
+import BookingConfirmation from '../Nurse/NurseDetails/BookingConfirmation'
 import Bookings from '../Nurse/Bookings/Bookings'
-import RescheduleBooking from '../Nurse/RescheduleBooking/RescheduleBooking'
-import BookingHistory from '../Nurse/Bookings/BookingHistory'
-import MyApp from '../Nurse/MySchedule/RangeCalendar'
-// Pregnant women
+import RescheduleBookings from '../Nurse/RescheduleBooking/RescheduleBooking'
+
 import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
 import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js";
 var hashHistory = require('react-router-redux')
@@ -42,6 +41,9 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
+    const HistoryPush=()=>{
+        props.history.push("/bookings")
+      }
     return(
         <Layout>
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
@@ -65,12 +67,13 @@ function HeaderLayout (props) {
       style={{ width: 300, margin: '0 10px' }}
     /> 
                 <img className="searchico"src={search} />
+                <img src={Calendar} style={{width:"20px"}} onClick={HistoryPush}/>
 
      </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1"><Button className="categorybtn">Doctor</Button></Dropdown.Item>
-    <Dropdown.Item href="#/action-2"><Button className="categorybtn">Speciality</Button></Dropdown.Item>
+    <Dropdown.Item href="/search"><Button className="categorybtn">Doctor</Button></Dropdown.Item>
+    <Dropdown.Item href="/search"><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
   </Dropdown.Menu>
@@ -82,7 +85,7 @@ function HeaderLayout (props) {
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+    <Dropdown.Item href="/profile" component={Link} to="/profile">Profile</Dropdown.Item>
     <Dropdown.Item href="#/action-2">My Appointments</Dropdown.Item>
     <Dropdown.Item href="#/action-3">My Bookings</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
@@ -93,7 +96,7 @@ function HeaderLayout (props) {
 
             <Content className="site-layout" style={{ marginTop: 64 }}>
             <div className="site-layout-background" style={{  minHeight: 380 }}>
-                 {props.children} 
+                {/* {props.children} */}
                 {/* <Searchresult/> */}
                 {/* <Myprofile/> */}
                 {/* <Editprofile/> */}
@@ -105,6 +108,7 @@ function HeaderLayout (props) {
                         <Route path="/" component={Dashboard} exact/> */}
                         {/* Pharmacy */}
                         <Route path="/" component={Dashboard} exact />
+
                         <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
                         <Route path="/orderdetails" component={OrderTable} exact/> 
                         <Route path="/paymentreceive" component={PaymentReceived} exact/>
@@ -113,13 +117,15 @@ function HeaderLayout (props) {
                         {/* Nurse */}
                         <Route path="/nursehistory" component={Nursehistory} exact/>
                         <Route path="/nursedetails" component={NurseDetails} exact/>
-                        <Route path="/bookings" component={Bookings} exact/>
-                        <Route path="/reschedulebookings" component={RescheduleBooking} exact/>
-                        <Route path="/bookinghistory" component={BookingHistory} exact/>
-                        {/* <Route path="/calendar" component={MyApp} exact/> */}
+                        <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
+                        <Route path="/bookings" component={Bookings}/>
 
                         <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
+                        <Route path="/profile" component={Myprofile} exact/>
+                        <Route path="/doctorEdit" component={Editprofile} exact/>
+                        <Route path="/search" component={Searchresult} exact/>
+
                     </Switch>
                  </Router>
 

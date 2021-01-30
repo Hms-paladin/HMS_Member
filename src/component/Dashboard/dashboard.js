@@ -18,14 +18,17 @@ import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhis
 import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
 import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
 import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
+function routepush(props){
+    props.history.push("/paymentreceived")
+}
 const images = [
-                    {img:Doctor,title:"Doctor Apponintment",path:"/prescriptionhistory"},
-                    {img:Nurse,title:"Nursing"},
+                    {img:Doctor,title:"Doctor Apponintment",pathname:"/profile"},
+                    {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
                     {img:Report,title:"Report"},
                     {img:Trainer,title:"Trainer"},
                     {img:TrainingCenter,title:"Training Center"},
                     {img:DietMeal,title:"Diet Meal"},
-                    {img:Pharmacy,title:"Pharmacy"},
+                    {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
                     {img:Lab,title:"Lab"},
                     {img:Physotheropy,title:"Physotheropy"},
                     {img:BookRoom,title:"Book a Room"}
@@ -34,19 +37,20 @@ const images = [
 function Dashboard(props) {
     return(
         <div className="container">
-        {images.map((data,pathname)=>{
+        {images.map((data)=>{
             return(
              <div className="imgContainer">
-                <img src = {data.img} />
+                 <NavLink to={data.pathname ? data.pathname : ""}><img src = {data.img} /></NavLink>
                 <div className="imgTitle">{data.title}</div>
             </div> 
             ) 
     
         })}
         <div>
-        <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
+        <Route exact path={`${props.match.path}/prescriptionhistory`} component={PrescriptionHistory} />
+        <Route exact path={`${props.match.path}/orderdetails`} component={OrderTable} />
+       
         </div>
-        
         </div>
     )
 }
