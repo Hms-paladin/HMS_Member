@@ -18,11 +18,8 @@ import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhis
 import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
 import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
 import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
-function routepush(props){
-    props.history.push("/paymentreceived")
-}
 const images = [
-                    {img:Doctor,title:"Doctor Apponintment",pathname:"/PrescriptionHistory"},
+                    {img:Doctor,title:"Doctor Apponintment",path:"/prescriptionhistory"},
                     {img:Nurse,title:"Nursing"},
                     {img:Report,title:"Report"},
                     {img:Trainer,title:"Trainer"},
@@ -40,17 +37,16 @@ function Dashboard(props) {
         {images.map((data,pathname)=>{
             return(
              <div className="imgContainer">
-                 <NavLink to={"/orderdetails"}><img src = {data.img} /></NavLink>
+                <img src = {data.img} />
                 <div className="imgTitle">{data.title}</div>
             </div> 
             ) 
     
         })}
         <div>
-        <Route exact path={`${props.match.path}/prescriptionhistory`} component={PrescriptionHistory} />
-        <Route exact path={`${props.match.path}/orderdetails`} component={OrderTable} />
-       
+        <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
         </div>
+        
         </div>
     )
 }

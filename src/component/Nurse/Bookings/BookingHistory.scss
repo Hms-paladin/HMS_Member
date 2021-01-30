@@ -1,0 +1,29 @@
+.book_his_parent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    font-weight: 600;
+}
+.his_cancel{
+   color:#FF6464;
+   padding-left: 23px;
+}
+.his_repeat{
+    color: #539AE7;
+}
+.his_reschedule{
+    color:#83AF40;
+    padding-left: 23px;
+}
+.his_review{
+    color:#83AF40;
+    padding-right: 15px;
+}
+.bookhistory_list_item{
+    padding:10px 23px 3px;
+    display: flex;
+}
+.bookhistory_list_item p{
+    margin-bottom: 5px !important;
+}

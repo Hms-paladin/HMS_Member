@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HeaderLayout from "./component/Header/header.js";
 import Dashboard from "./component/Dashboard/dashboard.js";
 // pharmacy
@@ -14,15 +14,16 @@ import OrderPacking from './component/Pharmacy/OrderDetailsPacked/OrderDetails-P
 import Nursehistory from './component/Nurse/NurseHistory/nursehistory'
 import NurseDetails from './component/Nurse/NurseDetails/NurseDetails'
 import Bookings from './component/Nurse/Bookings/Bookings'
-import RescheduleBookings from './component/Nurse/RescheduleBooking/RescheduleBooking'
+import RescheduleBooking from './component/Nurse/RescheduleBooking/RescheduleBooking'
+import BookingHistory from './component/Nurse/Bookings/BookingHistory'
 var hashHistory = require('react-router-redux')
 function App() {
   return (
-    <Router history={hashHistory} basename="Hms/?/">
-        <HeaderLayout>
+    <Router  basename="Hms/?/">
+        {/* <HeaderLayout> */}
          
-      <Switch>
-        <Route path="/" component={Dashboard} exact/>
+      {/* <Switch> */}
+         <Route path="/" component={HeaderLayout} exact/> 
         {/* Pharmacy */}
          <Route path="/prescriptionhistory" component={PrescriptionHistory}/> 
          <Route path="/orderdetails" component={OrderTable}/> 
@@ -32,11 +33,14 @@ function App() {
         {/* Nurse */}
         <Route path="/nursehistory" component={Nursehistory}/>
         <Route path="/nursedetails" component={NurseDetails}/>
-        <Route path="/bookings" component={Bookings}/>
-        <Route path="/reschedulebookings" component={RescheduleBookings}/>
-      </Switch>
-      </HeaderLayout>
+        <Route path="/bookings" component={Bookings} exact/>
+        <Route path="/reschedulebookings" component={RescheduleBooking}/>
+        <Route path="/bookinghistory" component={BookingHistory} exact/>
+      {/* </Switch> */}
+      {/* </HeaderLayout> */}
     </Router>
+
+
   );
 }
 

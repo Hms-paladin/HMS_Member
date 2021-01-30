@@ -1,10 +1,11 @@
 
 .bookings_parentdiv{
-    margin-left: 6%;
-    margin-right: 6%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 20px;
 }
 .book_headdiv{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,13 +16,15 @@
     font-weight: bold;
 }
 .bookhistory_list{
+    display: flex;
+    padding:10px 23px;
+}
+.bookhistory_list_parent{
     box-shadow: 0px 1px 7px #00000021;
     border-radius: 20px;
     opacity: 1;
-    padding:10px 23px;
     margin-bottom: 20px;
     width:100%;
-    display: flex;
 }
 .book_nur_img{
     width:110px;
@@ -65,8 +68,38 @@
 .b_cancel{
     color:#FF6464;
     font-weight: 600;
+    cursor: pointer;
+}
+.b_cancel_change{
+    color:#fff;
+    background-color: #83AF40;
+    padding: 3px 7px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
 }
 .book_shedule{
     color:#83AF40;
     font-weight: 600;
+    cursor: pointer;
+}
+// cancel to click part
+.amt_process{
+    background-color:#E6E6E6;
+    color:#808080;
+    padding:10px 40px;
+    margin-right: 20px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+.cancel_part_open{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #cccccc;
+}
+.cancel_part_div{
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
 }

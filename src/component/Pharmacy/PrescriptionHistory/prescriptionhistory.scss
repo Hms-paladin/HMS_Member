@@ -4,6 +4,19 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+.pay{
+    color:blue;
+    font-weight: 600;
+}
+.delevered{
+    color: #83AF40;
+    font-weight: 600;
+}
+.cancelled{
+    color:red;
+    font-weight: 600;
+}
 .pres_headdiv{
     margin-bottom: 20px;
     display: flex;
@@ -11,8 +24,9 @@
     align-items: center;
 }
 .pres_div{
-    margin-left: 6%;
-    margin-right: 6%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 10px;
 }
 .history_list{
     box-shadow: 0px 1px 7px #00000021;

@@ -55,7 +55,7 @@ export default class CancelPayment extends React.Component{
                                         <span>08/18</span>
                                         <span style={{marginLeft:"30px"}}>07/23</span>
                                     </div>
-                                    <h4>K.KHADIJA</h4>  
+                                    <h4>Dalal</h4>  
                                 </div>                           
                                <img src={Left} className="card_move"/>
                            </div>

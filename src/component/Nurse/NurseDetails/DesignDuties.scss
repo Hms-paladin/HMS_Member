@@ -21,11 +21,12 @@
  .date_pic_div{
      display: flex;
      align-items: center;
-     justify-content: space-between;   
+     justify-content: space-between; 
+     margin-top: 10px;  
  }
- .nurse_de_parent .formdiv:first-child{
-    padding-right: 15px;
- }
+//  .nurse_de_parent .formdiv:first-child{
+//     padding-right: 15px;
+//  }
  // tagcss
  .close_tag{
      background-color: #83AE40 !important;
@@ -34,6 +35,17 @@
      padding: 5px 10px !important;
      border-radius: 50px !important;
      margin:10px 0px 10px 0px !important;
+ }
+ .close_tag .anticon svg{
+     background-color: #486022;
+ border-radius: 50px;
+ font-size: 0.8rem;
+ padding: 2px;
+ margin-bottom: 0px;
+ position: relative;
+ fill:#fff !important;
+ top: -3px;
+ left: 4px;
  }
  // labelbox css
  .nurse_de_parent .formdiv .MuiFormControl-marginNormal{
@@ -84,5 +96,16 @@
  .proceed_div{
      text-align: center;
      margin-top: 10px;
+ }
+ .date_pic_childdiv{
+     width:47%;
+ }
+ .date_pic_childdiv:nth-child(2)
+ {
+     margin-bottom: 10px;
+ }
+ .nurse_de_parent .date_pic_childdiv .formdiv:first-child()
+ {
+    margin-right: 10px;
  }
  

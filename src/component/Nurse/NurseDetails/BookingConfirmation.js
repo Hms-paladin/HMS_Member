@@ -142,7 +142,7 @@ export default function BookingConfirmation(props){
        <div style={{textAlign:"center",padding:"10px 10px"}}><Button className="nurse_cancel" onClick={()=>props.DesignDuties()}>Edit</Button><Button className="nurse_book_btn" onClick={ModalOpenClick}>Book</Button></div>
        {/* {props.Duties?<div><DesignDuties/></div>:null}  */}
        <Modal
-        title={false}
+        title={<div className="bookconfirm">Booking Confirmation</div>}
         visible={modalOpen}
         footer={false}
         onCancel={ModalCloseClick}

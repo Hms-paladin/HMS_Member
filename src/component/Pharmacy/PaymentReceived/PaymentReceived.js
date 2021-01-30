@@ -13,7 +13,7 @@ export default class PaymentReceived extends Component{
                     <div className="receive_msg">Thank you, Your payment has been</div>
                     <div className="receive_msg"> successfull. A conformation email has been</div>
                     <div className="receive_msg">sent to</div>
-                    <div className="receive_msg"><h4 className="email">Khadija@gmail.com</h4></div>
+                    <div className="receive_msg"><h4 className="email">Dalal@gmail.com</h4></div>
                 </div>
             </div>
          

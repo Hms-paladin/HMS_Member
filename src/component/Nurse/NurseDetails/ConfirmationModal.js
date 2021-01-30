@@ -6,7 +6,7 @@ import Nurse from '../../../images/nurse.png'
 export default function ConfirmationModal(props){
     return(
        <div className="booking_confirm">
-           <div className="bookconfirm">BookingConfirmation</div>
+           {/* <div className="bookconfirm">BookingConfirmation</div> */}
            <Grid container spacing={4} className="book_confirm_container">
                <Grid item sm={12} md={2} className="confirm_nurse_imggrid">
                   <div className="Nurse_img_div"><img src={Nurse} className="confir_nurse"/></div>
