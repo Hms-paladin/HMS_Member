@@ -23,12 +23,12 @@ function routepush(props){
 }
 const images = [
                     {img:Doctor,title:"Doctor Apponintment",pathname:"/PrescriptionHistory"},
-                    {img:Nurse,title:"Nursing"},
+                    {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
                     {img:Report,title:"Report"},
                     {img:Trainer,title:"Trainer"},
                     {img:TrainingCenter,title:"Training Center"},
                     {img:DietMeal,title:"Diet Meal"},
-                    {img:Pharmacy,title:"Pharmacy"},
+                    {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
                     {img:Lab,title:"Lab"},
                     {img:Physotheropy,title:"Physotheropy"},
                     {img:BookRoom,title:"Book a Room"}
@@ -37,10 +37,10 @@ const images = [
 function Dashboard(props) {
     return(
         <div className="container">
-        {images.map((data,pathname)=>{
+        {images.map((data)=>{
             return(
              <div className="imgContainer">
-                 <NavLink to={"/orderdetails"}><img src = {data.img} /></NavLink>
+                 <NavLink to={data.pathname ? data.pathname : ""}><img src = {data.img} /></NavLink>
                 <div className="imgTitle">{data.title}</div>
             </div> 
             ) 
