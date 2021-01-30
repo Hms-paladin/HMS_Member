@@ -101,7 +101,7 @@ function HeaderLayout (props) {
                 {/* <Myprofile/> */}
                 {/* <Editprofile/> */}
 
-                <Router history={hashHistory} basename="Hms/?/">
+                <Router history={hashHistory} basename="HmsMember/?/">
                         
                     <Switch>
                         {/* <Route to="/dashboard" component={Dashboard} exact />

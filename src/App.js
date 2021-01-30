@@ -42,7 +42,7 @@ var hashHistory = require('react-router-redux')
 
 function App() {
   return (
-    <Router history={hashHistory} basename="Hms/?/">
+    <Router history={hashHistory} basename="HmsMember/?/">
         <HeaderLayout>
          
       <Switch>
