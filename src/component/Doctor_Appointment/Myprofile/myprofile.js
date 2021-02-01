@@ -1,28 +1,28 @@
 import React,{useState} from "react";
 import "./myprofile.scss";
-import Doctor from "../../images/doctorappoinment.png";
-import Plus from "../../images/plus.png";
+import Doctor from "../../../images/doctorappoinment.png";
+import Plus from "../../../images/plus.png";
 
 import Button from '@material-ui/core/Button'
 import {  Menu } from 'antd';
-import Nurse from "../../images/nurse.png";
-import Report from "../../images/report.png";
-import Trainer from "../../images/trainer.png";
-import TrainingCenter from "../../images/trainingcenter.png";
-import DietMeal from "../../images/dietmeal.png";
-import Pharmacy from "../../images/pharmacy.png";
-import address from "../../images/address.svg";
-import calendar from "../../images/calendar.svg";
-import driver from "../../images/driver.svg";
-import envelope from "../../images/envelope.svg";
-import insurance from "../../images/insurance.svg";
-import smartphone from "../../images/smartphone.svg";
-import avatar from "../../images/user.png";
-import self from "../../images/self.png";
-import prescription from "../../images/prescription.png";
+import Nurse from "../../../images/nurse.png";
+import Report from "../../../images/report.png";
+import Trainer from "../../../images/trainer.png";
+import TrainingCenter from "../../../images/trainingcenter.png";
+import DietMeal from "../../../images/dietmeal.png";
+import Pharmacy from "../../../images/pharmacy.png";
+import address from "../../../images/address.svg";
+import calendar from "../../../images/calendar.svg";
+import driver from "../../../images/driver.svg";
+import envelope from "../../../images/envelope.svg";
+import insurance from "../../../images/insurance.svg";
+import smartphone from "../../../images/smartphone.svg";
+import avatar from "../../../images/user.png";
+import self from "../../../images/self.png";
+import prescription from "../../../images/prescription.png";
 import {useHistory} from 'react-router-dom'
 import { Collapse } from 'antd';
-import Labelbox from "../../helpers/labelbox/labelbox";
+import Labelbox from "../../../helpers/labelbox/labelbox";
 const { Panel } = Collapse;
 
 

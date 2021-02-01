@@ -1,14 +1,14 @@
 import React from "react";
-import Doctor from "../../images/doctorappoinment.png";
-import Nurse from "../../images/nurse.png";
-import Report from "../../images/report.png";
-import Trainer from "../../images/trainer.png";
-import TrainingCenter from "../../images/trainingcenter.png";
-import DietMeal from "../../images/dietmeal.png";
-import Pharmacy from "../../images/pharmacy.png";
-import Lab from "../../images/lab.png";
-import Physotheropy from "../../images/physotheropy.png";
-import BookRoom from "../../images/bookroom.png";
+import Doctor from "../../../images/doctorappoinment.png";
+import Nurse from "../../../images/nurse.png";
+import Report from "../../../images/report.png";
+import Trainer from "../../../images/trainer.png";
+import TrainingCenter from "../../../images/trainingcenter.png";
+import DietMeal from "../../../images/dietmeal.png";
+import Pharmacy from "../../../images/pharmacy.png";
+import Lab from "../../../images/lab.png";
+import Physotheropy from "../../../images/physotheropy.png";
+import BookRoom from "../../../images/bookroom.png";
 
 import "./searchresult.scss";
 

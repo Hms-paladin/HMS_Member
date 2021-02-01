@@ -7,9 +7,7 @@ import { Dropdown } from 'react-bootstrap'
 import { Input } from 'antd';
 import "./header.scss";
 import Button from '@material-ui/core/Button'
-import Searchresult from "../Searchresult/searchresult";
-import Myprofile from "../Myprofile/myprofile";
-import Editprofile from "../Myprofile/editprofile";
+
 import { push } from 'connected-react-router';
 import Dashboard from "../Dashboard/dashboard.js";
 import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
@@ -30,6 +28,11 @@ import RescheduleBookings from '../Nurse/RescheduleBooking/RescheduleBooking'
 
 import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
 import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js";
+// Doctor
+import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
+import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
+import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
+
 var hashHistory = require('react-router-redux')
 
 const { Search } = Input;
@@ -48,11 +51,13 @@ function HeaderLayout (props) {
       history.push("/bookings");
       window.location.reload()
       }
+     
+     
     return(
         <Layout>
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
             {/* <div className="logo" > */}
-                <img className="HMSlogo" src={Logo} />
+                <img  className="HMSlogo" src={Logo} />
             {/* </div> */}
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
                 <Menu.Item key="1"><div>Home</div></Menu.Item>
@@ -114,6 +119,7 @@ function HeaderLayout (props) {
                         <Route path="/" component={Dashboard} exact/> */}
                         {/* Pharmacy */}
                         <Route path="/" component={Dashboard} exact />
+
 
                         <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
                         <Route path="/orderdetails" component={OrderTable} exact/> 
