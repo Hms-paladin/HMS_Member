@@ -59,7 +59,7 @@ function HeaderLayout (props) {
      
     return(
         <Layout>
-            <Header style={{ position: 'fixed', zIndex: 1, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
+            <Header style={{ position: 'fixed', zIndex: 2, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
             {/* <div className="logo" > */}
                 <img onClick={()=>HistoryPush("/")} className="HMSlogo" src={Logo} />
             {/* </div> */}
@@ -83,9 +83,9 @@ function HeaderLayout (props) {
 
      </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-    <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item>
-    <Dropdown.Item onClick={()=>HistoryPush("/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
+  <Dropdown.Menu >
+    {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item> */}
+    <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush("/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
   </Dropdown.Menu>
