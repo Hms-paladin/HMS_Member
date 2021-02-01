@@ -21,7 +21,7 @@ export default function Bookings(){
                 </div> 
                <div style={{width:"35%"}}>
                    <div className="duty_div"><p>Duty Hours</p><p style={{color:"#AEADAD",fontSize:"13px"}}>12:00 Hrs</p></div>
-                   <div className="duty_snddiv"><label className="book_shedule">My Shedule</label><NavLink to="/reschedulebookings"><label className="book_reshedule">Reshedule</label></NavLink><label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={CancelClick}>Cancel</label></div>
+                   <div className="duty_snddiv"><NavLink to="/myschedule"><label className="book_shedule">My Shedule</label></NavLink><NavLink to="/reschedulebookings"><label className="book_reshedule">Reshedule</label></NavLink><label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={CancelClick}>Cancel</label></div>
                 </div>
                 </div> 
             {/* To click cancel button to open this part */}

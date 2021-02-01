@@ -67,8 +67,8 @@ export default function RescheduleBooking(props){
       </FormGroup>
       </Form>
 
-                <div className="date_pic_div"><Labelbox type="datepicker" labelname="Start Date"/><Labelbox type="text" labelname="End Date"/></div>
-                <div  className="date_pic_div"><Labelbox type="timepicker" labelname="Start Time"/><Labelbox type="text" labelname="End Time"/></div>
+      <div className="date_pic_div"><div className="date_pic_childdiv"><Labelbox type="datepicker" labelname="Start Date"/></div><div className="date_pic_childdiv"><Labelbox type="text" labelname="End Date"/></div></div>
+                <div  className="date_pic_div"><div className="date_pic_childdiv"><Labelbox type="timepicker" labelname="Start Time"/></div><div className="date_pic_childdiv"><Labelbox type="text" labelname="End Time"/></div></div>
                 <Calendar/>
                 <div className="excl_parent_div"><div className="excl_dot"></div><label style={{color:"#504D5D",fontWeight:"600"}}>Excluded Days</label></div>
                 <div className="proceed_div"><Button className="proceed" onClick={ModalOpenClick}>Reschedule</Button></div>
