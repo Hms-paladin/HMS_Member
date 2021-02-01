@@ -61,10 +61,10 @@ function HeaderLayout (props) {
         <Layout>
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
             {/* <div className="logo" > */}
-                <img  className="HMSlogo" src={Logo} />
+                <img onClick={()=>HistoryPush("/")} className="HMSlogo" src={Logo} />
             {/* </div> */}
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
-                <Menu.Item key="1"><div>Home</div></Menu.Item>
+                <Menu.Item key="1" onClick={()=>HistoryPush("/")} ><div>Home</div></Menu.Item>
                 <Menu.Item key="2">Shopping</Menu.Item>
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
@@ -102,7 +102,6 @@ function HeaderLayout (props) {
   <Dropdown.Menu>
     <Dropdown.Item onClick={()=>HistoryPush("/profile")} >Profile</Dropdown.Item>
     <Dropdown.Item href="#/action-2">My Appointments</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">My Bookings</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
 
   </Dropdown.Menu>

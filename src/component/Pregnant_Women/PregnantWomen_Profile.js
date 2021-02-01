@@ -156,7 +156,7 @@ function PregnantWomenProfile(props) {
                   <div>13 Weeks</div>
                 </Grid>
                 <Grid item xs={2}>
-                  <div>height</div>
+                  <div>Height</div>
                 </Grid>
                 <Grid item xs={1} />
                 <Grid item xs={3}>
