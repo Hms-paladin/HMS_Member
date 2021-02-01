@@ -32,6 +32,7 @@ import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js"
 import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
+import Feed from '../Doctor_Appointment/Feed/feed'
 
 var hashHistory = require('react-router-redux')
 
@@ -47,11 +48,14 @@ function HeaderLayout (props) {
 
   let history = useHistory();
 
-    const HistoryPush=()=>{
-      history.push("/bookings");
+    const HistoryPush=(url)=>{
+      history.push(url);
       window.location.reload()
       }
+      
      
+     
+       
      
     return(
         <Layout>
@@ -63,7 +67,7 @@ function HeaderLayout (props) {
                 <Menu.Item key="1"><div>Home</div></Menu.Item>
                 <Menu.Item key="2">Shopping</Menu.Item>
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
-                <Menu.Item key="3">One Watch</Menu.Item>
+                {/* <Menu.Item key="3">One Watch</Menu.Item> */}
                 <Menu.Item key="3">
                 </Menu.Item>
             </Menu>
@@ -80,14 +84,14 @@ function HeaderLayout (props) {
      </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="/search"><Button className="categorybtn">Doctor</Button></Dropdown.Item>
-    <Dropdown.Item href="/search"><Button className="categorybtn">Speciality</Button></Dropdown.Item>
+    <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item>
+    <Dropdown.Item onClick={()=>HistoryPush("/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
   </Dropdown.Menu>
 </Dropdown>
 
-<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={HistoryPush}/>
+<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={()=>HistoryPush("/bookings")}/>
 
 
             <Dropdown className="avatar_cont">
@@ -96,7 +100,7 @@ function HeaderLayout (props) {
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="/profile" component={Link} to="/profile">Profile</Dropdown.Item>
+    <Dropdown.Item onClick={()=>HistoryPush("/profile")} >Profile</Dropdown.Item>
     <Dropdown.Item href="#/action-2">My Appointments</Dropdown.Item>
     <Dropdown.Item href="#/action-3">My Bookings</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
@@ -134,9 +138,12 @@ function HeaderLayout (props) {
 
                         <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
+                        {/* Doctor */}
                         <Route path="/profile" component={Myprofile} exact/>
                         <Route path="/doctorEdit" component={Editprofile} exact/>
-                        <Route path="/search" component={Searchresult} exact/>
+                        <Route path="/doctorappointment" component={Searchresult} exact/>
+                        <Route path="/feed" component={Feed} exact/>
+
 
                     </Switch>
                  </Router>

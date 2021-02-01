@@ -153,10 +153,10 @@ function PregnantMotherprofile(props) {
                   <div>Age</div>
                 </Grid>
                 <Grid item xs={4}>
-                  <div>13 Weeks</div>
+                  <div>9 Weeks</div>
                 </Grid>
                 <Grid item xs={2}>
-                  <div>height</div>
+                  <div>Height</div>
                 </Grid>
                 <Grid item xs={1} />
                 <Grid item xs={3}>
@@ -182,7 +182,7 @@ function PregnantMotherprofile(props) {
           <div className="box_circle">
             <div className="round_text">
               <div style={{ font: "normal normal bold 30px/22px Roboto" }}>
-                189 Days to go
+                132 Days to go
               </div>
             </div>
           </div>
