@@ -1,16 +1,13 @@
-// import React from "react";
-// import prescription from "../../images/PregnantMother/prescription.png";
+import React from "react";
+import prescription from "../../images/PregnantMother/prescription.jpg";
 
 
-// function PrescriptionModal(props) {
-//     // function ProfileHome(){
-//     //     alert("welcome")
-//     //     history.push("/PregnantMother_profile")
-//     // }
-//   return (
-//     <div>
-//      <img src={prescription}/>
-//     </div>
-//   );
-// }
-// export default PrescriptionModal;
+function PrescriptionModal(props) {
+   
+  return (
+    <div>
+     <img src={prescription}/>
+    </div>
+  );
+}
+export default PrescriptionModal;

@@ -3,10 +3,13 @@ import './ConfirmationModal.scss'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
+import PaymentMethod from '../../Pharmacy/PaymentMethod/PaymentMethod'
+import {NavLink} from 'react-router-dom'
 export default function ConfirmationModal(props){
+    
     return(
        <div className="booking_confirm">
-           <div className="bookconfirm">BookingConfirmation</div>
+           {/* <div className="bookconfirm">BookingConfirmation</div> */}
            <Grid container spacing={4} className="book_confirm_container">
                <Grid item sm={12} md={2} className="confirm_nurse_imggrid">
                   <div className="Nurse_img_div"><img src={Nurse} className="confir_nurse"/></div>
@@ -39,7 +42,7 @@ export default function ConfirmationModal(props){
                    </div>
             </Grid>  
             <Grid item xs={12} md={12} style={{textAlign:"center"}}>
-               <Button className="confirm_b_btn" onClick={()=>props.ModalCloseClick()}>Confirm</Button>
+               <NavLink to="paymentmethod"><Button className="confirm_b_btn">Confirm</Button></NavLink>
                </Grid>   
            </Grid>
            

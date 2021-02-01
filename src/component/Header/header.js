@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Menu } from 'antd';
 import Logo from "../../images/Logo.png";
 import search from "../../images/loupe.png";
-
+import Calendar from '../../images/calendar_b.svg'
 import { Dropdown } from 'react-bootstrap'
 import { Input } from 'antd';
 import "./header.scss";
@@ -10,9 +10,9 @@ import Button from '@material-ui/core/Button'
 import Searchresult from "../Searchresult/searchresult";
 import Myprofile from "../Myprofile/myprofile";
 import Editprofile from "../Myprofile/editprofile";
-
+import { push } from 'connected-react-router';
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route,useHistory,Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 
 
 // pharmacy
@@ -25,6 +25,9 @@ import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
 import Nursehistory from '../Nurse/NurseHistory/nursehistory'
 import NurseDetails from '../Nurse/NurseDetails/NurseDetails'
 import BookingConfirmation from '../Nurse/NurseDetails/BookingConfirmation'
+import Bookings from '../Nurse/Bookings/Bookings'
+import RescheduleBookings from '../Nurse/RescheduleBooking/RescheduleBooking'
+
 import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
 import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js";
 var hashHistory = require('react-router-redux')
@@ -38,7 +41,13 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
-    
+
+  let history = useHistory();
+
+    const HistoryPush=()=>{
+      history.push("/bookings");
+      window.location.reload()
+      }
     return(
         <Layout>
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
@@ -73,6 +82,9 @@ function HeaderLayout (props) {
   </Dropdown.Menu>
 </Dropdown>
 
+<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={HistoryPush}/>
+
+
             <Dropdown className="avatar_cont">
   <Dropdown.Toggle  id="dropdown-basic">
       <img src={Logo}/>
@@ -95,7 +107,7 @@ function HeaderLayout (props) {
                 {/* <Myprofile/> */}
                 {/* <Editprofile/> */}
 
-                <Router history={hashHistory} basename="Hms/?/">
+                <Router history={hashHistory} basename="HmsMember/?/">
                         
                     <Switch>
                         {/* <Route to="/dashboard" component={Dashboard} exact />
@@ -112,6 +124,7 @@ function HeaderLayout (props) {
                         <Route path="/nursehistory" component={Nursehistory} exact/>
                         <Route path="/nursedetails" component={NurseDetails} exact/>
                         <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
+                        <Route path="/bookings" component={Bookings}/>
 
                         <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>

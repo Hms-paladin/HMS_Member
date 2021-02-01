@@ -96,6 +96,9 @@ export default function OrderTable(props) {
         title={false}
         visible={modalOpen}
         footer={false}
+        size={"lg"}
+        {...props}
+        centered
         className="delete_modal"
         // onOk={handleOk}
         // confirmLoading={confirmLoading}

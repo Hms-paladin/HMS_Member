@@ -6,7 +6,9 @@ import Avatar from './Upload'
 export default function AddMember(props){
     return(
         <div className="add_mem_parent">
-            <div style={{textAlign:"center"}}><Avatar/></div>
+            <div style={{textAlign:"center"}}><Avatar/>
+            <div>Add Photo</div>
+            </div>
             <Labelbox type="text" labelname="Name"/>
             <div className="gender_date_div"><div style={{width:"50%"}}><Labelbox type="select" labelname="Gender"/></div><div style={{width:"50%"}}><Labelbox type="datepicker" labelname="Date of Birth"/></div></div>
             <Labelbox type="text" labelname="Mobile Number"/>

@@ -38,7 +38,7 @@ export default function NurseDetails(){
             </Grid>
             <Grid item sm={4} md={4} className="grid_seconditem">
                 <div style={{textAlign:"center"}}>
-            <div className="nur_name">Rose</div>
+            <div className="nurs_de_name">Rose</div>
                <div><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="start_emp_fill"/></div> 
                <div style={{fontSize:"20px",fontWeight:"600"}}>27 Years / Female</div>
                <div style={{color:"#666666",fontSize:"20px"}}>Wellness company</div>
