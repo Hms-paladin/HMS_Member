@@ -24,7 +24,9 @@ import Nursehistory from '../Nurse/NurseHistory/nursehistory'
 import NurseDetails from '../Nurse/NurseDetails/NurseDetails'
 import BookingConfirmation from '../Nurse/NurseDetails/BookingConfirmation'
 import Bookings from '../Nurse/Bookings/Bookings'
+import BookingHistory from '../Nurse/Bookings/BookingHistory'
 import RescheduleBookings from '../Nurse/RescheduleBooking/RescheduleBooking'
+import MySchedule from '../Nurse/MySchedule/Calendar'
 
 import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
 import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js";
@@ -45,12 +47,18 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
+<<<<<<< HEAD
 
   let history = useHistory();
 
     const HistoryPush=(url)=>{
       history.push(url);
       window.location.reload()
+=======
+  let history = useHistory();
+    const HistoryPush=()=>{
+        history.push("/bookings")
+>>>>>>> da7477b3c31fa6d6239ed2bd540ee55a54f862c5
       }
       
      
@@ -80,6 +88,11 @@ function HeaderLayout (props) {
       style={{ width: 300, margin: '0 10px' }}
     /> 
                 <img className="searchico"src={search} />
+<<<<<<< HEAD
+=======
+
+                <img src={Calendar} style={{width:"20px"}} onClick={HistoryPush}/>
+>>>>>>> da7477b3c31fa6d6239ed2bd540ee55a54f862c5
 
      </Dropdown.Toggle>
 
@@ -134,6 +147,9 @@ function HeaderLayout (props) {
                         <Route path="/nursedetails" component={NurseDetails} exact/>
                         <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
                         <Route path="/bookings" component={Bookings}/>
+                        <Route path="/bookinghistory" component={BookingHistory}/>
+                        <Route path="/reschedulebookings" component={RescheduleBookings}/>
+                        <Route path="/myschedule" component={MySchedule}/>
 
                         <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>

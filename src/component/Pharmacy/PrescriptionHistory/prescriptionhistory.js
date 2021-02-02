@@ -35,10 +35,6 @@ function PrescriptionHistory(props){
     function filterClose(){
         Close(false)
     }
-    function orderDetailspush(){
-        alert("hai")
-        props.history.push("/paymentreceive")
-    }
     const Prescription=[
         {
             id:1,
@@ -108,7 +104,9 @@ function PrescriptionHistory(props){
             {/* advancefilter end */}
     
                {Prescription.map((data,index)=>
-                      <NavLink to={data.statusid===4?"/orderpacking":"/orderdetails"}>
+        <NavLink to={{pathname:data.statusid===4?"/orderpacking":"/orderdetails",
+         aboutProps:{name:data.id}
+        }}>
                <div className=" history_list">
                 <div className="list_itemdiv"><label className="order_id">Order ID</label><label>{data.Date}</label></div>
                 <div style={{color:"#939393",margin:"8px 0px 5px 0px"}}>{data.orderid}</div>
