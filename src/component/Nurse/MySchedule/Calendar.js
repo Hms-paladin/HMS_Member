@@ -253,7 +253,7 @@ export default class MySchedule extends React.Component {
 
     return (
       <Grid container>
-        <Grid item xs={6} md={6}>
+        <Grid item xs={12} md={6} style={{marginLeft:"4%"}}>
         <div className="my_sch">My Schedule</div>
         <div className="upcom_div">
           <p className="sch_head_name">Rose</p>
@@ -272,15 +272,17 @@ export default class MySchedule extends React.Component {
           
           {!this.state.showMonthTable && (
             <span
-              onClick={e => {
-                this.showMonth();
-              }}
+              // onClick={e => {
+              //   this.showMonth();
+              // }}
               class="calendar-label"
             >
               {this.month()}
             </span>
           )}
-          <span className="calendar-label" onClick={e => this.showYearTable()}>
+          <span className="calendar-label" 
+          // onClick={e => this.showYearTable()}
+          >
             {this.year()}
           </span>
            <span
