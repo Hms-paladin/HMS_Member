@@ -1,7 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import './feed.scss'
 import Button from '@material-ui/core/Button'
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Rating from '@material-ui/lab/Rating';
+import PropTypes from 'prop-types';
 
+import { withStyles } from '@material-ui/core/styles';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -15,9 +19,61 @@ import right from '../../../images/navigate-next.svg'
 import male from '../../../images/male.svg'
 import female from '../../../images/female.svg'
 import sort from '../../../images/sort.svg'
+import avatar from '../../../images/nurse.png'
+import pin from '../../../images/pin.png'
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+import ReactPlayer from 'react-player'
+import offer_bg from '../../../images/offer_bg.png'
+import star from '../../../images/star.png'
 
 
 
+
+
+
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#ff6d75',
+  },
+  iconHover: {
+    color: '#ff3d47',
+  },
+})(Rating);
+const customIcons = {
+  1: {
+    icon: <SentimentVeryDissatisfiedIcon />,
+    label: 'Very Dissatisfied',
+  },
+  2: {
+    icon: <SentimentDissatisfiedIcon />,
+    label: 'Dissatisfied',
+  },
+  3: {
+    icon: <SentimentSatisfiedIcon />,
+    label: 'Neutral',
+  },
+  4: {
+    icon: <SentimentSatisfiedAltIcon />,
+    label: 'Satisfied',
+  },
+  5: {
+    icon: <SentimentVerySatisfiedIcon />,
+    label: 'Very Satisfied',
+  },
+};
+
+function IconContainer(props) {
+  const { value, ...other } = props;
+  return <span {...other}>{customIcons[value].icon}</span>;
+}
+
+IconContainer.propTypes = {
+  value: PropTypes.number.isRequired,
+};
 
 
 
@@ -43,6 +99,7 @@ function valuetext(value) {
 
 function Feed(props) {
     const classes = useStyles();
+    
    
      
     return(  
@@ -126,8 +183,119 @@ function Feed(props) {
         </div>
         </div>
         <div className="feed_div">
+                   <div className="story_details">
+                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="pimary_detail">
+                       <div className="detail1">Dr.Farah</div>
+                       <div className="detail2">MD-Conservative Dentistry</div>
+                       <div className="detail3">Excel - Polyclinic <span className="pin"><img src={pin} />2 km</span></div>
+
+
+                     </div>
+                     <div className="offer_percent"><img src={offer_bg}/><div className="offer_numerics"><span>15 %</span><span>Offer</span></div></div>
+                     <div className="rating_numerics"> <div className="rating_numeric_bg">4.3<img src={star}/></div><div className="price_kwd">100 KWD</div></div>
+                     <div> <StyledRating
+          name="customized-color"
+          defaultValue={1}
+          getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+          precision={1}
+          icon={<FavoriteIcon fontSize="inherit" />}
+          max={1}
+        /></div>
+
+                   </div>
+                   <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    </div>
+    <div class="carousel-item">
+    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    </div>
+    <div class="carousel-item">
+    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    </div>
+  </div>
+
+</div>
+<div className="time_slots">
+  <Button className="greenbtn">10:00AM</Button>
+  <Button className="redbtn">10:40AM</Button>
+  <Button className="greenbtn">11:00AM</Button>
+  <Button className="redbtn">10:50AM</Button>
+  <Button className="redbtn">2:00PM</Button>
+  <Button className="greenbtn">3:00PM</Button>
+  <Button className="redbtn">3:45PM</Button>
+  <Button className="greenbtn">8:00PM</Button>
+  <Button className="greenbtn">8:30PM</Button>
+
+
+
+  </div>
 
         </div>
+        <div className="feed_div">
+                   <div className="story_details">
+                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="pimary_detail">
+                       <div className="detail1">Dr.Farah</div>
+                       <div className="detail2">MD-Conservative Dentistry</div>
+                       <div className="detail3">Excel - Polyclinic <span className="pin"><img src={pin} />2 km</span></div>
+
+
+                     </div>
+                     <div className="offer_percent"><img src={offer_bg}/><div className="offer_numerics"><span>15 %</span><span>Offer</span></div></div>
+                     <div className="rating_numerics"> <div className="rating_numeric_bg">4.3<img src={star}/></div><div className="price_kwd">100 KWD</div></div>
+                     <div> <StyledRating
+          name="customized-color"
+          defaultValue={1}
+          getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+          precision={1}
+          icon={<FavoriteIcon fontSize="inherit" />}
+          max={1}
+        /></div>
+
+                   </div>
+                   <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    </div>
+    <div class="carousel-item">
+    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    </div>
+    <div class="carousel-item">
+    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    </div>
+  </div>
+ 
+</div>
+<div className="time_slots">
+  <Button className="greenbtn">10:00AM</Button>
+  <Button className="redbtn">10:40AM</Button>
+  <Button className="greenbtn">11:00AM</Button>
+  <Button className="redbtn">10:50AM</Button>
+  <Button className="redbtn">2:00PM</Button>
+  <Button className="greenbtn">3:00PM</Button>
+  <Button className="redbtn">3:45PM</Button>
+  <Button className="greenbtn">8:00PM</Button>
+  <Button className="greenbtn">8:30PM</Button>
+
+
+
+  </div>
+        </div>
+      
         </div>
         </div> 
     ) 
