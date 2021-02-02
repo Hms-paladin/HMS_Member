@@ -27,6 +27,9 @@ import { Collapse } from 'antd';
 import Labelbox from "../../helpers/labelbox/labelbox";
 import EditprofileModal from './EditProfileModal'
 import Grid from '@material-ui/core/Grid'
+import smart from '../../images/smartwatch.jfif'
+import fitness from '../../images/fitnessband.jpg'
+import camera from '../../images/camera.jpg'
 const { Panel } = Collapse;
 
 
@@ -63,6 +66,15 @@ function PregnantMotherprofile(props) {
   const [showDetails, ShowdetailsTrue] = useState(false);
   // const [prescriptionDetails,prescriptionModalTrue]=useState(false);
   const [AddFamily, AddFamilyTrue] = useState(false);
+  const [showForm,setShowForm] = useState(false)
+
+    const openForm = () => {
+        setShowForm(true)
+    }
+
+    const closeForm = () => {
+        setShowForm(false)
+    }
 
   // const { TabPane } = Tabs;
 
@@ -92,22 +104,22 @@ function PregnantMotherprofile(props) {
     setIsModalVisible(false);
   };
   function ScrollFamily(){
-    window.scrollTo(0, 400);
+    window.scrollTo(0, 600);
 }
 function ScrollNextVaccination(){
-    window.scrollTo(0, 650);
+    window.scrollTo(0, 950);
 } function ScrollNextAppointment(){
-    window.scrollTo(0, 700);
+    window.scrollTo(0, 1000);
 } function ScrollMedication(){
-    window.scrollTo(0, 1200);
-} function ScrollHealthtip(){
     window.scrollTo(0, 1500);
+} function ScrollHealthtip(){
+    window.scrollTo(0, 1700);
 }
 function ScrollPrescription(){
-    window.scrollTo(0, 1800);
+    window.scrollTo(0, 1850);
 }
 function ScrollDevices(){
-    window.scrollTo(0, 1000);
+    window.scrollTo(0, 1250);
 }
     return(
         <div>
@@ -209,10 +221,10 @@ function ScrollDevices(){
             <div className="familymember">
             <div className="familymemberheader">
                 <div>Family Members</div>
-                <img style={{cursor:"pointer"}} src={Plus}/>
+                <img style={{cursor:"pointer"}} src={Plus} onClick={openForm} />
             </div>
             {/* Form starts here */}
-            <div className="add_memberform">
+            {showForm &&  <div className="add_memberform">
                 <div className="img_cont">
                      <img src={avatar}/>
                      <span>Add photo</span>
@@ -226,12 +238,13 @@ function ScrollDevices(){
                 <div className="relationship_cont">
                     <div className="relation"><Labelbox type="select" labelname="Relationship"/></div>
                     <div className="height"><Labelbox type="text" labelname="Height"/><span className="unit">cm</span> <Labelbox type="text" labelname="Weight"/><span className="unit">kg</span></div>
-                    <div className="addmemberbtn"><Button className="cancelbtn">Cancel</Button><Button className="submitbtn">Submit</Button></div>
+                    <div className="addmemberbtn"><Button className="cancelbtn" onClick={closeForm}>Cancel</Button>
+                    <Button className="submitbtn" onClick={closeForm}>Submit</Button></div>
 
                 </div>
-            </div>
+            </div>}
             {/* form ends here */}
-            <div className="familymember_imgs">
+                        <div className="familymember_imgs">
             {images.map((data)=>{
             return(
                 <div style={{height:"140px"}}>
@@ -304,16 +317,21 @@ function ScrollDevices(){
       </div>
       <div className="fitness">
           <div className="watchimg">
-              <img src={gpskids}/>
+              <img src={smart}/>
+              <span>Fitness</span>
+
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div>
           <div className="watchimg">
-              <img src={gpskids}/>
+              <img src={fitness}/>
+              <span>GPS Kids</span>
+
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div><div className="watchimg">
-              <img src={gpskids}/>
+              <img src={camera}/>
+              <span>Camera</span>
           </div>
           
 

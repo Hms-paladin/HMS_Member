@@ -47,18 +47,12 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
-<<<<<<< HEAD
 
   let history = useHistory();
 
     const HistoryPush=(url)=>{
       history.push(url);
       window.location.reload()
-=======
-  let history = useHistory();
-    const HistoryPush=()=>{
-        history.push("/bookings")
->>>>>>> da7477b3c31fa6d6239ed2bd540ee55a54f862c5
       }
       
      
@@ -88,11 +82,7 @@ function HeaderLayout (props) {
       style={{ width: 300, margin: '0 10px' }}
     /> 
                 <img className="searchico"src={search} />
-<<<<<<< HEAD
-=======
 
-                <img src={Calendar} style={{width:"20px"}} onClick={HistoryPush}/>
->>>>>>> da7477b3c31fa6d6239ed2bd540ee55a54f862c5
 
      </Dropdown.Toggle>
 

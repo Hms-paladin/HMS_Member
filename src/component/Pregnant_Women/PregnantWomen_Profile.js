@@ -27,6 +27,9 @@ import { Collapse } from 'antd';
 import Labelbox from "../../helpers/labelbox/labelbox";
 import      EditPreg_WomenModal from './EditProfile_PregWomen';
 import Grid from '@material-ui/core/Grid'
+import smart from '../../images/smartwatch.jfif'
+import fitness from '../../images/fitnessband.jpg'
+import camera from '../../images/camera.jpg'
 const { Panel } = Collapse;
 
 
@@ -104,19 +107,19 @@ function PregnantWomenProfile(props) {
     window.scrollTo(0, 600);
 }
 function ScrollNextVaccination(){
-    window.scrollTo(0, 850);
+    window.scrollTo(0, 950);
 } function ScrollNextAppointment(){
-    window.scrollTo(0, 900);
+    window.scrollTo(0, 1000);
 } function ScrollMedication(){
-    window.scrollTo(0, 1400);
+    window.scrollTo(0, 1500);
 } function ScrollHealthtip(){
     window.scrollTo(0, 1700);
 }
 function ScrollPrescription(){
-    window.scrollTo(0, 2000);
+    window.scrollTo(0, 1850);
 }
 function ScrollDevices(){
-    window.scrollTo(0, 1200);
+    window.scrollTo(0, 1250);
 }
     return(
         <div>
@@ -314,16 +317,21 @@ function ScrollDevices(){
       </div>
       <div className="fitness">
           <div className="watchimg">
-              <img src={gpskids}/>
+              <img src={smart}/>
+              <span>Fitness</span>
+
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div>
           <div className="watchimg">
-              <img src={gpskids}/>
+              <img src={fitness}/>
+              <span>GPS Kids</span>
+
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div><div className="watchimg">
-              <img src={gpskids}/>
+              <img src={camera}/>
+              <span>Camera</span>
           </div>
           
 
