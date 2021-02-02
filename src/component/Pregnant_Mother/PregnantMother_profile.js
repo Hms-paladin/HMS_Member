@@ -91,6 +91,24 @@ function PregnantMotherprofile(props) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  function ScrollFamily(){
+    window.scrollTo(0, 400);
+}
+function ScrollNextVaccination(){
+    window.scrollTo(0, 650);
+} function ScrollNextAppointment(){
+    window.scrollTo(0, 700);
+} function ScrollMedication(){
+    window.scrollTo(0, 1200);
+} function ScrollHealthtip(){
+    window.scrollTo(0, 1500);
+}
+function ScrollPrescription(){
+    window.scrollTo(0, 1800);
+}
+function ScrollDevices(){
+    window.scrollTo(0, 1000);
+}
     return(
         <div>
             <div className="cover_image_cont">
@@ -115,13 +133,13 @@ function PregnantMotherprofile(props) {
             </div>
             <div className="tabmenus">
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
-                <Menu.Item key="1"><div>Family Member</div></Menu.Item>
-                <Menu.Item key="2">Next Vaccination</Menu.Item>
-                <Menu.Item key="3">Next Appointment</Menu.Item>
-                <Menu.Item key="4">Medication</Menu.Item>
-                <Menu.Item key="5">Health Tips</Menu.Item>
-                <Menu.Item key="6">Prescription History</Menu.Item>
-                <Menu.Item key="7">Devices</Menu.Item>
+            <Menu.Item key="1" onClick={ScrollFamily}><div>Family Member</div></Menu.Item>
+                <Menu.Item key="2" onClick={ScrollNextVaccination}>Next Vaccination</Menu.Item>
+                <Menu.Item key="3" onClick={ScrollNextAppointment}>Next Appointment</Menu.Item>
+                <Menu.Item key="4" onClick={ScrollMedication}>Medication</Menu.Item>
+                <Menu.Item key="5" onClick={ScrollHealthtip}>Health Tips</Menu.Item>
+                <Menu.Item key="6" onClick={ScrollPrescription}>Prescription History</Menu.Item>
+                <Menu.Item key="7" onClick={ScrollDevices}>Devices</Menu.Item>
 
             </Menu>
             </div>

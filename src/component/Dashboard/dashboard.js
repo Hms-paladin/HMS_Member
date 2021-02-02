@@ -30,7 +30,7 @@ const images = [
                     {img:DietMeal,title:"Diet Meal"},
                     {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
                     {img:Lab,title:"Lab"},
-                    {img:Physotheropy,title:"Physotheropy"},
+                    {img:Physotheropy,title:"Physiotherapy"},
                     {img:BookRoom,title:"Book a Room"}
                 ]
 

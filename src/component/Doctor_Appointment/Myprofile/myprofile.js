@@ -50,7 +50,7 @@ const icons = [
     {img:smartphone,variant:"Mobile",detail:"934786486"},
     {img:envelope,variant:"Email",detail:"Dalal@gmail.com"},
     {img:address,variant:"Address",detail:"Dalal,Anna nagar,Chennai"},
-    {img:calendar,variant:"Expected Delivery Date",detail:"12 Dec"},
+    // {img:calendar,variant:"Expected Delivery Date",detail:"12 Dec"},
     {img:driver,variant:"Civil ID",detail:"123124"},
     {img:insurance,variant:"Insurance",detail:"-"},
 
@@ -228,14 +228,14 @@ function Myprofile(props) {
       <div className="fitness">
           <div className="watchimg">
               <img src={smart}/>
-              <span>Watch</span>
+              <span>Fitness</span>
 
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div>
           <div className="watchimg">
               <img src={fitness}/>
-              <span>Watch</span>
+              <span>GPS Kids</span>
 
           </div>
           <div className="smalldot"></div>
