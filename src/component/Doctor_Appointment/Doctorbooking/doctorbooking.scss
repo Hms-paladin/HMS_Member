@@ -1,0 +1,127 @@
+.doctorbooking_layout{
+    padding: 30px 30px 30px 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.doctorbooking_layout .flex1,.flex2,.flex3{
+    width: 30%;
+    
+}
+.doctorbooking_layout .flex1,.flex2{
+    margin-right:20px
+    
+}
+.doctorbooking_layout .flex1 img{
+    width: 100%;
+
+    height: 100%;
+}
+.titleflex{
+    display: flex;
+}
+.titleflex .title{
+    font-weight: 500;
+    color: grey;
+    margin: 5px 0px;
+}
+.docspec{
+    font-weight: 500;
+    color: grey;
+    margin: 5px 0px;
+
+}
+.docnameflex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.docnameflex .MuiRating-root {
+    font-size: 2.5rem !important;
+}
+.docnameflex img{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+.docname{
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 4px 1px #ccc;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 18px;
+}
+.offer_rate{
+    margin-left: 10px;
+    color: #fd5353;
+    font-weight: 600;
+    font-size: 18px;
+}
+.verification{
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin: 8px 0px;
+}
+.tick{
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #83af40;
+    margin-left: 10px;
+}
+.tick svg{
+    fill: white;
+    width: 15px;
+    height: 15px;
+}
+.reviewrating{
+    display: flex;
+    align-items: flex-end;
+    font-weight: 500;
+}
+.reviewrating span{
+   color: #83af40;
+   font-weight: 500;
+   margin: 0px 10px;
+}
+.reviewrating svg{
+    width: 20px;
+    height: 20px;
+    fill: #83af40;
+}
+.detailpara{
+    box-shadow: 0px 0px 4px 1px #ccc;
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0px;
+    border-radius: 3px;
+}
+.detailpara .carousel-indicators {
+bottom: -30px;}
+.detailpara .carousel-item{
+    height: 100%;
+}
+.detailpara .carousel-indicators .active {
+    background-color: #83af40;
+}
+.detailpara .carousel-indicators li{
+    background-color: #ddd;
+}
+.reviewpost{
+    font-weight: 500;
+    color: grey;
+}
+.reviewpost .heads{
+    font-style: italic;
+
+}
+.detailpara .carousel{
+    margin-bottom: 15px !important;
+}

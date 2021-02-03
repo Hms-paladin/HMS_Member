@@ -35,6 +35,7 @@ import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
 import Feed from '../Doctor_Appointment/Feed/feed'
+import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking";
 
 var hashHistory = require('react-router-redux')
 
@@ -148,6 +149,8 @@ function HeaderLayout (props) {
                         <Route path="/doctorEdit" component={Editprofile} exact/>
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
+                        <Route path="/doctorbooking" component={Doctorbooking} exact/>
+
 
 
                     </Switch>
