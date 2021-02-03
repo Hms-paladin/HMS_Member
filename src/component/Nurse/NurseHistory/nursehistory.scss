@@ -1,0 +1,150 @@
+.filter_fstdiv{
+    box-shadow: 0px 2px 17px #00000029;
+    border-radius: 10px;
+    padding: 8px;
+}
+.nusre_hisparent{
+    padding:15px 10% 0px;
+}
+.off_per{
+    position: absolute;
+    top:6px;
+    left:13px;    
+}
+.srch_his{
+    border-radius: 20px !important;
+    border:1px solid #7070707d !important;
+} 
+.fli{
+    font-weight: 600;
+}
+.fli_head{
+    font-weight:bold;
+    margin-bottom: 10px;
+    
+}
+.mnth_cost{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mnth_amt{
+    color:#83AF40;
+    font-size: 10px;
+}
+.mnth_samt{
+    font-size: 10px;
+}
+
+.mnth_secondcost{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+// labelbox css
+.nusre_hisparent .formdiv .labeltxt{
+    font-weight: 600 !important;
+    color:#333 !important;
+    margin-bottom: 5px !important;
+}
+// toggle css
+.nusre_hisparent .ant-switch-checked{
+background-color: #83AF40 !important;
+}
+// button
+.apply_btn{
+    width: 100%;
+    border-radius: 50px !important;
+    text-transform: none !important;
+    background-color: #83AF40 !important;
+    color: #fff !important;
+}
+// serch right side item css
+.nurse_dts{
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nur_age{
+    padding-right: 10px;
+}
+.nurse_list_div{
+    display: flex;
+    margin-top: 10px;
+    width:100%;
+    box-shadow: 0px 3px 16px #00000029 !important;
+    border-radius: 10px !important;
+}
+.permnth_amt{
+    font-size: 17px;
+    color:#83AF40;
+    font-weight: 600;
+}
+.nur_name{
+    font-weight:bold;
+    color:#333;
+    font-size: 20px;
+}
+.scnd_chld{
+    width:35%;
+    padding: 18px 0px 0px 40px; 
+    color:#666666;
+    font-size: 15px;
+}
+.scnd_chld p{
+    margin-bottom: 8px !important;
+}
+.trd_chld{
+    width:40%;
+    text-align: end;
+    padding:20px;
+}
+.nur_reviews{
+    background-color: #83AF40;
+    width: 50px;
+    height: 26px;
+    text-align: center;
+    color:#fff;
+    font-weight: bold;
+}
+.review_div{
+    display: table-row-group;
+}
+.off_per p{
+  margin-bottom: 0px !important;
+  font-weight: bold;
+  color: #fff;
+}
+.off_txt{
+ font-size: 10px;
+ text-align: center;   
+}
+.count_review{
+    font-size: 12px;
+}
+.nusre_hisparent .ant-progress-success-bg, .ant-progress-bg{
+    background-color: #83AF40 !important;
+}
+.nusre_hisparent .ant-switch{
+    background-color: #83AF40 !important;
+}
+// slider css
+.nusre_hisparent .ant-slider-track{
+    background-color: #83AE40 !important;
+    height:7px !important;
+}
+.nusre_hisparent .ant-slider-handle{
+    border: solid 2px #83AE40 !important;
+}
+.nusre_hisparent .ant-slider-rail{
+    height:8px !important;
+}
+.nusre_hisparent .ant-slider-handle{
+    width:17px !important;
+    height:17px !important;
+}
+.nusre_hisparent .ant-slider{
+    margin:0px 0px 12px !important;
+}

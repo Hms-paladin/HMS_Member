@@ -9,19 +9,28 @@ import Pharmacy from "../../images/pharmacy.png";
 import Lab from "../../images/lab.png";
 import Physotheropy from "../../images/physotheropy.png";
 import BookRoom from "../../images/bookroom.png";
-
+import { NavLink} from "react-router-dom";
 import "./dashboard.scss";
-
+import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// routes path
+import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory";
+import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
+import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
+import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
+function routepush(props){
+    props.history.push("/paymentreceived")
+}
 const images = [
-                    {img:Doctor,title:"Doctor Apponintment"},
-                    {img:Nurse,title:"Nursing"},
+                    {img:Doctor,title:"Doctor Apponintment",pathname:"/doctorappointment"},
+                    {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
                     {img:Report,title:"Report"},
                     {img:Trainer,title:"Trainer"},
                     {img:TrainingCenter,title:"Training Center"},
                     {img:DietMeal,title:"Diet Meal"},
-                    {img:Pharmacy,title:"Pharmacy"},
+                    {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
                     {img:Lab,title:"Lab"},
-                    {img:Physotheropy,title:"Physotheropy"},
+                    {img:Physotheropy,title:"Physiotherapy"},
                     {img:BookRoom,title:"Book a Room"}
                 ]
 
@@ -30,12 +39,18 @@ function Dashboard(props) {
         <div className="container">
         {images.map((data)=>{
             return(
-            <div className="imgContainer">
-                <img src = {data.img} />
+             <div className="imgContainer">
+                 <NavLink to={data.pathname ? data.pathname : ""}><img src = {data.img} /></NavLink>
                 <div className="imgTitle">{data.title}</div>
             </div> 
-            )  
+            ) 
+    
         })}
+        <div>
+        <Route exact path={`${props.match.path}/prescriptionhistory`} component={PrescriptionHistory} />
+        <Route exact path={`${props.match.path}/orderdetails`} component={OrderTable} />
+       
+        </div>
         </div>
     )
 }

@@ -1,0 +1,125 @@
+.order_de .MuiTableCell-sizeSmall{
+    padding: 18px 20px 18px 20px !important;
+}
+.order_de .MuiTableCell-root{
+    border-bottom: 0px !important;
+}
+.order_de .MuiTableCell-head{
+ color:#333 !important;
+ font-size: 18px !important;
+}
+// .MuiTable-root{
+//     width:120% !important;
+// }
+.order_de{
+    margin:0px 6%;
+}
+.h_styles{
+   color: #333;
+   font-weight: bold;
+   background-color: #ECEDEF !important;
+   display:flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.t_amt{
+  background-color: #ECEDEF;
+  border-radius: 5px;
+  padding: 12px;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+ 
+}
+.t_amt_parent{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px;
+}
+.t_amt_child{
+    width:25%;
+}
+// modalcss
+.delete_modal{
+    border-radius: 50px!important;
+}
+.delete_modal .ant-modal-body{
+    padding: 50px !important;
+}
+.delete_modal .ant-modal-content{
+    top:50px;
+    border-radius: 10px !important;
+}
+
+// status details  css
+.o_status{
+    font-size: 18px;
+    color:#333;
+    padding-right: 5px;
+}
+.status_d{
+    font-size: 18px;
+    color:#1EC1D2;
+}
+.sts_details_parent{
+    background-color: #ECEDEF;
+    box-shadow: -2px 0px 5px 0px #ded5de;
+    border-radius: 5px;
+    padding: 10px;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+.sts_home_div {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+.sts_main_div{
+    background-color: #ECEDEF;
+    box-shadow: -2px 0px 5px 0px #ded5de;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+.home_icon{
+    background-color: #f5f5f5 !important;
+    font-size: 2.5rem !important;
+    border-radius: 50px;
+    padding: 5px;
+    fill: #bfbfbf !important;
+    box-shadow: 0px 8px 12px #00000029;
+    text-align: center;
+}
+// cancel save button css
+.cancel_odr{
+    border-radius: 50px !important;
+    min-width: 20% !important;
+    padding:8px !important;
+    text-transform: none !important;
+    border:1px solid #333333 !important;
+    margin-right: 17px !important;
+    color:#ff0000b8  !important;
+    border:1px solid #ff000059 !important;
+    background-color: #ff00000a !important;
+}
+.confirm{
+    border-radius: 50px !important;
+    min-width: 20% !important;
+    padding:8px !important;
+    color:#fff !important;
+    background-color: #83AF40 !important;
+    text-transform: none !important;
+}
+
+// labelbox textarea css
+.order_de .formdiv .brdrcls{
+    border-radius: 3px !important;
+    border:0px !important;
+    box-shadow:none !important;
+    height:90px;
+}
