@@ -14,52 +14,53 @@ export default function HospitalView(){
                 <p className="hos_name_haed">Mayo Clinic Hospital</p>
                 <RoomIcon className="loac_ion"/>
                 </div>
-                <span>Shaab Sea View</span>
-                <Divider/> 
+                <span style={{color:'grey', fontSize:'15px', marginRight:'25px'}}>Shaab Sea View</span>
+                </div>
+                <Divider style={{margin:'8px'}}/> 
                 <Form>
         <Row form>
           <Col md={2}>
             <FormGroup>
-            <p className="mem_con_namehead">Name</p>
+            <p className="modal_head">Name</p>
             <p className="mem_con_name">Dalal</p> 
             </FormGroup>
           </Col>
           <Col md={3}>
             <FormGroup>
-                <p className="mem_con_namehead">Check In</p>
+                <p className="modal_head">Check In</p>
                 <p className="mem_con_name">08 Dec 2020</p>
             </FormGroup>
           </Col>
           <Col md={3}>
             <FormGroup>
-               <p className="mem_con_namehead">Check Out</p>
+               <p className="modal_head">Check Out</p>
                <p className="mem_con_name">08 Dec 2020</p>
             
             </FormGroup>
           </Col>
           <Col md={3}>
             <FormGroup>
-            <p className="mem_con_namehead">Room Type</p>
+            <p className="modal_head">Room Type</p>
             <p className="mem_con_name">Lulwa</p>
             </FormGroup>
           </Col>
-          <Col md={3}>
+          <Col md={2}>
             <FormGroup>
-            <p className="mem_con_namehead">total Days</p>
+            <p className="modal_head">total Days</p>
                    <p className="mem_con_name">2</p>
             </FormGroup>
           </Col>
 
           <Col md={3}>
             <FormGroup>
-            <p className="mem_con_namehead">Cost Per Day(KWD)</p>
+            <p className="modal_head">Cost Per Day(KWD)</p>
             <p className="mem_con_name">400</p>
            
             </FormGroup>
           </Col>
           <Col md={3}>
             <FormGroup>
-            <p className="mem_con_namehead">Cost Per Day(KWD)</p>
+            <p className="modal_head">Cost Per Day(KWD)</p>
             <p className="mem_con_name">800</p>
             </FormGroup>
           </Col>
@@ -68,7 +69,7 @@ export default function HospitalView(){
         </Row>
         </Form>         
     
-        </div>
+     
        </div>
     )
 }

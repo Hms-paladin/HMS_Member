@@ -40,7 +40,7 @@ import Feed from '../Doctor_Appointment/Feed/feed';
 import Book from "../BookAroom/Book/Book";
 import BookingHospital from "../BookAroom/BookroomBooking/BookingHospital";
 import BookingDetails from "../BookAroom/BookroomBooking/BookingDetails";
-import BookroomHistory from "../BookAroom/BookroomBooking/BookroomHistory";
+import BookroomHistory from "../BookAroom/BookroomHistory/BookroomHistory";
 
 var hashHistory = require('react-router-redux')
 

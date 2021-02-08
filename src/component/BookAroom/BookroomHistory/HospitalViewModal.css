@@ -7,6 +7,7 @@
     font-size: 23px;
     font-weight: 500;
     font-family: sans-serif;
+    margin: 0px;
   
 }
 .loac_ion{
@@ -15,4 +16,8 @@
 }
 .loac_ion svg path{
     color: red;
+}
+.modal_head{
+    font-weight: 600;
+    font-size: 15px;
 }

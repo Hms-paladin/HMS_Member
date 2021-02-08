@@ -4,6 +4,7 @@ import './BookroomHistory.css'
 import {Modal} from 'antd';
 import BookCreateReview from "./BookCreateReview";
 import HospitalView from './HospitalViewModal';
+import BookroomRepeat from './BookroomRepeat';
 
 export default function BookroomHistory(props){
    
@@ -20,6 +21,13 @@ export default function BookroomHistory(props){
         }
         const ReviewClickClose=()=>{
             setReviewOpen(false)
+        }
+        const [RepeatOpen,setRepeatOpen]= React.useState(false)
+        const RepeatClickOpen=()=>{
+            setRepeatOpen(true)   
+        }
+        const RepeatClickClose=()=>{
+            setRepeatOpen(false)   
         }
         const BookingDetails=[
             {
@@ -74,7 +82,7 @@ export default function BookroomHistory(props){
                                 <label style={{color:"#AEADAD",fontSize:"13px"}}>{data.hos_name}</label>
                                 <div>
                             <label className="history_review" onClick={ReviewClickOpen}>Review</label>
-                            <label className="history_repeat" >Repeat</label>
+                            <label className="history_repeat" onClick={RepeatClickOpen}>Repeat</label>
                         </div>
                             </div>
                         </div>
@@ -94,6 +102,20 @@ export default function BookroomHistory(props){
                  >
                   
                      <HospitalView />
+    
+                 </Modal>
+                 <Modal
+                  title={false}
+                  visible={RepeatOpen}
+                  footer={false}
+                  size={"lg"}
+                  {...props}
+                  centered
+                  className="confirm_modal"
+                  onCancel={RepeatClickClose}
+                 >
+                  
+                     <BookroomRepeat />
     
                  </Modal>
                  <Modal
