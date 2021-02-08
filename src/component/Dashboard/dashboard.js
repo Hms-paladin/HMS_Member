@@ -18,6 +18,7 @@ import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhis
 import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
 import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
 import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
+
 function routepush(props){
     props.history.push("/paymentreceived")
 }
@@ -29,7 +30,7 @@ const images = [
                     {img:TrainingCenter,title:"Training Center"},
                     {img:DietMeal,title:"Diet Meal"},
                     {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
-                    {img:Lab,title:"Lab"},
+                    {img:Lab,title:"Lab",pathname:"/clinicallab"},
                     {img:Physotheropy,title:"Physotheropy"},
                     {img:BookRoom,title:"Book a Room"}
                 ]

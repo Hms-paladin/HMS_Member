@@ -1,0 +1,81 @@
+.clinic{
+    font-size: 18px;
+    color:#333;
+    font-weight: bold;
+}
+.clinic_div{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.clinicallab_parent .formdiv .MuiFormControl-marginNormal{
+    border:1px solid #CCCCCC !important;
+    border-radius: 2px !important;
+}
+.clinicallab_parent .formdiv .MuiInputBase-inputAdornedEnd{
+    color:none !important;
+}
+.clinicallab_parent .formdiv .MuiInput-underline:before{
+    border-bottom: 0px !important;
+}
+.clinicallab_parent .formdiv .MuiInputBase-input{
+    padding:10px 0px 7px 10px !important; 
+    font-size: 13px !important;
+    color:#ABA9A9 !important;
+}
+.clinicallab_parent .formdiv .labeltxt{
+     color:#333 !important;
+    font-size: 15px !important;
+    margin-bottom: 3px;
+    font-weight: 600;
+}
+.clinicallab_parent .formdiv .MuiSvgIcon-root{
+    fill:#C7C7C7 !important;
+}
+.clinicallab_parent .order_cancel{
+    border-radius: 50px !important;
+    min-width: 25% !important;
+    padding:6px !important;
+    text-transform: none !important;
+    border:1px solid #333333 !important;
+    margin-right: 20px !important;
+    font-weight: 600;
+    font-size: 12px;
+}
+.clinicallab_parent .order_save{
+    border-radius: 50px !important;
+    min-width: 25% !important;
+    padding:6px !important;
+    color:#fff !important;
+    background-color: #83AF40 !important;
+    text-transform: none !important;
+    font-weight: 600;
+    font-size: 12px;
+}
+.clinic_test{
+    background-color: #ccc;
+    border-radius: 50px;
+    padding: 6px 15px;
+    color: #333;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.test_amt{
+    background-color: #83AF40;
+    border-radius: 50px;
+    padding: 6px 15px;
+    color: #fff;
+}
+.change_clinic_test{
+    background-color: #83AF40;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    border-radius: 50px;
+    padding: 6px 15px;
+    color:#fff;
+}
+.clinicallab_parent{
+    padding:20px 20% 0px 4%;
+}

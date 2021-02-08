@@ -29,6 +29,8 @@ import Bookings from '../Nurse/Bookings/Bookings'
 import BookingHistory from '../Nurse/Bookings/BookingHistory'
 import RescheduleBookings from '../Nurse/RescheduleBooking/RescheduleBooking'
 import MySchedule from '../Nurse/MySchedule/Calendar'
+// lab
+import Clicallab from '../Lab/New folder/ClinicalLab/ClinicalLab'
 
 import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
 import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js";
@@ -126,6 +128,7 @@ function HeaderLayout (props) {
                         <Route path="/bookinghistory" component={BookingHistory}/>
                         <Route path="/reschedulebookings" component={RescheduleBookings}/>
                         <Route path="/myschedule" component={MySchedule}/>
+                        <Route path="/clinicallab" component={Clicallab}/>
 
                         <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
