@@ -22,6 +22,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ReactSVG } from "react-svg";
 import tick from '../../../images/checked.svg'
 import like from '../../../images/like.svg'
+import Labelbox from "../../../helpers/labelbox/labelbox";
+import { Button } from "@material-ui/core";
+import plus from '../../../images/plus.svg'
+import close from '../../../images/cancel.svg'
 
 
 const images = [
@@ -70,9 +74,13 @@ const images = [
   };
   
   function IconContainer(props) {
+    
     const { value, ...other } = props;
     return <span {...other}>{customIcons[value].icon}</span>;
+    
+  
   }
+  
   
   IconContainer.propTypes = {
     value: PropTypes.number.isRequired,
@@ -91,9 +99,17 @@ const images = [
       height: theme.spacing(3),
     },
   }));
-  
+ 
+
   
 function Doctorbooking(props) {
+    const [showForm,setShowForm] = useState(false)
+    const openForm = () => {
+      setShowForm(true)
+  }
+  const closeForm = () => {
+    setShowForm(false)
+}
     return(  
         <div className="doctorbooking_layout">
             
@@ -152,8 +168,61 @@ function Doctorbooking(props) {
 
                 </div>
                 <div style={{fontWeight:'500',color:"grey"}}>Hannah is one of the best doctor.We had great expeience</div>
+                <div className="consultingdiv"><div className="consultingtype"><Labelbox labelname="Select service"  type="select" /></div>
+                <div className="durationdiv"><div>Duration</div><div style={{fontSize:"18px"}}>0h 30mins</div></div>
+                </div>
+                <div className="selecttime_div">
+                    <div style={{fontSize:"16px"}}>Select Time</div>
+                    <div className="booked_den" ><div className="bookedclr"></div>Booked</div>
+                    <div className="available_den"><div className="availableclr"></div>Available</div>
+                    <div className="selected_den"><div className="selectedclr"></div>Selected</div>
+
+                </div>
+                <div className="time_slots">
+  <Button className="greenbtn" onClick={openForm} >10:00AM</Button>
+  <Button className="redbtn" onClick={openForm} >10:40AM</Button>
+  <Button className="greenbtn" onClick={openForm} >11:00AM</Button>
+  <Button className="redbtn" onClick={openForm}>10:50AM</Button>
+  <Button className="redbtn" onClick={openForm} >2:00PM</Button>
+  <Button className="greenbtn" onClick={openForm} >3:00PM</Button>
+  <Button className="redbtn" onClick={openForm} >3:45PM</Button>
+  <Button className="greenbtn" onClick={openForm} >8:00PM</Button>
+  <Button className="greenbtn" onClick={openForm}>8:30PM</Button>
+
+
+
+  </div>
             </div>
-            <div className="flex3">hi</div>
+            <div className="flex3">
+            {showForm &&  <div className="bookingform">
+                <ReactSVG className="close_ico" onClick={closeForm} src={close}/>
+                <div className="familymembers">
+                    <div className="familyphoto_div">
+                        <img src={Nurse}/>
+                        <div>Jethro</div>
+                    </div>
+                    <div className="familyphoto_div">
+                        <img src={Nurse}/>
+                        <div>Jethro</div>
+                    </div><div className="familyphoto_div">
+                        <img src={Nurse}/>
+                        <div>Jethro</div>
+                    </div><div className="familyphoto_div">
+                        <img src={Nurse}/>
+                        <div>Jethro</div>
+                    </div>
+                    <div className="familyphoto_div">
+                        <img src={Nurse}/>
+                        <div>Jethro</div>
+                    </div>
+                    <div className="newfamilyphoto_div">
+                        <ReactSVG className="plussvg" src={plus}/>
+                        <div className="new">New</div>
+                    </div>
+                </div>
+                </div>}
+            
+            </div>
 
         </div>
     )

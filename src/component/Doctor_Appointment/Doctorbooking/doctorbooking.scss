@@ -4,7 +4,15 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.doctorbooking_layout .flex1,.flex2,.flex3{
+.doctorbooking_layout .flex1{
+    width: 25%;
+    
+}
+.doctorbooking_layout .flex2{
+    width: 35%;
+    
+}
+.doctorbooking_layout .flex3{
     width: 30%;
     
 }
@@ -124,4 +132,143 @@ bottom: -30px;}
 }
 .detailpara .carousel{
     margin-bottom: 15px !important;
+}
+.consultingdiv{
+    display: flex;
+    margin: 10px 0px;
+    flex-wrap: wrap;
+
+}
+.consultingtype{
+    width: 70%;
+    margin-right: 20px;
+}
+.durationdiv{
+    font-weight: 500;
+    display: flex;
+    color: grey;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+.selecttime_div{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    flex-wrap: wrap;
+}
+.bookedclr{
+    width: 15px;
+    height: 15px;
+    background-color: #fdc2c2;
+    border-radius: 2px;
+    border: 1px solid #fd5353;
+    margin-right: 5px;
+}
+.selecttime_div div{
+    display: flex !important;
+    align-items: center;
+}
+.availableclr{
+    width: 15px;
+    height: 15px;
+    background-color: #dcf8b1;
+    border-radius: 2px;
+    border: 1px solid #83af40;
+    margin-right: 5px;
+}
+.selectedclr{
+    width: 15px;
+    height: 15px;
+    background-color: #83af40;
+    border-radius: 2px;
+    border: 1px solid #83af40;
+    margin-right: 5px;
+}
+.booked_den{
+    color: #fd5353;
+}
+.available_den{
+    color: #91c543;
+}
+.selected_den{
+    color: #83af40;
+}
+.hiidiv{
+    width: 100%;
+    height: 300px;
+    background-color: red;
+}
+.bookingform{
+    box-shadow: 0px 0px 4px 1px #ccc;
+    width: 100%;
+    padding: 15px;
+    border-radius: 3px;   
+}
+.bookingform .familymembers{
+    display:flex;
+    flex-wrap: wrap;
+    
+
+}
+.familyphoto_div{
+margin: 0px 15px;
+width: 60px;
+height: 60px;
+text-align: center;
+height: 100%;
+}
+.familyphoto_div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+.familyphoto_div div{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: grey;
+
+}
+.newfamilyphoto_div{
+    margin: 0px 15px;
+width: 58px;
+height: 58px !important; 
+border: 1px dashed grey;
+border-radius: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+position: relative;
+}
+.newfamilyphoto_div .new{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: grey;
+    position: absolute;
+    bottom: -28px;
+
+
+}
+.newfamilyphoto_div svg{
+    fill: grey;
+    width: 20px;
+    height: 20px;
+
+}
+.close_ico{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    cursor: pointer;
+}
+.bookingform{
+    position: relative;
+}
+.close_ico svg{
+    fill: grey;
 }
