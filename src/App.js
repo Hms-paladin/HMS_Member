@@ -37,6 +37,12 @@ import MotherDevice from "./component/Mother/MotherDevices";
 import NextVaccinationMother from "./component/Mother/NextVaccination"
 import MotherMedication from './component/Mother/MotherMedication';
 import PrescriptionModal from "./component/Pregnant_Mother/PrescriptionModal.js";
+
+// Book  a  Room
+
+import Book from "./component/BookAroom/Book/Book";
+import BookingHospital from "./component/BookAroom/BookroomBooking/BookingHospital";
+
 var hashHistory = require('react-router-redux')
 
 
@@ -67,6 +73,12 @@ function App() {
         <Route path="/motherdevice" component={MotherDevice} exact />
         <Route path="/vaccination_mother" component={NextVaccinationMother} exact/>
         <Route path="/mother_medication" component={MotherMedication} exact/>
+
+  {/* Book a Room */}
+
+      <Route path="/book" component={Book} exact/>
+      <Route path="/bookinghospital" component={BookingHospital}/>
+
       </Switch>
       </HeaderLayout>
     </Router>

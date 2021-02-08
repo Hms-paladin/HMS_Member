@@ -34,7 +34,13 @@ import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js"
 import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
-import Feed from '../Doctor_Appointment/Feed/feed'
+import Feed from '../Doctor_Appointment/Feed/feed';
+
+// Book a Room
+import Book from "../BookAroom/Book/Book";
+import BookingHospital from "../BookAroom/BookroomBooking/BookingHospital";
+import BookingDetails from "../BookAroom/BookroomBooking/BookingDetails";
+import BookroomHistory from "../BookAroom/BookroomBooking/BookroomHistory";
 
 var hashHistory = require('react-router-redux')
 
@@ -148,6 +154,12 @@ function HeaderLayout (props) {
                         <Route path="/doctorEdit" component={Editprofile} exact/>
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
+
+                        {/* Book a Room */}
+                        <Route path ="/book" component={Book}/> 
+                        <Route path ="/bookinghospital" component={BookingHospital}/>
+                        <Route path ="/bookingdetails" component={BookingDetails}/>
+                        <Route path="/bookroomhistory" component={BookroomHistory}/>
 
 
                     </Switch>
