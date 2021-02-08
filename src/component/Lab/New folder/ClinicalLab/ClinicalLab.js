@@ -39,7 +39,7 @@ export default function Clicallab(props) {
            <div className="clinic_div"><label className="clinic">Best Clinical Lab</label><label className="test_amt">50 KWD</label></div>
            <Grid container spacing={4}>
                <Grid item xs={6} md={6}>
-                   <Labelbox type="select" placeholder={"General Test"}/>
+                   <Labelbox type="select" placeholder={"General Test"} value="dfgh"/>
                    <div style={{display:"flex",width:"100%"}}>
                    <div style={{width:"50%",paddingRight:"10px"}}><Labelbox type="datepicker"/></div>
                    <div style={{width:"50%",paddingLeft:"10px"}}><Labelbox type="timepicker"/></div></div>
@@ -50,7 +50,7 @@ export default function Clicallab(props) {
                {Test.map((data,index)=>
              
         
-            <label className={color ?"change_clinic_test" : "clinic_test"} onClick={ColorClick}>{data.test}</label>
+            <label className={color?"change_clinic_test" : "clinic_test"} onClick={ColorClick}>{data.test}</label>
             
                )}
             

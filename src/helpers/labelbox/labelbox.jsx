@@ -96,7 +96,7 @@ export default class Labelbox extends Component {
 				<div className="formdiv">
 					<label className="labeltxt">{data.labelname}</label>
 					<div>
-						<input className={`${data.error && "brdred"} brdrcls`} min="0" value={this.props.value} type="number" onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)} onKeyDown={e => (e.key === "e" || e.key === "+" || e.key === "-") && e.preventDefault()} />
+						<input className={`${data.error && "brdred"} brdrcls`} min="0" value={this.props.value} type="number" onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)} placeholder={this.props.placeholder} onKeyDown={e => (e.key === "e" || e.key === "+" || e.key === "-") && e.preventDefault()} />
 						{
 							<div className="Errormsg">
 								<div>{data.error && data.errmsg}</div>
@@ -243,7 +243,7 @@ export default class Labelbox extends Component {
 				<div className="formdiv">
 					<label className="labeltxt">{data.labelname}</label>
 
-					<Select disabled={this.props.disabled && true} className={`${data.error && "brdred"} ${data.error && "brdnone"} selectbox`} showSearch value={data.value ? optionValue : 'Select'} optionLabelProp="label"
+					<Select disabled={this.props.disabled && true} className={`${data.error && "brdred"} ${data.error && "brdnone"} selectbox`} showSearch value={data.value ? optionValue :this.props.optionValue} placeholder={this.props.placeholder} optionLabelProp="label"
 						optionFilterProp="label" onChange={(value) => this.props.changeData && this.props.changeData(value)}>
 						{data.dropdown && data.dropdown.length > 0 && data.dropdown.map((item, index) => {
 							return (

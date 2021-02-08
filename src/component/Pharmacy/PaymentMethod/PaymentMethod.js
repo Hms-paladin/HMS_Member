@@ -78,15 +78,15 @@ export default class CancelPayment extends React.Component{
               <TabPane tab={<span><label className="l_list">Wallet</label><img src={Logo} className="l_pay"/></span>} key={1}>
               <div className="divider_line"></div>
                              <div className="payment_method_list">
-                                 <Labelbox type="text" labelname="Card Number"/>
-                                 <Labelbox type="text" labelname="Card Holder Name"/>
+                                 <Labelbox type="text" labelname="Card Number" placeholder="1245-1258-4567-7865"/>
+                                 <Labelbox type="text" labelname="Card Holder Name" placeholder="DALAL"/>
                              <Grid container>
                                 <Grid item md={8} sm={8}>
-                                    <div className="select_expiry_date"><Labelbox type="select" labelname="Expiry Date" value="05"/><span className="select_labelbox"><Labelbox type="select" value="2010"/></span></div>
+                                    <div className="select_expiry_date"><Labelbox type="select" optionValue="07" labelname="Expiry Date"/><span className="select_labelbox"><Labelbox type="select" optionValue="2023"/></span></div>
                                 </Grid>
                                 <Grid item md={4} sm={4}>
                                     <div className="payment_ccv">
-                                        <Labelbox type="number" labelname="CVV"/>
+                                        <Labelbox type="number" labelname="CVV" placeholder="202"/>
                                     </div>
                                 </Grid>
                              </Grid>
