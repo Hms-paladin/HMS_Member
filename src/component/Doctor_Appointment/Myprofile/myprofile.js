@@ -1,28 +1,33 @@
 import React,{useState} from "react";
 import "./myprofile.scss";
-import Doctor from "../../images/doctorappoinment.png";
-import Plus from "../../images/plus.png";
+import Doctor from "../../../images/doctorappoinment.png";
+import Plus from "../../../images/plus.png";
 
 import Button from '@material-ui/core/Button'
 import {  Menu } from 'antd';
-import Nurse from "../../images/nurse.png";
-import Report from "../../images/report.png";
-import Trainer from "../../images/trainer.png";
-import TrainingCenter from "../../images/trainingcenter.png";
-import DietMeal from "../../images/dietmeal.png";
-import Pharmacy from "../../images/pharmacy.png";
-import address from "../../images/address.svg";
-import calendar from "../../images/calendar.svg";
-import driver from "../../images/driver.svg";
-import envelope from "../../images/envelope.svg";
-import insurance from "../../images/insurance.svg";
-import smartphone from "../../images/smartphone.svg";
-import avatar from "../../images/user.png";
-import self from "../../images/self.png";
-import prescription from "../../images/prescription.png";
+import Nurse from "../../../images/nurse.png";
+import Report from "../../../images/report.png";
+import Trainer from "../../../images/trainer.png";
+import TrainingCenter from "../../../images/trainingcenter.png";
+import DietMeal from "../../../images/dietmeal.png";
+import Pharmacy from "../../../images/pharmacy.png";
+import address from "../../../images/address.svg";
+import calendar from "../../../images/calendar.svg";
+import driver from "../../../images/driver.svg";
+import envelope from "../../../images/envelope.svg";
+import insurance from "../../../images/insurance.svg";
+import smartphone from "../../../images/smartphone.svg";
+import avatar from "../../../images/user.png";
+import self from "../../../images/self.png";
+import prescription from "../../../images/prescription.png";
 import {useHistory} from 'react-router-dom'
 import { Collapse } from 'antd';
-import Labelbox from "../../helpers/labelbox/labelbox";
+import Labelbox from "../../../helpers/labelbox/labelbox";
+import smart from '../../../images/smartwatch.jfif'
+import fitness from '../../../images/fitnessband.jpg'
+import camera from '../../../images/camera.jpg'
+
+
 const { Panel } = Collapse;
 
 
@@ -45,7 +50,7 @@ const icons = [
     {img:smartphone,variant:"Mobile",detail:"934786486"},
     {img:envelope,variant:"Email",detail:"Dalal@gmail.com"},
     {img:address,variant:"Address",detail:"Dalal,Anna nagar,Chennai"},
-    {img:calendar,variant:"Expected Delivery Date",detail:"12 Dec"},
+    // {img:calendar,variant:"Expected Delivery Date",detail:"12 Dec"},
     {img:driver,variant:"Civil ID",detail:"123124"},
     {img:insurance,variant:"Insurance",detail:"-"},
 
@@ -59,6 +64,24 @@ function Myprofile(props) {
     let history = useHistory();
     function handleEditProfile(){
         history.push("/doctorEdit")
+    }
+    function ScrollFamily(){
+        window.scrollTo(0, 400);
+    }
+    function ScrollNextVaccination(){
+        window.scrollTo(0, 650);
+    } function ScrollNextAppointment(){
+        window.scrollTo(0, 700);
+    } function ScrollMedication(){
+        window.scrollTo(0, 1200);
+    } function ScrollHealthtip(){
+        window.scrollTo(0, 1500);
+    }
+    function ScrollPrescription(){
+        window.scrollTo(0, 1800);
+    }
+    function ScrollDevices(){
+        window.scrollTo(0, 1000);
     }
 
     const [showForm,setShowForm] = useState(false)
@@ -94,13 +117,13 @@ function Myprofile(props) {
             </div>
             <div className="tabmenus">
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
-                <Menu.Item key="1"><div>Family Member</div></Menu.Item>
-                <Menu.Item key="2">Next Vaccination</Menu.Item>
-                <Menu.Item key="3">Next Appointment</Menu.Item>
-                <Menu.Item key="4">Medication</Menu.Item>
-                <Menu.Item key="5">Health Tips</Menu.Item>
-                <Menu.Item key="6">Prescription History</Menu.Item>
-                <Menu.Item key="7">Devices</Menu.Item>
+                <Menu.Item key="1" onClick={ScrollFamily}><div>Family Member</div></Menu.Item>
+                <Menu.Item key="2" onClick={ScrollNextVaccination}>Next Vaccination</Menu.Item>
+                <Menu.Item key="3" onClick={ScrollNextAppointment}>Next Appointment</Menu.Item>
+                <Menu.Item key="4" onClick={ScrollMedication}>Medication</Menu.Item>
+                <Menu.Item key="5" onClick={ScrollHealthtip}>Health Tips</Menu.Item>
+                <Menu.Item key="6" onClick={ScrollPrescription}>Prescription History</Menu.Item>
+                <Menu.Item key="7" onClick={ScrollDevices}>Devices</Menu.Item>
 
             </Menu>
             </div>
@@ -204,16 +227,21 @@ function Myprofile(props) {
       </div>
       <div className="fitness">
           <div className="watchimg">
-              <img src={Doctor}/>
+              <img src={smart}/>
+              <span>Fitness</span>
+
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div>
           <div className="watchimg">
-              <img src={Nurse}/>
+              <img src={fitness}/>
+              <span>GPS Kids</span>
+
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div><div className="watchimg">
-              <img src={Trainer}/>
+              <img src={camera}/>
+              <span>Camera</span>
           </div>
           
 

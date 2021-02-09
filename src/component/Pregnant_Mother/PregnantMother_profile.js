@@ -27,6 +27,9 @@ import { Collapse } from 'antd';
 import Labelbox from "../../helpers/labelbox/labelbox";
 import EditprofileModal from './EditProfileModal'
 import Grid from '@material-ui/core/Grid'
+import smart from '../../images/smartwatch.jfif'
+import fitness from '../../images/fitnessband.jpg'
+import camera from '../../images/camera.jpg'
 const { Panel } = Collapse;
 
 
@@ -63,6 +66,15 @@ function PregnantMotherprofile(props) {
   const [showDetails, ShowdetailsTrue] = useState(false);
   // const [prescriptionDetails,prescriptionModalTrue]=useState(false);
   const [AddFamily, AddFamilyTrue] = useState(false);
+  const [showForm,setShowForm] = useState(false)
+
+    const openForm = () => {
+        setShowForm(true)
+    }
+
+    const closeForm = () => {
+        setShowForm(false)
+    }
 
   // const { TabPane } = Tabs;
 
@@ -91,6 +103,24 @@ function PregnantMotherprofile(props) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  function ScrollFamily(){
+    window.scrollTo(0, 600);
+}
+function ScrollNextVaccination(){
+    window.scrollTo(0, 950);
+} function ScrollNextAppointment(){
+    window.scrollTo(0, 1000);
+} function ScrollMedication(){
+    window.scrollTo(0, 1500);
+} function ScrollHealthtip(){
+    window.scrollTo(0, 1700);
+}
+function ScrollPrescription(){
+    window.scrollTo(0, 1850);
+}
+function ScrollDevices(){
+    window.scrollTo(0, 1250);
+}
     return(
         <div>
             <div className="cover_image_cont">
@@ -115,13 +145,13 @@ function PregnantMotherprofile(props) {
             </div>
             <div className="tabmenus">
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
-                <Menu.Item key="1"><div>Family Member</div></Menu.Item>
-                <Menu.Item key="2">Next Vaccination</Menu.Item>
-                <Menu.Item key="3">Next Appointment</Menu.Item>
-                <Menu.Item key="4">Medication</Menu.Item>
-                <Menu.Item key="5">Health Tips</Menu.Item>
-                <Menu.Item key="6">Prescription History</Menu.Item>
-                <Menu.Item key="7">Devices</Menu.Item>
+            <Menu.Item key="1" onClick={ScrollFamily}><div>Family Member</div></Menu.Item>
+                <Menu.Item key="2" onClick={ScrollNextVaccination}>Next Vaccination</Menu.Item>
+                <Menu.Item key="3" onClick={ScrollNextAppointment}>Next Appointment</Menu.Item>
+                <Menu.Item key="4" onClick={ScrollMedication}>Medication</Menu.Item>
+                <Menu.Item key="5" onClick={ScrollHealthtip}>Health Tips</Menu.Item>
+                <Menu.Item key="6" onClick={ScrollPrescription}>Prescription History</Menu.Item>
+                <Menu.Item key="7" onClick={ScrollDevices}>Devices</Menu.Item>
 
             </Menu>
             </div>
@@ -153,10 +183,10 @@ function PregnantMotherprofile(props) {
                   <div>Age</div>
                 </Grid>
                 <Grid item xs={4}>
-                  <div>13 Weeks</div>
+                  <div>9 Weeks</div>
                 </Grid>
                 <Grid item xs={2}>
-                  <div>height</div>
+                  <div>Height</div>
                 </Grid>
                 <Grid item xs={1} />
                 <Grid item xs={3}>
@@ -182,7 +212,7 @@ function PregnantMotherprofile(props) {
           <div className="box_circle">
             <div className="round_text">
               <div style={{ font: "normal normal bold 30px/22px Roboto" }}>
-                189 Days to go
+                132 Days to go
               </div>
             </div>
           </div>
@@ -191,10 +221,10 @@ function PregnantMotherprofile(props) {
             <div className="familymember">
             <div className="familymemberheader">
                 <div>Family Members</div>
-                <img style={{cursor:"pointer"}} src={Plus}/>
+                <img style={{cursor:"pointer"}} src={Plus} onClick={openForm} />
             </div>
             {/* Form starts here */}
-            <div className="add_memberform">
+            {showForm &&  <div className="add_memberform">
                 <div className="img_cont">
                      <img src={avatar}/>
                      <span>Add photo</span>
@@ -208,12 +238,13 @@ function PregnantMotherprofile(props) {
                 <div className="relationship_cont">
                     <div className="relation"><Labelbox type="select" labelname="Relationship"/></div>
                     <div className="height"><Labelbox type="text" labelname="Height"/><span className="unit">cm</span> <Labelbox type="text" labelname="Weight"/><span className="unit">kg</span></div>
-                    <div className="addmemberbtn"><Button className="cancelbtn">Cancel</Button><Button className="submitbtn">Submit</Button></div>
+                    <div className="addmemberbtn"><Button className="cancelbtn" onClick={closeForm}>Cancel</Button>
+                    <Button className="submitbtn" onClick={closeForm}>Submit</Button></div>
 
                 </div>
-            </div>
+            </div>}
             {/* form ends here */}
-            <div className="familymember_imgs">
+                        <div className="familymember_imgs">
             {images.map((data)=>{
             return(
                 <div style={{height:"140px"}}>
@@ -286,16 +317,21 @@ function PregnantMotherprofile(props) {
       </div>
       <div className="fitness">
           <div className="watchimg">
-              <img src={gpskids}/>
+              <img src={smart}/>
+              <span>Fitness</span>
+
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div>
           <div className="watchimg">
-              <img src={gpskids}/>
+              <img src={fitness}/>
+              <span>GPS Kids</span>
+
           </div>
           <div className="smalldot"></div>
           <div className="bigdot"></div><div className="watchimg">
-              <img src={gpskids}/>
+              <img src={camera}/>
+              <span>Camera</span>
           </div>
           
 

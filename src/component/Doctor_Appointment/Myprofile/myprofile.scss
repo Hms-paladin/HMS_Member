@@ -297,8 +297,14 @@ overflow: hidden;
     border-radius: 100px;
     margin-right: 20px;
     margin-bottom: 20px;
+    text-align: center;
 
 }
+.watchimg span{
+    font-weight: 500;
+}
+
+
 .watchimg img{
     width: 100%;
     height: 100%;
@@ -351,8 +357,8 @@ overflow: hidden;
 
 }
 .medicationhead{
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 26px !important;
+    font-weight: 700;
     padding: 5px 20px 0px 50px;
 }
 .healthtip_collapse{

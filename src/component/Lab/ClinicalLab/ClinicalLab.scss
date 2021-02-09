@@ -9,13 +9,17 @@
     align-items: center;
     margin-bottom: 10px;
 }
-.clinicallab_parent .ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
-    height:37px !important;
-   
+.clinic_labdiv_parent .ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+    height:35px !important;
+  }
+  .clinic_labdiv_parent .ant-select{
+    color:#666666 !important;
+    box-shadow: 0 0 1.5px 0px #ccc;
   }
 .clinicallab_parent .formdiv .MuiFormControl-marginNormal{
-    border:1px solid #CCCCCC !important;
+    border: 1px solid #d9d9d9;
     border-radius: 2px !important;
+    box-shadow: 0 0 1.5px 0px #ccc;
 }
 .clinicallab_parent .formdiv .MuiInputBase-inputAdornedEnd{
     color:none !important;
@@ -42,7 +46,7 @@
     min-width: 25% !important;
     padding:6px !important;
     text-transform: none !important;
-    border:1px solid #333333 !important;
+    border:1px solid #707070 !important;
     margin-right: 20px !important;
     font-weight: 600;
     font-size: 12px;
@@ -58,10 +62,10 @@
     font-size: 12px;
 }
 .clinic_test{
-    background-color: #ccc;
+    background-color:#ECEDEF;
     border-radius: 50px;
     padding: 6px 15px;
-    color: #333;
+    color:#666666;
     margin-left: 10px;
     margin-bottom: 15px;
     cursor: pointer;
@@ -71,6 +75,7 @@
     border-radius: 50px;
     padding: 6px 15px;
     color: #fff;
+    font-weight: 500;
 }
 .change_clinic_test{
     background-color: #83AF40;
@@ -79,7 +84,21 @@
     border-radius: 50px;
     padding: 6px 15px;
     color:#fff;
+    font-weight: 500;
 }
 .clinicallab_parent{
-    padding:20px 20% 0px 4%;
+    padding: 3% 5% 0px 5%;
+}
+.clinic_lab_div{
+    margin-left: 10px;
+}
+.clinic_labdiv_parent{
+    display:flex;
+}
+.lab_booking_confirm{
+    box-shadow: 0px 3px 16px #00000029;
+    border-radius: 14px;
+}
+.lab_booking_confirm{
+    position: relative;
 }

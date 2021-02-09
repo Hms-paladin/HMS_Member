@@ -23,7 +23,7 @@ function routepush(props){
     props.history.push("/paymentreceived")
 }
 const images = [
-                    {img:Doctor,title:"Doctor Apponintment",pathname:"/profile"},
+                    {img:Doctor,title:"Doctor Apponintment",pathname:"/doctorappointment"},
                     {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
                     {img:Report,title:"Report"},
                     {img:Trainer,title:"Trainer"},
@@ -31,7 +31,7 @@ const images = [
                     {img:DietMeal,title:"Diet Meal"},
                     {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
                     {img:Lab,title:"Lab",pathname:"/clinicallab"},
-                    {img:Physotheropy,title:"Physotheropy"},
+                    {img:Physotheropy,title:"Physiotherapy"},
                     {img:BookRoom,title:"Book a Room"}
                 ]
 

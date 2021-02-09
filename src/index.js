@@ -6,6 +6,8 @@ import store from './store/store';
 
 import './index.css';
 import "antd/dist/antd.css";
+import "react-image-gallery/styles/css/image-gallery.css";
+
 
 ReactDOM.render(
   <Provider store = {store}>

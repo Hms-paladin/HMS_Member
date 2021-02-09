@@ -7,12 +7,10 @@ import { Dropdown } from 'react-bootstrap'
 import { Input } from 'antd';
 import "./header.scss";
 import Button from '@material-ui/core/Button'
-import Searchresult from "../Searchresult/searchresult";
-import Myprofile from "../Myprofile/myprofile";
-import Editprofile from "../Myprofile/editprofile";
+
 import { push } from 'connected-react-router';
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 
 
 // pharmacy
@@ -30,10 +28,17 @@ import BookingHistory from '../Nurse/Bookings/BookingHistory'
 import RescheduleBookings from '../Nurse/RescheduleBooking/RescheduleBooking'
 import MySchedule from '../Nurse/MySchedule/Calendar'
 // lab
-import Clicallab from '../Lab/New folder/ClinicalLab/ClinicalLab'
+import Clinical_lab from '../Lab/ClinicalLab/ClinicalLab'
 
 import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
 import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js";
+// Doctor
+import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
+import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
+import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
+import Feed from '../Doctor_Appointment/Feed/feed'
+import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking";
+
 var hashHistory = require('react-router-redux')
 
 const { Search } = Input;
@@ -45,21 +50,29 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
+
   let history = useHistory();
-    const HistoryPush=()=>{
-        history.push("/bookings")
+
+    const HistoryPush=(url)=>{
+      history.push(url);
+      window.location.reload()
       }
+      
+     
+     
+       
+     
     return(
         <Layout>
-            <Header style={{ position: 'fixed', zIndex: 1, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
+            <Header style={{ position: 'fixed', zIndex: 2, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
             {/* <div className="logo" > */}
-                <img className="HMSlogo" src={Logo} />
+                <img onClick={()=>HistoryPush("/")} className="HMSlogo" src={Logo} />
             {/* </div> */}
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
-                <Menu.Item key="1"><div>Home</div></Menu.Item>
+                <Menu.Item key="1" onClick={()=>HistoryPush("/")} ><div>Home</div></Menu.Item>
                 <Menu.Item key="2">Shopping</Menu.Item>
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
-                <Menu.Item key="3">One Watch</Menu.Item>
+                {/* <Menu.Item key="3">One Watch</Menu.Item> */}
                 <Menu.Item key="3">
                 </Menu.Item>
             </Menu>
@@ -73,17 +86,19 @@ function HeaderLayout (props) {
     /> 
                 <img className="searchico"src={search} />
 
-                <img src={Calendar} style={{width:"20px"}} onClick={HistoryPush}/>
 
      </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-    <Dropdown.Item href="/search"><Button className="categorybtn">Doctor</Button></Dropdown.Item>
-    <Dropdown.Item href="/search"><Button className="categorybtn">Speciality</Button></Dropdown.Item>
+  <Dropdown.Menu >
+    {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item> */}
+    <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush("/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
   </Dropdown.Menu>
 </Dropdown>
+
+<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={()=>HistoryPush("/bookings")}/>
+
 
             <Dropdown className="avatar_cont">
   <Dropdown.Toggle  id="dropdown-basic">
@@ -91,9 +106,8 @@ function HeaderLayout (props) {
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="/profile" component={Link} to="/profile">Profile</Dropdown.Item>
+    <Dropdown.Item onClick={()=>HistoryPush("/profile")} >Profile</Dropdown.Item>
     <Dropdown.Item href="#/action-2">My Appointments</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">My Bookings</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
 
   </Dropdown.Menu>
@@ -107,13 +121,14 @@ function HeaderLayout (props) {
                 {/* <Myprofile/> */}
                 {/* <Editprofile/> */}
 
-                <Router history={hashHistory} basename="Hms/?/">
+                <Router history={hashHistory} basename="HmsMember/?/">
                         
                     <Switch>
                         {/* <Route to="/dashboard" component={Dashboard} exact />
                         <Route path="/" component={Dashboard} exact/> */}
                         {/* Pharmacy */}
                         <Route path="/" component={Dashboard} exact />
+
 
                         <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
                         <Route path="/orderdetails" component={OrderTable} exact/> 
@@ -128,13 +143,19 @@ function HeaderLayout (props) {
                         <Route path="/bookinghistory" component={BookingHistory}/>
                         <Route path="/reschedulebookings" component={RescheduleBookings}/>
                         <Route path="/myschedule" component={MySchedule}/>
-                        <Route path="/clinicallab" component={Clicallab}/>
+                        {/* Lab */}
+                        <Route path="/clinicallab" component={Clinical_lab}/>
 
                         <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
+                        {/* Doctor */}
                         <Route path="/profile" component={Myprofile} exact/>
                         <Route path="/doctorEdit" component={Editprofile} exact/>
-                        <Route path="/search" component={Searchresult} exact/>
+                        <Route path="/doctorappointment" component={Searchresult} exact/>
+                        <Route path="/feed" component={Feed} exact/>
+                        <Route path="/doctorbooking" component={Doctorbooking} exact/>
+
+
 
                     </Switch>
                  </Router>
