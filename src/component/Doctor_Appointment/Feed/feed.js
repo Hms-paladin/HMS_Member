@@ -29,7 +29,10 @@ import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfie
 import ReactPlayer from 'react-player'
 import offer_bg from '../../../images/offer_bg.png'
 import star from '../../../images/star.png'
+import {useHistory} from 'react-router-dom'
+import sample from '../../../images/sample.mp4'
 
+var hashHistory = require('react-router-redux')
 
 
 
@@ -98,6 +101,11 @@ function valuetext(value) {
                   
 
 function Feed(props) {
+  let history = useHistory();
+
+  function Bookingdetails(){
+    history.push("/doctorbooking")
+}
     const classes = useStyles();
     
    
@@ -224,15 +232,15 @@ function Feed(props) {
 
 </div>
 <div className="time_slots">
-  <Button className="greenbtn">10:00AM</Button>
-  <Button className="redbtn">10:40AM</Button>
-  <Button className="greenbtn">11:00AM</Button>
-  <Button className="redbtn">10:50AM</Button>
-  <Button className="redbtn">2:00PM</Button>
-  <Button className="greenbtn">3:00PM</Button>
-  <Button className="redbtn">3:45PM</Button>
-  <Button className="greenbtn">8:00PM</Button>
-  <Button className="greenbtn">8:30PM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>10:00AM</Button>
+  <Button className="redbtn" onClick={Bookingdetails}>10:40AM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>11:00AM</Button>
+  <Button className="redbtn" onClick={Bookingdetails}>10:50AM</Button>
+  <Button className="redbtn" onClick={Bookingdetails}>2:00PM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>3:00PM</Button>
+  <Button className="redbtn" onClick={Bookingdetails}>3:45PM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>8:00PM</Button>
+  <Button className="greenbtn"onClick={Bookingdetails}>8:30PM</Button>
 
 
 
@@ -275,21 +283,21 @@ function Feed(props) {
     <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <ReactPlayer className="react_video" url={'https://www.youtube.com/watch?v=ysz5S6PUM-U'} />
     </div>
   </div>
  
 </div>
 <div className="time_slots">
-  <Button className="greenbtn">10:00AM</Button>
-  <Button className="redbtn">10:40AM</Button>
-  <Button className="greenbtn">11:00AM</Button>
-  <Button className="redbtn">10:50AM</Button>
-  <Button className="redbtn">2:00PM</Button>
-  <Button className="greenbtn">3:00PM</Button>
-  <Button className="redbtn">3:45PM</Button>
-  <Button className="greenbtn">8:00PM</Button>
-  <Button className="greenbtn">8:30PM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>10:00AM</Button>
+  <Button className="redbtn" onClick={Bookingdetails}>10:40AM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>11:00AM</Button>
+  <Button className="redbtn" onClick={Bookingdetails}>10:50AM</Button>
+  <Button className="redbtn" onClick={Bookingdetails}>2:00PM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>3:00PM</Button>
+  <Button className="redbtn" onClick={Bookingdetails}>3:45PM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>8:00PM</Button>
+  <Button className="greenbtn" onClick={Bookingdetails}>8:30PM</Button>
 
 
 

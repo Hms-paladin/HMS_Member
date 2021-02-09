@@ -3,6 +3,8 @@ import './HospitalViewModal.css';
 import RoomIcon from '@material-ui/icons/Room';
 import Divider from '@material-ui/core/Divider';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+{/* <div className="detail3">Excel - Polyclinic <span className="pin"><img src={pin} />2 km</span></div> */}
+
 
 
 

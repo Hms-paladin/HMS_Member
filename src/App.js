@@ -40,8 +40,8 @@ import PrescriptionModal from "./component/Pregnant_Mother/PrescriptionModal.js"
 
 // Book  a  Room
 
-import Book from "./component/BookAroom/Book/Book";
-import BookingHospital from "./component/BookAroom/BookroomBooking/BookingHospital";
+import HospitalList from './component/BookAroom/HospitalList/HospitalList';
+// import BookingHospital from "./component/BookAroom/BookroomBooking/BookingHospital";
 
 var hashHistory = require('react-router-redux')
 
@@ -76,8 +76,8 @@ function App() {
 
   {/* Book a Room */}
 
-      <Route path="/book" component={Book} exact/>
-      <Route path="/bookinghospital" component={BookingHospital}/>
+      <Route path="/book" component={HospitalList} exact/>
+      {/* <Route path="/bookinghospital" component={BookingHospital}/> */}
 
       </Switch>
       </HeaderLayout>
