@@ -37,6 +37,11 @@ import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
 import Feed from '../Doctor_Appointment/Feed/feed'
 import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking";
 
+// shopping
+import KidsFlow from "../Shopping/Kids";
+
+ 
+
 var hashHistory = require('react-router-redux')
 
 const { Search } = Input;
@@ -55,10 +60,6 @@ function HeaderLayout (props) {
       history.push(url);
       window.location.reload()
       }
-      
-     
-     
-       
      
     return(
         <Layout>
@@ -68,7 +69,7 @@ function HeaderLayout (props) {
             {/* </div> */}
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
                 <Menu.Item key="1" onClick={()=>HistoryPush("/")} ><div>Home</div></Menu.Item>
-                <Menu.Item key="2">Shopping</Menu.Item>
+                <Menu.Item key="2" onClick={()=>HistoryPush("/shopping")}>Shopping</Menu.Item>
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
                 <Menu.Item key="3">
@@ -151,7 +152,9 @@ function HeaderLayout (props) {
                         <Route path="/feed" component={Feed} exact/>
                         <Route path="/doctorbooking" component={Doctorbooking} exact/>
 
+                        {/* Shopping */}
 
+                        <Route path="/shopping" component={KidsFlow}></Route>
 
                     </Switch>
                  </Router>
