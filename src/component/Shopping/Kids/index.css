@@ -26,13 +26,7 @@
 .ShoppingTabPane{
     background-color: white;
 } */
-.TabFirst {
-    color: rgb(136, 201, 17);
-    background-color: white;
-    /* padding: 2% 4%; */
 
-    width: 100%;
-}
 
 
 
@@ -53,131 +47,12 @@
     padding: 10px 5px;
 }  */
 
-.ShoppingProducts {
-    width: 90%;
-    height: 360px;
-    margin: 3% 5%;
-    /* border: 1px solid gray; */
+.KidsDropDown{
+    width: 200%;
+    height: 150px;
+}
+.Kids_Menu{
     background-color: white;
-    box-shadow: -2px 0px 5px 0px rgba(222, 213, 222, 1);
-    border-radius: 15px;
-
-}
-
-.ProductsHeader {
-    display: flex;
-    width: 20%;
-    justify-content: space-around;
-    height: 50px;
-    padding: 1%;
-}
-
-.Product_Sellers {
-    width: 60%;
-    font-size: 20px;
-    font-weight: 570;
-}
-
-.Products_SeeMore {
-    color: blue;
-    padding-top: 2%;
-    cursor: pointer;
-}
-
-.KidsImages4 {
-    width: 80%;
-    height: 199px;
-    box-shadow: 0px 0px 5px 0px rgb(228, 223, 228);
-    border-radius: 10px;
-    margin-right: 4%;
-    cursor: pointer;
-
-}
-.KidsImages4:hover {
-    cursor: pointer;
-    transition: all 0.1s ease-out;
-    transform: scale(1.1);
-  }
-
-.KidsImages5 {
-    width: 70%;
-    height: 199px;
-    box-shadow: 0px 0px 5px 0px rgb(228, 223, 228);
-    border-radius: 10px;
-    cursor: pointer;
-
-
-}
-.KidsImages5:hover {
-    cursor: pointer;
-    transition: all 0.1s ease-out;
-    transform: scale(1.1);
-  }
-
-.KidsImages3 {
-    width: 68%;
-    height: 199px;
-    box-shadow: 0px 0px 5px 0px rgb(228, 223, 228);
-    border-radius: 10px;
-    cursor: pointer;
-
-}
-
-.KidsImages3:hover {
-    cursor: pointer;
-    transition: all 0.1s ease-out;
-    transform: scale(1.1);
-  }
-.KidsImages2 {
-    width: 70%;
-    height: 199px;
-    box-shadow: 0px 0px 5px 0px rgb(228, 223, 228);
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: auto;
-
-}
-.KidsImages2:hover {
-    cursor: pointer;
-    transition: all 0.1s ease-out;
-    transform: scale(1.1);
-  }
-
-.KidsImages1 {
-    width: 83%;
-    height: 199px;
-    box-shadow: 0px 0px 5px 0px rgb(228, 223, 228);
-    border-radius: 10px;
-    cursor: pointer;
-
-}
-.KidsImages1:hover {
-    cursor: pointer;
-    transition: all 0.1s ease-out;
-    transform: scale(1.1);
-  }
-
-/* .Products_Part{
-    width: 20%;
-} */
-.Products_Align {
-    display: flex;
-    margin-top: 2%;
-    margin-left: 4%;
-
-    justify-content: space-around;
-}
-
-.KidsImage_Title {
-    color: rgb(129, 127, 127);
-    padding: 2%;
-}
-
-.RightArrow_Product {
-    background-color: white;
-    padding: 10px 5px;
-    height: 50px;
-    box-shadow: 0px 0px 5px 0px rgb(228, 223, 228);
-    margin: auto;
-cursor: pointer;
+    border: none;
+    padding: 4% 5%;
 }
