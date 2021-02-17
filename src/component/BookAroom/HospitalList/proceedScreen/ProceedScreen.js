@@ -1,14 +1,27 @@
 import React from 'react';
-import './BookingReschedule.scss';
-import Labelbox from "../../../helpers/labelbox/labelbox";
+import './ProceedScreen.scss';
+import Labelbox from "../../../../helpers/labelbox/labelbox";
 import ReactPlayer from 'react-player';
-import  BedImage from '../../../images/BookaRoom/outline.svg';
-import  BathImage from '../../../images/BookaRoom/bathtub.svg';
-import  WaterImage from '../../../images/BookaRoom/hotel.svg';
-import  ACImage from '../../../images/BookaRoom/air condition-hot-summer.svg';
-import  TVImage from '../../../images/BookaRoom/television.svg';
+import  BedImage from '../../../../images/BookaRoom/outline.svg';
+import  BathImage from '../../../../images/BookaRoom/bathtub.svg';
+import  WaterImage from '../../../../images/BookaRoom/hotel.svg';
+import  ACImage from '../../../../images/BookaRoom/air condition-hot-summer.svg';
+import  TVImage from '../../../../images/BookaRoom/television.svg';
+import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import {Modal} from 'antd';
+import ConfirmPage from '../../BookroomBooking/ConfirmPage';
 
-function BookingReschedule(){
+function ProceedScreen(props){
+
+    const [ModalOpen,setModalOpen]=React.useState(false)
+    const ModalClickOpen=()=>{
+        setModalOpen(true)
+    }
+    const ModalClickClose=()=>{
+        setModalOpen(false)
+    }
+   
   const roomImage=[
    {
      id:1,
@@ -85,7 +98,7 @@ function BookingReschedule(){
                   <div style={{display:'flex', margin:'20px'}}>  
                     <div style={{marginRight:'7px'}}>
                       <label className="label_align_reshedule">Address</label>
-                  .   <p styl={{color:'#858585'}}>Shaab sea view<span className="dot_align">...</span></p>
+                  .   <p style={{color:'#858585'}}>Shaab sea view<span className="dot_align">...</span></p>
                    </div>
                    <div style={{marginRight:'13px'}}>
                         <label  className="label_align_reshedule">Phone</label>
@@ -132,19 +145,27 @@ function BookingReschedule(){
          </div>
          {/* cancel */}
          <div style={{width:'30%'}}>
-            <div style={{marginTop:'40px', marginRight:'40px'}}>
-              <label className="reschedule_cancel">Cancel</label>
-              <label className="reschedule_align">Reschedule</label>
-            </div>
+         <label className="reschedule_align" onClick={ModalClickOpen}>Proceed</label>
+
 
          </div>
-
-
-  
-      
        </div>
+
+       <Modal
+                  title={false}
+                  visible={ModalOpen}
+                  footer={false}
+                  size={"lg"}
+                  {...props}
+                  centered
+                  className="confirm_modal"
+                  onCancel={ModalClickClose}
+                 >
+                     <ConfirmPage/>
+    
+                 </Modal>
        </div>
     )
 }
-export default BookingReschedule;
+export default ProceedScreen;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './BookingReschedule.scss';
+import './ConfirmBooking.scss';
 import Labelbox from "../../../helpers/labelbox/labelbox";
 import ReactPlayer from 'react-player';
 import  BedImage from '../../../images/BookaRoom/outline.svg';
@@ -7,8 +7,14 @@ import  BathImage from '../../../images/BookaRoom/bathtub.svg';
 import  WaterImage from '../../../images/BookaRoom/hotel.svg';
 import  ACImage from '../../../images/BookaRoom/air condition-hot-summer.svg';
 import  TVImage from '../../../images/BookaRoom/television.svg';
+import { useHistory } from 'react-router-dom';
 
-function BookingReschedule(){
+function ConfirmBooking(){
+  let history = useHistory();
+  
+  function proceedPage(){
+    history.push('/proceedpage')
+  }
   const roomImage=[
    {
      id:1,
@@ -85,7 +91,7 @@ function BookingReschedule(){
                   <div style={{display:'flex', margin:'20px'}}>  
                     <div style={{marginRight:'7px'}}>
                       <label className="label_align_reshedule">Address</label>
-                  .   <p styl={{color:'#858585'}}>Shaab sea view<span className="dot_align">...</span></p>
+                  .   <p style={{color:'#858585'}}>Shaab sea view<span className="dot_align">...</span></p>
                    </div>
                    <div style={{marginRight:'13px'}}>
                         <label  className="label_align_reshedule">Phone</label>
@@ -134,7 +140,7 @@ function BookingReschedule(){
          <div style={{width:'30%'}}>
             <div style={{marginTop:'40px', marginRight:'40px'}}>
               <label className="reschedule_cancel">Cancel</label>
-              <label className="reschedule_align">Reschedule</label>
+              <label className="reschedule_align" onClick={proceedPage}>Confirm</label>
             </div>
 
          </div>
@@ -146,5 +152,5 @@ function BookingReschedule(){
        </div>
     )
 }
-export default BookingReschedule;
+export default ConfirmBooking;
 

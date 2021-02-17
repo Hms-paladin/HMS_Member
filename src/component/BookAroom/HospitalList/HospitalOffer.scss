@@ -1,0 +1,144 @@
+.hos_offer{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin-right: 10px;
+}
+.hos_offer img{
+    width: 100%;
+    height: 100%;
+ }
+ .offer_numerics_hos{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    color: #fff;
+    top: 5px;
+    left: 10px;
+    font-size: 12px;
+}
+.rating_numerics_hos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+.rating_numeric_hos_bg{
+    width: 50px;
+    height: 25px;
+    background-color: #83AF40;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 3px;
+    padding: 5px;
+}
+.rating_numeric_hos_bg img{
+    width: 15px;
+    height: 15px;
+}
+.price_kwd_hos{
+    color: #83AF40;
+}
+.star_rating_hos{
+        display: flex;
+        margin-top: 14px;
+    }
+    
+.star_icon_hos{
+    fill:#83AF40 !important;
+    font-size: 1rem !important;
+}
+.hos_offer_card{
+    box-shadow: 0px 0px 4px 1px #ccc;
+    margin-top: 20px;
+}
+.name_star_head{
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.available_rate{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0px;
+    margin-top: 12px;
+}
+
+.offer_filter_div{
+    padding: 10px;
+    font-weight: 500;
+    margin-right: 80px;
+    font-size: 24px;
+}
+.offer_filter_div .MuiSlider-rail,.MuiSlider-track,.MuiSlider-mark
+    {
+    height: 5px !important;
+}
+.offer_filter_div .MuiSlider-root {
+    color: #83AF40;
+}
+.offer_date_fil_div{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+
+}
+.offer_date_pic_childdiv{
+    width:47%;
+}
+.offer_date_pic_childdiv:nth-child(2)
+{
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1220px) {
+    .hos_list_container{
+        padding: 30px 50px;
+    }
+  }
+  @media only screen and (max-width: 1000px) {
+    .hos_list_container{
+        padding: 30px 30px;
+    }
+    .offer_filter_div{
+        margin-right: 30px;
+    }
+  }
+  @media only screen and (max-width: 970px) {
+    .hos_list_container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .offer_filter_div{
+        width: 70%;
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+    .second_head{
+        width: 70%;
+    }
+  }
+  @media only screen and (max-width: 759px) {
+    .offer_filter_div{
+        width: 100%;}
+        .second_head{
+            width: 100%;
+        }
+  }
+  .sort_cont_hos{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.sort_hos{
+    display: flex;
+}
+
+.sort_hos svg{
+    width: 16px;
+    height: 16px;
+}

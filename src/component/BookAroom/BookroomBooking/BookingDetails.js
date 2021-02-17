@@ -1,16 +1,18 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import HistoryButton from '../../../images/history-button.svg'
 import Nurse from '../../../images/nurse.png'
 import './BookingDetails.css';
 
 function BookingDetails(){
+    let history= useHistory();
     const [CancelOpen,setCancelOpen]=React.useState(false)
     const CancelClick=()=>{
         setCancelOpen(!CancelOpen)
+
     }
-    ReshedulePage=()=>{
-        this.props.history.push("/reschedulepage")
+     function ReshedulePage(){
+       history.push("/reschedulepage")
     }
     return(
         <div className="bookings_parentdiv">
@@ -35,7 +37,7 @@ function BookingDetails(){
           </div>    
   {/*shedule and cancel  */}
           <div className="cancel_div">
-               <label className="book_shedule" onClick={this.ReshedulePage}>Re Shedule</label>
+               <label className="book_shedule" onClick={ReshedulePage}>Re Shedule</label>
                <label  className={CancelOpen?"b_cancel_change":"cancel_align"} onClick={CancelClick}>Cancel</label>
           </div>
     {/* To click cancel button to open this part */}
