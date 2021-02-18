@@ -16,9 +16,10 @@ import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect
 // pharmacy
 import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory.js";
 import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
-import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
-import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
 import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
+// payment screens
+import PaymentReceived from '../Payment/PaymentReceived/PaymentReceived'
+import PaymentMethod from '../Payment/PaymentMethod/PaymentMethod'
 // nurse
 import Nursehistory from '../Nurse/NurseHistory/nursehistory'
 import NurseDetails from '../Nurse/NurseDetails/NurseDetails'
@@ -28,16 +29,31 @@ import BookingHistory from '../Nurse/Bookings/BookingHistory'
 import RescheduleBookings from '../Nurse/RescheduleBooking/RescheduleBooking'
 import MySchedule from '../Nurse/MySchedule/Calendar'
 // lab
+import Lab_History from '../Lab/LabHistory/Lab_History'
 import Clinical_lab from '../Lab/ClinicalLab/ClinicalLab'
-
+import Lab_Bookings from '../Lab/Lab_Bookings/Lab_Bookings'
+import Lab_BookingHistory from '../Lab/Lab_Bookings/Lab_BookingHistory'
+// Diet
+import AdvertisementDiet from '../Diet/Advertisement_Diet/AdDiet'
+import Diet_History from '../Diet/Diet_History/Diet_history'
+import Diet_Bookings from '../Diet/Diet_Bookings/Diet_Bookings'
+import Diet_BookingHistory from '../Diet/Diet_Bookings/Diet_BookingHistory'
+import GoalWeight from '../Diet/GoalWeight/GoalWeight'
+// PregnantWomen
 import PregnantWomen_Profile from '../Pregnant_Women/PregnantWomen_Profile'
 import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js";
 // Doctor
 import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
-import Feed from '../Doctor_Appointment/Feed/feed'
-import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking";
+import Feed from '../Doctor_Appointment/Feed/feed';
+
+// Book a Room
+import HospitalList from "../BookAroom/HospitalList/HospitalList";
+// import BookingHospital from "../BookAroom/BookroomBooking/BookingHospital";
+import BookingDetails from "../BookAroom/BookroomBooking/BookingDetails";
+import BookroomHistory from "../BookAroom/BookroomHistory/BookroomHistory";
+import BookingReschedule from "../BookAroom/BookroomBooking/BookingReschedule";
 
 var hashHistory = require('react-router-redux')
 
@@ -97,7 +113,7 @@ function HeaderLayout (props) {
   </Dropdown.Menu>
 </Dropdown>
 
-<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={()=>HistoryPush("/bookings")}/>
+<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={()=>HistoryPush("/LabBookings")}/>
 
 
             <Dropdown className="avatar_cont">
@@ -128,8 +144,6 @@ function HeaderLayout (props) {
                         <Route path="/" component={Dashboard} exact/> */}
                         {/* Pharmacy */}
                         <Route path="/" component={Dashboard} exact />
-
-
                         <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
                         <Route path="/orderdetails" component={OrderTable} exact/> 
                         <Route path="/paymentreceive" component={PaymentReceived} exact/>
@@ -144,8 +158,17 @@ function HeaderLayout (props) {
                         <Route path="/reschedulebookings" component={RescheduleBookings}/>
                         <Route path="/myschedule" component={MySchedule}/>
                         {/* Lab */}
+                        <Route path="/labhistory" component={Lab_History}/>
                         <Route path="/clinicallab" component={Clinical_lab}/>
-
+                        <Route path="/LabBookings" component={Lab_Bookings}/>
+                        <Route path="/Lab_bookinghistory" component={Lab_BookingHistory}/>
+                        {/* Diet */}
+                        <Route path="/Advertisement_diet" component={AdvertisementDiet}/>
+                        <Route path="/Diet_history" component={Diet_History}/>
+                        <Route path="/DietBookings" component={Diet_Bookings}/>
+                        <Route path="/diet_bookinghistory" component={Diet_BookingHistory}/>
+                        <Route path="/goalweight" component={GoalWeight}/>
+                        {/* Pregnant Women */}
                         <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
                         <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
                         {/* Doctor */}
@@ -153,8 +176,15 @@ function HeaderLayout (props) {
                         <Route path="/doctorEdit" component={Editprofile} exact/>
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
-                        <Route path="/doctorbooking" component={Doctorbooking} exact/>
+                        {/* <Route path="/doctorbooking" component={Doctorbooking} exact/> */}
 
+
+                        {/* Book a Room */}
+                        <Route path ="/hospitallist" component={HospitalList}/> 
+                        {/* <Route path ="/bookinghospital" component={BookingHospital}/> */}
+                        <Route path ="/bookingdetails" component={BookingDetails}/>
+                        <Route path="/bookroomhistory" component={BookroomHistory}/>
+                        <Route path="/reschedulepage" component={BookingReschedule}/>
 
 
                     </Switch>
@@ -162,6 +192,7 @@ function HeaderLayout (props) {
 
             </div>
             </Content>
+
         </Layout>
     )
 }

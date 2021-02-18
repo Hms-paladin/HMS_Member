@@ -3,7 +3,6 @@ import './ConfirmationModal.scss'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
-import PaymentMethod from '../../Pharmacy/PaymentMethod/PaymentMethod'
 import {NavLink} from 'react-router-dom'
 export default function ConfirmationModal(props){
     

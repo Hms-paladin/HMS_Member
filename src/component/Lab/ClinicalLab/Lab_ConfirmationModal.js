@@ -4,10 +4,14 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
 import { Col, Form, FormGroup, Label, Input,Row} from 'reactstrap';
-import PaymentMethod from '../../Pharmacy/PaymentMethod/PaymentMethod'
+// import PaymentMethod from '../../Pharmacy/PaymentMethod/PaymentMethod'
 import {NavLink} from 'react-router-dom'
 export default function ConfirmationModal(props){
-    
+  const[HideAdrs,setHideAdrs]=React.useState(false)
+    // elipse function
+    const ElipseOpen=()=>{
+      setHideAdrs(!HideAdrs)
+  }
     return(
        <div className="booking_confirm">
            {/* <div className="bookconfirm">BookingConfirmation</div> */}
@@ -46,7 +50,10 @@ export default function ConfirmationModal(props){
           <Col md={3}>
             <FormGroup>
             <p className="mem_con_namehead">Address</p>
-            <p className="mem_con_name">Jabriya</p> 
+            {/* <p className="mem_con_name">Jabriya</p>  */}
+            <div>
+        {HideAdrs?<label className="mem_con_name">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:
+        <label className="mem_con_name">Jabriya</label>} <span className="elipse" onClick={ElipseOpen}>...</span></div>
             </FormGroup>
           </Col>
           <Col md={3}>

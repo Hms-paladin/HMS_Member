@@ -2,6 +2,7 @@
     font-size: 18px;
     color:#333;
     font-weight: bold;
+    margin-bottom: 0px !important;
 }
 .clinic_div{
     display:flex;
@@ -101,4 +102,30 @@
 }
 .lab_booking_confirm{
     position: relative;
+}
+// address elipse css
+.lab_adrs{
+    color:#666666;
+    font-weight: 500;
+    
+}
+.elipse{
+
+   text-decoration: underline;
+   color: blue;
+   margin-left: 1px;
+   cursor: pointer;
+}
+
+
+// media query
+@media only screen and (max-width: 959px) {
+   .lab_addMember_secondgrid{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
+   .lab_booking_confirm{
+       width:60%;
+   }
 }

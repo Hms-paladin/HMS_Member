@@ -32,7 +32,7 @@ export default function BookingConfirmation(props){
         {img:Nurseimage3,name:"Saud"}
     ]
     const[editOpen,seteditOpen]=React.useState(false)
-   
+    const[HideAdrs,setHideAdrs]=React.useState(false)
     const[BookOpen,setBookOpen]=React.useState(false)
     function EditClick(){
       seteditOpen(true)
@@ -47,7 +47,10 @@ export default function BookingConfirmation(props){
     function BookClose(){
       setBookOpen(false)
     }
-   
+   // elipse function
+   const ElipseOpen=()=>{
+    setHideAdrs(!HideAdrs)
+}
     return(
         <div className="lab_booking_confir_root">
          <div className="member_parent_div">
@@ -102,7 +105,9 @@ export default function BookingConfirmation(props){
       <FormGroup row>
         <Label for="exampleEmail" sm={6} >Address</Label>
         <Col sm={6}>
-        <label className="Nurse_form_de">Jabriya</label>
+          <div>
+        {HideAdrs?<label className="Nurse_form_de">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:
+        <label className="Nurse_form_de">Jabriya</label>} <span className="elipse" onClick={ElipseOpen}>...</span></div>
         </Col>
       </FormGroup>
     

@@ -4,12 +4,13 @@
     padding: 8px;
 }
 .nusre_hisparent{
-    padding:15px 10% 0px;
+    padding:20px 10% 0px;
 }
 .off_per{
     position: absolute;
     top:6px;
-    left:13px;    
+    left:13px;  
+    font-size: 15px;  
 }
 .srch_his{
     border-radius: 20px !important;
@@ -23,10 +24,20 @@
     margin-bottom: 10px;
     
 }
+.l_gender_div{
+    width:50%;
+}
+.snd_part_nurhis{
+    padding-left: 3%;
+}
+.nur_his_sort{
+    width:10px;
+}
 .mnth_cost{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width:100%;
 }
 .mnth_amt{
     color:#83AF40;
@@ -66,6 +77,7 @@ background-color: #83AF40 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 8px;
 }
 .nur_age{
     padding-right: 10px;
@@ -92,6 +104,7 @@ background-color: #83AF40 !important;
     padding: 18px 0px 0px 40px; 
     color:#666666;
     font-size: 15px;
+    font-weight: 500;
 }
 .scnd_chld p{
     margin-bottom: 8px !important;
@@ -113,7 +126,7 @@ background-color: #83AF40 !important;
     display: table-row-group;
 }
 .off_per p{
-  margin-bottom: 0px !important;
+  margin-bottom: -6px !important;
   font-weight: bold;
   color: #fff;
 }
@@ -142,8 +155,8 @@ background-color: #83AF40 !important;
     height:8px !important;
 }
 .nusre_hisparent .ant-slider-handle{
-    width:17px !important;
-    height:17px !important;
+    width:15px !important;
+    height:15px !important;
 }
 .nusre_hisparent .ant-slider{
     margin:0px 0px 12px !important;

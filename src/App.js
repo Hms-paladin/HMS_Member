@@ -21,8 +21,8 @@ import Dashboard from "./component/Dashboard/dashboard.js";
 // pharmacy
 import PrescriptionHistory from "./component/Pharmacy/PrescriptionHistory/prescriptionhistory.js";
 import OrderTable from './component/Pharmacy/OrderDetails/orderdetails'
-import PaymentReceived from './component/Pharmacy/PaymentReceived/PaymentReceived'
-import PaymentMethod from './component/Pharmacy/PaymentMethod/PaymentMethod'
+// import PaymentReceived from './component/Pharmacy/PaymentReceived/PaymentReceived'
+// import PaymentMethod from './component/Pharmacy/PaymentMethod/PaymentMethod'
 import OrderPacking from './component/Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
 // nurse
 import Nursehistory from './component/Nurse/NurseHistory/nursehistory'
@@ -37,6 +37,12 @@ import MotherDevice from "./component/Mother/MotherDevices";
 import NextVaccinationMother from "./component/Mother/NextVaccination"
 import MotherMedication from './component/Mother/MotherMedication';
 import PrescriptionModal from "./component/Pregnant_Mother/PrescriptionModal.js";
+
+// Book  a  Room
+
+import HospitalList from './component/BookAroom/HospitalList/HospitalList';
+// import BookingHospital from "./component/BookAroom/BookroomBooking/BookingHospital";
+
 var hashHistory = require('react-router-redux')
 
 
@@ -50,8 +56,8 @@ function App() {
         {/* Pharmacy */}
          <Route path="/prescriptionhistory" component={PrescriptionHistory}/> 
          <Route path="/orderdetails" component={OrderTable}/> 
-        <Route path="/paymentreceive" component={PaymentReceived}/>
-        <Route path="/paymentmethod" component={PaymentMethod}/>
+        {/* <Route path="/paymentreceive" component={PaymentReceived}/>
+        <Route path="/paymentmethod" component={PaymentMethod}/> */}
         <Route path="/orderpacking" component={OrderPacking}/>
         {/* Nurse */}
         <Route path="/nursehistory" component={Nursehistory}/>
@@ -67,6 +73,12 @@ function App() {
         <Route path="/motherdevice" component={MotherDevice} exact />
         <Route path="/vaccination_mother" component={NextVaccinationMother} exact/>
         <Route path="/mother_medication" component={MotherMedication} exact/>
+
+  {/* Book a Room */}
+
+      <Route path="/book" component={HospitalList} exact/>
+      {/* <Route path="/bookinghospital" component={BookingHospital}/> */}
+
       </Switch>
       </HeaderLayout>
     </Router>
