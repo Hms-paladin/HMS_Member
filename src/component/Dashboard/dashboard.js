@@ -20,7 +20,10 @@ import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
 import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
 
 // book a room 
-import HospitalList from "../BookAroom/HospitalList/HospitalList" 
+import HospitalList from "../BookAroom/HospitalList/HospitalList" ;
+
+// Trainer
+import TrainerList from "../Trainer/TrainerList/TainerList";
 function routepush(props){
     props.history.push("/paymentreceived")
 }
@@ -28,7 +31,7 @@ const images = [
                     {img:Doctor,title:"Doctor Apponintment",pathname:"/doctorappointment"},
                     {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
                     {img:Report,title:"Report"},
-                    {img:Trainer,title:"Trainer"},
+                    {img:Trainer,title:'Trainer',pathname:"/tainerlist"},
                     {img:TrainingCenter,title:"Training Center"},
                     {img:DietMeal,title:"Diet Meal"},
                     {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
@@ -53,6 +56,7 @@ function Dashboard(props) {
         <Route exact path={`${props.match.path}/prescriptionhistory`} component={PrescriptionHistory} />
         <Route exact path={`${props.match.path}/orderdetails`} component={OrderTable} />
         <Route exact path={`${props.match.path}/book`} component={HospitalList}/>
+        <Route exact path={`${props.match.path}/tainerlist`} component={TrainerList}/>
        
         </div>
         </div>

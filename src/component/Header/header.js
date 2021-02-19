@@ -50,6 +50,9 @@ import ProceedScreen from "../BookAroom/HospitalList/proceedScreen/ProceedScreen
 import ConfirmPage from "../BookAroom/BookroomBooking/ConfirmPage";
 import ProceedReschedule from "../BookAroom/BookroomBooking/proceedReschedule/ProceedReschedule";
 
+// Trainer
+import TrainerList from "../Trainer/TrainerList/TainerList";
+
 var hashHistory = require('react-router-redux')
 
 const { Search } = Input;
@@ -177,6 +180,9 @@ function HeaderLayout (props) {
                         <Route path = "/proceedpage" component = {ProceedScreen}/>
                         <Route path = "/confirmpage" component = {ConfirmPage} />
                         <Route path="/resheduleproceed" component = {ProceedReschedule}/>
+
+             {/*  */}
+                        <Route path = "/tainerlist" component={TrainerList}/>
 
 
                     </Switch>
