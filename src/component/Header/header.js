@@ -36,6 +36,8 @@ import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
 import Feed from '../Doctor_Appointment/Feed/feed'
 import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking";
+import Myappointments from '../Doctor_Appointment/Myappointments/myappointments'
+import History from "../Doctor_Appointment/Myappointments/history";
 
 var hashHistory = require('react-router-redux')
 
@@ -105,7 +107,7 @@ function HeaderLayout (props) {
 
   <Dropdown.Menu>
     <Dropdown.Item onClick={()=>HistoryPush("/profile")} >Profile</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">My Appointments</Dropdown.Item>
+    <Dropdown.Item href="#/action-2" onClick={()=>HistoryPush("/appointments")}>My Appointments</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
 
   </Dropdown.Menu>
@@ -150,6 +152,11 @@ function HeaderLayout (props) {
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
                         <Route path="/doctorbooking" component={Doctorbooking} exact/>
+                        <Route path="/appointments" component={Myappointments} exact/>
+                        <Route path="/history" component={History} exact/>
+
+
+
 
 
 

@@ -1,0 +1,118 @@
+.myappointments_layout{
+    padding: 50px;
+}
+.appointmentsheadflex{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
+.appointment_icons svg{
+   width: 30px;
+   height:30px;
+   fill:gray;
+   margin:0px 5px;
+   cursor: pointer;
+
+}
+.appointment_icons img{
+    width: 30px;
+   height:30px;
+   fill:gray;
+   margin:0px 5px;
+   cursor: pointer;
+
+}
+.appointment_icons {
+    display: flex;
+ 
+ }
+ .appointmentlistpaper{
+     border-radius: 10px;
+     width: 100%;
+     box-shadow: 0px 0px 4px 1px #ccc;
+     padding: 10px;
+     margin: 15px 0px;
+ }
+ .listpaperflex{
+     display: flex;
+     justify-content: space-between;
+     margin: 2px 0px;
+ }
+ .listpaperflex .doctrname{
+     font-size: 18px;
+ }
+ .patname{
+     color: gray;
+ }
+ .paidbg{
+     background-color: #83AF40;
+     color: #fff;
+     padding: 0px 5px;
+     border-radius: 2px;
+ }
+ .amntcap{
+     font-size: 18px;
+ }
+ .amntinkwd{
+     color: gray;
+ }
+ .cancelledclr{
+     color: #FF6565;
+     font-weight: 500;
+
+ }
+ .appointdate{
+     color: gray;
+ }
+ .appointtime{
+     color: black;
+ }
+ .paymentdate,.paymenttime{
+     color: gray;
+ }
+ .reviewbtn{
+     color: #83AF40;
+     font-weight: 500;
+     cursor: pointer;
+ }
+ .rescheduleclr{
+     color: #83AF40;
+     font-weight: 500;
+ }
+ .reviewbtn span{
+     margin-left: 15px;
+     cursor: pointer;
+ }
+ .appnttypeclr{
+     color: #2DD596;
+     font-weight: 500;
+ }
+ .membericon{
+     color: gray;
+ }
+ .membericon span{
+     margin-left: 5px;
+     border-radius: 3px;
+     background-color: #2680EB;
+     padding: 3px 5px;
+     color: #fff;
+ }
+ .cancelspanbtn{
+     color: #FF6565;
+ }
+.queuespanbtn{
+    color: #FEB911;
+}
+.cancellationoption {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #ddd;
+    padding: 40px;
+}
+.cancellationoption Button{
+    background-color: #ddd;
+    border-radius: 30px;
+    margin: 0px 15px;
+}
