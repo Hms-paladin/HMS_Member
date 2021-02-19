@@ -2,7 +2,7 @@ import React from 'react'
 import './Diet_ConfirmationModal.scss'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Nurse from '../../../images/nurse.png'
+import Nurse from '../../../images/Diet_b.png'
 import { Col, Form, FormGroup, Label, Input,Row} from 'reactstrap';
 // import PaymentMethod from '../../Pharmacy/PaymentMethod/PaymentMethod'
 import {NavLink} from 'react-router-dom'
@@ -27,12 +27,6 @@ export default function ConfirmationModal(props){
             <FormGroup>
             <p className="mem_con_namehead">Name</p>
             <p className="mem_con_name">Dalal</p> 
-            </FormGroup>
-          </Col>
-          <Col md={3}>
-            <FormGroup>
-            <p className="mem_con_namehead">Test</p>
-            <p className="mem_con_name">X ray-Teeth</p> 
             </FormGroup>
           </Col>
           <Col md={3}>
