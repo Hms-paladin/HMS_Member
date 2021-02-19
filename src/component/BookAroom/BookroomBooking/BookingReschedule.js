@@ -7,8 +7,15 @@ import  BathImage from '../../../images/BookaRoom/bathtub.svg';
 import  WaterImage from '../../../images/BookaRoom/hotel.svg';
 import  ACImage from '../../../images/BookaRoom/air condition-hot-summer.svg';
 import  TVImage from '../../../images/BookaRoom/television.svg';
+import { useHistory } from 'react-router-dom';
+
 
 function BookingReschedule(){
+  let history = useHistory();
+  
+  function RescheduleproceedPage(){
+    history.push('/resheduleproceed')
+  }
   const roomImage=[
    {
      id:1,
@@ -112,7 +119,7 @@ function BookingReschedule(){
                               <img src={imageItem.image} className="menu_align"/> 
 
                               </div>
-                              <p>{imageItem.Name}</p>
+                              <p style={{display:'flex', justifyContent:'center'}}>{imageItem.Name}</p>
 
                           </div>
                         </>
@@ -134,7 +141,7 @@ function BookingReschedule(){
          <div style={{width:'30%'}}>
             <div style={{marginTop:'40px', marginRight:'40px'}}>
               <label className="reschedule_cancel">Cancel</label>
-              <label className="reschedule_align">Reschedule</label>
+              <label className="reschedule_align" onClick={RescheduleproceedPage}>Reschedule</label>
             </div>
 
          </div>

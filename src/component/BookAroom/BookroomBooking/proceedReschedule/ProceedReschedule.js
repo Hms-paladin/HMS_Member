@@ -1,5 +1,4 @@
 import React from 'react';
-import './ProceedScreen.scss';
 import Labelbox from "../../../../helpers/labelbox/labelbox";
 import ReactPlayer from 'react-player';
 import  BedImage from '../../../../images/BookaRoom/outline.svg';
@@ -21,11 +20,10 @@ import {NavLink} from 'react-router-dom';
 import roomimg from "../../../../images/BookaRoom/room_img.png"
 import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import Pin from "../../../../images/pin.png"
-// import ProceedConfirm from '../../ProceedConfirm/ProceedConfirm';
+import ConfirmReshedule from "../confirmRescchedule/ConfirmReschedule"
 
 
-
-function ProceedScreen(props){
+function ProceedReschedule(props){
 
     const [ModalOpen,setModalOpen]=React.useState(false)
     const ModalClickOpen=()=>{
@@ -95,7 +93,7 @@ const ModalCloseClick=()=>{
          <div style={{width:'70%', margin:'25px'}}>
   {/* header part */}
               <div>
-                  <h5 className="reschedule_head">Mayo Clinic Hospital</h5>
+                  <h5 className="reschedule_head">Mayo Clinic Hospital-Reschedule</h5>
                   <h5 className="reschedule_head">Lulwa</h5>
               </div>
   {/*date and carousel  */}
@@ -180,46 +178,9 @@ const ModalCloseClick=()=>{
             <div className="proceedform">
           <>
             <ReactSVG className="close_ico_proceed" onClick={closeForm} src={close}/>
-              <div className="hosmembers">
-                <div className="hosphoto_div">
-                    <img src={Nurse}/>
-                     <div>Jethro</div>
-                </div>
-                <div className="hosphoto_div">
-                    <img src={Nurse}/>
-                    <div>Jethro</div>
-                </div>
-                <div className="hosphoto_div">
-                    <img src={Nurse}/>
-                    <div>Jethro</div>
-                </div>
-                <div className="hosphoto_div">
-                      <img src={Nurse}/>
-                      <div>Jethro</div>
-                </div>
-                <div className="hosphoto_div">
-                      <img src={Nurse}/>
-                      <div>Jethro</div>
-                 </div>
-                 <div className="newhosphoto_div" onClick={openaddmemberForm}>
-                     <ReactSVG className="plussvg" src={plus}/>
-                     <div className="new">New</div>
-                    </div>
-                </div>
               
              </>
-             {
-                addmemberForm && <div className="addmember_mini">
-                  <div className="avatar_uploaderdiv"><div className="avatar_uploader"><ReactSVG src={avatar}/> </div><div>Add Photo</div></div>
-                  <div><Labelbox type="text"labelname="Name"/></div>
-                  <div className="formflex"><Labelbox type="select"labelname="Gender"/><Labelbox type="text"labelname="Date of Birth"/></div>
-                  <div><Labelbox type="text"labelname="Mobile number"/></div>
-                  <div><Labelbox type="select"labelname="Relationship"/></div>
-                  <div className="heightformflex"><Labelbox type="text"labelname="Height"/><span>cms</span><Labelbox type="text"labelname="Weight"/><span>kgs</span></div>
-
-                  <div className="avatar_uploaderdiv_btns"><Button className="cancel" onClick={closeaddmemberForm}>Cancel</Button><Button className="submit"onClick={closeaddmemberForm}>Submit</Button></div>
-                </div>
-              }
+          
                 <Paper className="paper_align">
                   <p className="paper_booking"> Booking Confirmation</p>
                   <div style={{display:'flex', justifyContent:'center'}}>
@@ -263,14 +224,14 @@ const ModalCloseClick=()=>{
                 <div className="bookbtnflex"><Button onClick={ModalOpenClick}>Proceed</Button></div>
                 </div>
 {/* Confirmation Modal */}
-                {/* <Modal
-                  title={<div className="proceed_confirmation">Booking Confirmation</div>}
+                <Modal
+                  title={false}
                   visible={modalOpen}
                   footer={false}
                   onCancel={ModalCloseClick}
                   className="confirm_modal border_modal"
                 >
-        <div className="bookconfirmmodal_confirm">
+        {/* <div className="bookconfirmmodal_confirm">
           <div className="userhospic">
              <img src={roomimg}/>
              <div style={{display:'flex'}}>
@@ -331,26 +292,12 @@ const ModalCloseClick=()=>{
    
         </Row>
         </Form>   
-        </div>
-        <div className="cnfrmbtn"> <NavLink to="paymentmethod"><Button>Confirm</Button></NavLink></div>
+        </div> */}
+        <ConfirmReshedule/>
+        {/* <div className="cnfrmbtn"> <NavLink to="paymentmethod"><Button>Confirm</Button></NavLink></div> */}
 
        </Modal>
-        */}
-
-<Modal
-                  title={false}
-                  visible={ModalOpen}
-                  footer={false}
-                  size={"lg"}
-                  {...props}
-                  centered
-                  className="confirm_modal"
-                  onCancel={ModalClickClose}
-                 >
-                   {/* <ProceedConfirm/> */}
-                  
-    
-                 </Modal>
+       
          </div>
        </div>
 
@@ -359,5 +306,6 @@ const ModalCloseClick=()=>{
        </div>
     )
 }
-export default ProceedScreen;
+export default ProceedReschedule;
+
 

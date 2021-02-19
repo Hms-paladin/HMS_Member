@@ -83,7 +83,7 @@ export default function HospitalOffer(){
                 <div  className="offer_filter_div">
                     <div className="offer_filter_div"> Filter </div>
                     <div className="offer_date_fil_div">
-                        <div className="">
+                        <div className="date_pic_childdiv">
                         <Labelbox type="datepicker" />
                         </div>
                         <div className="offer_date_pic_childdiv">

@@ -35,6 +35,7 @@ import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
 import Feed from '../Doctor_Appointment/Feed/feed';
+import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking"
 
 // Book a Room
 import HospitalList from "../BookAroom/HospitalList/HospitalList";
@@ -47,6 +48,7 @@ import ConfirmBooking from "../BookAroom/HospitalList/ConfirmBooking";
 import PaymentMethodBook from "../BookAroom/HospitalList/PaymentMethodBook";
 import ProceedScreen from "../BookAroom/HospitalList/proceedScreen/ProceedScreen";
 import ConfirmPage from "../BookAroom/BookroomBooking/ConfirmPage";
+import ProceedReschedule from "../BookAroom/BookroomBooking/proceedReschedule/ProceedReschedule";
 
 var hashHistory = require('react-router-redux')
 
@@ -160,7 +162,7 @@ function HeaderLayout (props) {
                         <Route path="/doctorEdit" component={Editprofile} exact/>
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
-                        {/* <Route path="/doctorbooking" component={Doctorbooking} exact/> */}
+                        <Route path="/doctorbooking" component={Doctorbooking} exact/>
 
 
                         {/* Book a Room */}
@@ -174,6 +176,7 @@ function HeaderLayout (props) {
                         <Route path="/paymentreceived" component={PaymentReceived_Book}/>
                         <Route path = "/proceedpage" component = {ProceedScreen}/>
                         <Route path = "/confirmpage" component = {ConfirmPage} />
+                        <Route path="/resheduleproceed" component = {ProceedReschedule}/>
 
 
                     </Switch>

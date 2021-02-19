@@ -1,10 +1,20 @@
 import React from 'react';
 import {NavLink, useHistory} from "react-router-dom";
 import HistoryButton from '../../../images/history-button.svg'
-import Nurse from '../../../images/nurse.png'
+import Hospital  from "../../../images/BookaRoom/room_img.png"
 import './BookingDetails.css';
+import {Modal} from 'antd';
+import HospitalView from "../BookroomHistory/HospitalViewModal"
 
-function BookingDetails(){
+function BookingDetails(props){
+
+  const [ ModalOpen, setModalOpen]=React.useState(false)
+   const ModalClickOpen=()=>{
+    setModalOpen(true)
+   }
+   const ModalClickClose=()=>{
+     setModalOpen(false)
+   }
     let history= useHistory();
     const [CancelOpen,setCancelOpen]=React.useState(false)
     const CancelClick=()=>{
@@ -25,9 +35,9 @@ function BookingDetails(){
          <div className="bookhistory_list_parent">
            <div className="bookhistory_list">
               <div className="book_div">  
-                    <img src={Nurse} className="book_img"/>
+                    <img src={Hospital} className="book_img"onClick={ModalClickOpen} />
                     <div className="book_text_div"><p className="book_h_name">Mayo Clinic Hospital</p>
-                        <p>Shaab Sea View <span style={{cursor:'pointer'}}>... </span></p>
+                        <p style={{color:'#AEADAD', fontSize:'16px'}}>Shaab Sea View <span className="dot_align" style={{cursor:'pointer'}}>... </span></p>
                         <p>27 Nov 2020</p>
                     </div>
               </div> 
@@ -53,6 +63,20 @@ function BookingDetails(){
           }
          
       </div>
+      <Modal
+                  title={false}
+                  visible={ModalOpen}
+                  footer={false}
+                  size={"lg"}
+                  {...props}
+                  centered
+                  className="confirm_modal"
+                  onCancel={ModalClickClose}
+                 >
+                  
+                     <HospitalView/>
+    
+                 </Modal>
    </div>
     )
 }

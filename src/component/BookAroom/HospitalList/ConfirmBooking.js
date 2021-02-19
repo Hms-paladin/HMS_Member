@@ -51,7 +51,7 @@ function ConfirmBooking(){
          <div style={{width:'70%', margin:'25px'}}>
   {/* header part */}
               <div>
-                  <h5 className="reschedule_head">Mayo Clinic Hospital-Reschedule</h5>
+                  <h5 className="reschedule_head">Mayo Clinic Hospital</h5>
                   <h5 className="reschedule_head">Lulwa</h5>
               </div>
   {/*date and carousel  */}
@@ -116,9 +116,8 @@ function ConfirmBooking(){
 
                                 <span>{imageItem.id}</span>
                               <img src={imageItem.image} className="menu_align"/> 
-
                               </div>
-                              <p>{imageItem.Name}</p>
+                              <p style={{display:'flex', justifyContent:'center'}}>{imageItem.Name}</p>
 
                           </div>
                         </>

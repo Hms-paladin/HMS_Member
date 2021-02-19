@@ -1,11 +1,8 @@
 import React from 'react';
 import './HospitalViewModal.css';
-import RoomIcon from '@material-ui/icons/Room';
+import Pin from "../../../images/pin.png";
 import Divider from '@material-ui/core/Divider';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-{/* <div className="detail3">Excel - Polyclinic <span className="pin"><img src={pin} />2 km</span></div> */}
-
-
 
 
 export default function HospitalView(){
@@ -14,7 +11,7 @@ export default function HospitalView(){
         <div className="hospital_head">
             <div style={{display:'flex'}}>
                 <p className="hos_name_haed">Mayo Clinic Hospital</p>
-                <RoomIcon className="loac_ion"/>
+                <img src={Pin} className="loac_ion"/>
                 </div>
                 <span style={{color:'grey', fontSize:'15px', marginRight:'25px'}}>Shaab Sea View</span>
                 </div>
@@ -48,7 +45,7 @@ export default function HospitalView(){
           </Col>
           <Col md={2}>
             <FormGroup>
-            <p className="modal_head">total Days</p>
+            <p className="modal_head">Total Days</p>
                    <p className="mem_con_name">2</p>
             </FormGroup>
           </Col>
@@ -62,7 +59,7 @@ export default function HospitalView(){
           </Col>
           <Col md={3}>
             <FormGroup>
-            <p className="modal_head">Cost Per Day(KWD)</p>
+            <p className="modal_head">Total Cost(KWD)</p>
             <p className="mem_con_name">800</p>
             </FormGroup>
           </Col>
