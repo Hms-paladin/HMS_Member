@@ -1,5 +1,5 @@
 import React from 'react'
-import Nurse from '../../../images/nurse.png'
+import Hospital from '../../../images/BookaRoom/room_img.png';
 import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button'
 import Labelbox from '../../../helpers/labelbox/labelbox'
@@ -32,7 +32,7 @@ export default function CreateReview(props){
            {/* img part */}
            <div className="create_r_pro_div">
                <div className="create_r_pro_childdiv">
-                   <div className="create_pro_imgdiv"><img src={Nurse} className="create_r_pro"/>
+                   <div className="create_pro_imgdiv"><img src={Hospital} className="create_r_pro"/>
                    <div className="nur_r_name">Royal Clinic Hospital </div></div>
                </div>
             </div>

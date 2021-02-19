@@ -1,6 +1,6 @@
 
 import React,{useState} from "react";
-import './HospitalList.css';
+import './HospitalList.scss';
 import Rating from '@material-ui/lab/Rating';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,7 +19,8 @@ import Labelbox from "../../../helpers/labelbox/labelbox";
 import StarIcon from '@material-ui/icons/Star';
 import Thumb from "../../../images/BookaRoom/round-thumb.svg";
 import search from "../../../images/loupe.png";
-import { Input } from 'antd';
+import { Input,Modal } from 'antd';
+import HospitalOffer from "../HospitalList/HospitalOffer";
 
 
 
@@ -28,6 +29,7 @@ var hashHistory = require('react-router-redux')
 const { Search } = Input;
 
 const onSearch = value => console.log(value);
+
 
 
 
@@ -84,9 +86,21 @@ const useStyles = makeStyles((theme) => ({
 function valuetext(value) {
   return `${value}`;
 }
+
+
+
                
 
 function HospitalList(props) {
+
+  const [ModalOpen,setModalOpen]=React.useState(false)
+const ModalClickOpen=()=>{
+    setModalOpen(true)
+}
+const ModalClickClose=()=>{
+  setModalOpen(false)
+}
+
   let history = useHistory();
 
   function Bookingdetails(){
@@ -102,7 +116,8 @@ function HospitalList(props) {
                 <Labelbox type="datepicker" />
                 </div>
                 <div className="date_pic_childdiv">
-                    <Labelbox type="datepicker"/></div></div>
+                    <Labelbox type="datepicker"/></div>
+            </div>
 
            </div>
           <div className="second_head">  
@@ -118,7 +133,7 @@ function HospitalList(props) {
         
             <div className="second_div">
                <div className="second_details">
-                  <div className="avatar_div"> <img src={avatar} /></div>
+                  <div className="avatar_div"> <img src={avatar}onClick={ModalClickOpen}  /></div>
                    <div className="hos_details">
                      <div className="detail_1">Mayo Clinic Hospital</div>
                      <div className="detail_2">Shaab sea View</div>
@@ -162,7 +177,7 @@ function HospitalList(props) {
 
             <div className="second_div">
                 <div className="second_details">
-                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="avatar_div"> <img src={avatar} onClick={ModalClickOpen} /></div>
                      <div className="hos_details">
                        <div className="detail_1">Royal Hospital</div>
                        <div className="detail_2">Shalmiya</div>
@@ -205,7 +220,23 @@ function HospitalList(props) {
                 </div>
             </div>
            </div>
+
+           <Modal
+                  title="Mayo Clinic Hospital"
+                  visible={ModalOpen}
+                  footer={false}
+                  size={"lg"}
+                  {...props}
+                  centered
+                  className="confirm_modal"
+                  onCancel={ModalClickClose}
+                 >
+                  
+                     < HospitalOffer/>
+    
+                 </Modal>
         </div> 
+
     ) 
 }
 export default HospitalList;

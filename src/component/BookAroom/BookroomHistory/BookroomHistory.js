@@ -1,5 +1,5 @@
 import React from 'react'
-import Nurse from '../../../images/nurse.png'
+import Hospital from '../../../images/BookaRoom/room_img.png';
 import './BookroomHistory.css'
 import {Modal} from 'antd';
 import BookCreateReview from "./BookCreateReview";
@@ -67,7 +67,7 @@ export default function BookroomHistory(props){
                 <div className="bookhistory_list_parent">
                     <div className="bookhistory_list_item">
                         <div className="book_room_div">  
-                        <img src={Nurse} className="book_room_img"/>
+                        <img src={Hospital} className="book_room_img"/>
                         <div className="book_text_div">
                             <p className="book_h_name">{data.name}</p>
                             <p className="loaction_align">{data.location}<span className="dot_align" onClick={ModalClickOpen}>...</span></p>
