@@ -1,0 +1,93 @@
+.diet_his_parent{
+    box-shadow: 0px 0px 4px 1px #00000029;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0px 7%;
+}
+.diet_srch_parent{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    width: 100%;
+}
+
+// meal plans css
+.meal_plan_head{
+    width: 100%;
+    box-shadow: 0px 3px 8px #00000029;
+    border-radius: 50px;
+    text-align: center;
+    padding: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #83AF40;
+    margin-bottom: 7%;
+}
+.meal_names_div{
+    width:30%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #83AF40;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+.parent_meals_paper{
+   display: flex;
+   width:100%;
+   height:110px;
+   margin-bottom: 15px;
+   border-radius: 4px !important;
+   cursor: pointer;
+   box-shadow: 0px 0px 4px 1px #00000029 !important;  
+}
+.meal_name_snddiv{
+    width:70%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 25px;
+}
+.parent_meals_paper p{
+    margin-bottom: 4px !important;
+}
+.d_week_txt{
+font-weight: 500;
+font-size: 13px;
+text-align: center;
+}
+.m_head_n{
+    font-weight: 500;
+    font-size: 15px;
+    color:  #707070;
+}
+.m_veraty_names{
+    color:#707070;
+}
+.parent_div_mplan{
+    overflow-y: scroll;
+    padding-right: 5px;
+    height: 450px;
+}
+.part_snd_mplans{
+    padding-left: 2%;
+
+}
+// modal css
+.diet_planmodal .ant-modal-content{
+    width:650px !important;
+    border-radius: 10px !important;
+    padding:3% 0px 3% 0px !important;
+}
+.diet_planmodal .ant-modal-close{
+    top:-15px !important;
+    right:-7px !important;
+}
+@media only screen and (max-width: 959px) {
+.meal_plan_head{
+    margin-top: 20px;
+}
+}

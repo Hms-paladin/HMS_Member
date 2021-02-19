@@ -1,0 +1,23 @@
+.hospital_head{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+.hos_name_haed{
+    font-size: 23px;
+    font-weight: 500;
+    font-family: sans-serif;
+    margin: 0px;
+  
+}
+.loac_ion{
+    margin-top: 6px;
+    margin-left: 10px;
+}
+.loac_ion svg path{
+    color: red;
+}
+.modal_head{
+    font-weight: 600;
+    font-size: 15px;
+}

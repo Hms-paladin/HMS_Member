@@ -1,0 +1,88 @@
+.d_head{
+    color:#83AF40;
+    font-size: 23px;
+}
+.d_weeks{
+    font-size: 12px;
+}
+.d_plan_overview p{
+    margin-bottom: 5px !important;
+    font-weight: 500;
+}
+.d_amt{
+    color:#333;
+    font-weight: bold !important;
+    font-size: 15px;
+}
+.d_namehead{
+    color:#666666;
+}
+.d_names{
+    color: #B7B7B7;
+}
+.d_cancel{
+    border-radius: 50px !important;
+    min-width: 45% !important;
+    padding: 4px !important;
+    font-size: 13px !important;
+    text-transform: none !important;
+    border: 1px solid #333333 !important;
+    margin-right: 15px !important;
+}
+.d_confirm{
+    border-radius: 50px !important;
+    min-width: 45% !important;
+    padding: 4px !important;
+    color: #fff !important;
+    font-size: 13px !important;
+    background-color: #83AF40 !important;
+    text-transform: none !important
+}
+.diet_btns{
+    text-align: center;
+    margin-top: 10px;
+}
+.diet_filter{
+    background-color: #F0F0F0;
+    padding:10px;
+    border-radius: 5px;
+}
+.diet_filter label{
+    margin-bottom: 20px !important;
+}
+.fil_cat{
+    color:#333;
+    font-size: 13px;
+    font-weight: 500;
+}
+.filter_dplans{
+background-color: #fff;
+border-radius: 50px;
+font-size: 13px;
+padding: 2px 8px;
+color: #FF6D26;
+margin-right: 10px;
+border:0.5px solid #ff6d2663;
+cursor: pointer;
+}
+.salt_dplans{
+    background-color: #fff;
+    border-radius: 50px;
+    font-size: 13px;
+    padding: 2px 8px;
+    color: #327BCE;
+    margin-right: 10px;
+    border:0.5px solid #327BCE;
+    cursor: pointer; 
+}
+.spice_dplans{
+    background-color: #fff;
+    border-radius: 50px;
+    font-size: 13px;
+    padding: 2px 8px;
+    color: #D41461;
+    margin-right: 10px;
+    border:0.5px solid #D41461;
+    cursor: pointer; 
+}
+// modal css

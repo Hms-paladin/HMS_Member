@@ -193,6 +193,13 @@ margin:0px !important;
 .card_move{
 cursor:pointer;
 }
+.PaymentMethod .ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+  height:37px !important;
+  padding: 3px 11px !important;
+}
+.PaymentMethod .ant-select{
+  font-size: 12px !important;
+}
 .PaymentMethod  .ant-tabs-nav-wrap{
   margin-bottom: 0px !important;
 }

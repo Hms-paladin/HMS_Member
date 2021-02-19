@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
 import Nurse_2 from '../../../images/lab.png'
 import search from '../../../images/search.svg'
+import Sort from '../../../images/sort.svg'
 import Percentage from '../../../images/percentage.svg'
 import {NavLink} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
@@ -28,6 +29,9 @@ export default function Nursehistory(){
             gender:"Female"
         }
     ]
+    const changeDynamic=(data)=>{
+        
+    }
     const NurseHistory=[
         {
             id:1,
@@ -53,7 +57,7 @@ export default function Nursehistory(){
         }
     ]
     return(
-    <Grid container className="nusre_hisparent" spacing={3}>
+    <Grid container className="nusre_hisparent">
         <Grid item xs={6} md={4} className="d">
             <div className="filter_fstdiv">
                 <div className="fli_head">Filter</div>
@@ -65,9 +69,11 @@ export default function Nursehistory(){
                 <div className="mnth_cost"><label className="mnth_samt">1 Year</label><label className="mnth_samt">25 Years</label></div>
                 <div style={{marginTop:"15px"}}><Labelbox type="select" labelname="Nationality" errmsg={errmsg}/></div>
                 <div className="mnth_cost" style={{marginTop:"15px"}}>
-                    <Labelbox type="select" labelname="Gender" errmsg={errmsg}
-                    value={Gender.gender}
-                    />
+                   <div className="l_gender_div"><Labelbox type="select" labelname="Gender" errmsg={errmsg}
+                   onChange={(data)=>changeDynamic(data,"gender")}
+                    // value={Gender.gender}
+                    // optionValue={Gender}
+                    /></div>
                     <div><div className="fli">Duty Hours</div> <Switch checked={toggleOpen} onChange={settoggleOpen} unCheckedChildren={settoggleOpen&&"8 Hrs"} checkedChildren={toggleOpen&&"12 Hrs"}/></div>
                 </div>
             </div>
@@ -78,10 +84,15 @@ export default function Nursehistory(){
             </div>
 
         </Grid>
-        <Grid item xs={12} md={8} spacing={2}>
+        <Grid item xs={12} md={8} className="snd_part_nurhis">
      
         <div style={{position:"relative"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"7px",right:"17px"}}/></div>
-        <div className="nurse_dts"><div><label className="nur_age">Age</label><label>Experience</label></div><div><label className="nur_age">Cost</label><label>Rating</label></div></div>
+        <div className="nurse_dts"><div>
+            <span  className="nur_age"><label>Age</label><img src={Sort} className="nur_his_sort"/></span>
+            <span  className="nur_age"><label>Experience</label><img src={Sort}  className="nur_his_sort"/></span></div>
+            <div><span className="nur_age"><label>Cost</label><img src={Sort}  className="nur_his_sort"/></span>
+            <span className="nur_age"><label>Rating</label><img src={Sort}  className="nur_his_sort"/></span></div>
+       </div>
         {NurseHistory.map((data,index)=>
          <Paper className="nurse_list_div">
            <div style={{width:"22%"}}><div style={{width:"100%",height:"100%",display:"flex"}}><div style={{width:"150px"}}><div style={{width:"100%",height:"100%"}}>{data.img}</div></div></div></div>
