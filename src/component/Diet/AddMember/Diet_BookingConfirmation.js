@@ -85,10 +85,10 @@ export default function BookingConfirmation(props){
       <FormGroup row>
         <Label for="exampleEmail" sm={6} >Delivery Address</Label>
         <Col sm={6}>
-        {editOpen===false?<label className="Nurse_form_de">Jabriya</label>
-           :<Labelbox type="text"/>}
-         {editOpen===false?<EditIcon className="edit_nur_name" onClick={EditClick}/>:
-          <SaveIcon className="edit_nur_name" onClick={SaveClick}/>}
+        <label className="Nurse_form_de">Jabriya</label>
+        
+         <EditIcon className="edit_nur_name"/>
+        
         </Col>
       </FormGroup>
       <FormGroup row>

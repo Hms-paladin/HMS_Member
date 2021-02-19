@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Button from  '@material-ui/core/Button'
 import {Modal} from 'antd'
+import {NavLink} from 'react-router-dom'
 import MenuListModal from './MenuListModal'
 import './MealPlanModal.scss'
 export default function MealPlanModal(props){
@@ -34,7 +35,7 @@ export default function MealPlanModal(props){
                       <p className="d_names">Brocolli,Cabbages,Cauliflower,ollives,Spinach,Cucumber</p>
                       <div className="diet_btns">
                       <Button className="d_cancel" onClick={()=>props.CloseModal(false)}>Cancel</Button>
-                      <Button className="d_confirm" onClick={OpenModal}>Confirm</Button>
+                      <NavLink to="/goalweight"><Button className="d_confirm">Confirm</Button></NavLink>
                       </div>
                   </div>
               </Grid>  
