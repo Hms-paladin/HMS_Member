@@ -50,7 +50,7 @@ import Feed from '../Doctor_Appointment/Feed/feed'
 import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking";
 import Myappointments from '../Doctor_Appointment/Myappointments/myappointments'
 import History from "../Doctor_Appointment/Myappointments/history";
-import Feed from '../Doctor_Appointment/Feed/feed';
+// import Feed from '../Doctor_Appointment/Feed/feed';
 
 // Book a Room
 import HospitalList from "../BookAroom/HospitalList/HospitalList";
@@ -181,15 +181,11 @@ function HeaderLayout (props) {
                         <Route path="/doctorEdit" component={Editprofile} exact/>
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
-<<<<<<< HEAD
                         <Route path="/doctorbooking" component={Doctorbooking} exact/>
                         <Route path="/appointments" component={Myappointments} exact/>
                         <Route path="/history" component={History} exact/>
 
 
-=======
-                        {/* <Route path="/doctorbooking" component={Doctorbooking} exact/> */}
->>>>>>> 69906b28daa596ac65ecd4df6f8653179027b93b
 
 
                         {/* Book a Room */}
