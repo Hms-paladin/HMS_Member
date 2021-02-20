@@ -17,8 +17,8 @@
 
 }
 .appointment_icons img{
-    width: 30px;
-   height:30px;
+    width: 33px;
+   height:33px;
    fill:gray;
    margin:0px 5px;
    cursor: pointer;
@@ -32,7 +32,7 @@
      border-radius: 10px;
      width: 100%;
      box-shadow: 0px 0px 4px 1px #ccc;
-     padding: 10px;
+     padding: 20px;
      margin: 15px 0px;
  }
  .listpaperflex{
@@ -115,4 +115,39 @@
     background-color: #ddd;
     border-radius: 30px;
     margin: 0px 15px;
+}
+.advfilterflex{
+    display: flex;
+    justify-content: space-between;
+}
+.flexr1{
+    width: 25%;
+    
+}
+.advfilterflex .applybtn{
+    color: white;
+    background-color: #83AF40 !important;
+    padding: 3px 15px;
+    margin-top: 10px;
+}
+.applybtndiv{
+display: flex;
+align-items: center;
+}
+.advfilterhead{
+    font-size: 16px;
+    font-weight: 500;
+margin-bottom: 10px;
+}
+.presflexdiv{
+    display: flex;
+    justify-content: space-between;
+}
+.presflex{
+width: 25%;
+font-weight: 500;
+}
+.presflexhead{
+    color: gray;
+    margin-bottom: 5px;
 }

@@ -46,16 +46,11 @@ import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js"
 import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
-<<<<<<< HEAD
 import Feed from '../Doctor_Appointment/Feed/feed'
 import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking";
 import Myappointments from '../Doctor_Appointment/Myappointments/myappointments'
 import History from "../Doctor_Appointment/Myappointments/history";
 // import Feed from '../Doctor_Appointment/Feed/feed';
-=======
-import Feed from '../Doctor_Appointment/Feed/feed';
-import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking"
->>>>>>> 2bdcd28b2b481925316b50a29bc11b197c4fe945
 
 // Book a Room
 import HospitalList from "../BookAroom/HospitalList/HospitalList";
