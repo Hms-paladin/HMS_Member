@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import './doctorbooking.scss'
+import './doctorbookingreschedule.scss'
 import AliceCarousel from 'react-alice-carousel';
 import Nurse from "../../../images/nurse.png";
 import Report from "../../../images/report.png";
@@ -34,6 +34,7 @@ import clock from '../../../images/clock.svg'
 import location from '../../../images/location.svg'
 import avatar from '../../../images/us.svg'
 import {Modal} from 'antd'
+import nurse from '../../../images/trainer.png'
 
 
 
@@ -116,7 +117,7 @@ const images = [
  
 
   
-function Doctorbooking(props) {
+function Doctorbookingreschedule(props) {
     const [showForm,setShowForm] = useState(false)
     const openForm = () => {
       setShowForm(true)
@@ -204,6 +205,7 @@ return(
 
                 </div>
                 <div style={{fontWeight:'500',color:"grey"}}>Hannah is one of the best doctor.We had great experience</div>
+                <div className="reschedulefix"> <div>Select Date</div><div className="reschedulepicker"><Labelbox type="datepicker"/></div></div>
                 <div className="consultingdiv"><div className="consultingtype"><Labelbox labelname="Select service"  type="select" /></div>
                 <div className="durationdiv"><div>Duration</div><div style={{fontSize:"18px"}}>0h 30mins</div></div>
                 </div>
@@ -300,10 +302,10 @@ return(
                   <div className="second">Salmiyah</div>
 
                 </div>
-                <div className="bookbtnflex"><Button onClick={ModalOpenClick}>Book</Button></div>
+                <div className="bookbtnflex"><Button onClick={ModalOpenClick}>Reschedule</Button></div>
                 </div>}
                 <Modal
-        title={<div className="bookconfirm">Booking Confirmation</div>}
+        title={<div className="bookconfirm">Reschedule Confirmation</div>}
         visible={modalOpen}
         footer={false}
         onCancel={ModalCloseClick}
@@ -312,7 +314,7 @@ return(
         // style={{width:"800px"}}
        >
         <div className="bookconfirmmodal">
-          <div className="useravatar"><img src={avatar}/><span>Dr.Farah</span></div>
+          <div className="useravatar"><img src={nurse}/><span>Dr.Farah</span></div>
           <div className="bookconfirmflex">
             <div className="bookconfirmflexrow1">
               <div className="bookconfirmflexblock1"><div className="blockheads">Member Name</div><div>Hannah</div></div>
@@ -327,11 +329,16 @@ return(
               <div className="bookconfirmflexblock1"><div className="blockheads">Location</div><div>Salmiyah </div></div>
               <div className="bookconfirmflexblock1"><div className="blockheads"> Cost(KWD)</div><div>400 KWD</div></div>
             </div>
+            <div className="bookconfirmflexrow1">
+              <div className="bookconfirmflexblock1"><div className="blockheads">Reschedule Date</div><div>28 Nov 2021</div></div>
+              <div className="bookconfirmflexblock1"><div className="blockheads">Reschedule Time</div><div>11:00AM</div></div>
+         </div>
           </div>
-
+          
 
         </div>
-        <div className="cnfrmbtn"> <NavLink to="paymentmethod"><Button>Confirm</Button></NavLink></div>
+        
+        <div className="cnfrmbtn"> <NavLink to="history"><Button>Confirm</Button></NavLink></div>
 
        </Modal>
             </div>
@@ -340,4 +347,4 @@ return(
     )
 
 }
-export default Doctorbooking;
+export default Doctorbookingreschedule;

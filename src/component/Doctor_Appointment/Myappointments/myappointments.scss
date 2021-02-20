@@ -146,8 +146,130 @@ margin-bottom: 10px;
 .presflex{
 width: 25%;
 font-weight: 500;
+margin-bottom: 30px;
+padding: 24px;
 }
 .presflexhead{
     color: gray;
     margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+.dosagediv{
+    // height: 300px;
+    width: 100%;
+    background-color: #ddd;
+    padding:  15px 24px;
+}
+.prescription .ant-modal-body{
+    padding: 0px;
+}
+.dosagehead{
+    display: flex;
+    
+}
+.medicinename{
+    width: 50%;
+    font-weight: 500;
+}
+.dosagetime{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.dosagetime div{
+    width: 20%;
+    color: #83AF40;
+    font-weight: 500;
+    text-align: center;
+}
+.medicinelevel{
+    width: 50%;
+
+}
+.medicinelevel div{
+    width: 90%;
+    background-color: #fff;
+    padding: 3px;
+    border-radius: 3px;
+    font-weight: 500;
+    color: gray;
+}
+.dosagelevel{
+    display: flex;
+    margin: 10px 0px;
+}
+.dosagenumerics{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.dosagenumerics div{
+    width: 20%;
+    background-color: #fff;
+    padding: 3px;
+    border-radius: 3px;
+    font-weight: 500;
+    color: gray;
+    text-align: center;
+}
+.paracetomaldesc{
+    width: 100%;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: 500;
+    color: gray;
+   
+}
+.reviewflex{
+    display: flex;
+    justify-content: center;
+}
+.reviewimg_cont{
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 4px 1px #ccc;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 10px;
+    font-weight: 500;
+}
+.reviewimg_cont img{
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+}
+.starratingflex{
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+    padding: 5px;
+}
+.starratingflex .ant-rate{
+    color: #83AF40;
+    font-size: 30px;
+}
+.reviewsubmit{
+    display: flex;
+    justify-content: center;
+}
+.reviewsubmit Button{
+    background-color: #83AF40;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: none;
+    padding: 5px 80px;
+   
+}
+.reviewsubmit Button:hover{
+    background-color: #83AF40;
 }

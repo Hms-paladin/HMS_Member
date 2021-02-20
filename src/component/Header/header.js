@@ -64,6 +64,7 @@ import PaymentMethodBook from "../BookAroom/HospitalList/PaymentMethodBook";
 import ProceedScreen from "../BookAroom/HospitalList/proceedScreen/ProceedScreen";
 import ConfirmPage from "../BookAroom/BookroomBooking/ConfirmPage";
 import ProceedReschedule from "../BookAroom/BookroomBooking/proceedReschedule/ProceedReschedule";
+import Doctorbookingreschedule from "../Doctor_Appointment/Doctorbooking Rechedule/doctorbookingreschedule";
 
 
 var hashHistory = require('react-router-redux')
@@ -190,6 +191,11 @@ function HeaderLayout (props) {
                         <Route path="/doctorbooking" component={Doctorbooking} exact/>
                         <Route path="/appointments" component={Myappointments} exact/>
                         <Route path="/history" component={History} exact/>
+                        <Route path="/paymentreceive" component={PaymentReceived} exact/>
+                        <Route path="/paymentmethod" component={PaymentMethod} exact/>
+                        <Route path="/doctorbookingreschedule" component={Doctorbookingreschedule} exact/>
+
+                        
 
 
 

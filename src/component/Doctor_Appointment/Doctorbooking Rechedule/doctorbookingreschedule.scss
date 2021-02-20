@@ -507,3 +507,25 @@ cursor: pointer;
 .cnfrmbtn Button:hover{
     background-color: #83af40;
 }
+.reschedulefix{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #ccc;
+    font-weight: 500;
+}
+.reschedulefix .formdiv .MuiFormControl-marginNormal{
+    border: none !important;
+}
+.reschedulefix .formdiv .MuiInputBase-input{
+    color: rgba(0, 0, 0, 0.54) !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+.reschedulepicker{
+    width: 150px;
+}
