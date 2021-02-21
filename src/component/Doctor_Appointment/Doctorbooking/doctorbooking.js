@@ -17,6 +17,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Rating from '@material-ui/lab/Rating';
 import PropTypes from 'prop-types';
 import star from '../../../images/star.png'
+import {NavLink} from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactSVG } from "react-svg";
@@ -26,6 +27,19 @@ import Labelbox from "../../../helpers/labelbox/labelbox";
 import { Button } from "@material-ui/core";
 import plus from '../../../images/plus.svg'
 import close from '../../../images/cancel.svg'
+import calendar from '../../../images/calendar2.svg'
+import edit from '../../../images/edit.svg'
+import clinic from '../../../images/clinic.svg'
+import clock from '../../../images/clock.svg'
+import location from '../../../images/location.svg'
+import avatar from '../../../images/us.svg'
+import {Modal} from 'antd'
+
+
+
+
+
+
 
 
 const images = [
@@ -110,7 +124,29 @@ function Doctorbooking(props) {
   const closeForm = () => {
     setShowForm(false)
 }
-    return(  
+const [showminiForm,setShowminiForm] = useState(false)
+    const openminiForm = () => {
+      setShowminiForm(true)
+  }
+  const closeminiForm = () => {
+    setShowminiForm(false)
+}
+const [addmemberForm,setaddmemberForm] = useState(false)
+    const openaddmemberForm = () => {
+      setaddmemberForm(true)
+  }
+  const closeaddmemberForm = () => {
+    setaddmemberForm(false)
+}
+const [modalOpen,setmodalOpen]=React.useState(false)
+const ModalOpenClick=()=>{
+   setmodalOpen(true)
+}
+const ModalCloseClick=()=>{
+   setmodalOpen(false)
+}
+    
+return(  
         <div className="doctorbooking_layout">
             
             <div className="flex1">
@@ -215,13 +251,89 @@ function Doctorbooking(props) {
                         <img src={Nurse}/>
                         <div>Jethro</div>
                     </div>
-                    <div className="newfamilyphoto_div">
+                    <div className="newfamilyphoto_div" onClick={openaddmemberForm}>
                         <ReactSVG className="plussvg" src={plus}/>
                         <div className="new">New</div>
                     </div>
                 </div>
+               {addmemberForm && <div className="addmember_mini">
+                  <div className="avatar_uploaderdiv"><div className="avatar_uploader"><ReactSVG src={avatar}/> </div><div>Add Photo</div></div>
+                  <div><Labelbox type="text"labelname="Name"/></div>
+                  <div className="formflex"><Labelbox type="select"labelname="Gender"/><Labelbox type="text"labelname="Date of Birth"/></div>
+                  <div><Labelbox type="text"labelname="Mobile number"/></div>
+                  <div><Labelbox type="select"labelname="Relationship"/></div>
+                  <div className="heightformflex"><Labelbox type="text"labelname="Height"/><span>cms</span><Labelbox type="text"labelname="Weight"/><span>kgs</span></div>
+
+                  <div className="avatar_uploaderdiv_btns"><Button className="cancel" onClick={closeaddmemberForm}>Cancel</Button><Button className="submit"onClick={closeaddmemberForm}>Submit</Button></div>
+                </div> }
+
+                <div className="mini_formrow">
+                  <div className="first"><ReactSVG src={avatar}/>Member Name</div>
+                  <div className="second nameedit">Dalal  {!showminiForm &&<ReactSVG className="edit" src={edit} onClick={openminiForm}/>}
+                  </div>
+                 {showminiForm && <div className="nameedit_form arrow-top">
+                   <div> <Labelbox labelname="Member Name"  type="text" /></div>
+                   <div className="miniform_nestedrow">  
+                   <div><Labelbox labelname="Age"  type="number" /> </div>
+                   <div> <Labelbox labelname="Gender"  type="select" /> </div>
+                   </div>
+                   <div className="minifrombtn"><span className="cancel" onClick={closeminiForm}>Cancel</span><span className="save" onClick={closeminiForm}>Save</span></div>
+
+                  </div>}
+                  
+                   
+                </div>
+                <div className="mini_formrow">
+                  <div className="first"><ReactSVG src={calendar}/>Date</div>
+                  <div className="second">27 Dec 2020</div>
+
+                </div><div className="mini_formrow">
+                  <div className="first"><ReactSVG src={clock}/>Time</div>
+                  <div className="second">01:00PM,01:30PM</div>
+
+                </div><div className="mini_formrow">
+                  <div className="first"><ReactSVG src={clinic}/>Clinic</div>
+                  <div className="second">Excel polyclinic</div>
+
+                </div><div className="mini_formrow">
+                  <div className="first"><ReactSVG src={location}/>Location</div>
+                  <div className="second">Salmiyah</div>
+
+                </div>
+                <div className="bookbtnflex"><Button onClick={ModalOpenClick}>Book</Button></div>
                 </div>}
-            
+                <Modal
+        title={<div className="bookconfirm">Booking Confirmation</div>}
+        visible={modalOpen}
+        footer={false}
+        onCancel={ModalCloseClick}
+        className="confirm_modal border_modal"
+        // maxWidth={"md"}
+        // style={{width:"800px"}}
+       >
+        <div className="bookconfirmmodal">
+          <div className="useravatar"><img src={avatar}/><span>Dr.Farah</span></div>
+          <div className="bookconfirmflex">
+            <div className="bookconfirmflexrow1">
+              <div className="bookconfirmflexblock1"><div className="blockheads">Member Name</div><div>Hannah</div></div>
+              <div className="bookconfirmflexblock1"><div className="blockheads">Date</div><div>12 Dec 2021</div></div>
+              <div className="bookconfirmflexblock1"><div className="blockheads">Time</div><div>10:00am</div></div>
+              <div className="bookconfirmflexblock1"><div className="blockheads">Appointment Type</div><div>Online</div></div>
+
+            </div>
+            <div className="bookconfirmflexrow2">
+            <div className="bookconfirmflexblock2">
+              <div className="blockheads">Clinic</div><div>Excel Polyclinic Dentistry</div></div>
+              <div className="bookconfirmflexblock1"><div className="blockheads">Location</div><div>Salmiyah </div></div>
+              <div className="bookconfirmflexblock1"><div className="blockheads"> Cost(KWD)</div><div>400 KWD</div></div>
+            </div>
+          </div>
+
+
+        </div>
+        <div className="cnfrmbtn"> <NavLink to="paymentmethod"><Button>Confirm</Button></NavLink></div>
+
+       </Modal>
             </div>
 
         </div>

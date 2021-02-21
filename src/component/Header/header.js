@@ -7,8 +7,8 @@ import { Dropdown } from 'react-bootstrap'
 import { Input } from 'antd';
 import "./header.scss";
 import Button from '@material-ui/core/Button'
-
-import { push } from 'connected-react-router';
+import Dialog from '@material-ui/core/Dialog';
+import Login from '../Login/login'
 import Dashboard from "../Dashboard/dashboard.js";
 import { BrowserRouter as Router, Switch, Route,useHistory,useRouteMatch} from "react-router-dom";
 
@@ -46,7 +46,11 @@ import PregnantMotherProfile from "../Pregnant_Mother/PregnantMother_profile.js"
 import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
-import Feed from '../Doctor_Appointment/Feed/feed';
+import Feed from '../Doctor_Appointment/Feed/feed'
+import Myappointments from '../Doctor_Appointment/Myappointments/myappointments'
+import History from "../Doctor_Appointment/Myappointments/history";
+// import Feed from '../Doctor_Appointment/Feed/feed';
+import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking"
 
 // Book a Room
 import HospitalList from "../BookAroom/HospitalList/HospitalList";
@@ -54,6 +58,13 @@ import HospitalList from "../BookAroom/HospitalList/HospitalList";
 import BookingDetails from "../BookAroom/BookroomBooking/BookingDetails";
 import BookroomHistory from "../BookAroom/BookroomHistory/BookroomHistory";
 import BookingReschedule from "../BookAroom/BookroomBooking/BookingReschedule";
+import PaymentReceived_Book from "../BookAroom/PaymentReceived/PaymentReceived";
+import ConfirmBooking from "../BookAroom/HospitalList/ConfirmBooking";
+import PaymentMethodBook from "../BookAroom/HospitalList/PaymentMethodBook";
+import ProceedScreen from "../BookAroom/HospitalList/proceedScreen/ProceedScreen";
+import ConfirmPage from "../BookAroom/BookroomBooking/ConfirmPage";
+import ProceedReschedule from "../BookAroom/BookroomBooking/proceedReschedule/ProceedReschedule";
+
 
 var hashHistory = require('react-router-redux')
 
@@ -67,7 +78,7 @@ const onSearch = value => console.log(value);
 
 function HeaderLayout (props) {
   // const [url,seturl]=React.useState(false)
-   const { url, path } = useRouteMatch();
+  //  const { url, path } = useRouteMatch();
   let history = useHistory();
     const Bookings=(url)=>{
       window.location.reload()
@@ -76,13 +87,24 @@ function HeaderLayout (props) {
       }
     }
     const HistoryPush=(url)=>{
+      history.push(url);
       window.location.reload()
-       history.push(url);
+       
       // alert(url)
  
     
       }
-      
+      // login modal open function
+      const [open, setOpen] = React.useState(false);
+      const [maxWidth, setMaxWidth] = React.useState('xs');
+      const [fullWidth, setFullWidth] = React.useState(true);
+      const handleClickOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
      
      
        
@@ -94,7 +116,7 @@ function HeaderLayout (props) {
                 <img onClick={()=>HistoryPush("/")} className="HMSlogo" src={Logo} />
             {/* </div> */}
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
-                <Menu.Item key="1" onClick={()=>HistoryPush(url,"/")} ><div>Home</div></Menu.Item>
+                <Menu.Item key="1" onClick={()=>HistoryPush("/")} ><div>Home</div></Menu.Item>
                 <Menu.Item key="2">Shopping</Menu.Item>
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
@@ -114,29 +136,40 @@ function HeaderLayout (props) {
 
      </Dropdown.Toggle>
 
-  <Dropdown.Menu >
-    {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item> */}
-    <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush(url,"/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
+  {/* <Dropdown.Menu >
+    <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item> 
+    <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush("/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
-  </Dropdown.Menu>
+  </Dropdown.Menu> */}
 </Dropdown>
 
-<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={(url)=>Bookings(url,path)}/>
+{/* <img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={()=>Bookings()}/> */}
 
 
-            <Dropdown className="avatar_cont">
+            {/* <Dropdown className="avatar_cont">
   <Dropdown.Toggle  id="dropdown-basic">
       <img src={Logo}/>
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
     <Dropdown.Item onClick={()=>HistoryPush("/profile")} >Profile</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">My Appointments</Dropdown.Item>
+    <Dropdown.Item href="#/action-2" onClick={()=>HistoryPush("/appointments")}>My Appointments</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
 
   </Dropdown.Menu>
-</Dropdown>
+</Dropdown> */}
+<div className="login_btndiv"><Button className="login_btn" onClick={handleClickOpen}>Login</Button><Button className="signup_btn">Sign Up</Button></div>
+     <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth={maxWidth}
+        fullWidth={fullWidth}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <Login handleClose={handleClose}/>
+        </Dialog>
             </Header>
 
             <Content className="site-layout" style={{ marginTop: 64 }}>
@@ -185,7 +218,11 @@ function HeaderLayout (props) {
                         <Route path="/doctorEdit" component={Editprofile} exact/>
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
-                        {/* <Route path="/doctorbooking" component={Doctorbooking} exact/> */}
+                        <Route path="/doctorbooking" component={Doctorbooking} exact/>
+                        <Route path="/appointments" component={Myappointments} exact/>
+                        <Route path="/history" component={History} exact/>
+
+
 
 
                         {/* Book a Room */}
@@ -194,6 +231,12 @@ function HeaderLayout (props) {
                         <Route path ="/bookingdetails" component={BookingDetails}/>
                         <Route path="/bookroomhistory" component={BookroomHistory}/>
                         <Route path="/reschedulepage" component={BookingReschedule}/>
+                        <Route path="/confirmhospital" component={ConfirmBooking}/>
+                        <Route path = "/paymentmethodbook" component={PaymentMethodBook}/>
+                        <Route path="/paymentreceived" component={PaymentReceived_Book}/>
+                        <Route path = "/proceedpage" component = {ProceedScreen}/>
+                        <Route path = "/confirmpage" component = {ConfirmPage} />
+                        <Route path="/resheduleproceed" component = {ProceedReschedule}/>
 
 
                     </Switch>

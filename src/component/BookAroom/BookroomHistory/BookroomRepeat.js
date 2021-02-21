@@ -3,6 +3,7 @@ import './HospitalViewModal.css';
 import RoomIcon from '@material-ui/icons/Room';
 import Divider from '@material-ui/core/Divider';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import Pin from "../../../images/pin.png"
 
 
 
@@ -12,9 +13,9 @@ export default function BookroomRepeat(){
         <div className="hospital_head">
             <div style={{display:'flex'}}>
                 <p className="hos_name_haed">Mayo Clinic Hospital</p>
-                <RoomIcon className="loac_ion"/>
+                <img src={Pin} className="loac_ion"/>
                 </div>
-                <span style={{color:'grey', fontSize:'15px', marginRight:'25px'}}>Shaab Sea View</span>
+                <span style={{color:'grey', fontSize:'15px', marginRight:'25px'}}>Shaab Sea View<span className="dot_align">...</span></span>
                 </div>
                 <Divider style={{margin:'8px'}}/> 
                 <Form>

@@ -11,12 +11,12 @@
   
 }
 .loac_ion{
-    margin-top: 6px;
+    margin-top: 10px;
     margin-left: 10px;
+    width: 20px;
+    height: 20px;
 }
-.loac_ion svg path{
-    color: red;
-}
+
 .modal_head{
     font-weight: 600;
     font-size: 15px;

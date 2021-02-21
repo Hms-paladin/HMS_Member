@@ -93,8 +93,30 @@ export default function MenuListModal(props){
                         </div>
                     </TabPane>
                     <TabPane tab="Lunch" key="2">
+                    <div className="b_fast_container" >
+                        {images.map((data,index)=>
+                        <div className="b_fast_imgparent_div" onClick={()=>TickClick(data.id)} key={index}>
+                            <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
+                           <div className="bottom_labels_d">
+                               <label className="b_fast_name">{data.name}</label>
+                               {ok?<CheckIcon className="b_fast_tick"/>:""}
+                            </div>
+                        </div>
+                        )}
+                        </div>
                     </TabPane>
                     <TabPane tab="Dinner" key="3">
+                    <div className="b_fast_container" >
+                        {images.map((data,index)=>
+                        <div className="b_fast_imgparent_div" onClick={()=>TickClick(data.id)} key={index}>
+                            <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
+                           <div className="bottom_labels_d">
+                               <label className="b_fast_name">{data.name}</label>
+                               {ok?<CheckIcon className="b_fast_tick"/>:""}
+                            </div>
+                        </div>
+                        )}
+                        </div>
                     </TabPane>
                     </Tabs>
                 

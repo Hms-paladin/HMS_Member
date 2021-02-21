@@ -31,6 +31,7 @@
     "react-google-maps": "^9.4.5",
     "react-grid-gallery": "^0.5.5",
     "react-heart-checkbox": "0.0.4",
+    "react-icons": "^4.2.0",
     "react-image-gallery": "^1.0.8",
     "react-player": "^2.8.2",
     "react-redux": "^7.2.2",
