@@ -14,7 +14,7 @@ export default function VerifyOTP(props){
                 <div className="otp">5</div>
                       ))} 
              </div>     
-             <Button className="verify_btn">Verify</Button>  
+             <Button className="verify_btn" onClick={()=>props.handleClose(false)}>Verify</Button>  
              <div className="resend_time">Resend code in 0:51</div>  
         </div>
     )

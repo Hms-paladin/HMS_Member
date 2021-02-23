@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Layout, Menu } from 'antd';
 import Logo from "../../images/Logo.png";
 import search from "../../images/loupe.png";
@@ -8,11 +8,15 @@ import { Input } from 'antd';
 import "./header.scss";
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog';
-import Login from '../Login/login'
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route,useHistory,useRouteMatch} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,useRouteMatch,path} from "react-router-dom";
 
-
+// login
+import Login from '../Login/login'
+import SignUpForm from '../Login/SignupForm'
+// reports
+import Reports from '../Reports/Reports'
+import download from '../Reports/download'
 // pharmacy
 import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory.js";
 import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
@@ -78,13 +82,16 @@ const onSearch = value => console.log(value);
 
 function HeaderLayout (props) {
   // const [url,seturl]=React.useState(false)
-  //  const { url, path } = useRouteMatch();
+    const {  path } = useRouteMatch();
   let history = useHistory();
-    const Bookings=(url)=>{
-      window.location.reload()
-      if(url==="/labhistory"){
+
+    const Bookings=(data)=>{
+      if(path==="/labhistory"){
         history.push("/bookings")
+        
       }
+      window.location.reload()
+      
     }
     const HistoryPush=(url)=>{
       history.push(url);
@@ -95,15 +102,24 @@ function HeaderLayout (props) {
     
       }
       // login modal open function
-      const [open, setOpen] = React.useState(false);
-      const [maxWidth, setMaxWidth] = React.useState('xs');
-      const [fullWidth, setFullWidth] = React.useState(true);
+      const [open, setOpen] = useState(false);
+      const [signup, setsignup] = useState(false);
+      const [visible,setvisible]=React.useState(false)
       const handleClickOpen = () => {
         setOpen(true);
+        setsignup(false)
+        setvisible(true)
       };
-    
-      const handleClose = () => {
+      const ClickSignUp=()=>{
         setOpen(false);
+        setsignup(true)
+        setvisible(true)
+  
+       }
+      const handleClose = () => {
+         setOpen(false);
+        setvisible(false)
+        setsignup(false)
       };
      
      
@@ -136,15 +152,15 @@ function HeaderLayout (props) {
 
      </Dropdown.Toggle>
 
-  {/* <Dropdown.Menu >
-    <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item> 
+   <Dropdown.Menu >
+    {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item>  */}
     <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush("/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
-  </Dropdown.Menu> */}
+  </Dropdown.Menu> 
 </Dropdown>
 
-{/* <img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={()=>Bookings()}/> */}
+ <img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={(data)=>Bookings(data,path)}/> 
 
 
             {/* <Dropdown className="avatar_cont">
@@ -159,16 +175,18 @@ function HeaderLayout (props) {
 
   </Dropdown.Menu>
 </Dropdown> */}
-<div className="login_btndiv"><Button className="login_btn" onClick={handleClickOpen}>Login</Button><Button className="signup_btn">Sign Up</Button></div>
+<div className="login_btndiv"><Button className="login_btn" onClick={handleClickOpen}>Login</Button><Button className="signup_btn" onClick={ClickSignUp}>Sign Up</Button></div>
      <Dialog
-        open={open}
+        open={visible}
         onClose={handleClose}
-        maxWidth={maxWidth}
-        fullWidth={fullWidth}
+        maxWidth={"xs"}
+        fullWidth={true}
+        className={signup&&"signup_modal"}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <Login handleClose={handleClose}/>
+        {open?<Login handleClose={handleClose}/>:
+        signup?<SignUpForm handleClose={handleClose}/>:null}
         </Dialog>
             </Header>
 
@@ -180,10 +198,11 @@ function HeaderLayout (props) {
                 {/* <Editprofile/> */}
 
                 <Router history={hashHistory} basename="HmsMember/?/">
-                        
-                    <Switch>
+                      
+                    <Switch location={props.location}>
                         {/* <Route to="/dashboard" component={Dashboard} exact />
                         <Route path="/" component={Dashboard} exact/> */}
+                       
                         {/* Pharmacy */}
                         <Route path="/" component={Dashboard} exact />
                         <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
@@ -191,8 +210,12 @@ function HeaderLayout (props) {
                         <Route path="/paymentreceive" component={PaymentReceived} exact/>
                         <Route path="/paymentmethod" component={PaymentMethod} exact/>
                         <Route path="/orderpacking" component={OrderPacking} exact/>
+                         {/* reports */}
+                         <Route path="/reports" component={Reports}/>
+                         <Route path="/download" component={download}/>
                         {/* Nurse */}
-                        <Route path="/nursehistory" component={Nursehistory} exact/>
+                        <Route path="/nursehistory" component={Nursehistory}  exact/>
+                        {/* <Route path='/nursehistory/:Id' component={() => <Nursehistory Id={props.params.Id}/>} /> */}
                         <Route path="/nursedetails" component={NurseDetails} exact/>
                         <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
                         <Route path="/bookings" component={Bookings}/>

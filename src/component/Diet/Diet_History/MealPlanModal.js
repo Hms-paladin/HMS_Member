@@ -61,7 +61,7 @@ export default function MealPlanModal(props){
           title={false}
           centered
           className="meal_plan_modal"
-          width={1300}
+          width={"lg"}
           >
            <MenuListModal/>
           </Modal>

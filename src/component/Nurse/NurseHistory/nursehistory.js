@@ -12,7 +12,7 @@ import {NavLink} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 import RangeCalendar from './RangeCalendar'
 import './nursehistory.scss'
-export default function Nursehistory(){
+export default function Nursehistory(props){
     const errmsg=false;
     const { Search } = Input;
     const [toggleOpen,settoggleOpen]=React.useState(true)
@@ -56,9 +56,12 @@ export default function Nursehistory(){
             img:<img src={Nurse_2} style={{width:"100%",height:"100%"}}/>
         }
     ]
+    console.log(props.location,"location")
+    console.log(props.path,"path")
     return(
+      
     <Grid container className="nusre_hisparent">
-        <Grid item xs={6} md={4} className="d">
+        <Grid item xs={6} md={4}>
             <div className="filter_fstdiv">
                 <div className="fli_head">Filter</div>
                 <div className="mnth_cost"><label className="fli">Monthly Cost Range</label><label className="mnth_amt">500 KWD</label></div>

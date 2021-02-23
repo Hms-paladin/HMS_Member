@@ -10,13 +10,13 @@ import percentage from '../../../images/percentage.svg'
 import StarIcon from '@material-ui/icons/Star';
 import LabImage from '../../../images/lab_clinic.png'
 import LabImage2 from '../../../images/b_lab.jpeg'
-import {NavLink} from 'react-router-dom'
+import {NavLink,path} from 'react-router-dom'
 import { Col, Row, Form, FormGroup} from 'reactstrap';
 import ReactPlayer from 'react-player'
 import './Lab_History.scss'
 import Map from './Map'
 const { Search } = Input;
-export default function Lab_History(){
+export default function Lab_History(props){
     const [open,setClose]=React.useState(false)
     const[HideAdrs,setHideAdrs]=React.useState(false)
      // elipse function
@@ -46,6 +46,7 @@ export default function Lab_History(){
         //     img:LabImage2,
         // }
     ]
+    console.log(props.match.path,"lab")
     return(
         <div>
            

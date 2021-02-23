@@ -18,7 +18,7 @@ export default function SignUpForm(props){
              <Button key={index} className="gender_btns">{data.btn}</Button>
              )}
              </div>
-             <Button className="verify_btn">Continue</Button>  
+             <Button className="verify_btn" onClick={()=>props.handleClose(false)}>Continue</Button>  
         
         </div>
     )
