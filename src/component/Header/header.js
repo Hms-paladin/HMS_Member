@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button'
 
 import { push } from 'connected-react-router';
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route,useHistory,useRouteMatch} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 
 
 // pharmacy
@@ -78,21 +78,12 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
-  // const [url,seturl]=React.useState(false)
-   const { url, path } = useRouteMatch();
+
   let history = useHistory();
-    const Bookings=(url)=>{
-      window.location.reload()
-      if(url==="/labhistory"){
-        history.push("/bookings")
-      }
-    }
+
     const HistoryPush=(url)=>{
+      history.push(url);
       window.location.reload()
-       history.push(url);
-      // alert(url)
- 
-    
       }
       
      
@@ -101,12 +92,12 @@ function HeaderLayout (props) {
      
     return(
         <Layout>
-            <Header style={{ position: 'fixed', zIndex: 2, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
+            <Header style={{ position: 'fixed', zIndex: 10, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
             {/* <div className="logo" > */}
                 <img onClick={()=>HistoryPush("/")} className="HMSlogo" src={Logo} />
             {/* </div> */}
             <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
-                <Menu.Item key="1" onClick={()=>HistoryPush(url,"/")} ><div>Home</div></Menu.Item>
+                <Menu.Item key="1" onClick={()=>HistoryPush("/")} ><div>Home</div></Menu.Item>
                 <Menu.Item key="2">Shopping</Menu.Item>
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
                 {/* <Menu.Item key="3">One Watch</Menu.Item> */}
@@ -128,13 +119,13 @@ function HeaderLayout (props) {
 
   <Dropdown.Menu >
     {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item> */}
-    <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush(url,"/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
+    <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush("/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
   </Dropdown.Menu>
 </Dropdown>
 
-<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={(url)=>Bookings(url,path)}/>
+<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={()=>HistoryPush("/LabBookings")}/>
 
 
             <Dropdown className="avatar_cont">
