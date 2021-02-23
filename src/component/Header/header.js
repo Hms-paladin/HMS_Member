@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Layout, Menu } from 'antd';
 import Logo from "../../images/Logo.png";
 import search from "../../images/loupe.png";
@@ -7,12 +7,16 @@ import { Dropdown } from 'react-bootstrap'
 import { Input } from 'antd';
 import "./header.scss";
 import Button from '@material-ui/core/Button'
-
-import { push } from 'connected-react-router';
+import Dialog from '@material-ui/core/Dialog';
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,useRouteMatch,path} from "react-router-dom";
 
-
+// login
+import Login from '../Login/login'
+import SignUpForm from '../Login/SignupForm'
+// reports
+import Reports from '../Reports/Reports'
+import download from '../Reports/download'
 // pharmacy
 import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory.js";
 import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
@@ -47,10 +51,10 @@ import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
 import Feed from '../Doctor_Appointment/Feed/feed'
-import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking";
-import Myappointments from '../Doctor_Appointment/Myappointments/myappointments'
+import Myappointment from '../Doctor_Appointment/Myappointments/myappointments'
 import History from "../Doctor_Appointment/Myappointments/history";
 // import Feed from '../Doctor_Appointment/Feed/feed';
+import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking"
 
 // Book a Room
 import HospitalList from "../BookAroom/HospitalList/HospitalList";
@@ -78,14 +82,46 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
-
+  // const [url,seturl]=React.useState(false)
+    const {  path } = useRouteMatch();
   let history = useHistory();
 
+    const Bookings=(data)=>{
+      if(path==="/labhistory"){
+        history.push("/bookings")
+        
+      }
+      window.location.reload()
+      
+    }
     const HistoryPush=(url)=>{
       history.push(url);
       window.location.reload()
+       
+      // alert(url)
+ 
+    
       }
-      
+      // login modal open function
+      const [open, setOpen] = useState(false);
+      const [signup, setsignup] = useState(false);
+      const [visible,setvisible]=React.useState(false)
+      const handleClickOpen = () => {
+        setOpen(true);
+        setsignup(false)
+        setvisible(true)
+      };
+      const ClickSignUp=()=>{
+        setOpen(false);
+        setsignup(true)
+        setvisible(true)
+  
+       }
+      const handleClose = () => {
+         setOpen(false);
+        setvisible(false)
+        setsignup(false)
+      };
      
      
        
@@ -117,15 +153,15 @@ function HeaderLayout (props) {
 
      </Dropdown.Toggle>
 
-  <Dropdown.Menu >
-    {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item> */}
+   <Dropdown.Menu >
+    {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item>  */}
     <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush("/feed")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
-  </Dropdown.Menu>
+  </Dropdown.Menu> 
 </Dropdown>
 
-<img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={()=>HistoryPush("/LabBookings")}/>
+ <img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={(data)=>Bookings(data,path)}/> 
 
 
             <Dropdown className="avatar_cont">
@@ -135,11 +171,24 @@ function HeaderLayout (props) {
 
   <Dropdown.Menu>
     <Dropdown.Item onClick={()=>HistoryPush("/profile")} >Profile</Dropdown.Item>
-    <Dropdown.Item href="#/action-2" onClick={()=>HistoryPush("/appointments")}>My Appointments</Dropdown.Item>
+    <Dropdown.Item onClick={()=>HistoryPush("/appointment")}>My Appointments</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
 
   </Dropdown.Menu>
 </Dropdown>
+{/* <div className="login_btndiv"><Button className="login_btn" onClick={handleClickOpen}>Login</Button><Button className="signup_btn" onClick={ClickSignUp}>Sign Up</Button></div> */}
+     <Dialog
+        open={visible}
+        onClose={handleClose}
+        maxWidth={"xs"}
+        fullWidth={true}
+        className={signup&&"signup_modal"}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        {open?<Login handleClose={handleClose}/>:
+        signup?<SignUpForm handleClose={handleClose}/>:null}
+        </Dialog>
             </Header>
 
             <Content className="site-layout" style={{ marginTop: 64 }}>
@@ -150,10 +199,11 @@ function HeaderLayout (props) {
                 {/* <Editprofile/> */}
 
                 <Router history={hashHistory} basename="HmsMember/?/">
-                        
-                    <Switch>
+                      
+                    <Switch location={props.location}>
                         {/* <Route to="/dashboard" component={Dashboard} exact />
                         <Route path="/" component={Dashboard} exact/> */}
+                       
                         {/* Pharmacy */}
                         <Route path="/" component={Dashboard} exact />
                         <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
@@ -161,8 +211,12 @@ function HeaderLayout (props) {
                         <Route path="/paymentreceive" component={PaymentReceived} exact/>
                         <Route path="/paymentmethod" component={PaymentMethod} exact/>
                         <Route path="/orderpacking" component={OrderPacking} exact/>
+                         {/* reports */}
+                         <Route path="/reports" component={Reports}/>
+                         <Route path="/download" component={download}/>
                         {/* Nurse */}
-                        <Route path="/nursehistory" component={Nursehistory} exact/>
+                        <Route path="/nursehistory" component={Nursehistory}  exact/>
+                        {/* <Route path='/nursehistory/:Id' component={() => <Nursehistory Id={props.params.Id}/>} /> */}
                         <Route path="/nursedetails" component={NurseDetails} exact/>
                         <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
                         <Route path="/bookings" component={Bookings}/>
@@ -189,7 +243,7 @@ function HeaderLayout (props) {
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
                         <Route path="/doctorbooking" component={Doctorbooking} exact/>
-                        <Route path="/appointments" component={Myappointments} exact/>
+                        <Route path="/appointment" component={Myappointment} exact/>
                         <Route path="/history" component={History} exact/>
                         <Route path="/paymentreceive" component={PaymentReceived} exact/>
                         <Route path="/paymentmethod" component={PaymentMethod} exact/>

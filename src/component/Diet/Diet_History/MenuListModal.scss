@@ -61,6 +61,7 @@
     font-size: 18px;
     color:#707070;
     margin-bottom: 0px !important;
+    margin-top: 15px;
 }
 .re_menu_div{
     display: flex;
@@ -152,4 +153,26 @@
     border-radius: 50px;
     fill: #fff !important;
     padding: 3px;
+}
+.d_select_div{
+    width:30%;
+    margin:10px  20px 0px 0px; 
+}
+.d_select_div .ant-select{
+    box-shadow: 0 0 1.5px 0px #ccc;
+}
+.d_datepicker{
+    width:30%;
+}
+@media only screen and (max-width: 1124px) {
+    .week_btns .MuiButton-root{
+        padding: 8px 20px !important;
+        font-size: 12px;
+    }
+    .d_select_div{
+        width:50%;
+    }
+    .d_datepicker{
+        width:50%;
+    }
 }

@@ -86,3 +86,11 @@ cursor: pointer;
     cursor: pointer; 
 }
 // modal css
+@media only screen and (max-width: 959px) {
+    .d_cancel {
+        min-width:25% !important;
+    }
+    .d_confirm{
+        min-width:25% !important;
+    }
+    }

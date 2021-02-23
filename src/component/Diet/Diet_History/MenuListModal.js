@@ -9,6 +9,7 @@ import b_fast1 from '../../../images/d_bfast1.jpg'
 import b_fast from '../../../images/d_bfast.jpg'
 import b_fast2 from '../../../images/d_bfast2.jpg'
 import b_fast3 from '../../../images/d_bfast.jpg'
+import {NavLink} from 'react-router-dom'
 import CheckIcon from '@material-ui/icons/Check';
 import './MenuListModal.scss'
 import { Tabs } from 'antd';
@@ -32,14 +33,14 @@ export default function MenuListModal(props){
     return(
         <div>
             <div>
-                <Grid container spacing={4}>
+                <Grid container spacing={4} >
                     <Grid item xs={6} md={6} spacing={4}>
                 
                 <div style={{display:"flex"}} className="menu_list_details">
                     <div className="d_img_div">
                        <div className="d_fst_imgdiv">
                       <div className="diet_menu_div"><img src={DietImage}/></div>
-                      <div> <p className="d_menu_head">Helthy Eats</p> <p className="d_del_adrs">fghj</p>
+                      <div> <p className="d_menu_head">Helthy Eats</p> <p className="d_del_adrs">Jabriya</p>
                         <p>
                         {[...Array(5)].map((img,index)=>(
                       <StarIcon className="star_lab_icon"/> 
@@ -69,10 +70,10 @@ export default function MenuListModal(props){
               
                 <label className="re_menu_of">Repeat Menu of</label>
                 <div className="re_menu_div">
-                  <div style={{width:"30%",margin:"10px  20px 0px 0px"}}><Labelbox type="select"/></div>
-                   <div style={{width:"30%"}}><Labelbox type="datepicker"/></div>
+                  <div className="d_select_div"><Labelbox type="select"/></div>
+                   <div  className="d_datepicker"><Labelbox type="datepicker"/></div>
                 </div>
-                <div className="d_select_btn_div"><Button className="s_btn">Select</Button></div>
+                <div className="d_select_btn_div"><NavLink to="/goalweight"><Button className="s_btn">Select</Button></NavLink></div>
                 </Grid>
                 {/* mealplan list */}
                
@@ -93,8 +94,30 @@ export default function MenuListModal(props){
                         </div>
                     </TabPane>
                     <TabPane tab="Lunch" key="2">
+                    <div className="b_fast_container" >
+                        {images.map((data,index)=>
+                        <div className="b_fast_imgparent_div" onClick={()=>TickClick(data.id)} key={index}>
+                            <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
+                           <div className="bottom_labels_d">
+                               <label className="b_fast_name">{data.name}</label>
+                               {ok?<CheckIcon className="b_fast_tick"/>:""}
+                            </div>
+                        </div>
+                        )}
+                        </div>
                     </TabPane>
                     <TabPane tab="Dinner" key="3">
+                    <div className="b_fast_container" >
+                        {images.map((data,index)=>
+                        <div className="b_fast_imgparent_div" onClick={()=>TickClick(data.id)} key={index}>
+                            <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
+                           <div className="bottom_labels_d">
+                               <label className="b_fast_name">{data.name}</label>
+                               {ok?<CheckIcon className="b_fast_tick"/>:""}
+                            </div>
+                        </div>
+                        )}
+                        </div>
                     </TabPane>
                     </Tabs>
                 
