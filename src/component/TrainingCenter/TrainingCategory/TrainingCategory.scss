@@ -1,0 +1,51 @@
+.trainer_category_img{
+    display: flex;
+    flex-wrap: wrap;
+}
+.training_container{
+    // padding:20px 10% 20px 10%;
+    padding: 15px 0px 5% 5%;
+    display:flex;
+    align-items: center;
+}
+.tra_right_arrow{
+    font-size: 3rem !important;
+    margin-right: 15px;
+    fill:#918F8F !important;
+}
+.tra_right_arrow:hover{
+    fill:#86B047 !important;
+}
+.tra_imgContainer {
+    width: 13%;
+    margin: 20px 1.5%;
+    box-shadow: 0px 5px 5px 2px #ded5de;
+    border-radius: 2px;
+    img{
+        width: 100%;
+        border-radius: 2px;
+    }
+    div{
+        text-align: center;
+        padding: 10px 0;
+        font-weight: 600;
+    }
+}
+.tra_cat_head{
+    font-size: 20px;
+    font-weight: bold;
+}
+.tra_cat_head_div{
+    padding:20px 9% 0px 5.5%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+// trainingcenter ad
+.tra_modal{
+    position: relative;
+}

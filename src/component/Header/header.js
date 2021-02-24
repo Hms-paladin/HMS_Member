@@ -68,7 +68,8 @@ import PaymentMethodBook from "../BookAroom/HospitalList/PaymentMethodBook";
 import ProceedScreen from "../BookAroom/HospitalList/proceedScreen/ProceedScreen";
 import ConfirmPage from "../BookAroom/BookroomBooking/ConfirmPage";
 import ProceedReschedule from "../BookAroom/BookroomBooking/proceedReschedule/ProceedReschedule";
-
+// Training Center
+import TrainingCategory from '../TrainingCenter/TrainingCategory/TrainingCategory'
 
 var hashHistory = require('react-router-redux')
 
@@ -244,10 +245,6 @@ function HeaderLayout (props) {
                         <Route path="/doctorbooking" component={Doctorbooking} exact/>
                         <Route path="/appointments" component={Myappointments} exact/>
                         <Route path="/history" component={History} exact/>
-
-
-
-
                         {/* Book a Room */}
                         <Route path ="/hospitallist" component={HospitalList}/> 
                         {/* <Route path ="/bookinghospital" component={BookingHospital}/> */}
@@ -260,7 +257,8 @@ function HeaderLayout (props) {
                         <Route path = "/proceedpage" component = {ProceedScreen}/>
                         <Route path = "/confirmpage" component = {ConfirmPage} />
                         <Route path="/resheduleproceed" component = {ProceedReschedule}/>
-
+                        {/* Training Center */}          
+                        <Route path="/trainingcategory" component = {TrainingCategory}/>
 
                     </Switch>
                  </Router>

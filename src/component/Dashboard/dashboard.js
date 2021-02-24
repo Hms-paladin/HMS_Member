@@ -16,7 +16,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const images = [
                     {img:Doctor,title:"Doctor Apponintment",pathname:"/doctorappointment"},
                     {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
-                    {img:Report,title:"Report"},
+                    {img:Report,title:"Report",pathname:"/reports"},
                     {img:Trainer,title:"Trainer"},
                     {img:TrainingCenter,title:"Training Center"},
                     {img:DietMeal,title:"Diet Meal",pathname:"/Advertisement_diet"},

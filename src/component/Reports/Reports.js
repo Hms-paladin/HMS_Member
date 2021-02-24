@@ -27,28 +27,20 @@ export default function Reports(props){
     const [open, setOpen] = useState(false);
     const [share,setshare]=useState(false)
     let value=""
-    let testreport=[]
+    let testreport=""
     // const [value,setvalue]=useState([])
     const [visible,setvisible]=useState(false)
     const handleClickOpen = (id) => {
-        alert(id)
       setOpen(true);
       setshare(false)
       setvisible(true)
       
-      if(TestReport.length>=0){
-      }
-      TestReport.map((data)=>{
-        testreport.push(data)
-      })
       testreport=TestReport.find((data,index)=>{
-        testreport.push(data)
+        // testreport.push(data)
         //   value.push({r_name:data.r_name,date:data.date,id:data.id})
         return(id===data.id)
       })
-      if(testreport.length>=0){
-        return(testreport)
-    }
+ 
       console.log("div",testreport.r_name)
     };
     const ShareOpen=()=>{
@@ -73,8 +65,7 @@ export default function Reports(props){
       link.href = url;
       link.setAttribute(
         'download',
-        `FileName.file`,
-         
+        `FileName.file`,    
       );
   
       // Append to html link element page
@@ -144,7 +135,7 @@ console.log(TestReport,"divya")
       >
            {open? <div className="login_parent">
             <CloseIcon className="l_closeicon" onClick={handleClose}/>
-            <label className="med_rpt_view_text">{testreport.r_name?testreport.r_name:""}</label>
+            <label className="med_rpt_view_text">{testreport&&testreport.r_name}</label>
             <img src={Teeth} style={{width:"100%"}}/>
             </div> :
            share?< Share handleClose={handleClose} />:""}
