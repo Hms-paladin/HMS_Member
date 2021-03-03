@@ -51,7 +51,7 @@ import Searchresult from "../Doctor_Appointment/Searchresult/searchresult";
 import Myprofile from "../Doctor_Appointment/Myprofile/myprofile";
 import Editprofile from "../Doctor_Appointment/Myprofile/editprofile";
 import Feed from '../Doctor_Appointment/Feed/feed'
-import Myappointments from '../Doctor_Appointment/Myappointments/myappointments'
+import Myappointment from '../Doctor_Appointment/Myappointments/myappointments'
 import History from "../Doctor_Appointment/Myappointments/history";
 // import Feed from '../Doctor_Appointment/Feed/feed';
 import Doctorbooking from "../Doctor_Appointment/Doctorbooking/doctorbooking"
@@ -70,6 +70,8 @@ import ConfirmPage from "../BookAroom/BookroomBooking/ConfirmPage";
 import ProceedReschedule from "../BookAroom/BookroomBooking/proceedReschedule/ProceedReschedule";
 // Training Center
 import TrainingCategory from '../TrainingCenter/TrainingCategory/TrainingCategory'
+import Doctorbookingreschedule from "../Doctor_Appointment/Doctorbooking Rechedule/doctorbookingreschedule";
+
 
 var hashHistory = require('react-router-redux')
 
@@ -128,7 +130,7 @@ function HeaderLayout (props) {
      
     return(
         <Layout>
-            <Header style={{ position: 'fixed', zIndex: 2, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
+            <Header style={{ position: 'fixed', zIndex: 10, width: '100%',display:"flex",borderBottom: "1px solid #f0f0f0" }}>
             {/* <div className="logo" > */}
                 <img onClick={()=>HistoryPush("/")} className="HMSlogo" src={Logo} />
             {/* </div> */}
@@ -164,19 +166,19 @@ function HeaderLayout (props) {
  <img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={(data)=>Bookings(data,path)}/> 
 
 
-            {/* <Dropdown className="avatar_cont">
+            <Dropdown className="avatar_cont">
   <Dropdown.Toggle  id="dropdown-basic">
       <img src={Logo}/>
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
     <Dropdown.Item onClick={()=>HistoryPush("/profile")} >Profile</Dropdown.Item>
-    <Dropdown.Item href="#/action-2" onClick={()=>HistoryPush("/appointments")}>My Appointments</Dropdown.Item>
+    <Dropdown.Item onClick={()=>HistoryPush("/appointment")}>My Appointments</Dropdown.Item>
     <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
 
   </Dropdown.Menu>
-</Dropdown> */}
-<div className="login_btndiv"><Button className="login_btn" onClick={handleClickOpen}>Login</Button><Button className="signup_btn" onClick={ClickSignUp}>Sign Up</Button></div>
+</Dropdown>
+{/* <div className="login_btndiv"><Button className="login_btn" onClick={handleClickOpen}>Login</Button><Button className="signup_btn" onClick={ClickSignUp}>Sign Up</Button></div> */}
      <Dialog
         open={visible}
         onClose={handleClose}
@@ -243,8 +245,17 @@ function HeaderLayout (props) {
                         <Route path="/doctorappointment" component={Searchresult} exact/>
                         <Route path="/feed" component={Feed} exact/>
                         <Route path="/doctorbooking" component={Doctorbooking} exact/>
-                        <Route path="/appointments" component={Myappointments} exact/>
+                        <Route path="/appointment" component={Myappointment} exact/>
                         <Route path="/history" component={History} exact/>
+                        <Route path="/paymentreceive" component={PaymentReceived} exact/>
+                        <Route path="/paymentmethod" component={PaymentMethod} exact/>
+                        <Route path="/doctorbookingreschedule" component={Doctorbookingreschedule} exact/>
+
+                        
+
+
+
+
                         {/* Book a Room */}
                         <Route path ="/hospitallist" component={HospitalList}/> 
                         {/* <Route path ="/bookinghospital" component={BookingHospital}/> */}

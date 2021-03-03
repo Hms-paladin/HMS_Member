@@ -8,6 +8,7 @@ import second from '../../../images/image2.png'
 import third from '../../../images/image3.png'
 import fourth from '../../../images/image4.png'
 import fivth from '../../../images/image6.png'
+import avatar from '../../../images/user.png'
 class ImageCarouselDynamic extends Component{
   constructor(props) {
   super(props);
@@ -75,7 +76,7 @@ class ImageCarouselDynamic extends Component{
       <div>
         
       <div className="ImageCarouselDynamic">
-      <div className="queuetime"><p>09.50 AM</p></div>
+      <div className="queuetime"><p>Hi Dalal,You are in the sixth position of the queue</p></div>
       <div className="imageitem" style={{width:400, height:250,margin:"auto"}}>
         <Carousel
           slides={states.slides}
@@ -86,11 +87,13 @@ class ImageCarouselDynamic extends Component{
            // getShortestDirection={()=>alert('')}
           className="dialog"
         />
-        <div className="carosal_arrow"><FaChevronLeft className="left_arrow" onClick={(e)=>this.gotoslideright(
-        states.slides.length)}/>
-      <FaChevronRight className="right_arrow" onClick={(e)=>this.gotoslideleft(
+        <div className="carosal_arrow">
+          {/* <FaChevronLeft className="left_arrow" onClick={(e)=>this.gotoslideright(
+        states.slides.length)}/> */}
+      {/* <FaChevronRight className="right_arrow" onClick={(e)=>this.gotoslideleft(
         states.slides.length
-        )}/></div>
+        )}/> */}
+        </div>
         </div>
        
         </div> 

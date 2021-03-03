@@ -131,10 +131,9 @@
  .ImageCarouselDynamic
  {
   position: relative;
-   box-shadow:-6px -7px 20px -21px;
-  background-color:#f5f5f5;
   border:none;
   position: relative;
+  border-top: 1px solid #ccc;
 
  } 
  .image:after{
@@ -295,8 +294,7 @@ position: absolute;
    }
 }
   .queuetime{
-    font-size: 1.75rem;
-    color:  #31CE31 !important;
+    color:  #83AF40 !important;
    display: flex;
    justify-content:center;
    align-items: center;
