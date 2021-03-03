@@ -73,6 +73,9 @@ import TrainingCategory from '../TrainingCenter/TrainingCategory/TrainingCategor
 import Doctorbookingreschedule from "../Doctor_Appointment/Doctorbooking Rechedule/doctorbookingreschedule";
 
 
+// Trainer
+import TrainerList from "../Trainer/TrainerList/TainerList";
+
 var hashHistory = require('react-router-redux')
 
 const { Search } = Input;
@@ -270,6 +273,9 @@ function HeaderLayout (props) {
                         <Route path="/resheduleproceed" component = {ProceedReschedule}/>
                         {/* Training Center */}          
                         <Route path="/trainingcategory" component = {TrainingCategory}/>
+
+                        <Route path = "/tainerlist" component={TrainerList}/>
+
 
                     </Switch>
                  </Router>
