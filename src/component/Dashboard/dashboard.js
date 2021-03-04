@@ -15,8 +15,8 @@ import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // routes path
 import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory";
-import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
-import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
+import PaymentReceived from '../Payment/PaymentReceived/PaymentReceived'
+import PaymentMethod from '../Payment/PaymentMethod/PaymentMethod'
 import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
 
 // book a room 
@@ -36,7 +36,7 @@ const images = [
                     {img:DietMeal,title:"Diet Meal",pathname:"/Advertisement_diet"},
                     {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
                     {img:Lab,title:"Lab",pathname:"/labhistory"},
-                    {img:Physotheropy,title:"Physiotherapy"},
+                    {img:Physotheropy,title:"Physiotherapy",pathname:"/physiotheraphy"},
                     {img:BookRoom,title:"Book a Room", pathname:"/hospitallist"}
                 ]
 

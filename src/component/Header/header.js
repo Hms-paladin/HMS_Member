@@ -75,6 +75,11 @@ import Doctorbookingreschedule from "../Doctor_Appointment/Doctorbooking Rechedu
 
 // Trainer
 import TrainerList from "../Trainer/TrainerList/TainerList";
+// physiotheraphy
+import Physiotheraphymain from "../Physiotheraphy/PhysiotheraphyMain/physiotheraphymain";
+import Physiotheraphyfeed from "../Physiotheraphy/PhysiotheraphyMain/physiotheraphyfeed";
+import Physiotherapistbooking from "../Physiotheraphy/PhysiotheraphyMain/physiotherapistbooking";
+
 
 var hashHistory = require('react-router-redux')
 
@@ -154,9 +159,7 @@ function HeaderLayout (props) {
       style={{ width: 300, margin: '0 10px' }}
     /> 
                 <img className="searchico"src={search} />
-
-
-     </Dropdown.Toggle>
+       </Dropdown.Toggle>
 
    <Dropdown.Menu >
     {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item>  */}
@@ -253,8 +256,12 @@ function HeaderLayout (props) {
                         <Route path="/paymentreceive" component={PaymentReceived} exact/>
                         <Route path="/paymentmethod" component={PaymentMethod} exact/>
                         <Route path="/doctorbookingreschedule" component={Doctorbookingreschedule} exact/>
+                          {/* Physiotheraphy */}
+                          <Route path="/physiotheraphy" component={Physiotheraphymain} exact/>
+                          <Route path="/physiotheraphyfeed" component={Physiotheraphyfeed} exact/>
 
-                        
+                          <Route path="/physiotherapistbooking" component={Physiotherapistbooking} exact/>
+
 
 
 

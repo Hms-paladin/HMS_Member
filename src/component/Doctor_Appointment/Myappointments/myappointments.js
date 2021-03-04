@@ -76,7 +76,7 @@ function Myappointment(props) {
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div></div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate"></div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime"></div></div>
-                <div className="listpaperflex"><div className="appnttypeclr">Appointment Type</div><div className="reviewbtn"><span>Reschedule</span><span className="cancelspanbtn" onClick={opencancelForm} >Cancel</span><span className="queuespanbtn" onClick={QueueOpen}>Queue</span></div></div>
+                <div className="listpaperflex"><div className="appnttypeclr">Appointment Type</div><div className="reviewbtn"><span onClick={()=>HistoryPush("/doctorbookingreschedule")}>Reschedule</span><span className="cancelspanbtn" onClick={opencancelForm} >Cancel</span><span className="queuespanbtn" onClick={QueueOpen}>Queue</span></div></div>
                {showcancelForm && <div className="cancellationoption"><Button>Add 100 KWD to wallet</Button><Button>Process Refund 100 KWD</Button></div>}
                {queue&&<Queue/>}
             </div>
@@ -85,7 +85,7 @@ function Myappointment(props) {
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div></div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate"></div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime"></div></div>
-                <div className="listpaperflex"><div className="membericon">Member <span>M</span></div><div className="reviewbtn"><span onClick={()=>HistoryPush("/doctorbookingreschedule")}>Reschedule</span><span className="cancelspanbtn">Cancel</span><span className="queuespanbtn">Queue</span></div></div>
+                <div className="listpaperflex"><div className="membericon">Member <span>M</span></div><div className="reviewbtn"><span onClick={()=>HistoryPush("/doctorbookingreschedule")}>Reschedule</span><span className="cancelspanbtn" >Cancel</span><span className="queuespanbtn">Queue</span></div></div>
 
             </div>
             
