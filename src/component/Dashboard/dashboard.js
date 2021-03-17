@@ -27,6 +27,7 @@ const images = [
                 ]
 
 function Dashboard(props) {
+    console.log(props,"props")
     return(
          <div className="dashboard_container">
         {images.map((data)=>{

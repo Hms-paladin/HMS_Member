@@ -9,7 +9,7 @@ import "./header.scss";
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog';
 import Dashboard from "../Dashboard/dashboard.js";
-import { BrowserRouter as Router, Switch, Route,useHistory,useRouteMatch,path} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory,useRouteMatch,withRouter,useLocation} from "react-router-dom";
 
 // login
 import Login from '../Login/login'
@@ -84,15 +84,31 @@ const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
-  // const [url,seturl]=React.useState(false)
-    const {  path } = useRouteMatch();
   let history = useHistory();
-
-    const Bookings=(data)=>{
-      if(path==="/labhistory"){
-        history.push("/bookings")
+  let location = useLocation();
+    const Change_Bookings=(data)=>{
+      let path_name=location.pathname
+      if(path_name==="/nursehistory"){
+        history.push("/nursebookings")
         
       }
+      if(path_name==="/labhistory"){
+        history.push("/LabBookings")
+        
+      }
+      if(path_name==="/Diet_history"){
+        history.push("/DietBookings") 
+      }
+      if(path_name==="/doctorappointment"){
+        history.push("/appointment") 
+      }
+      if(path_name==="/hospitallist"){
+        history.push("/bookingdetails") 
+      }
+      // else if(path_name==="/labhistory"){
+      //   history.push("/bookings")
+        
+      // }
       window.location.reload()
       
     }
@@ -163,7 +179,7 @@ function HeaderLayout (props) {
   </Dropdown.Menu> 
 </Dropdown>
 
- <img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={(data)=>Bookings(data,path)}/> 
+ <img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={Change_Bookings}/> 
 
 
             <Dropdown className="avatar_cont">
@@ -221,7 +237,7 @@ function HeaderLayout (props) {
                         {/* <Route path='/nursehistory/:Id' component={() => <Nursehistory Id={props.params.Id}/>} /> */}
                         <Route path="/nursedetails" component={NurseDetails} exact/>
                         <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
-                        <Route path="/bookings" component={Bookings}/>
+                        <Route path="/nursebookings" component={Bookings}/>
                         <Route path="/bookinghistory" component={BookingHistory}/>
                         <Route path="/reschedulebookings" component={RescheduleBookings}/>
                         <Route path="/myschedule" component={MySchedule}/>
