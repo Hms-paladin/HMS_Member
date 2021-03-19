@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { Layout, Menu } from 'antd';
 import Logo from "../../images/Logo.png";
 import search from "../../images/loupe.png";
@@ -70,7 +70,17 @@ import ConfirmPage from "../BookAroom/BookroomBooking/ConfirmPage";
 import ProceedReschedule from "../BookAroom/BookroomBooking/proceedReschedule/ProceedReschedule";
 // Training Center
 import TrainingCategory from '../TrainingCenter/TrainingCategory/TrainingCategory'
+import Training_History from '../TrainingCenter/TrainingCenterHistory/History'
+import Training_Details from '../TrainingCenter/TrainingDetails/TrainingDetails'
 import Doctorbookingreschedule from "../Doctor_Appointment/Doctorbooking Rechedule/doctorbookingreschedule";
+
+
+// Trainer
+import TrainerList from "../Trainer/TrainerList/TainerList";
+// physiotheraphy
+import Physiotheraphymain from "../Physiotheraphy/PhysiotheraphyMain/physiotheraphymain";
+import Physiotheraphyfeed from "../Physiotheraphy/PhysiotheraphyMain/physiotheraphyfeed";
+import Physiotherapistbooking from "../Physiotheraphy/PhysiotheraphyMain/physiotherapistbooking";
 
 
 var hashHistory = require('react-router-redux')
@@ -78,16 +88,30 @@ var hashHistory = require('react-router-redux')
 const { Search } = Input;
 
 
-
 const { Header, Content } = Layout;
 const onSearch = value => console.log(value);
 
 
 function HeaderLayout (props) {
+let location = useLocation();
+const [login_disble,setlogin_disble]=useState(false)
+const [login_enable,setlogin_enable]=useState(true)
+
   let history = useHistory();
-  let location = useLocation();
+  useEffect(() => {
+  
+     if(location.pathname!="/"){
+      setlogin_disble(true)
+      setlogin_enable(false)
+    }
+    else if(location.pathname=="/"){
+      setlogin_disble(false)
+      setlogin_enable(true)
+    }
+  },[login_disble,login_enable])
     const Change_Bookings=(data)=>{
       let path_name=location.pathname
+    
       if(path_name==="/nursehistory"){
         history.push("/nursebookings")
         
@@ -167,9 +191,7 @@ function HeaderLayout (props) {
       style={{ width: 300, margin: '0 10px' }}
     /> 
                 <img className="searchico"src={search} />
-
-
-     </Dropdown.Toggle>
+       </Dropdown.Toggle>
 
    <Dropdown.Menu >
     {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item>  */}
@@ -194,7 +216,7 @@ function HeaderLayout (props) {
 
   </Dropdown.Menu>
 </Dropdown>
-{/* <div className="login_btndiv"><Button className="login_btn" onClick={handleClickOpen}>Login</Button><Button className="signup_btn" onClick={ClickSignUp}>Sign Up</Button></div> */}
+  {/* <div className="login_btndiv"><Button className="login_btn" onClick={handleClickOpen}>Login</Button><Button className="signup_btn" onClick={ClickSignUp}>Sign Up</Button></div>  */}
      <Dialog
         open={visible}
         onClose={handleClose}
@@ -266,8 +288,12 @@ function HeaderLayout (props) {
                         <Route path="/paymentreceive" component={PaymentReceived} exact/>
                         <Route path="/paymentmethod" component={PaymentMethod} exact/>
                         <Route path="/doctorbookingreschedule" component={Doctorbookingreschedule} exact/>
+                          {/* Physiotheraphy */}
+                          <Route path="/physiotheraphy" component={Physiotheraphymain} exact/>
+                          <Route path="/physiotheraphyfeed" component={Physiotheraphyfeed} exact/>
 
-                        
+                          <Route path="/physiotherapistbooking" component={Physiotherapistbooking} exact/>
+
 
 
 
@@ -286,6 +312,10 @@ function HeaderLayout (props) {
                         <Route path="/resheduleproceed" component = {ProceedReschedule}/>
                         {/* Training Center */}          
                         <Route path="/trainingcategory" component = {TrainingCategory}/>
+                        <Route path="/Traininghistory" component = {Training_History}/>
+                        <Route path="/Trainingdetails" component = {Training_Details}/>
+                        <Route path = "/tainerlist" component={TrainerList}/>
+
 
                     </Switch>
                  </Router>

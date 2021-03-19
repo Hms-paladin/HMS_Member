@@ -13,16 +13,30 @@ import { NavLink} from "react-router-dom";
 import "./dashboard.scss";
 import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// routes path
+import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory";
+import PaymentReceived from '../Payment/PaymentReceived/PaymentReceived'
+import PaymentMethod from '../Payment/PaymentMethod/PaymentMethod'
+import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
+
+// book a room 
+import HospitalList from "../BookAroom/HospitalList/HospitalList" ;
+
+// Trainer
+import TrainerList from "../Trainer/TrainerList/TainerList";
+function routepush(props){
+    props.history.push("/paymentreceived")
+}
 const images = [
                     {img:Doctor,title:"Doctor Apponintment",pathname:"/doctorappointment"},
                     {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
-                    {img:Report,title:"Report",pathname:"/reports"},
-                    {img:Trainer,title:"Trainer"},
-                    {img:TrainingCenter,title:"Training Center"},
+                    {img:Report,title:"Report"},
+                    {img:Trainer,title:'Trainer',pathname:"/tainerlist"},
+                    {img:TrainingCenter,title:"Training Center",pathname:"/trainingcategory"},
                     {img:DietMeal,title:"Diet Meal",pathname:"/Advertisement_diet"},
                     {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
                     {img:Lab,title:"Lab",pathname:"/labhistory"},
-                    {img:Physotheropy,title:"Physiotherapy"},
+                    {img:Physotheropy,title:"Physiotherapy",pathname:"/physiotheraphy"},
                     {img:BookRoom,title:"Book a Room", pathname:"/hospitallist"}
                 ]
 
@@ -39,7 +53,13 @@ function Dashboard(props) {
             ) 
     
         })}
-      
+        <div>
+        <Route exact path={`${props.match.path}/prescriptionhistory`} component={PrescriptionHistory} />
+        <Route exact path={`${props.match.path}/orderdetails`} component={OrderTable} />
+        <Route exact path={`${props.match.path}/book`} component={HospitalList}/>
+        <Route exact path={`${props.match.path}/tainerlist`} component={TrainerList}/>
+       
+        </div>
         </div>
     )
 }

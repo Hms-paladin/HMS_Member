@@ -9,6 +9,7 @@ import Pharmacy from "../../../images/pharmacy.png";
 import Lab from "../../../images/lab.png";
 import Physotheropy from "../../../images/physotheropy.png";
 import BookRoom from "../../../images/bookroom.png";
+import { NavLink } from 'react-router-dom'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import CloseIcon from '@material-ui/icons/Close';
 import './TrainingCategory.scss'
@@ -16,27 +17,21 @@ import {Input} from 'antd'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog';
 import search from '../../../images/search.svg'
-import Tra_ad from '../../../images/tra_ad.png'
+import Tra_ad from '../../../images/tr_add.jpg'
 export default function TrainingCategory(props) {
     const images = [
-        {img:Doctor,title:"Dentistry"},
-        {img:Nurse,title:"Hematologist"},
-        {img:Report,title:"Anasthesiologist"},
-        {img:Trainer,title:"Dermatologist"},
-        {img:TrainingCenter,title:"Endocrinologist"},
-        {img:DietMeal,title:"Family physician"},
-        {img:Pharmacy,title:"Gastroenterologist"},
-        {img:Lab,title:"Allergist"},
-        {img:Physotheropy,title:"Radiologist"},
-        {img:BookRoom,title:"Neurologist"},
-        {img:TrainingCenter,title:"ENT"},
-        {img:Doctor,title:"Cardiologist"},
+        {img:Doctor,title:"Horse Riding"},
+        {img:Nurse,title:"Swimming"},
+        {img:Report,title:"Football"},
+        {img:Trainer,title:"Drive In"},
+        {img:TrainingCenter,title:"Martial Arts"},
+        {img:DietMeal,title:"Tennis"},
+       
 
        
 ]
 const [goToSlide,setgoToSlide]=useState(0)
 const gotoslideright=(e)=>{
-    alert(e)
     setgoToSlide(goToSlide+1)
     console.log(e,"e")
   
@@ -79,9 +74,9 @@ const handleClose = () => {
       >
           <div>
           <div className="tra_modal">
-          <img src={Tra_ad} style={{width:"100%",height:"100%"}}/>
+          <NavLink to="Traininghistory"><img src={Tra_ad} style={{width:"100%",height:"100%"}}/></NavLink>
           </div>
-          <CloseIcon className="l_closeicon" onClick={()=>props.handleClose(false)}/>
+          <CloseIcon className="l_closeicon" onClick={handleClose}/>
           </div>
         </Dialog>
         </>
