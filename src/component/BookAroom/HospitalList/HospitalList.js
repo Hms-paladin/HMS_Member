@@ -225,10 +225,12 @@ const ModalClickClose=()=>{
                   title="Mayo Clinic Hospital"
                   visible={ModalOpen}
                   footer={false}
+                  fullwidth={true}
                   size={"lg"}
                   {...props}
                   centered
-                  className="confirm_modal"
+                  width={1100}
+                  // className="confirm_modal"
                   onCancel={ModalClickClose}
                  >
                   

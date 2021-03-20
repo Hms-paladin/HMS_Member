@@ -111,8 +111,8 @@ export default function HospitalOffer(){
            </div>
           <div style={{width:'50%'}}>
             <div className="sort_cont_hos">
-               <div className="sort_hos">Best Offers <ReactSVG src={sort} /></div>
-               <div className="sort_hos">Rating <ReactSVG src={sort} /></div>
+              <div className="sort_bestoff"><div className="sort_hos"> Offer <ReactSVG src={sort} /></div>
+               <div className="sort_hos">Rating <ReactSVG src={sort} /></div></div> 
 
            </div>
             <div className="card hos_offer_card" >
@@ -132,7 +132,7 @@ export default function HospitalOffer(){
                            <div className="offer_numerics_hos"><span>10 %</span><span>Offer</span></div>
                         </div>
                         <div>
-                            <p className="available_rate">300 KWD / PAY</p>
+                            <p className="available_rate">300 KWD / Day</p>
                             <p style={{color:'#83AF40'}}>AVAILABLE</p>
                         </div>
   

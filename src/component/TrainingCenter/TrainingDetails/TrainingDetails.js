@@ -64,7 +64,7 @@ export default function Training_Details(){
                          <div className="per_in_div"><p>{"20"+"%"}</p><p>off</p></div>
                       </div>
                       <div>
-                    <div>One  Member Program</div>
+                    <div>Two  Member Program</div>
                     <div class="session_cont">10</div>
                     <div>Sessions</div>
                     <div>70 KWD</div>

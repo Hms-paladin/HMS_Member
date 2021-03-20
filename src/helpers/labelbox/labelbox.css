@@ -156,3 +156,6 @@ border-color: red;
 .MuiInput-underline:after{
     border-bottom: 0px !important;
 }
+.formdiv  .MuiSvgIcon-root{
+    fill: #bfbfbf !important;
+}

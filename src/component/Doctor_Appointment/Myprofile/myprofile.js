@@ -26,8 +26,7 @@ import Labelbox from "../../../helpers/labelbox/labelbox";
 import smart from '../../../images/smartwatch.jfif'
 import fitness from '../../../images/fitnessband.jpg'
 import camera from '../../../images/camera.jpg'
-
-
+import Avatar from '../../Nurse/NurseDetails/Upload'
 const { Panel } = Collapse;
 
 
@@ -106,7 +105,7 @@ function Myprofile(props) {
                 </div>
                 <div className="Nameinfo">
                    <div className="name">Dalal</div>
-                   <div>29Yrs/Female</div>
+                   <div>29 Years/Female</div>
                     
                 </div>
                 <div>
@@ -129,19 +128,19 @@ function Myprofile(props) {
             </div>
             <div className="familymember">
             <div className="familymemberheader">
-                <div>Family Members</div>
+                <div>{showForm ? "Add Family Members":"Family Members"}</div>
 
                 {!showForm && <img style={{cursor:"pointer"}} src={Plus} onClick={openForm} /> }
             </div>
             {/* Form starts here */}
           {showForm &&  <div className="add_memberform">
                 <div className="img_cont">
-                     <img src={avatar}/>
+                     <Avatar/>
                      <span>Add photo</span>
                 </div>
                 <div className="name_cont">
                     <div className="name"><Labelbox type="text" labelname="Name"/></div>
-                    <div className="gender"><Labelbox type="select" labelname="Gender"/> <Labelbox type="text" labelname="Date of Birth"/></div>
+                    <div className="gender"><Labelbox type="select" labelname="Gender"/> <Labelbox type="datepicker" labelname="Date of Birth"/></div>
                     <div className="number"><Labelbox type="text" labelname="Mobile number"/></div>
 
                 </div>

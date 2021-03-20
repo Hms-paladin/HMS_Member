@@ -2,10 +2,11 @@ import React,{useState,useEffect} from "react";
 import { Layout, Menu } from 'antd';
 import Logo from "../../images/Logo.png";
 import search from "../../images/loupe.png";
-import Calendar from '../../images/calendar_b.svg'
+import calendar from '../../images/calendar_b.svg'
 import { Dropdown } from 'react-bootstrap'
 import { Input } from 'antd';
 import "./header.scss";
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog';
 import Dashboard from "../Dashboard/dashboard.js";
@@ -72,6 +73,11 @@ import ProceedReschedule from "../BookAroom/BookroomBooking/proceedReschedule/Pr
 import TrainingCategory from '../TrainingCenter/TrainingCategory/TrainingCategory'
 import Training_History from '../TrainingCenter/TrainingCenterHistory/History'
 import Training_Details from '../TrainingCenter/TrainingDetails/TrainingDetails'
+import Calendar from '../TrainingCenter/BookingsCalender/Calendar'
+import BookingShedule from '../TrainingCenter/AddMember/BookingShedule' 
+import Tra_Bookings from '../TrainingCenter/Training_Bookings/Tra_Bookings'
+import Tra_BookingHistory from '../TrainingCenter/Training_Bookings/Tra_BookingHistory'
+import Tc_BookingReShedule from '../TrainingCenter/AddMember/Tc_Reschedule_bookings'
 import Doctorbookingreschedule from "../Doctor_Appointment/Doctorbooking Rechedule/doctorbookingreschedule";
 
 
@@ -128,6 +134,9 @@ const [login_enable,setlogin_enable]=useState(true)
       }
       if(path_name==="/hospitallist"){
         history.push("/bookingdetails") 
+      }
+      if(path_name==="/tc_history"){
+        history.push("/tc_Bookings") 
       }
       // else if(path_name==="/labhistory"){
       //   history.push("/bookings")
@@ -201,8 +210,9 @@ const [login_enable,setlogin_enable]=useState(true)
   </Dropdown.Menu> 
 </Dropdown>
 
- <img src={Calendar} style={{width:"20px",cursor:"pointer"}} onClick={Change_Bookings}/> 
-
+ <img src={calendar} style={{width:"20px",cursor:"pointer"}} onClick={Change_Bookings}/> 
+  
+  <div className="notif_icon"><NotificationsIcon/><div></div></div>
 
             <Dropdown className="avatar_cont">
   <Dropdown.Toggle  id="dropdown-basic">
@@ -312,9 +322,16 @@ const [login_enable,setlogin_enable]=useState(true)
                         <Route path="/resheduleproceed" component = {ProceedReschedule}/>
                         {/* Training Center */}          
                         <Route path="/trainingcategory" component = {TrainingCategory}/>
-                        <Route path="/Traininghistory" component = {Training_History}/>
+                        <Route path="/tc_history" component = {Training_History}/>
                         <Route path="/Trainingdetails" component = {Training_Details}/>
+                        <Route path="/bookingshedule" component = {BookingShedule}/>
+                        <Route path="/tc_Bookings" component = {Tra_Bookings}/>
+                        <Route path="/tc_bookingshistory" component={Tra_BookingHistory}/>
+                        <Route path="/Calendar" component = {Calendar}/>
+                        <Route path="/tc_reschedule_bookings" component={Tc_BookingReShedule}/>
+
                         <Route path = "/tainerlist" component={TrainerList}/>
+
 
 
                     </Switch>

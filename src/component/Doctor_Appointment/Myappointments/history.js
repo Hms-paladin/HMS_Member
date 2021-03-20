@@ -148,7 +148,7 @@ const ReviewCloseClick=()=>{
            </div>
        </Modal>
        <Modal
-        title={<div className="">Create Review</div>}
+        title={<div className=""> Review</div>}
         visible={ReviewOpen}
         footer={false}
         onCancel={ReviewCloseClick}

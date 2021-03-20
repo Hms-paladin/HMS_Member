@@ -55,7 +55,7 @@ const handleClose = () => {
         {images.map((data)=>{
             return(
             <div className="tra_imgContainer" goToSlide={goToSlide}>
-                <img src = {data.img} />
+               <NavLink to="/tc_history"><img src = {data.img} /></NavLink> 
                 <div className="imgTitle">{data.title}</div>
             </div> 
             )  
@@ -74,7 +74,7 @@ const handleClose = () => {
       >
           <div>
           <div className="tra_modal">
-          <NavLink to="Traininghistory"><img src={Tra_ad} style={{width:"100%",height:"100%"}}/></NavLink>
+          <NavLink to="/tc_history"><img src={Tra_ad} style={{width:"100%",height:"100%"}}/></NavLink>
           </div>
           <CloseIcon className="l_closeicon" onClick={handleClose}/>
           </div>

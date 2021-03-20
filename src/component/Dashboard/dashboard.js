@@ -30,7 +30,7 @@ function routepush(props){
 const images = [
                     {img:Doctor,title:"Doctor Apponintment",pathname:"/doctorappointment"},
                     {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
-                    {img:Report,title:"Report"},
+                    {img:Report,title:"Report",pathname:"/reports"},
                     {img:Trainer,title:'Trainer',pathname:"/tainerlist"},
                     {img:TrainingCenter,title:"Training Center",pathname:"/trainingcategory"},
                     {img:DietMeal,title:"Diet Meal",pathname:"/Advertisement_diet"},

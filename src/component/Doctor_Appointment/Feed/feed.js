@@ -185,8 +185,8 @@ function Feed(props) {
         </div>
         <div className="sort_cont">
                <div className="sort">Cost <ReactSVG src={sort} /></div>
-               <div className="sort">Best Offers <ReactSVG src={sort} /></div>
-               <div className="sort">Rating <ReactSVG src={sort} /></div>
+              <div className="best_offers"><div className="sort">Best Offers <ReactSVG src={sort} /></div>
+               <div className="sort">Rating <ReactSVG src={sort} /></div></div>
 
         </div>
         </div>

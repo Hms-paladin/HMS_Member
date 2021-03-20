@@ -140,3 +140,22 @@ text-transform: none !important;
     display: flex;
     align-items: center;
 }
+
+// notification css
+.notif_icon{
+    position: relative;
+    svg{
+        fill:#666666;
+    }
+    div{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background-color: #82AE40;
+    position: absolute;
+    top: 18px;
+    left: 11px;
+    bottom: 21px;
+    }
+}

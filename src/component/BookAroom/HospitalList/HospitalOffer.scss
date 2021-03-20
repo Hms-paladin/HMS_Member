@@ -67,7 +67,14 @@
     margin: 0px;
     margin-top: 12px;
 }
-
+ .sort_cont_hos{
+    display: flex;
+    justify-content:flex-end;
+    margin-top: 20px;
+}
+.sort_bestoff div:nth-child(1){
+    margin-right: 5px;
+}
 .offer_filter_div{
     padding: 10px;
     font-weight: 500;
@@ -131,7 +138,7 @@
   }
   .sort_cont_hos{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-top: 20px;
 }
 .sort_hos{

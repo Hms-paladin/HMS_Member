@@ -97,7 +97,8 @@ export default function BookroomHistory(props){
                   size={"lg"}
                   {...props}
                   centered
-                  className="confirm_modal"
+                  width={1000}
+                //   className="confirm_modal"
                   onCancel={ModalClickClose}
                  >
                   

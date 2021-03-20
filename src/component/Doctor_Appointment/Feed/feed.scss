@@ -138,6 +138,12 @@ font-size: 12px;
     width: 16px;
     height: 16px;
 }
+.best_offers{
+    display: flex;
+    div{
+        margin-right: 5px;
+    }
+}
 @media only screen and (max-width: 1220px) {
     .feed_layout{
         padding: 30px 50px;
