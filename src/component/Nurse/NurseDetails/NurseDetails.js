@@ -29,7 +29,7 @@ export default function NurseDetails(){
         <div style={{width:"100%"}} className="nurse_de_parent">
         <div className="nursede_parent">
             <div style={{height:"250px",width:"100%"}}>
-            <img src={Nurse} style={{width:"100%",height:"100%"}}/>
+            <img src={Nurse} className="Pro_tra_img"/>
             </div>
         </div>
         <Grid container>

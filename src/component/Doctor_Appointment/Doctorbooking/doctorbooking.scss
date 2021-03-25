@@ -213,7 +213,7 @@ bottom: -30px;}
 }
 .familyphoto_div{
 margin: 0px 15px;
-width: 60px;
+width: 50px;
 height: 60px;
 text-align: center;
 height: 100%;
@@ -232,8 +232,8 @@ height: 100%;
 }
 .newfamilyphoto_div{
     margin: 0px 15px;
-width: 58px;
-height: 58px !important; 
+width: 50px;
+height: 50px !important; 
 border: 1px dashed grey;
 border-radius: 50px;
 display: flex;
@@ -255,7 +255,7 @@ cursor: pointer;
 }
 .newfamilyphoto_div svg{
     fill: grey;
-    width: 20px;
+    width: 15px;
     height: 20px;
 
 }
@@ -506,4 +506,9 @@ cursor: pointer;
 }
 .cnfrmbtn Button:hover{
     background-color: #83af40;
+}
+
+
+.doctorbooking_layout .image-gallery-svg{
+    width:28px !important;
 }

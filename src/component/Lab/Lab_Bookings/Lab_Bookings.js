@@ -5,8 +5,10 @@ import HistoryButton from '../../../images/history-button.svg'
 import Nurse from '../../../images/b_lab.jpeg'
 import './Lab_Bookings.scss'
 import Lab_Reschedule from './Lab_Reschedule'
-export default function Lab_Bookings(){
+import BookingHistoryModal from './Lab_BookingHistoryModal'
+export default function Lab_Bookings(props){
     const [CancelOpen,setCancelOpen]=React.useState(false)
+    const [ModalOpen,setModalOpen]=React.useState(false)
     const[HideAdrs,setHideAdrs]=React.useState(false)
     const CancelClick=()=>{
         setCancelOpen(!CancelOpen)
@@ -30,7 +32,7 @@ export default function Lab_Bookings(){
             <div className="bookhistory_list_parent">
              <div className="bookhistory_list">
                 <div className="book_nurse_div">  
-                  <img src={Nurse} className="book_nur_img"/>
+                  <img src={Nurse} className="book_nur_img" onClick={()=>setModalOpen(true)}/>
                   <div className="book_text_div">
                       <p className="book_h_name">Best Clinic Lab</p>
                       <div style={{display:"flex"}}>
@@ -41,7 +43,7 @@ export default function Lab_Bookings(){
                 </div> 
                <div style={{width:"25%"}}>
                    <div className="duty_div"><p style={{color:"#AEADAD",fontSize:"13px"}}>09:00 AM</p></div>
-                   <div className="duty_snddiv"><label className="book_shedule" onClick={ReOpenClick}>Reshedule</label><label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={CancelClick}>Cancel</label></div>
+                   <div className="duty_snddiv"><label className="book_shedule" onClick={ReOpenClick}>Reschedule</label><label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={CancelClick}>Cancel</label></div>
                 </div>
                 </div> 
             {/* To click cancel button to open this part */}
@@ -64,6 +66,19 @@ export default function Lab_Bookings(){
            >
             <Lab_Reschedule ReOpenClose={ReOpenClose}/>
            </Modal>
+           <Modal
+              title={false}
+              visible={ModalOpen}
+              footer={false}
+              size={"lg"}
+              {...props}
+              centered
+              className=""
+              onCancel={()=>setModalOpen(false)}
+             >
+                 <BookingHistoryModal />
+
+             </Modal>
         </div>
     )
 }

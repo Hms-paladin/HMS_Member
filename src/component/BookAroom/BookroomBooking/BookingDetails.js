@@ -47,7 +47,7 @@ function BookingDetails(props){
           </div>    
   {/*shedule and cancel  */}
           <div className="cancel_div">
-               <label className="book_shedule" onClick={ReshedulePage}>Re Shedule</label>
+               <label className="book_shedule" onClick={ReshedulePage}>Reschedule</label>
                <label  className={CancelOpen?"b_cancel_change":"cancel_align"} onClick={CancelClick}>Cancel</label>
           </div>
     {/* To click cancel button to open this part */}

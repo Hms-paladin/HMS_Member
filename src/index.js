@@ -8,8 +8,7 @@ import './index.css';
 import "antd/dist/antd.css";
 
 import "react-image-gallery/styles/css/image-gallery.css";
-
-
+// import "node_modules/video-react/dist/video-react.css";
 ReactDOM.render(
   <Provider store = {store}>
     <App />

@@ -43,23 +43,10 @@ const images = [
     {img:Pharmacy,title:"Sahil"},
 
 ]
-const icons = [
-    {img:avatar,variant:"Name",detail:"Dalal"},
-    {img:calendar,variant:"Date of birth",detail:"12 Jan"},
-    {img:smartphone,variant:"Mobile",detail:"934786486"},
-    {img:envelope,variant:"Email",detail:"Dalal@gmail.com"},
-    {img:address,variant:"Address",detail:"Dalal,Anna nagar,Chennai"},
-    // {img:calendar,variant:"Expected Delivery Date",detail:"12 Dec"},
-    {img:driver,variant:"Civil ID",detail:"123124"},
-    {img:insurance,variant:"Insurance",detail:"-"},
-
-
-   
-
-]
-                  
+           
 
 function Myprofile(props) {
+     
     let history = useHistory();
     function handleEditProfile(){
         history.push("/doctorEdit")
@@ -82,7 +69,10 @@ function Myprofile(props) {
     function ScrollDevices(){
         window.scrollTo(0, 1000);
     }
-
+    const Elipse=()=>{
+        setelp(!elp)
+    }
+    const [elp,setelp]=useState(false)
     const [showForm,setShowForm] = useState(false)
 
     const openForm = () => {
@@ -92,6 +82,17 @@ function Myprofile(props) {
     const closeForm = () => {
         setShowForm(false)
     }
+    const icons = [
+        {img:avatar,variant:"Name",detail:"Dalal"},
+        {img:calendar,variant:"Date of birth",detail:"12 Jan"},
+        {img:smartphone,variant:"Mobile",detail:"934786486"},
+        {img:envelope,variant:"Email",detail:"Dalal@gmail.com"},
+        {img:address,variant:"Address",detail:<div>Dalal,Anna nagar,Chennai<span className="elp" onClick={Elipse}>...</span></div>},
+        // {img:calendar,variant:"Expected Delivery Date",detail:"12 Dec"},
+        {img:driver,variant:"Civil ID",detail:"123124"},
+        {img:insurance,variant:"Insurance",detail:"-"}, 
+    ]
+       
     return(
         <div>
             <div className="cover_image_cont">
@@ -182,6 +183,10 @@ function Myprofile(props) {
                 </div>
                     )  
                 })}
+                {elp&&
+                <div className="ad_elpse">
+                    <p>Arabian Gulf Road | Next to National Museum, Salmiya,Hawali Governorate 13057,Kuwait</p>
+                </div>}
             </div>
             <div className="nextvaccination">
           

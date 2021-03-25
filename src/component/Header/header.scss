@@ -15,8 +15,14 @@
     background:#fff !important;
     box-shadow: -2px 0px 5px 0px rgba(222,213,222,1);
 }
-.ant-layout-header{
+.temp
+{
+    // line-height: 0px !important;
+}
+.layot_header .ant-layout-header{
     height: 66px !important;
+    // line-height: 0px !important;
+
     padding: 0px 20px !important;
 }
 // custom css
@@ -40,7 +46,9 @@ margin-left: 10px !important;
 .avatar_cont #dropdown-basic img{
    width: 100%;
     }
-  
+  .avatar_cont .dropdown-toggle::after{
+      display: none;
+  }
     .avatar_cont .dropdown-item{
         height: 40px !important;
         display: flex !important;
@@ -144,6 +152,10 @@ text-transform: none !important;
 // notification css
 .notif_icon{
     position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 9px;
+    cursor: pointer;
     svg{
         fill:#666666;
     }
@@ -154,8 +166,77 @@ text-transform: none !important;
     border: 1px solid #fff;
     background-color: #82AE40;
     position: absolute;
-    top: 18px;
+    top: -3px;
     left: 11px;
     bottom: 21px;
     }
 }
+
+
+
+.noti_cont #dropdown-basic{
+width: 40px !important;
+// height: 40px !important;
+border-radius: 50px !important;
+background-color: #fff;
+padding: 0px !important;
+border: 0px;
+margin-left: 10px !important;
+}
+.noti_cont .dropdown-toggle::after{
+    display: none;
+}
+.noti_cont .dropdown-menu{
+    border: none !important;
+    padding: 10px;
+    width: 350px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.notifi_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 5px;
+}
+.notifi_div p{
+    margin-bottom: 0px !important;
+}
+
+
+.noti_open{
+    position: absolute;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width:350px;
+    right: 11px;
+    top: 69px;
+    background-color: #fff;
+    height: 30px;
+    line-height: 0px;
+}
+.noti_cont {
+    line-height: 1.5;
+    display: flex;
+}
+.profile_img_div{
+    margin-right: 10px;
+    img{
+        border-radius: 50%;
+        width:70px;
+        
+        height:100%;
+    }
+}
+// .noti_open div{
+//     margin-bottom: -70px;
+// }
+.vd_icon{
+    fill:#82AE40 !important;
+    margin-top: 15px !important;
+}
+ .btn-primary:focus  {
+     box-shadow: none !important;
+
+ }
+ .btn-primary:focus {
+ }

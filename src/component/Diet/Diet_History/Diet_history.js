@@ -10,6 +10,7 @@ import {Input,Modal} from 'antd'
 import search from '../../../images/search.svg'
 import MealPlanModal from './MealPlanModal'
 import './Diet_history.scss'
+import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 const { Search } = Input;
 export default function Diet_History(){
     const [HideAdrs,setHideAdrs]=React.useState(false)
@@ -114,13 +115,13 @@ export default function Diet_History(){
             </ol>
          <div class="carousel-inner">
          <div class="carousel-item active">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=pS7qTxVXQgw' />
+         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58' playing/>
          </div>
          <div class="carousel-item">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=05DpAV5M_Lk' />
+         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58' playing/>
          </div>
          <div class="carousel-item">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=t4t1Vj5-NLQ' />
+         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58' playing/>
          </div>
         </div>
         </div>
@@ -156,6 +157,7 @@ export default function Diet_History(){
            centered
            className="diet_planmodal"
            >
+            
              <MealPlanModal CloseModal={CloseModal}/>
            </Modal>
        </div>

@@ -48,7 +48,7 @@ const handleClose = () => {
         <>
         <div className="tra_cat_head_div">
             <div>Training Category</div>  
-           <div style={{position:"relative"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"7px",right:"17px"}}/></div>
+           <div style={{position:"relative",width:"400px"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"11px",right:"11px",width:"15px",height:"15px"}}/></div>
         </div>
         <div className="training_container"> 
          <div className="trainer_category_img">  
@@ -74,7 +74,18 @@ const handleClose = () => {
       >
           <div>
           <div className="tra_modal">
-          <NavLink to="/tc_history"><img src={Tra_ad} style={{width:"100%",height:"100%"}}/></NavLink>
+          <img src={Tra_ad} style={{width:"100%",height:"100%"}}/>
+          <div className="tc_add_cont">
+              <div>
+              <div>20%</div>
+              <div>Discount</div>
+              <div>Two Member Program</div>
+              <div>STAY HEALTHY <br/>BE <span>ACTIVE</span></div>
+              </div>
+              <div className="tc_ad_bth">
+              <NavLink to="/tc_history"> <Button>Book Now</Button> </NavLink>
+                </div>
+          </div>
           </div>
           <CloseIcon className="l_closeicon" onClick={handleClose}/>
           </div>

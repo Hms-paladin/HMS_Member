@@ -7,12 +7,11 @@ import './physiotheraphymain.scss'
 import { NavLink} from "react-router-dom";
 
 
-// import "./searchresult.scss";
-
+// import "./searchresult.scss"
 const images = [
-                    {img:Doctor,title:"Geriatic Physiotheraphy",pathname:"/physiotheraphyfeed"},
-                    {img:Nurse,title:"Musculosketal Physiotheraphy",pathname:"/physiotheraphyfeed"},
-                    {img:Report,title:"Peadiatric Physiotheraphy",pathname:"/physiotheraphyfeed"},
+                    {img:Doctor,title:"Geriatric Physiotheraphy",pathname:"/physiotheraphyfeed"},
+                    {img:Nurse,title:"Musculoskeletal Physiotheraphy",pathname:"/physiotheraphyfeed"},
+                    {img:Report,title:"Paediatric Physiotheraphy",pathname:"/physiotheraphyfeed"},
                     {img:Trainer,title:"Sports Physiotheraphy",pathname:"/physiotheraphyfeed"},
                     
 ]

@@ -156,7 +156,7 @@ export default function HospitalOffer(){
                            <div className="offer_numerics_hos"><span>10 %</span><span>Offer</span></div>
                         </div>
                         <div>
-                            <p className="available_rate">300 KWD / PAY</p>
+                            <p className="available_rate">300 KWD / Day</p>
                             <p style={{color:'#83AF40'}}>AVAILABLE</p>
                         </div>
   
@@ -180,7 +180,7 @@ export default function HospitalOffer(){
                            <div className="offer_numerics_hos"><span>10 %</span><span>Offer</span></div>
                         </div>
                         <div>
-                            <p className="available_rate">300 KWD / PAY</p>
+                            <p className="available_rate">300 KWD / Day</p>
                             <p style={{color:'#FD5353'}}>NOT AVAILABLE</p>
                         </div>
   

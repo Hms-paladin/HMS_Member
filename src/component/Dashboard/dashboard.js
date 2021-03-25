@@ -11,24 +11,8 @@ import Physotheropy from "../../images/physotheropy.png";
 import BookRoom from "../../images/bookroom.png";
 import { NavLink} from "react-router-dom";
 import "./dashboard.scss";
-import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// routes path
-import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory";
-import PaymentReceived from '../Payment/PaymentReceived/PaymentReceived'
-import PaymentMethod from '../Payment/PaymentMethod/PaymentMethod'
-import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
-
-// book a room 
-import HospitalList from "../BookAroom/HospitalList/HospitalList" ;
-
-// Trainer
-import TrainerList from "../Trainer/TrainerList/TainerList";
-function routepush(props){
-    props.history.push("/paymentreceived")
-}
 const images = [
-                    {img:Doctor,title:"Doctor Apponintment",pathname:"/doctorappointment"},
+                    {img:Doctor,title:"Doctor Appointment",pathname:"/advertisement"},
                     {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
                     {img:Report,title:"Report",pathname:"/reports"},
                     {img:Trainer,title:'Trainer',pathname:"/tainerlist"},
@@ -41,7 +25,6 @@ const images = [
                 ]
 
 function Dashboard(props) {
-    console.log(props,"props")
     return(
          <div className="dashboard_container">
         {images.map((data)=>{
@@ -53,13 +36,6 @@ function Dashboard(props) {
             ) 
     
         })}
-        <div>
-        <Route exact path={`${props.match.path}/prescriptionhistory`} component={PrescriptionHistory} />
-        <Route exact path={`${props.match.path}/orderdetails`} component={OrderTable} />
-        <Route exact path={`${props.match.path}/book`} component={HospitalList}/>
-        <Route exact path={`${props.match.path}/tainerlist`} component={TrainerList}/>
-       
-        </div>
         </div>
     )
 }

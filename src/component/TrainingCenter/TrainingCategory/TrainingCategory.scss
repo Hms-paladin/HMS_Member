@@ -45,7 +45,53 @@
 }
 
 
-// trainingcenter ad
+// trainingcenter advertisement
 .tra_modal{
     position: relative;
+}
+.tc_add_cont{
+    position: absolute;
+    font-weight: 600;
+    color: #fff;
+    padding: 20px;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    div{
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    div div:nth-child(1){
+           font-size: 3.5rem;
+           margin-bottom: -15px;
+    }
+    div div:nth-child(2){
+        font-size: 2rem;
+ }
+ div div:nth-child(3){
+    font-size: 1.3rem;
+}
+div div:nth-child(4){
+    font-size: 1.5rem;
+    color:#FCCA24;
+}
+div div:nth-child(4) span{
+    color:#fff;
+}
+}
+.tc_ad_bth{
+    Button{
+        background-color: #86B047;
+        text-transform: none;
+        color:#fff;
+        font-weight: 600;
+        width:115px;
+        border-radius: 0;
+        
+    }  
+     Button:hover{
+        background-color: #86B047;
+     }
 }

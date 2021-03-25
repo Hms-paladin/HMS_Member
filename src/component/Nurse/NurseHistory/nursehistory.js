@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Labelbox from '../../../helpers/labelbox/labelbox'
-import { Switch,Input,Slider,Progress} from 'antd';
+import { Switch,Input,Slider,Modal} from 'antd';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
 import Nurse_2 from '../../../images/lab.png'
@@ -11,6 +11,7 @@ import Percentage from '../../../images/percentage.svg'
 import {NavLink} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 import RangeCalendar from './RangeCalendar'
+import Nurse_ad from '../../../images/Nurse_ad.png'
 import './nursehistory.scss'
 export default function Nursehistory(props){
     const errmsg=false;
@@ -56,10 +57,14 @@ export default function Nursehistory(props){
             img:<img src={Nurse_2} style={{width:"100%",height:"100%"}}/>
         }
     ]
-    console.log(props.location,"location")
-    console.log(props.path,"path")
+    
+    const [openmodal,setopenmodal]=React.useState(true) 
+    
+    const CloseModal=()=>{
+        setopenmodal(false)
+    }
     return(
-      
+     <> 
     <Grid container className="nusre_hisparent">
         <Grid item xs={6} md={4}>
             <div className="filter_fstdiv">
@@ -83,7 +88,7 @@ export default function Nursehistory(props){
             <div className="filter_fstdiv" style={{marginTop:"10px"}}>
                 <div className="fli">Choose Date</div>
                 <div style={{width:"100%"}}><RangeCalendar/></div>
-                <div><NavLink to="/nursedetails"><Button className="apply_btn">Apply</Button></NavLink></div>
+                <div><Button className="apply_btn">Apply</Button></div>
             </div>
 
         </Grid>
@@ -98,7 +103,9 @@ export default function Nursehistory(props){
        </div>
         {NurseHistory.map((data,index)=>
          <Paper className="nurse_list_div">
-           <div style={{width:"22%"}}><div style={{width:"100%",height:"100%",display:"flex"}}><div style={{width:"150px"}}><div style={{width:"100%",height:"100%"}}>{data.img}</div></div></div></div>
+           <div style={{width:"22%"}}><div style={{width:"100%",height:"100%",display:"flex"}}><div style={{width:"150px"}}>
+           <NavLink to="/nursedetails"> <div style={{width:"100%",height:"100%"}}>{data.img}</div></NavLink>
+               </div></div></div>
            <div className="scnd_chld">
                <p className="nur_name">{data.name}</p>
                <p>{data.age} Years/{data.exp} Yrs Exp</p>
@@ -120,5 +127,22 @@ export default function Nursehistory(props){
     
    </Grid>
     </Grid>
+              <Modal
+              visible={openmodal}
+              onCancel={CloseModal}
+              footer={false}
+              title={false}
+              centered
+              width={800}
+              className="lab_ad_modal"
+              >
+                <div className="lab_ad_div_inside">
+               <img src={Nurse_ad} style={{width:"100%",height:"100%"}}/>
+               <div className="lab_ad_bth">
+                  <Button onClick={CloseModal}>Book Now</Button>
+                   </div>
+                </div>   
+              </Modal>
+    </>
     )
 }

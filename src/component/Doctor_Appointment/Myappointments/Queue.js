@@ -76,7 +76,7 @@ class ImageCarouselDynamic extends Component{
       <div>
         
       <div className="ImageCarouselDynamic">
-      <div className="queuetime"><p>Hi Dalal,You are in the sixth position of the queue</p></div>
+      <div className="queuetime"><p>Hi Dala, You are in Position 5 in the queue</p></div>
       <div className="imageitem" style={{width:400, height:250,margin:"auto"}}>
         <Carousel
           slides={states.slides}

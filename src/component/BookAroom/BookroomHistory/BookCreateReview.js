@@ -28,7 +28,7 @@ export default function CreateReview(props){
     ]
     return(
         <div>
-           <label className="create_review_head">Create Review</label>
+           <label className="create_review_head"> Review</label>
            {/* img part */}
            <div className="create_r_pro_div">
                <div className="create_r_pro_childdiv">

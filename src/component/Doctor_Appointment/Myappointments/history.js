@@ -8,7 +8,7 @@ import { Button } from "@material-ui/core";
 import Labelbox from "../../../helpers/labelbox/labelbox";
 import nurse from '../../../images/trainer.png'
 import { Rate } from 'antd';
-
+import {useHistory} from 'react-router-dom'
 import {Modal} from 'antd'
 
 
@@ -23,7 +23,12 @@ var hashHistory = require('react-router-redux')
 
 function History(props) {
     const [showfilterForm,setShowfilter] = useState(false)
-     
+    let history = useHistory();
+
+    const HistoryPush=(url)=>{
+      history.push(url);
+    //   window.location.reload()
+      }
     const openfilter = () => {
         setShowfilter(!showfilterForm)
     }
@@ -47,7 +52,7 @@ const ReviewCloseClick=()=>{
             <div className="appointmentsheadflex">
                 <div>History</div>
                 <div className="appointment_icons">
-                    <img src={plus}/>
+                    <img src={plus} onClick={()=>HistoryPush("/appointment")}/>
                     {/* <ReactSVG src={history}/> */}
                     <ReactSVG src={filter} onClick={openfilter}/>
 
@@ -67,7 +72,7 @@ const ReviewCloseClick=()=>{
                 </div>
             </div>}
             <div className="appointmentlistpaper">
-                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov <span className="appointtime">08:00AM</span></div></div>
+                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div>Cancelled Date & Time</div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate">24 Nov 2020</div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime">11AM</div></div>
@@ -75,7 +80,7 @@ const ReviewCloseClick=()=>{
 
             </div>
             <div className="appointmentlistpaper">
-                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov <span className="appointtime">08:00AM</span></div></div>
+                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div>Rescheduled Date & Time</div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate">24 Nov 2020</div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime">11AM</div></div>
@@ -83,7 +88,7 @@ const ReviewCloseClick=()=>{
 
             </div>
             <div className="appointmentlistpaper">
-                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov <span className="appointtime">08:00AM</span></div></div>
+                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div></div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate"></div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime"></div></div>

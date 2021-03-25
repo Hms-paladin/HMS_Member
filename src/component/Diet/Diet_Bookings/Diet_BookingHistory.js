@@ -62,7 +62,7 @@ export default function Diet_BookingHistory(props){
             <div className="bookhistory_list_parent">
              <div className="bookhistory_list_item">
                 <div className="book_nurse_div">  
-                  <img src={data.img} className="book_nur_img"/><div className="book_text_div">
+                  <img src={data.img} className="book_nur_img" onClick={ModalClickOpen}/><div className="book_text_div">
                       <p className="book_h_name">{data.name}</p>
                       <p  style={{color:"#AEADAD",fontSize:"13px"}}>{data.diet}</p>
                       <p>{data.Date}</p>
@@ -85,10 +85,9 @@ export default function Diet_BookingHistory(props){
               title={false}
               visible={open}
               footer={false}
-              size={"lg"}
               {...props}
+              width={650}
               centered
-              className=""
               onCancel={ModalClickClose}
              >
                  {/* <CreateReview ModalClickClose={ModalClickClose}/> */}

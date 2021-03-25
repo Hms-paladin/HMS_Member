@@ -7,6 +7,7 @@ import Tra_ad from '../../../images/tra_ad.png'
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import './TrainingDetails.scss'
+// import Tra_ad from "../../../images/doctorappoinment.png";
 import Dialog from '@material-ui/core/Dialog';
 import ProgramModal from './Modal'
 export default function Training_Details(){
@@ -26,8 +27,8 @@ export default function Training_Details(){
     return(
         <div style={{width:"100%"}} className="nurse_de_parent">
         <div className="nursede_parent">
-            <div style={{height:"250px",width:"100%"}}>
-            <img src={Tra_ad} style={{width:"100%",height:"100%"}}/>
+            <div style={{height:"40vh",width:"100%"}}>
+            <img src={Tra_ad} className="Pro_tra_img"/>
             </div>
         </div>
         <Grid container>

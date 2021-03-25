@@ -17,31 +17,23 @@ export default function ConfirmationModal(props){
            {/* <div className="bookconfirm">BookingConfirmation</div> */}
            <Grid container spacing={4} className="book_confirm_container">
                <Grid item sm={12} md={4} className="confirm_nurse_imggrid">
-                  <div className="Nurse_img_div"><img src={Nurse} className="confir_nurse"/></div>
+                  <div className="Nurse_img_div">
+                    <img src={Nurse} className="confir_nurse"/>
                   <div className="confirm_b_name">Healthy Eats</div>
+                  <div style={{fontSize:"13px",color:"#ABA9A9"}}>Keto Diet</div>
+                   
+                    </div>
                </Grid>
                <Grid item xs={12} md={8}>
                <Form>
         <Row form>
-          <Col md={3}>
+          <Col md={4}>
             <FormGroup>
             <p className="mem_con_namehead">Name</p>
             <p className="mem_con_name">Dalal</p> 
             </FormGroup>
           </Col>
-          <Col md={3}>
-            <FormGroup>
-            <p className="mem_con_namehead">Date</p>
-            <p className="mem_con_name">01 Jan 2021</p> 
-            </FormGroup>
-          </Col>
-          <Col md={3}>
-            <FormGroup>
-            <p className="mem_con_namehead">Time</p>
-            <p className="mem_con_name">09:00 AM</p> 
-            </FormGroup>
-          </Col>
-          <Col md={3}>
+          <Col md={4}>
             <FormGroup>
             <p className="mem_con_namehead">Delivery Address</p>
             {/* <p className="mem_con_name">Jabriya</p>  */}
@@ -50,10 +42,29 @@ export default function ConfirmationModal(props){
         <label className="mem_con_name">Jabriya</label>} <span className="elipse" onClick={ElipseOpen}>...</span></div>
             </FormGroup>
           </Col>
-          <Col md={3}>
+          <Col md={4}>
             <FormGroup>
-            <p className="mem_con_namehead">Cost (KWD)</p>
-            <p className="mem_con_name">50</p> 
+            <p className="mem_con_namehead">Total Days</p>
+            <p className="mem_con_name">28</p> 
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Cost Per Month (KWD)</p>
+            <p className="mem_con_name">200</p> 
+            </FormGroup>
+          </Col>
+         
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Start Date</p>
+            <p className="mem_con_name">29 Nov 2020</p> 
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">End Date</p>
+            <p className="mem_con_name">27 Dec 2020</p> 
             </FormGroup>
           </Col>
           </Row>

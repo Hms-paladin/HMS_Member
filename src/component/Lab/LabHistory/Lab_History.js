@@ -14,7 +14,11 @@ import {NavLink,path} from 'react-router-dom'
 import { Col, Row, Form, FormGroup} from 'reactstrap';
 import ReactPlayer from 'react-player'
 import './Lab_History.scss'
+import {Modal} from 'antd'
+import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 import Map from './Map'
+import Lab_ad from '../../../images/Lab_ad1.png'
+import CloseIcon from '@material-ui/icons/Close';
 const { Search } = Input;
 export default function Lab_History(props){
     const [open,setClose]=React.useState(false)
@@ -46,7 +50,11 @@ export default function Lab_History(props){
         //     img:LabImage2,
         // }
     ]
-    console.log(props.match.path,"lab")
+    const [openmodal,setopenmodal]=React.useState(true) 
+    
+    const CloseModal=()=>{
+        setopenmodal(false)
+    }
     return(
         <div>
            
@@ -133,13 +141,14 @@ export default function Lab_History(props){
             </ol>
          <div class="carousel-inner">
          <div class="carousel-item active">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=qDgRdzuWt58' />
+           <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58'/>
          </div>
          <div class="carousel-item">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=124t9bcW6ms' />
+         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58'/>
+
          </div>
          <div class="carousel-item">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=c7HS3dBV3SI' />
+         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58'/>
          </div>
         </div>
         </div>
@@ -198,7 +207,22 @@ export default function Lab_History(props){
 
                 </Grid>
                 </div>
-             
+                <Modal
+           visible={openmodal}
+           onCancel={CloseModal}
+           footer={false}
+           title={false}
+           centered
+           width={700}
+           className="lab_ad_modal"
+           >
+             <div className="lab_ad_div_inside">
+            <img src={Lab_ad} style={{width:"100%",height:"100%"}}/>
+            <div className="lab_ad_bth">
+               <Button>Book Now</Button>
+                </div>
+             </div>   
+           </Modal>
              
         </div>
     )

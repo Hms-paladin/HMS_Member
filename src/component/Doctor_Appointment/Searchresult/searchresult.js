@@ -16,7 +16,7 @@ import "./searchresult.scss";
 const images = [
                     {img:Doctor,title:"Dentistry"},
                     {img:Nurse,title:"Hematologist"},
-                    {img:Report,title:"Anasthesiologist"},
+                    {img:Report,title:"Anesthesiologist"},
                     {img:Trainer,title:"Dermatologist"},
                     {img:TrainingCenter,title:"Endocrinologist"},
                     {img:DietMeal,title:"Family physician"},

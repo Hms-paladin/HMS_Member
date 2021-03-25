@@ -182,7 +182,7 @@ const ModalCloseClick=()=>{
              </>
           
                 <Paper className="paper_align">
-                  <p className="paper_booking"> Booking Confirmation</p>
+                  <p className="paper_booking"> Reschedule  Confirmation</p>
                   <div style={{display:'flex', justifyContent:'center'}}>
                     <p style={{color:'#83AF40'}}>Mayo Clinic Hospital</p>
                     <img src={Pin} style={{width:'18px', height:'18px'}}/>

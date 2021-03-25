@@ -69,7 +69,7 @@ export default function BookingConfirmation(props){
             </div>
         </div>
         {BookOpen===true?<AddMember BookClose={BookClose}/>:null}
-        <div className="confir_div"><div style={{fontSize:"18px",fontWeight:"600"}}>BookingConfirmation</div><div style={{color:"#83AE40",fontWeight:"600"}}>Best Clinical Lab<span><img src={Location} className="location_img"/></span></div></div>
+        <div className="confir_div"><div style={{fontSize:"18px",fontWeight:"600"}}>Booking Confirmation</div><div style={{color:"#83AE40",fontWeight:"600"}}>Best Clinical Lab<span><img src={Location} className="location_img"/></span></div></div>
         {/* form details */}
        
         <Form className="form_items">

@@ -21,6 +21,7 @@ import female from '../../../images/female.svg'
 import sort from '../../../images/sort.svg'
 import avatar from '../../../images/nurse.png'
 import pin from '../../../images/pin.png'
+import Internet from '../../../images/internet.png'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
@@ -107,7 +108,7 @@ function valuetext(value) {
 
 function Physiotheraphyfeed(props) {
   let history = useHistory();
-
+  const [App_type,setApp_type]=useState(false)
   function Bookingdetails(){
     history.push("/physiotherapistbooking")
 }
@@ -256,12 +257,19 @@ function Physiotheraphyfeed(props) {
   <Button className="redbtn" onClick={Bookingdetails}>10:50AM</Button>
   <Button className="redbtn" onClick={Bookingdetails}>2:00PM</Button>
   <Button className="greenbtn" onClick={Bookingdetails}>3:00PM</Button>
-  <Button className="redbtn" onClick={Bookingdetails}>3:45PM</Button>
+  <Button className="redbtn" onClick={()=>setApp_type(!App_type)}>3:45PM</Button>
   <Button className="greenbtn" onClick={Bookingdetails}>8:00PM</Button>
   <Button className="greenbtn"onClick={Bookingdetails}>8:30PM</Button>
 
 
+{/* Appointment Type */}
+{App_type&&<div className="appoint_type_doc">
+   <label>Choose Appointment Type</label>
+  <div className="type_div"> <div><img src={Internet}/><div>OnLine</div></div>
+   <div><img src={Internet}/><div>InClinic</div></div></div>
+</div>}
 
+{/* end */}
   </div>
 
         </div>

@@ -34,7 +34,7 @@ export default function Clinical_lab(props) {
     ]
     const [color,setcolor]=React.useState(false)
     const ColorClick=(id)=>{
-        alert(id)
+       
         setcolor(!color)
     }
     // confirm open add member

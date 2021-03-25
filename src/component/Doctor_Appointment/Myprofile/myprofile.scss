@@ -158,11 +158,17 @@
 }
 .moredetail{
     margin: 20px 30px 20px 50px;
-    
+    position: relative;
     box-shadow: 0px 2px 5px 2px #ccc;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
+}
+.elp{
+    color:#2043CC;
+    text-decoration: underline;
+    padding-left: 2px;
+    cursor: pointer;
 }
 .minicard{
     display: flex;
@@ -451,4 +457,17 @@ overflow: hidden;
   }
   .gender .ant-select-selector{
       width:120px !important;
+  }
+  .ad_elpse{
+      position: absolute;
+      padding: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0px 6px 8px #00000029;
+      border-radius: 5px;
+      background-color: #fff;
+      width: 225px;
+      right: 46px;
+      top: -83px;
+      color:#4A4A4A;
   }

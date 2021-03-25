@@ -60,7 +60,8 @@
     height: 50%;
     display: flex;
     align-items: flex-end;
-    justify-content: space-around;
+    justify-content: flex-end;
+    font-weight: 600;
 }
 .lab_bookings_parentdiv .book_reshedule{
     color:#F2951B;

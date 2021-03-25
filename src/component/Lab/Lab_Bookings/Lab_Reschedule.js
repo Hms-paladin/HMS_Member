@@ -11,7 +11,7 @@ export default function Lab_Reschedule(props){
     return(
         <div className="lab_reshedule_root">
              <div className="header_reschedule">
-                 <div style={{fontSize:"18px",fontWeight:"600"}}>BookingConfirmation</div>
+                 <div style={{fontSize:"18px",fontWeight:"600"}}>Booking Confirmation</div>
                  <div style={{color:"#83AE40",fontWeight:"600"}}>Best Clinical Lab<span><img src={Location} className="location_img"/></span></div>
             </div>
             <Form className="form_items">

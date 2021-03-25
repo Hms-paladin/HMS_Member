@@ -5,6 +5,7 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import dateFormat from 'dateformat';
 import moment from 'moment';
+import Favorite from '@material-ui/icons/Favorite'
 import {
 	MuiPickersUtilsProvider,
 	KeyboardTimePicker,
@@ -17,6 +18,7 @@ import DateFnsUtils from '@date-io/date-fns';
 //   KeyboardTimePicker,
 //   KeyboardDatePicker,
 // } from '@material-ui/pickers';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { DatePicker, Select, TimePicker } from 'antd';
 
 
@@ -161,12 +163,11 @@ export default class Labelbox extends Component {
 								disablePast={this.props.disablePast ? this.props.disablePast : false}
 								minDate={this.props.minDate ? this.props.minDate : null}
 								variant="variant"
-								format="dd/MM/yyyy"
+								format="dd MMM yyyy"
 								margin="normal"
 								id="date-picker-inline"
 								value={this.state.selecteddate}
 								onChange={(date) => this.datepickerChange(date)}
-
 							/>
 						</MuiPickersUtilsProvider>
 
@@ -202,6 +203,7 @@ export default class Labelbox extends Component {
 								KeyboardButtonProps={{
 									'aria-label': 'change time',
 								}}
+								keyboardIcon={<AccessTimeIcon />}
 							/>
 						</MuiPickersUtilsProvider>
 						{

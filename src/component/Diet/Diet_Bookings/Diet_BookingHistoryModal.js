@@ -5,8 +5,7 @@ import Divider from '@material-ui/core/Divider'
 import Location from '../../../images/pin.png'
 import './Diet_BookingHistoryModal.scss'
 export default function BookingHistoryModal(props){
-  console.log(props,"divya")
-  const Historyid=props.History[0].historyid&&props.History[0].historyid
+  
   const[HideAdrs,setHideAdrs]=React.useState(false)
   const ElipseOpen=()=>{
       setHideAdrs(!HideAdrs)
@@ -56,8 +55,8 @@ export default function BookingHistoryModal(props){
         
           <Col md={4} sm={3}>
             <FormGroup>
-            <p className="mem_con_namehead">Cancelled Date</p>
-            <p className="mem_con_name">25 Apr 2021</p> 
+            <p className="mem_con_namehead">Cancelled Date & Time</p>
+            <p className="mem_con_name">25 Apr 2021, 09:30 AM</p> 
             </FormGroup>
           </Col>
          

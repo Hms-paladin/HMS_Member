@@ -25,7 +25,7 @@ function Myappointment(props) {
 
     const HistoryPush=(url)=>{
       history.push(url);
-      window.location.reload()
+    //   window.location.reload()
       }
       
     const [showcancelForm,setShowForm] = useState(false)
@@ -52,7 +52,7 @@ function Myappointment(props) {
             <div className="appointmentsheadflex">
                 <div>Appointments</div>
                 <div className="appointment_icons">
-                    <img src={plus}/>
+                    <img src={plus} onClick={()=>HistoryPush("/appointment")}/>
                     <ReactSVG src={historybtn} onClick={()=>HistoryPush("/history")} />
                     <ReactSVG src={filter} onClick={openfilter}/>
 
@@ -72,7 +72,7 @@ function Myappointment(props) {
                 </div>
             </div>}
             <div className="appointmentlistpaper">
-                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov <span className="appointtime">08:00AM</span></div></div>
+                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div></div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate"></div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime"></div></div>
@@ -81,7 +81,7 @@ function Myappointment(props) {
                {queue&&<Queue/>}
             </div>
             <div className="appointmentlistpaper">
-                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov <span className="appointtime">08:00AM</span></div></div>
+                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div></div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate"></div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime"></div></div>

@@ -4,7 +4,8 @@ import {Modal} from 'antd'
 import HistoryButton from '../../../images/history-button.svg'
 import Diet from '../../../images/diet1.png'
 import './Diet_Bookings.scss'
-export default function Diet_Bookings(){
+import BookingHistoryModal from './Diet_BookingHistoryModal'
+export default function Diet_Bookings(props){
     const [CancelOpen,setCancelOpen]=React.useState(false)
     const[HideAdrs,setHideAdrs]=React.useState(false)
     const CancelClick=()=>{
@@ -21,6 +22,13 @@ export default function Diet_Bookings(){
     const ReOpenClose=()=>{
         setReOpen(false)
     }
+    const [ModalOpen,setModalOpen]=React.useState(false)
+    const ModalClickOpen=()=>{
+        setModalOpen(true)
+    }
+    const ModalClickClose=()=>{
+        setModalOpen(false)
+    }
     return(
         <div className="diet_bookings_parentdiv">
              <div className="book_headdiv">
@@ -29,7 +37,7 @@ export default function Diet_Bookings(){
             <div className="bookhistory_list_parent">
              <div className="diet_bookhistory_list">
                 <div className="book_diet_div">  
-                  <img src={Diet} className="book_nur_img"/>
+                  <img src={Diet} className="book_nur_img" onClick={ModalClickOpen}/>
                   <div className="book_text_div">
                       <p className="book_h_name">Healthy Eats</p>
                       <p  style={{color:"#AEADAD",fontSize:"13px"}}>Keto Diet</p>
@@ -55,7 +63,19 @@ export default function Diet_Bookings(){
               :null}
               
            </div>
-       
+           <Modal
+              title={false}
+              visible={ModalOpen}
+              footer={false}
+              {...props}
+              centered
+              width={650}
+              onCancel={ModalClickClose}
+             >
+                 {/* <CreateReview ModalClickClose={ModalClickClose}/> */}
+                 <BookingHistoryModal />
+
+             </Modal>
         </div>
     )
 }

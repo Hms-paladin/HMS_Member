@@ -27,7 +27,7 @@ export default function Lab_CreateReview(props){
     ]
     return(
         <div>
-           <label className="create_review">Create Review</label>
+           <label className="create_review"> Review</label>
            {/* img part */}
            <div className="create_r_pro_div">
                <div className="create_r_pro_childdiv">

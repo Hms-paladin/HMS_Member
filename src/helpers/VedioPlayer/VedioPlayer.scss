@@ -1,0 +1,26 @@
+@import "~video-react/styles/scss/video-react"; 
+ .react_video{
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 3px;
+}
+.vd_share{
+    position: absolute;
+    fill: #f8f9fa !important;
+    top: 25px;
+    right: 25px;
+    font-size: 2.5rem !important;
+    cursor: pointer;
+}
+.player_vedio_comp{
+    width:100%;
+    height:100%;
+}
+.video-react .video-react-big-play-button{
+    top: 50% !important;
+   left: 50% !important;
+   transform: translate(-50%, -50%) !important;
+}
+.video-react .video-react-control-bar{
+    bottom: 30px !important;
+}

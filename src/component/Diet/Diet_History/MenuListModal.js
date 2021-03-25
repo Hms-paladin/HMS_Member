@@ -25,7 +25,6 @@ export default function MenuListModal(props){
     ]
     const [ok,setok]=React.useState(false)
     const TickClick=(key,id)=>{
-        alert(key)
         if(images.id===id){
         setok(!ok)
         }

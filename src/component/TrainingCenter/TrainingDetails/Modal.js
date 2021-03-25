@@ -7,7 +7,7 @@ export default function ProgramModal(){
     const [HideAdrs,setHideAdrs]=useState(false)
  return(
      <div className="pro_modal_parent">
-         <div className="p_title_head"><label>Liverpool Club</label><NavLink to="/myschedule"><Button>Select</Button></NavLink></div>
+         <div className="p_title_head"><label>Liverpool Club</label><NavLink to="/bookingshedule"><Button>Select</Button></NavLink></div>
          <div>
              {HideAdrs?<label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:<label className="lab_adrs">Adailia</label>}
              <span className="elipse" onClick={()=>setHideAdrs(!HideAdrs)}>...</span>

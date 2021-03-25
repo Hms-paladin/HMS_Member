@@ -133,7 +133,7 @@ const ModalClickClose=()=>{
         
             <div className="second_div">
                <div className="second_details">
-                  <div className="avatar_div"> <img src={avatar}onClick={ModalClickOpen}  /></div>
+                  <div className="snd_deta"><div className="avatar_div"> <img src={avatar}onClick={ModalClickOpen}  /></div>
                    <div className="hos_details">
                      <div className="detail_1">Mayo Clinic Hospital</div>
                      <div className="detail_2">Shaab sea View</div>
@@ -144,6 +144,7 @@ const ModalClickClose=()=>{
                             ))}
                       </div>
                     </div>
+                    </div> 
                      <div className="rate_numeric"> <div className="number_rating">4.5<img src={star}/></div></div>
                </div>
                 <div style={{display:'flex', marginTop:'10px'}} >
@@ -174,52 +175,8 @@ const ModalClickClose=()=>{
                         </div>
                     </div>
             </div>
-
-            <div className="second_div">
-                <div className="second_details">
-                     <div className="avatar_div"> <img src={avatar} onClick={ModalClickOpen} /></div>
-                     <div className="hos_details">
-                       <div className="detail_1">Royal Hospital</div>
-                       <div className="detail_2">Shalmiya</div>
-                       <div  className="star_rating">
-                            {[...Array(5)].map((img,index)=>(
-                            
-                            <div key={index}><StarIcon className="star_icon"/></div>
-                            ))}
-                      </div>
-                     </div>
-                     <div className="rate_numeric"> <div className="number_rating">4.5<img src={star}/></div></div>
-                     
-                </div>
-                <div style={{display:'flex', marginTop:'10px'}} >
-                   <img className="thumb_size" src={Thumb}/>
-                   <p style={{color:'#83AF40', marginTop:'0px', marginBottom:'0px', marginRight:'10px'}}>93%</p>
-                   <p style={{marginTop:'0px', marginBottom:'0px'}}>(15reviews)</p>
-                </div>
-                <div className="box_align">
-                    <p className="box_first_text">Dalal</p>
-                    <p className="box_second_text">The ambiance and room maintenance are very good</p>
-                </div>
-                <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                        <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=-kxQerPX_Rc' />
-                        </div>
-                        <div class="carousel-item">
-                        <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=JllCZCOZJkk' />
-                        </div>
-                        <div class="carousel-item">
-                        <ReactPlayer className="react_video" url={'https://www.youtube.com/watch?v=7waDSzAh28k'} />
-                        </div>
-                    </div>
-                </div>
-            </div>
            </div>
+         
 
            <Modal
                   title="Mayo Clinic Hospital"
@@ -229,7 +186,7 @@ const ModalClickClose=()=>{
                   size={"lg"}
                   {...props}
                   centered
-                  width={1100}
+                  width={1000}
                   // className="confirm_modal"
                   onCancel={ModalClickClose}
                  >

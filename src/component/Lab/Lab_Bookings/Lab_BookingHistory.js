@@ -59,7 +59,7 @@ export default function Lab_BookingHistory(props){
             <div className="bookhistory_list_parent">
              <div className="bookhistory_list_item">
                 <div className="book_nurse_div">  
-                  <img src={Nurse} className="book_nur_img"/><div className="book_text_div">
+                  <img src={Nurse} className="book_nur_img" onClick={ModalClickOpen}/><div className="book_text_div">
                       <p className="book_h_name">{data.name}</p>
                       <div>{HideAdrs?<label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:<label className="lab_adrs">Jabriya</label>}
                        <span className="elipse" onClick={ElipseOpen}>...</span></div>

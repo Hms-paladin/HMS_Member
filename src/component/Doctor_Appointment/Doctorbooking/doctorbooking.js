@@ -118,6 +118,7 @@ const images = [
   
 function Doctorbooking(props) {
     const [showForm,setShowForm] = useState(false)
+    const [App_type,setApp_type]=useState(false)
     const openForm = () => {
       setShowForm(true)
   }
@@ -226,7 +227,6 @@ return(
   <Button className="greenbtn" onClick={openForm}>8:30PM</Button>
 
 
-
   </div>
             </div>
             <div className="flex3">
@@ -259,7 +259,7 @@ return(
                {addmemberForm && <div className="addmember_mini">
                   <div className="avatar_uploaderdiv"><div className="avatar_uploader"><ReactSVG src={avatar}/> </div><div>Add Photo</div></div>
                   <div><Labelbox type="text"labelname="Name"/></div>
-                  <div className="formflex"><Labelbox type="select"labelname="Gender"/><Labelbox type="text"labelname="Date of Birth"/></div>
+                  <div className="formflex"><div style={{width:"50%",marginRight:"10px"}}><Labelbox type="select"labelname="Gender"/></div><div style={{width:"50%"}}><Labelbox type="datepicker"labelname="Date of Birth"/></div></div>
                   <div><Labelbox type="text"labelname="Mobile number"/></div>
                   <div><Labelbox type="select"labelname="Relationship"/></div>
                   <div className="heightformflex"><Labelbox type="text"labelname="Height"/><span>cms</span><Labelbox type="text"labelname="Weight"/><span>kgs</span></div>

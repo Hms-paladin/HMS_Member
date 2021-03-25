@@ -5,7 +5,6 @@ import Divider from '@material-ui/core/Divider'
 import './BookingHistoryModal.scss'
 export default function BookingHistoryModal(props){
   console.log(props,"divya")
-  const Historyid=props.History[0].historyid&&props.History[0].historyid
     return(
       <div>
       <div className="nurse_review_imgdiv"><img src={Nurse} style={{width:"100px",borderRadius:"50px",boxShadow: '0px 3px 5px #00000033'}}/><label className="nur_his_name">Rose</label></div>
@@ -44,8 +43,8 @@ export default function BookingHistoryModal(props){
           </Col>
            <Col md={2}>
             <FormGroup>
-              {Historyid==8?<div><p className="mem_con_namehead">Cancelled Date&Time</p><p className="mem_con_name">5 Feb 2021<br/>10.30 AM</p></div>:
-                Historyid==10?<div><p className="mem_con_namehead">Reschedule Date&Time</p><p className="mem_con_name">4 Feb 2021<br/>10.30 AM</p></div>:null}
+              <div><p className="mem_con_namehead">Cancelled Date&Time</p><p className="mem_con_name">5 Feb 2021<br/>10.30 AM</p></div>
+               {/* <div><p className="mem_con_namehead">Reschedule Date&Time</p><p className="mem_con_name">4 Feb 2021<br/>10.30 AM</p></div> */}
             </FormGroup>
           </Col>
           <Col md={2}>
