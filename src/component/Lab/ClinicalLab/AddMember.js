@@ -2,7 +2,7 @@ import React from 'react'
 import Labelbox from '../../../helpers/labelbox/labelbox'
 import Button from '@material-ui/core/Button';
 import './AddMember.scss'
-import Avatar from '../../Nurse/NurseDetails/Upload'
+import Avatar from '../../../helpers/Upload/Upload'
 export default function Lab_AddMember(props){
     return(
         <div className="add_labmem_parent">

@@ -228,7 +228,7 @@ function Feed(props) {
       className="react_video"
       width='100%'
       height='100%'
-      playsInline
+      // playsInline
      
     />
      <ShareIcon className="vd_share"/>
@@ -273,7 +273,7 @@ function Feed(props) {
 {App_type&&<div className="appoint_type_doc">
    <label>Choose Appointment Type</label>
   <div className="type_div"> <div><img src={Internet} style={{width:"40px"}}/><div>OnLine</div></div>
-   <div><img src={Clinic} style={{width:"40px"}}/><div>InClinic</div></div></div>
+   <div><img src={Clinic} style={{width:"32px"}}/><div>InClinic</div></div></div>
 </div>}
 
 {/* end */}

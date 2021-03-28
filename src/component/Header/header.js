@@ -75,6 +75,15 @@ const [login_enable,setlogin_enable]=useState(true)
     }
       
     }
+    const CategoryPush=(url)=>{
+      let path_name=location.pathname
+      if(path_name==="/physiotheraphyfeed"){
+        history.push("/physiotheraphy") 
+      }
+      else if(path_name==="/feed"){
+        history.push("/doctorappointment") 
+      }
+    }
     const HistoryPush=(url)=>{
       history.push(url);
       }
@@ -132,7 +141,7 @@ const [login_enable,setlogin_enable]=useState(true)
 
    <Dropdown.Menu >
     {/* <Dropdown.Item onClick={()=>HistoryPush("/feed")} ><Button className="categorybtn">Doctor</Button></Dropdown.Item>  */}
-    <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={()=>HistoryPush("/doctorappointment")}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
+    <Dropdown.Item style={{display:"flex",justifyContent:"center"}} onClick={CategoryPush}><Button className="categorybtn">Speciality</Button></Dropdown.Item>
     
 
   </Dropdown.Menu> 

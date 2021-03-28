@@ -3,7 +3,7 @@ import "./editprofile.scss";
 import Labelbox from '../../../helpers/labelbox/labelbox'
 // import avatar from "../../../images/user.png";
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import Avatar from '../../Nurse/NurseDetails/Upload'
+import Avatar from '../../../helpers/Upload/Upload'
 import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 
 var hashHistory = require('react-router-redux')

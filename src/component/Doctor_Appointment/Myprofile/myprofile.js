@@ -26,7 +26,7 @@ import Labelbox from "../../../helpers/labelbox/labelbox";
 import smart from '../../../images/smartwatch.jfif'
 import fitness from '../../../images/fitnessband.jpg'
 import camera from '../../../images/camera.jpg'
-import Avatar from '../../Nurse/NurseDetails/Upload'
+import Avatar from '../../../helpers/Upload/Upload'
 const { Panel } = Collapse;
 
 

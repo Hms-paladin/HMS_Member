@@ -21,8 +21,9 @@ export default function AdvertisementDiet(){
       }
     },[close])
     return(
-        <div>
+        <div className="ad_parent">
                {close &&
+               <div className="ad_child_div">
                <div className="ad_advertise_c">
                  <img src={Ad} className="c_ad_img"/> 
                 
@@ -32,7 +33,7 @@ export default function AdvertisementDiet(){
                  <div className="adver_close_div"><CloseIcon className="ad_icon" onClick={Closed}/></div>
 
               </div>
-              
+              </div>
          
 }
         </div>

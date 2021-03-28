@@ -108,27 +108,14 @@ export default function Lab_History(props){
                    <div className="reviews_div"><img src={Thumb} style={{width:"20px"}}/><label className="lab_r_per">{data.re_per+"%"}</label><label className="re_per">({data.review + "reviews"})</label></div>  
                    {/* description in lab */}
                    <div className="lab_descrip">
-                   <div id="carouselExampleIndicators" class="carousel slide">
-            <ol class="carousel-indicators descrip">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            </ol>
-         <div class="carousel-inner">
+                
         
-         <div class="carousel-item active">
+       
                     <label>Dalal</label>
                        <div>
                            Lab is clean.Home pick up sample service is really fine.On time service.
                        </div>
-         </div>
-           <div class="carousel-item">
-                  <label>Dalal</label>
-                       <div>
-                           Lab is clean.Home pick up sample service is really fine.On time service.
-                       </div>
-            </div>
-           </div>
-            </div>
+       
                    </div>
                   
 
@@ -141,14 +128,14 @@ export default function Lab_History(props){
             </ol>
          <div class="carousel-inner">
          <div class="carousel-item active">
-           <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58'/>
+           <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
          </div>
          <div class="carousel-item">
-         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58'/>
+         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
 
          </div>
          <div class="carousel-item">
-         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58'/>
+         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
          </div>
         </div>
         </div>

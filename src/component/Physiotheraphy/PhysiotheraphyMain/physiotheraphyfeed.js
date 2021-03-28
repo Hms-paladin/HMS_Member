@@ -4,7 +4,8 @@ import Button from '@material-ui/core/Button'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Rating from '@material-ui/lab/Rating';
 import PropTypes from 'prop-types';
-
+import Internet from '../../../images/internet1.svg'
+import Clinic from '../../../images/Clinic1.svg'
 import { withStyles } from '@material-ui/core/styles';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,7 +22,6 @@ import female from '../../../images/female.svg'
 import sort from '../../../images/sort.svg'
 import avatar from '../../../images/nurse.png'
 import pin from '../../../images/pin.png'
-import Internet from '../../../images/internet.png'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
@@ -34,7 +34,7 @@ import {useHistory} from 'react-router-dom'
 import sample from '../../../images/sample.mp4'
 import search from "../../../images/loupe.png";
 import { Input } from 'antd';
-
+import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 
 var hashHistory = require('react-router-redux')
 const { Search } = Input;
@@ -239,13 +239,15 @@ function Physiotheraphyfeed(props) {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <VedioPlayer  src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' />
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <VedioPlayer  src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' />
+
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <VedioPlayer  src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' />
+
     </div>
   </div>
 
@@ -265,8 +267,8 @@ function Physiotheraphyfeed(props) {
 {/* Appointment Type */}
 {App_type&&<div className="appoint_type_doc">
    <label>Choose Appointment Type</label>
-  <div className="type_div"> <div><img src={Internet}/><div>OnLine</div></div>
-   <div><img src={Internet}/><div>InClinic</div></div></div>
+  <div className="type_div"> <div><img src={Internet} style={{width:"40px"}}/><div>OnLine</div></div>
+   <div><img src={Clinic} style={{width:"32px"}}/><div>InClinic</div></div></div>
 </div>}
 
 {/* end */}
@@ -303,13 +305,13 @@ function Physiotheraphyfeed(props) {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <VedioPlayer  src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' />
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <VedioPlayer  src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' />
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url={'https://www.youtube.com/watch?v=ysz5S6PUM-U'} />
+    <VedioPlayer  src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' />
     </div>
   </div>
  

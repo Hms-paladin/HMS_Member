@@ -87,7 +87,7 @@ export default function Diet_History(){
                     <div className="per_lab_part">
                       <div style={{position:"relative"}}>
                          <img src={percentage} style={{width:"55px"}}/>
-                         <div ccassName="per_inside_div"><p>10%</p><p>off</p></div>
+                         <div ccassName="per_inside_diet_div"><p>10%</p><p>off</p></div>
                       </div>
                       <div>
                        <span className="star_ic_div"><label>4.5</label><StarIcon/></span>
@@ -115,13 +115,13 @@ export default function Diet_History(){
             </ol>
          <div class="carousel-inner">
          <div class="carousel-item active">
-         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58' playing/>
+         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' playing/>
          </div>
          <div class="carousel-item">
-         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58' playing/>
+         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' playing/>
          </div>
          <div class="carousel-item">
-         <VedioPlayer src='https://www.youtube.com/watch?v=qDgRdzuWt58' playing/>
+         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' playing/>
          </div>
         </div>
         </div>

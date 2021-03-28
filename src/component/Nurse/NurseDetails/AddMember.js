@@ -2,7 +2,7 @@ import React from 'react'
 import Labelbox from '../../../helpers/labelbox/labelbox'
 import Button from '@material-ui/core/Button';
 import './AddMember.scss'
-import Avatar from './Upload'
+import Avatar from '../../../helpers/Upload/Upload'
 export default function AddMember(props){
     return(
         <div className="add_mem_parent">

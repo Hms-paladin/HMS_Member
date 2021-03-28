@@ -56,9 +56,9 @@ import HospitalList from "../component/BookAroom/HospitalList/HospitalList";
 import BookingDetails from "../component/BookAroom/BookroomBooking/BookingDetails";
 import BookroomHistory from "../component/BookAroom/BookroomHistory/BookroomHistory";
 import BookingReschedule from "../component/BookAroom/BookroomBooking/BookingReschedule";
-import PaymentReceived_Book from "../component/BookAroom/PaymentReceived/PaymentReceived";
+// import PaymentReceived_Book from "../component/BookAroom/PaymentReceived/PaymentReceived";
 import ConfirmBooking from "../component/BookAroom/HospitalList/ConfirmBooking";
-import PaymentMethodBook from "../component/BookAroom/HospitalList/PaymentMethodBook";
+// import PaymentMethodBook from "../component/BookAroom/HospitalList/PaymentMethodBook";
 import ProceedScreen from "../component/BookAroom/HospitalList/proceedScreen/ProceedScreen";
 import ConfirmPage from "../component/BookAroom/BookroomBooking/ConfirmPage";
 import ProceedReschedule from "../component/BookAroom/BookroomBooking/proceedReschedule/ProceedReschedule";
@@ -81,6 +81,7 @@ import Physiotheraphymain from "../component/Physiotheraphy/PhysiotheraphyMain/p
 import Physiotheraphyfeed from "../component/Physiotheraphy/PhysiotheraphyMain/physiotheraphyfeed";
 import Physiotherapistbooking from "../component/Physiotheraphy/PhysiotheraphyMain/physiotherapistbooking";
 import Phy_Myappointment from '../component/Physiotheraphy/Myappointments/myappointments'
+import Ad_Physiotherphy from '../component/Physiotheraphy/PhysiotheraphyMain/advertisement'
 import Dashboard from '../component/Dashboard/dashboard'
 import { Switch} from "react-router-dom";
 var hashHistory = require('react-router-redux')
@@ -140,11 +141,12 @@ function Routes(props) {
                           {/* Physiotheraphy */}
                           <Route path="/physiotheraphy" component={Physiotheraphymain} exact/>
                           <Route path="/physiotheraphyfeed" component={Physiotheraphyfeed} exact/>
-                          <Route path="phy_appointment" component={Phy_Myappointment} exact/>
+                          <Route path="/phy_appointment" component={Phy_Myappointment} exact/>
                           <Route path="/physiotherapistbooking" component={Physiotherapistbooking} exact/>
 
                          {/* advertisement */}
                          <Route path="/advertisement" component={Advertisement} exact/>
+                         <Route path='/physiotheraphy_ad' component={Ad_Physiotherphy}/>
 
 
                         {/* Book a Room */}
@@ -154,8 +156,8 @@ function Routes(props) {
                         <Route path="/bookroomhistory" component={BookroomHistory}/>
                         <Route path="/reschedulepage" component={BookingReschedule}/>
                         <Route path="/confirmhospital" component={ConfirmBooking}/>
-                        <Route path = "/paymentmethodbook" component={PaymentMethodBook}/>
-                        <Route path="/paymentreceived" component={PaymentReceived_Book}/>
+                        {/* <Route path = "/paymentmethodbook" component={PaymentMethodBook}/> */}
+                        {/* <Route path="/paymentreceived" component={PaymentReceived_Book}/> */}
                         <Route path = "/proceedpage" component = {ProceedScreen}/>
                         <Route path = "/confirmpage" component = {ConfirmPage} />
                         <Route path="/resheduleproceed" component = {ProceedReschedule}/>

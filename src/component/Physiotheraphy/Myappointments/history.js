@@ -67,7 +67,7 @@ const ReviewCloseClick=()=>{
                 </div>
             </div>}
             <div className="appointmentlistpaper">
-                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov <span className="appointtime">08:00AM</span></div></div>
+                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div>Cancelled Date & Time</div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate">24 Nov 2020</div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime">11AM</div></div>
@@ -75,7 +75,7 @@ const ReviewCloseClick=()=>{
 
             </div>
             <div className="appointmentlistpaper">
-                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov <span className="appointtime">08:00AM</span></div></div>
+                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div>Rescheduled Date & Time</div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate">24 Nov 2020</div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime">11AM</div></div>
@@ -83,7 +83,7 @@ const ReviewCloseClick=()=>{
 
             </div>
             <div className="appointmentlistpaper">
-                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov <span className="appointtime">08:00AM</span></div></div>
+                <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div></div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate"></div></div>
                 <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime"></div></div>
