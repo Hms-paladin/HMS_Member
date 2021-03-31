@@ -29,6 +29,9 @@ export default function MenuListModal(props){
         setok(!ok)
         }
     }
+    const WeekDropdown=[
+        {id:"1",week:"Week1"},{id:2,week:"Week2"},{id:3,week:"Week3"},{id:4,week:"Week4"}
+    ]
     return(
         <div>
             <div>
@@ -67,9 +70,12 @@ export default function MenuListModal(props){
                </ButtonGroup>
                {/* repeat menu part */}
               
-                <label className="re_menu_of">Repeat Menu of</label>
+                <div className="re_menu_of">Repeat Menu of</div>
                 <div className="re_menu_div">
-                  <div className="d_select_div"><Labelbox type="select"/></div>
+                  <div className="d_select_div"><Labelbox type="select"
+                    // dropdown={[ {id:"1",week:"Week1"},{id:2,week:"Week2"},{id:3,week:"Week3"},{id:4,week:"Week4"}]}
+
+                  /></div>
                    <div  className="d_datepicker"><Labelbox type="datepicker"/></div>
                 </div>
                 <div className="d_select_btn_div"><NavLink to="/goalweight"><Button className="s_btn">Select</Button></NavLink></div>
@@ -86,7 +92,7 @@ export default function MenuListModal(props){
                             <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
                            <div className="bottom_labels_d">
                                <label className="b_fast_name">{data.name}</label>
-                               {ok?<CheckIcon className="b_fast_tick"/>:""}
+                               {/* {ok?<CheckIcon className="b_fast_tick"/>:""} */}
                             </div>
                         </div>
                         )}
@@ -99,7 +105,7 @@ export default function MenuListModal(props){
                             <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
                            <div className="bottom_labels_d">
                                <label className="b_fast_name">{data.name}</label>
-                               {ok?<CheckIcon className="b_fast_tick"/>:""}
+                               {/* {ok?<CheckIcon className="b_fast_tick"/>:""} */}
                             </div>
                         </div>
                         )}
@@ -112,7 +118,7 @@ export default function MenuListModal(props){
                             <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
                            <div className="bottom_labels_d">
                                <label className="b_fast_name">{data.name}</label>
-                               {ok?<CheckIcon className="b_fast_tick"/>:""}
+                               {/* {ok?<CheckIcon className="b_fast_tick"/>:""} */}
                             </div>
                         </div>
                         )}

@@ -47,7 +47,7 @@ export default function ConfirmationModal(props){
        
           <Col md={3}>
             <FormGroup>
-            <p className="mem_con_namehead">Design Duties</p>
+            <p className="mem_con_namehead">Designed Duties</p>
             <p className="mem_con_name">Caring, Baby sitting, In-Home Care, Coordinate with physician</p> 
             </FormGroup>
           </Col>

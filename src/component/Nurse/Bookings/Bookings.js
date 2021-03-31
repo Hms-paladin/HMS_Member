@@ -30,7 +30,10 @@ export default function Bookings(props){
                 </div> 
                <div style={{width:"35%"}}>
                    <div className="duty_div"><p>Duty Hours</p><p style={{color:"#AEADAD",fontSize:"13px"}}>12:00 Hrs</p></div>
-                   <div className="duty_snddiv"><NavLink to="/myschedule"><label className="book_shedule">Myschedule</label></NavLink><NavLink to="/reschedulebookings"><label className="book_reshedule">Reschedule</label></NavLink><label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={CancelClick}>Cancel</label></div>
+                   <div className="duty_snddiv">
+                    <NavLink to="/myschedule"><label style={{color:"#F2951B",fontWeight:"600",cursor:"pointer"}}>Myschedule</label></NavLink>
+                   <NavLink to="/reschedulebookings"><label style={{color:"#83AF40",fontWeight:"600",padding:"0px 20px",cursor:"pointer"}}>Reschedule</label></NavLink>
+                   <label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={CancelClick}>Cancel</label></div>
                 </div>
                 </div> 
             {/* To click cancel button to open this part */}

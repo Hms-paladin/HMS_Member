@@ -8,13 +8,14 @@ import Nurse_2 from '../../../images/lab.png'
 import search from '../../../images/search.svg'
 import Sort from '../../../images/sort.svg'
 import Percentage from '../../../images/percentage.svg'
-import {NavLink} from 'react-router-dom'
+import {NavLink,useRouteMatch,useParams} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 import RangeCalendar from './RangeCalendar'
 import Nurse_ad from '../../../images/Nurse_ad.png'
 import './nursehistory.scss'
 export default function Nursehistory(props){
-    const errmsg=false;
+    const { id } = useParams();
+ const errmsg=false;
     const { Search } = Input;
     const [toggleOpen,settoggleOpen]=React.useState(true)
     const toggleClick=()=>{
@@ -78,9 +79,9 @@ export default function Nursehistory(props){
                 <div style={{marginTop:"15px"}}><Labelbox type="select" labelname="Nationality" errmsg={errmsg}/></div>
                 <div className="mnth_cost" style={{marginTop:"15px"}}>
                    <div className="l_gender_div"><Labelbox type="select" labelname="Gender" errmsg={errmsg}
-                   onChange={(data)=>changeDynamic(data,"gender")}
+                //    onChange={(data)=>changeDynamic(data,"gender")}
                     // value={Gender.gender}
-                    // optionValue={Gender}
+                    // dropdown={[{id:"1",value:"Male"},{id:"2",value:"Female"}]}
                     /></div>
                     <div><div className="fli">Duty Hours</div> <Switch checked={toggleOpen} onChange={settoggleOpen} unCheckedChildren={settoggleOpen&&"8 Hrs"} checkedChildren={toggleOpen&&"12 Hrs"}/></div>
                 </div>

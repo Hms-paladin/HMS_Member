@@ -206,7 +206,7 @@ export default function Lab_History(props){
              <div className="lab_ad_div_inside">
             <img src={Lab_ad} style={{width:"100%",height:"100%"}}/>
             <div className="lab_ad_bth">
-               <Button>Book Now</Button>
+               <Button onClick={CloseModal}>Book Now</Button>
                 </div>
              </div>   
            </Modal>

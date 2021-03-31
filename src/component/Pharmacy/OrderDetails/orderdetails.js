@@ -111,7 +111,7 @@ console.log("divya",props.location.aboutProps)
      {/* delivery status view */}
       <div style={{margin:"10px 0px 10px 5px",fontWeight:"bold"}}>
         <label className="o_status">Status :</label>
-        <label className="status_d">{Status.name==1?"Pending for Payment":Status.name==2?"Out for Delivery":Status.name==4?"Delivered":Status.name==5?"Cancelled":null}
+        <label className="status_d">{Status?.name==1?"Pending for Payment":Status?.name==2?"Out for Delivery":Status?.name==4?"Delivered":Status?.name==5?"Cancelled":null}
       </label></div>
       <div className="sts_details_parent">
         {/* <div><img src={HomeIcon}/> <div><label style={{color:"#333",fontSize:"15px"}}>Delivery to home</label><label>shamiya</label></div></div> */}

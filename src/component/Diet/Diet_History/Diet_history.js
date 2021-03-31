@@ -87,7 +87,7 @@ export default function Diet_History(){
                     <div className="per_lab_part">
                       <div style={{position:"relative"}}>
                          <img src={percentage} style={{width:"55px"}}/>
-                         <div ccassName="per_inside_diet_div"><p>10%</p><p>off</p></div>
+                         <div className="per_inside_diet_div"><p>10%</p><p>off</p></div>
                       </div>
                       <div>
                        <span className="star_ic_div"><label>4.5</label><StarIcon/></span>

@@ -52,14 +52,14 @@ const ReviewCloseClick=()=>{
             <div className="appointmentsheadflex">
                 <div>History</div>
                 <div className="appointment_icons">
-                    <img src={plus} onClick={()=>HistoryPush("/appointment")}/>
+                    <img src={plus} onClick={()=>HistoryPush("/feed")}/>
                     {/* <ReactSVG src={history}/> */}
                     <ReactSVG src={filter} onClick={openfilter}/>
 
                 </div>
             </div>
             {showfilterForm && <div className="appointmentlistpaper">
-                <div className="advfilterhead">Advanced Filter</div>
+                <div className="advfilterhead">Advance Filter</div>
                 <div className="advfilterflex">
                     <div className="flexr1"><Labelbox type="select" labelname="Member Name"/></div>
                     <div className="flexr1"><Labelbox type="select" labelname="Doctor Name"/></div>

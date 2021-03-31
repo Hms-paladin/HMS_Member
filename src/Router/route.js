@@ -83,12 +83,11 @@ import Physiotherapistbooking from "../component/Physiotheraphy/PhysiotheraphyMa
 import Phy_Myappointment from '../component/Physiotheraphy/Myappointments/myappointments'
 import Ad_Physiotherphy from '../component/Physiotheraphy/PhysiotheraphyMain/advertisement'
 import Dashboard from '../component/Dashboard/dashboard'
-import { Switch} from "react-router-dom";
+import { Switch,useParams} from "react-router-dom";
 var hashHistory = require('react-router-redux')
-
 function Routes(props) {
     return (
-        <Router  history={hashHistory} basename="HmsMember/?/">
+        <Router  history={hashHistory} basename="/HmsMember/?/">
 
         <HeaderLayout>
           

@@ -12,9 +12,9 @@ import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied'
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import ReactPlayer from 'react-player'
 import star from '../../../images/star.png'
 import {useHistory} from 'react-router-dom'
+import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 import Labelbox from "../../../helpers/labelbox/labelbox";
 import StarIcon from '@material-ui/icons/Star';
 import Thumb from "../../../images/BookaRoom/round-thumb.svg";
@@ -164,13 +164,14 @@ const ModalClickClose=()=>{
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=-kxQerPX_Rc' />
+                             <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
                             </div>
                             <div class="carousel-item">
-                            <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=JllCZCOZJkk' />
+                             <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+
                             </div>
                             <div class="carousel-item">
-                            <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=7waDSzAh28k' />
+                             <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
                             </div>
                         </div>
                     </div>

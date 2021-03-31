@@ -54,7 +54,7 @@ const ReviewCloseClick=()=>{
                 </div>
             </div>
             {showfilterForm && <div className="appointmentlistpaper">
-                <div className="advfilterhead">Advanced Filter</div>
+                <div className="advfilterhead">Advance Filter</div>
                 <div className="advfilterflex">
                     <div className="flexr1"><Labelbox type="select" labelname="Member Name"/></div>
                     <div className="flexr1"><Labelbox type="select" labelname="Doctor Name"/></div>

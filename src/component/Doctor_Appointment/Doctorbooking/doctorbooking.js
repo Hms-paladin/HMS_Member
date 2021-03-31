@@ -125,6 +125,7 @@ function Doctorbooking(props) {
   const closeForm = () => {
     setShowForm(false)
 }
+
 const [showminiForm,setShowminiForm] = useState(false)
     const openminiForm = () => {
       setShowminiForm(true)

@@ -338,7 +338,7 @@ return(
 
         </div>
         
-        <div className="cnfrmbtn"> <NavLink to="history"><Button>Confirm</Button></NavLink></div>
+        <div className="cnfrmbtn"> <NavLink to="/paymentmethod"><Button>Confirm</Button></NavLink></div>
 
        </Modal>
             </div>

@@ -193,7 +193,7 @@ function Feed(props) {
 
         </div>
         </div>
-        <div className="feed_div">
+        <div className="feed_div" onClick={Bookingdetails}>
                    <div className="story_details">
                      <div className="avatar_div"> <img src={avatar} /></div>
                      <div className="pimary_detail">
@@ -281,7 +281,7 @@ function Feed(props) {
   </div>
 
         </div>
-        <div className="feed_div">
+        <div className="feed_div"  onClick={Bookingdetails}>
                    <div className="story_details">
                      <div className="avatar_div"> <img src={avatar} /></div>
                      <div className="pimary_detail">

@@ -81,7 +81,8 @@ export default function Clinical_lab(props) {
                    {Test.map((data,index)=>
              
         
-             <label className={color?"change_clinic_test" : "clinic_test"} onClick={()=>ColorClick(data.id)}>{data.test}</label>
+            //  <label className={color?"change_clinic_test" : "clinic_test"} onClick={()=>ColorClick(data.id)}>{data.test}</label>
+             <label className={"clinic_test"} onClick={()=>ColorClick(data.id)}>{data.test}</label>
              
                 )}
              

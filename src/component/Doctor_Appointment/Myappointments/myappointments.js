@@ -52,7 +52,7 @@ function Myappointment(props) {
             <div className="appointmentsheadflex">
                 <div>Appointments</div>
                 <div className="appointment_icons">
-                    <img src={plus} onClick={()=>HistoryPush("/appointment")}/>
+                    <img src={plus} onClick={()=>HistoryPush("/feed")}/>
                     <ReactSVG src={historybtn} onClick={()=>HistoryPush("/history")} />
                     <ReactSVG src={filter} onClick={openfilter}/>
 
