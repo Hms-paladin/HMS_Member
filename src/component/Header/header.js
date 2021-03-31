@@ -35,7 +35,7 @@ function HeaderLayout(props) {
 
   let history = useHistory();
   useEffect(() => {
-
+    let path_name = location.pathname
     if (location.pathname != "/") {
       setlogin_disble(true)
       setlogin_enable(false)
@@ -45,10 +45,10 @@ function HeaderLayout(props) {
       setlogin_enable(true)
     }
 
-    // if(location.pathname=="/prescriptionhistory"||"/")
-    // if(open===false){
-    //   history.push("/advertisement")
-    // }
+     if (path_name === "/feed"||path_name ==="/doctorbooking"||path_name ==="/profile"||path_name ==="/doctorbookingreschedule"||path_name ==="/doctorEdit") {
+      setb_hide(true)
+    }
+    
   }, [login_disble, login_enable, location])
   const Change_Bookings = (data) => {
     let path_name = location.pathname
