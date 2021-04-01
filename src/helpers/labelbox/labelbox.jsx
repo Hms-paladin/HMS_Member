@@ -166,6 +166,7 @@ export default class Labelbox extends Component {
 								format="dd MMM yyyy"
 								margin="normal"
 								id="date-picker-inline"
+								placeholder={this.props.placeholder}
 								value={this.state.selecteddate}
 								onChange={(date) => this.datepickerChange(date)}
 							/>

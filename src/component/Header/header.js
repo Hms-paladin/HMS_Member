@@ -32,10 +32,11 @@ function HeaderLayout(props) {
   const [login_disble, setlogin_disble] = useState(false)
   const [login_enable, setlogin_enable] = useState(true)
   const [b_hide, setb_hide] = useState(false)
-
+  const [b_enable, setb_enable] = useState(false)
   let history = useHistory();
   useEffect(() => {
     let path_name = location.pathname
+
     if (location.pathname != "/") {
       setlogin_disble(true)
       setlogin_enable(false)
@@ -44,28 +45,32 @@ function HeaderLayout(props) {
       setlogin_disble(false)
       setlogin_enable(true)
     }
-
-     if (path_name === "/feed"||path_name ==="/doctorbooking"||path_name ==="/profile"||path_name ==="/doctorbookingreschedule"||path_name ==="/doctorEdit") {
+    if (location.pathname === "/feed" || location.pathname === "/doctorbooking" || location.pathname === "/profile" || location.pathname === "/doctorbookingreschedule" || location.pathname === "/doctorEdit"|| location.pathname === "/advertisement"|| location.pathname === "/reports"|| location.pathname === "/prescriptionhistory"|| location.pathname === "/orderdetails"|| location.pathname === "/orderpacking"|| location.pathname === "/physiotheraphy_ad"|| location.pathname === "/Advertisement_diet") {
+      setb_hide(false)
+      // setb_enable(true)
+    } else {
       setb_hide(true)
     }
-    
+
   }, [login_disble, login_enable, location])
   const Change_Bookings = (data) => {
     let path_name = location.pathname
     // localStorage.setItem({path_name})
-    console.log(path_name,"pathname")
-    if (path_name === "/nursehistory"||path_name === "/nursedetails"||path_name === "/bookingconfirmation"||path_name === "/nursebookings") {
+    console.log(path_name, "pathname")
+    if (path_name === "/nursehistory" || path_name === "/nursedetails" || path_name === "/bookingconfirmation" || path_name === "/nursebookings") {
       history.push("/nursebookings")
 
     }
-    else if(path_name === "/labhistory"||path_name === "/clinicallab") {
+
+
+    else if (path_name === "/labhistory" || path_name === "/clinicallab") {
       history.push("/LabBookings")
 
     }
-    else if(path_name === "/Diet_history"||path_name ==="/goalweight") {
+    else if (path_name === "/Diet_history" || path_name === "/goalweight") {
       history.push("/DietBookings")
     }
-    else if (path_name === "/feed"||path_name ==="/doctorbooking"||path_name ==="/profile"||path_name ==="/doctorbookingreschedule"||path_name ==="/doctorEdit") {
+    else if (path_name === "/feed" || path_name === "/doctorbooking" || path_name === "/profile" || path_name === "/doctorbookingreschedule" || path_name === "/doctorEdit") {
       history.push("/appointment")
     }
     else if (path_name === "/hospitallist") {
@@ -74,10 +79,10 @@ function HeaderLayout(props) {
     else if (path_name === "/tc_history") {
       history.push("/tc_Bookings")
     }
-    else if(path_name === "/physiotheraphyfeed"||path_name ==="/physiotherapistbooking") {
+    else if (path_name === "/physiotheraphyfeed" || path_name === "/physiotherapistbooking") {
       history.push("/phy_appointment")
     }
-  
+
   }
   const CategoryPush = (url) => {
     let path_name = location.pathname
@@ -153,7 +158,8 @@ function HeaderLayout(props) {
 
         {login_disble ?
           <div style={{ display: "flex" }}>
-            <img src={calendar} style={{ width: "20px", cursor: "pointer" }} onClick={Change_Bookings} />
+            {console.log(b_hide,"b_hide")}
+            <img src={calendar} className={!b_hide ? "change_cal_icon" : "cal_icon"} onClick={Change_Bookings} />
             {/* <div className="notif_icon" onClick={Open}>
     <NotificationsIcon/><div></div>
   </div>
