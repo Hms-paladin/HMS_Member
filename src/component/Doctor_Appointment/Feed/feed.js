@@ -35,12 +35,8 @@ import {useHistory} from 'react-router-dom'
 import sample from '../../../images/sample.mp4'
 import { Player } from 'video-react';
 import ShareIcon from '@material-ui/icons/Share';
+import Internet_type from '../../../images/internet_type.svg'
 var hashHistory = require('react-router-redux')
-
-
-
-
-
 const StyledRating = withStyles({
   iconFilled: {
     color: '#ff6d75',
@@ -193,9 +189,9 @@ function Feed(props) {
 
         </div>
         </div>
-        <div className="feed_div" onClick={Bookingdetails}>
+        <div className="feed_div">
                    <div className="story_details">
-                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="avatar_div"> <img src={avatar} onClick={Bookingdetails}/></div>
                      <div className="pimary_detail">
                        <div className="detail1">Dr.Farah</div>
                        <div className="detail2">MD-Conservative Dentistry</div>
@@ -277,13 +273,17 @@ function Feed(props) {
 </div>}
 
 {/* end */}
+{App_type&&<div className="internet_type">
+  <div><img src={Internet_type}/></div>
+</div>
+}
 
   </div>
 
         </div>
-        <div className="feed_div"  onClick={Bookingdetails}>
+        <div className="feed_div">
                    <div className="story_details">
-                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="avatar_div"> <img src={avatar} onClick={Bookingdetails}/></div>
                      <div className="pimary_detail">
                        <div className="detail1">Dr.Farah</div>
                        <div className="detail2">MD-Conservative Dentistry</div>

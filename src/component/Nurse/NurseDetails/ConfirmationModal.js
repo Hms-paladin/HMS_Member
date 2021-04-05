@@ -92,7 +92,7 @@ export default function ConfirmationModal(props){
           </Form>
           </Grid>
             <Grid item xs={12} md={12} style={{textAlign:"center"}}>
-               <NavLink to="paymentmethod"><Button className="confirm_b_btn">Confirm</Button></NavLink>
+               <NavLink to="/paymentmethod"><Button className="confirm_b_btn">Confirm</Button></NavLink>
                </Grid>   
            </Grid>
            

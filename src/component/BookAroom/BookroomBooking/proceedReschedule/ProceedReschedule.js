@@ -229,6 +229,8 @@ const ModalCloseClick=()=>{
                   visible={modalOpen}
                   footer={false}
                   onCancel={ModalCloseClick}
+                  width={1000}
+                  centered
                   className="confirm_modal border_modal"
                 >
         {/* <div className="bookconfirmmodal_confirm">

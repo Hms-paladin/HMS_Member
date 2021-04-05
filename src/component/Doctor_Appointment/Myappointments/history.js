@@ -75,7 +75,7 @@ const ReviewCloseClick=()=>{
                 <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div>Cancelled Date & Time</div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate">24 Nov 2020</div></div>
-                <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime">11AM</div></div>
+                <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime">11.00AM</div></div>
                 <div className="listpaperflex"><div className="cancelledclr">Cancelled</div><div className="reviewbtn" onClick={ReviewOpenClick}>Review</div></div>
 
             </div>
@@ -83,7 +83,7 @@ const ReviewCloseClick=()=>{
                 <div className="listpaperflex"><div className="doctrname">Dr Farah</div><div className="appointdate">27 Nov 2020<span className="appointtime">08:00AM</span></div></div>
                 <div className="listpaperflex"><div className="patname">Salmiyah</div><div>Rescheduled Date & Time</div></div>
                 <div className="listpaperflex"><div className="paidbg">Paid</div><div className="paymentdate">24 Nov 2020</div></div>
-                <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime">11AM</div></div>
+                <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">100 KWD</span></div><div className="paymenttime">11.00AM</div></div>
                 <div className="listpaperflex"><div className="rescheduleclr">Rescheduled</div><div className="reviewbtn"><span onClick={ReviewOpenClick}>Review</span><span onClick={ModalOpenClick}>View Prescription</span></div></div>
 
             </div>

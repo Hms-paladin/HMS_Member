@@ -86,7 +86,7 @@ export default function Diet_BookingHistory(props){
               visible={open}
               footer={false}
               {...props}
-              width={650}
+              width={ModalOpen?650:ReviewOpen?560:null}
               centered
               onCancel={ModalClickClose}
              >

@@ -1,9 +1,11 @@
 import React from 'react';
 import './ConfirmReschedule.css';
 import Divider from '@material-ui/core/Divider';
-import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import Hospital from "../../../../images/BookaRoom/room_img.png";
 import Pin from "../../../../images/pin.png";
+import Button from '@material-ui/core/Button';
+import {NavLink} from 'react-router-dom'
 
  
 export default  function ConfirmReshedule(){
@@ -12,7 +14,7 @@ export default  function ConfirmReshedule(){
           <div className="confirmpage_head">
               <div style={{display:'flex'}} >
                   <div style={{marginRight:'38px'}}> 
-                      <img src={Hospital}/>
+                      <img src={Hospital} style={{width:"100px"}}/>
                   </div>
                   <div style={{marginTop:'20px'}}>
                       <div style={{display:'flex'}}>
@@ -28,7 +30,7 @@ export default  function ConfirmReshedule(){
               </div>
           </div>
           <Divider style={{margin:'8px'}}/>
-          <Form>
+          <Form className="reschedule_booking_modal">
               <Row form>
                   <Col md={3}>
                       <FormGroup>
@@ -130,7 +132,7 @@ export default  function ConfirmReshedule(){
                   </Col>
               </Row>
           </Form>
-
+           <div style={{textAlign:"center"}}> <NavLink to="/paymentmethod"><Button className="confirm_b_btn">Confirm</Button></NavLink></div>
       </div>
     )
 

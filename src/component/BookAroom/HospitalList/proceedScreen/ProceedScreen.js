@@ -17,7 +17,9 @@ import close from '../../../../images/cancel.svg'
 import plus from '../../../../images/plus.svg'   
 import avatar from '../../../../images/us.svg'
 import edit from "../../../../images/edit.svg"
-import {NavLink} from 'react-router-dom';
+// import {NavLink} from 'react-router-dom';
+import ConfirmReshedule from "../../BookroomBooking/confirmRescchedule/ConfirmReschedule"
+// import ProceedConfirm from '../HospitalList/ProceedConfirm/ProceedConfirm'
 import roomimg from "../../../../images/BookaRoom/room_img.png"
 import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import Pin from "../../../../images/pin.png"
@@ -339,15 +341,16 @@ const ModalCloseClick=()=>{
 
 <Modal
                   title={false}
-                  visible={ModalOpen}
+                  visible={modalOpen}
                   footer={false}
                   size={"lg"}
                   {...props}
                   centered
-                  className="confirm_modal"
-                  onCancel={ModalClickClose}
+                  width={900}
+                  // className="confirm_modal"
+                  onCancel={ModalCloseClick}
                  >
-                   {/* <ProceedConfirm/> */}
+                   <ConfirmReshedule/>
                   
     
                  </Modal>

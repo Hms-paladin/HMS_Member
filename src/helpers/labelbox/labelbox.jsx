@@ -166,6 +166,9 @@ export default class Labelbox extends Component {
 								format="dd MMM yyyy"
 								margin="normal"
 								id="date-picker-inline"
+								hintText="Choose Date"
+								defaultValue="07:30"
+								emptyLabel={this.props.emptyLabel}
 								placeholder={this.props.placeholder}
 								value={this.state.selecteddate}
 								onChange={(date) => this.datepickerChange(date)}

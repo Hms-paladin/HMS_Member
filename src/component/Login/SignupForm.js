@@ -10,7 +10,7 @@ export default function SignUpForm(props){
             <CloseIcon className="l_closeicon" onClick={()=>props.handleClose(false)}/>
             <div className="login_head">Sign Up</div>
             <Input   placeholder="Name" className="input_field"/>
-            <Labelbox type="datepicker"/>
+            <Labelbox type="datepicker" placeholder={"dfghj"} emptyLabel={"dfghj"}/>
             <Input   placeholder="Email" className="input_field"/>
             <Input   placeholder="Phone number" className="input_field"/>
             <div className="sign_btns_div">

@@ -311,6 +311,7 @@ return(
         onCancel={ModalCloseClick}
         className="confirm_modal border_modal"
         // maxWidth={"md"}
+        width={900}
         // style={{width:"800px"}}
        >
         <div className="bookconfirmmodal">

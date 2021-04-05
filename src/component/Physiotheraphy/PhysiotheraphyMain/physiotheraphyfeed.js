@@ -34,6 +34,7 @@ import {useHistory} from 'react-router-dom'
 import sample from '../../../images/sample.mp4'
 import search from "../../../images/loupe.png";
 import { Input } from 'antd';
+import Internet_type from '../../../images/internet_type.svg'
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 
 var hashHistory = require('react-router-redux')
@@ -272,6 +273,10 @@ function Physiotheraphyfeed(props) {
 </div>}
 
 {/* end */}
+{App_type&&<div className="internet_type">
+  <div><img src={Internet_type}/></div>
+</div>
+}
   </div>
 
         </div>

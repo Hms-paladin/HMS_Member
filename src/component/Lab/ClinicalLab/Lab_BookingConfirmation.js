@@ -119,7 +119,8 @@ export default function BookingConfirmation(props){
         visible={modalOpen}
         footer={false}
         onCancel={ModalCloseClick}
-        className="confirm_modal"
+        width={700}
+        // className="confirm_modal"
         // maxWidth={"md"}
         // style={{width:"800px"}}
        >

@@ -308,7 +308,8 @@ return(
         visible={modalOpen}
         footer={false}
         onCancel={ModalCloseClick}
-        className="confirm_modal border_modal"
+        className="border_modal"
+        width={750}
         // maxWidth={"md"}
         // style={{width:"800px"}}
        >

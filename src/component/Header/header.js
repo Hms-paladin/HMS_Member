@@ -45,7 +45,7 @@ function HeaderLayout(props) {
       setlogin_disble(false)
       setlogin_enable(true)
     }
-    if (location.pathname === "/feed" || location.pathname === "/doctorbooking" || location.pathname === "/profile" || location.pathname === "/doctorbookingreschedule" || location.pathname === "/doctorEdit"|| location.pathname === "/advertisement"|| location.pathname === "/reports"|| location.pathname === "/prescriptionhistory"|| location.pathname === "/orderdetails"|| location.pathname === "/orderpacking"|| location.pathname === "/physiotheraphy_ad"|| location.pathname === "/Advertisement_diet") {
+    if (location.pathname === "/feed" ||location.pathname === "/appointment"||location.pathname === "/history"  ||  location.pathname === "/doctorbooking" || location.pathname === "/profile" || location.pathname === "/doctorbookingreschedule" || location.pathname === "/doctorEdit"|| location.pathname === "/advertisement"|| location.pathname === "/reports"|| location.pathname === "/prescriptionhistory"|| location.pathname === "/orderdetails"|| location.pathname === "/orderpacking"|| location.pathname === "/physiotheraphy_ad"|| location.pathname === "/Advertisement_diet"|| location.pathname === "/Advertisement_diet") {
       setb_hide(false)
       // setb_enable(true)
     } else {
@@ -73,7 +73,7 @@ function HeaderLayout(props) {
     else if (path_name === "/feed" || path_name === "/doctorbooking" || path_name === "/profile" || path_name === "/doctorbookingreschedule" || path_name === "/doctorEdit") {
       history.push("/appointment")
     }
-    else if (path_name === "/hospitallist") {
+    else if (path_name === "/hospitallist" || path_name==="/proceedpage" || path_name==="/confirmhospital") {
       history.push("/bookingdetails")
     }
     else if (path_name === "/tc_history") {
