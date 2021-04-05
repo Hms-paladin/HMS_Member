@@ -1,0 +1,184 @@
+.lab_srch_div{
+   
+    width:45%;
+}
+.lab_sort{
+    width:13px;
+}
+.sorts_div{
+    text-align: right;
+    margin: 10px 0px;
+}
+.lab_srch_parent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
+}
+// paper change css
+.paper_items_grid_change{
+   padding:0px 4% 15px 4%;
+   margin-bottom: 10px;
+}
+.lab_his_item_pchange{
+    width:100%;
+    padding:20px;
+    box-shadow: 0px 0px 4px 1px #ccc !important;
+    border-radius: 6px !important;
+}
+// paper items
+.lab_his_item_p{
+    padding:20px;
+    width:45%;
+    box-shadow: 0px 0px 4px 1px #ccc !important;
+    border-radius: 6px !important;
+}
+.paper_items_grid{
+    display: flex;
+    justify-content: center;  
+    padding-bottom: 10px;
+}
+.lab_his_img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+.lab_his__text_div{
+    padding-left: 25px;
+}
+.lab_his_h_name{
+    font-size: 20px;
+    font-weight: 600;
+}
+.lab_his__text_div p{
+    margin-bottom: 0px !important;
+}
+.lab_his__text_div label{
+    margin-bottom: 0px !important;
+}
+.star_ra_div{
+    display:flex;
+}
+.star_lab_icon{
+    fill:#83AF40 !important;
+    font-size: 1.2rem !important;
+}
+.per_lab_part{
+    width:35%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.per_inside_div{
+    position: absolute;
+    top: 7px;
+    left:14px;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+}
+.per_inside_div p{
+    margin-bottom: -4px !important;
+}
+.star_ic_div{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-color: #83AF40;
+    padding: 2px 8px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 2px;
+}
+.star_ic_div svg{
+    font-size: 18px !important;
+}
+.star_ic_div label{
+    margin-bottom: 0px !important;
+}
+.star_open_ic{
+    color:#83AF40;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+}
+.star_close_ic{
+    color:#83AF40;
+    font-weight: 500;
+    text-align: center;
+}
+.reviews_div{
+    margin-top: 10px;
+    font-weight: 500;
+}
+.lab_r_per{
+    color:#83AF40;
+    padding:0px 5px;
+}
+.re_per{
+    font-size: 12px;
+    color:#314D4D;
+}
+.lab_descrip{
+    color:#666666;
+    font-weight: 500;
+    padding: 10px;
+    box-shadow: 0px 2px 11px #00000029;
+    border-radius: 10px;
+    height:72px;
+    position: relative;
+    margin-top: 6px;
+}
+.lab_descrip label{
+    margin-bottom: 0px !important;
+}
+.select_lab{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.select_lab_butt{
+    background-color: #83AF40  !important;
+    border-radius: 50px !important;
+    color: #fff !important;
+    width:100px !important;
+    text-transform: none !important;
+}
+.mem_con_parentdiv{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.lab_descrip .carousel-indicators{
+    top:65px;
+}
+.lab_descrip .carousel-indicators .active{
+    background-color:#83AF40 !important;
+}
+.lab_descrip .carousel-indicators li{
+    background-color:#DBDBDB !important;
+    width:8px !important;
+    height: 8px !important;
+}
+
+
+.lab_formitems p{
+    margin-bottom: 0px !important;
+}
+.lab_formitems .mem_con_namehead{
+    font-size: 15px;
+}
+
+
+
+// lab modal css
+.lab_ad_modal .ant-modal-body{
+   padding:0px !important;
+}
+.lab_ad_div_inside{
+    position:relative;
+}
+.lab_ad_bth{
+    
+}

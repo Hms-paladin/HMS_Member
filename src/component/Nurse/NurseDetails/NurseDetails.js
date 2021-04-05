@@ -15,6 +15,10 @@ import './NurseDetails.scss'
 export default function NurseDetails(){
     const [proceed,setproceed]=React.useState(false)
     const [Duties,setDuties]=React.useState(false)
+    const [HideAdrs,setHideAdrs]=React.useState(false)
+    const ElipseOpen=()=>{
+        setHideAdrs(!HideAdrs)
+    }
     function ProceedClick(){
         setproceed(true)
     }
@@ -25,7 +29,7 @@ export default function NurseDetails(){
         <div style={{width:"100%"}} className="nurse_de_parent">
         <div className="nursede_parent">
             <div style={{height:"250px",width:"100%"}}>
-            <img src={Nurse} style={{width:"100%",height:"100%"}}/>
+            <img src={Nurse} className="Pro_tra_img"/>
             </div>
         </div>
         <Grid container>
@@ -40,9 +44,10 @@ export default function NurseDetails(){
                 <div style={{textAlign:"center"}}>
             <div className="nurs_de_name">Rose</div>
                <div><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="start_emp_fill"/></div> 
-               <div style={{fontSize:"20px",fontWeight:"600"}}>27 Years / Female</div>
-               <div style={{color:"#666666",fontSize:"20px"}}>Wellness company</div>
-               <div>Jabriya</div>
+               <div style={{fontSize:"22px",fontWeight:"600"}}>27 Years / Female</div>
+               <div style={{color:"#666666",fontSize:"22px"}}>Wellness company</div>
+               <div>{HideAdrs?<label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:<label className="lab_adrs">Jabriya</label>}
+                                   <span className="elipse" onClick={ElipseOpen}>...</span></div>
                </div>
             </Grid>
             <Grid item sm={4} md={4} className="nurse_thirdgrid">

@@ -1,0 +1,97 @@
+.trainer_category_img{
+    display: flex;
+    flex-wrap: wrap;
+}
+.training_container{
+    // padding:20px 10% 20px 10%;
+    padding: 15px 0px 5% 5%;
+    display:flex;
+    align-items: center;
+}
+.tra_right_arrow{
+    font-size: 3rem !important;
+    margin-right: 15px;
+    fill:#918F8F !important;
+}
+.tra_right_arrow:hover{
+    fill:#86B047 !important;
+}
+.tra_imgContainer {
+    width: 13%;
+    margin: 20px 1.5%;
+    box-shadow: 0px 5px 5px 2px #ded5de;
+    border-radius: 2px;
+    img{
+        width: 100%;
+        border-radius: 2px;
+    }
+    div{
+        text-align: center;
+        padding: 10px 0;
+        font-weight: 600;
+    }
+}
+.tra_cat_head{
+    font-size: 20px;
+    font-weight: bold;
+}
+.tra_cat_head_div{
+    padding:20px 9% 0px 5.5%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+// trainingcenter advertisement
+.tra_modal{
+    position: relative;
+}
+.tc_add_cont{
+    position: absolute;
+    font-weight: 600;
+    color: #fff;
+    padding: 20px;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    div{
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    div div:nth-child(1){
+           font-size: 3.5rem;
+           margin-bottom: -15px;
+    }
+    div div:nth-child(2){
+        font-size: 2rem;
+ }
+ div div:nth-child(3){
+    font-size: 1.3rem;
+}
+div div:nth-child(4){
+    font-size: 1.5rem;
+    color:#FCCA24;
+}
+div div:nth-child(4) span{
+    color:#fff;
+}
+}
+.tc_ad_bth{
+    Button{
+        background-color: #86B047;
+        text-transform: none;
+        color:#fff;
+        font-weight: 600;
+        width:115px;
+        border-radius: 0;
+        
+    }  
+     Button:hover{
+        background-color: #86B047;
+     }
+}

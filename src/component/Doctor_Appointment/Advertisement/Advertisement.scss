@@ -1,0 +1,106 @@
+.c_ad_img{
+    width:100%;
+    height:100%;
+}
+.ad_advertise_c{
+    width:100%;
+    height:100%;
+    padding:20px;
+    position: relative;
+}
+.ad_doc_btn{
+    position: absolute;
+    bottom: 10%;
+    left: 17%;
+}
+.ad_cont_c{
+    position: absolute;
+    top:0;
+    margin:5% 0% 2% 3%;
+    width:100%;
+    img{
+        width:130px;
+
+    }
+}
+.square_wrap{
+    position: relative;
+  
+}
+.label_inner{
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    left:25px;
+    font-weight: bold;
+    color:#00BA74;
+    font-size: 16px;
+}
+.bk_ad_btn{
+    color: #fff !important;
+    width: 145px  !important; 
+    background-color: #83AF40 !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    text-transform: none !important;
+    border-radius: 2px  !important;
+    }
+    .ad_d_name{
+        font-weight: bold;
+        color:#C64027;
+        font-size: 20px;
+    }
+    .ad_d_div{
+        margin: 2% 0% 2% 3%;
+       p{
+           margin-bottom: 2px;
+       }
+       p:nth-child(2){
+           font-size:13px;
+       }
+    }
+    .ad_cont_fsth{
+        margin-bottom: 3%;
+        p{
+            margin-bottom: 0px;
+            font-weight: bold;
+        }
+        p:nth-child(1){
+            font-size: 18px;
+        }
+        p:nth-child(2){
+            font-size: 2.5rem;
+            color: #E75366;
+        }
+        p:nth-child(3){
+            font-size: 25px;
+            padding-left: 4%;
+            color:#27AEC6;
+        }
+    }
+    .adver_close_div {
+        position: absolute;
+        top: 30px;
+        right: 38px;
+    }
+    .ad_child_div{
+        height:590px;
+        width:100%;
+    }
+    .ad_advertise_c{
+        width:100%;
+        height:100%;
+        // -webkit-filter: drop-shadow(3px 3px 5px #222);
+
+    }
+    .ad_parent{
+        width:100%;
+        height:100%;
+    }
+
+    // physiotherphy
+    .ad_phy_btn{
+        position: absolute;
+        bottom: 8%;
+        right:4% !important;
+    }

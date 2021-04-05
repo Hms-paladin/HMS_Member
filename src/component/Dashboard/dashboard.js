@@ -11,32 +11,22 @@ import Physotheropy from "../../images/physotheropy.png";
 import BookRoom from "../../images/bookroom.png";
 import { NavLink} from "react-router-dom";
 import "./dashboard.scss";
-import OrderTable from '../Pharmacy/OrderDetails/orderdetails'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// routes path
-import PrescriptionHistory from "../Pharmacy/PrescriptionHistory/prescriptionhistory";
-import PaymentReceived from '../Pharmacy/PaymentReceived/PaymentReceived'
-import PaymentMethod from '../Pharmacy/PaymentMethod/PaymentMethod'
-import OrderPacking from '../Pharmacy/OrderDetailsPacked/OrderDetails-Packed'
-function routepush(props){
-    props.history.push("/paymentreceived")
-}
 const images = [
-                    {img:Doctor,title:"Doctor Apponintment",pathname:"/doctorappointment"},
+                    {img:Doctor,title:"Doctor Appointment",pathname:"/advertisement"},
                     {img:Nurse,title:"Nursing",pathname:"/nursehistory"},
-                    {img:Report,title:"Report"},
-                    {img:Trainer,title:"Trainer"},
-                    {img:TrainingCenter,title:"Training Center"},
-                    {img:DietMeal,title:"Diet Meal"},
+                    {img:Report,title:"Report",pathname:"/reports"},
+                    {img:Trainer,title:'Trainer',pathname:"/tainerlist"},
+                    {img:TrainingCenter,title:"Training Center",pathname:"/trainingcategory"},
+                    {img:DietMeal,title:"Diet Meal",pathname:"/Advertisement_diet"},
                     {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
-                    {img:Lab,title:"Lab"},
-                    {img:Physotheropy,title:"Physiotherapy"},
-                    {img:BookRoom,title:"Book a Room"}
+                    {img:Lab,title:"Lab",pathname:"/labhistory"},
+                    {img:Physotheropy,title:"Physiotherapy",pathname:"/physiotheraphy_ad"},
+                    {img:BookRoom,title:"Book a Room", pathname:"/hospitallist"}
                 ]
 
 function Dashboard(props) {
     return(
-        <div className="container">
+         <div className="dashboard_container">
         {images.map((data)=>{
             return(
              <div className="imgContainer">
@@ -46,11 +36,6 @@ function Dashboard(props) {
             ) 
     
         })}
-        <div>
-        <Route exact path={`${props.match.path}/prescriptionhistory`} component={PrescriptionHistory} />
-        <Route exact path={`${props.match.path}/orderdetails`} component={OrderTable} />
-       
-        </div>
         </div>
     )
 }

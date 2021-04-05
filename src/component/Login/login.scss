@@ -1,0 +1,142 @@
+.login_head{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.login_parent{
+    padding: 25px;
+    position: relative;
+}
+.l_closeicon{
+    font-size:1.5rem !important;
+    position: absolute;
+    right: 15px;
+    top:10px;
+    cursor: pointer;
+    fill:#767676 !important;
+}
+.text_field{
+    width:100% !important;
+}
+.send_otp{
+    width:100% !important;
+    background-color: #7C9D3C !important;
+    border-radius: 50px !important;
+    color: #fff !important;
+    margin: 6% 0px 10% 0px !important;
+    font-weight: 600 !important;
+    height: 45px !important;
+}
+.join_member_text{
+    font-size: 13px;
+    font-weight: 500;
+}
+.join_btn{
+    width:100% !important;
+    border: 1px solid #7C9D3C !important;
+    border-radius: 50px !important;
+    color:#7C9D3C !important;
+    text-transform: none !important;
+    margin: 20px 0px 20px 0px !important;
+    font-weight: 600;
+}
+.logging_ins_text{
+    text-align: center;
+}
+.logging_ins_text span{
+    color:#7C9D3C;
+    font-weight: 500;
+}
+
+
+
+// Verify otp css
+.verify_code_parent{
+    padding: 25px 15px 15px 15px;
+    position: relative;
+    font-weight: 500;
+}
+.digit_text{
+    font-size: 13px;
+}
+.ph_no{
+    font-size: 18px;
+    font-weight: 500;
+}
+.otp{
+    border: 0.2px solid #70707063 !important;
+    border-radius: 10px;
+    width:40px;
+    height: 40px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.otp_div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 6% 0%;
+}
+.verify_btn{
+    width:100% !important;
+    background-color: #7C9D3C !important;
+    border-radius: 50px !important;
+    color: #fff !important;
+    margin: 4% 0px 6% 0px !important;
+    font-weight: 600 !important;
+    height: 40px !important;
+    text-transform: none !important;
+}
+.resend_time{
+    text-align: center;
+}
+.verify_modal .MuiDialog-paper{
+    border-radius: 10px !important;
+    width:340px !important;
+}
+
+
+
+
+// signup form css
+.signup_modal .input_field{
+   border:none !important;
+   border-bottom: 1px solid #00000029 !important;
+   margin-bottom: 25px;
+}
+.signup_modal .ant-input:focus, .ant-input-focused{
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.signup_modal .formdiv .MuiFormControl-marginNormal{
+   box-shadow: none !important;
+   border:0px !important;
+   border-bottom: 1px solid #00000029 !important;
+
+}
+.signup_modal .formdiv{
+    margin-bottom: 15px;
+}
+.sign_btns_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px 0px;
+}
+.gender_btns{
+    border: 1px solid #00000029 !important;
+    text-transform: none !important;
+    border-radius: 50px !important;
+    color:#9F9D9D !important;
+    padding: 6px 15px !important;
+    width: 80px !important;
+}
+.gender_btns:first-child{
+   margin-right: 13px!important;
+}
+.d{
+    display: none !important;
+}

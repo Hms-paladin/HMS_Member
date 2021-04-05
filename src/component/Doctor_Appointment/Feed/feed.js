@@ -21,6 +21,8 @@ import female from '../../../images/female.svg'
 import sort from '../../../images/sort.svg'
 import avatar from '../../../images/nurse.png'
 import pin from '../../../images/pin.png'
+import Internet from '../../../images/internet1.svg'
+import Clinic from '../../../images/Clinic1.svg'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
@@ -31,13 +33,10 @@ import offer_bg from '../../../images/offer_bg.png'
 import star from '../../../images/star.png'
 import {useHistory} from 'react-router-dom'
 import sample from '../../../images/sample.mp4'
-
+import { Player } from 'video-react';
+import ShareIcon from '@material-ui/icons/Share';
+import Internet_type from '../../../images/internet_type.svg'
 var hashHistory = require('react-router-redux')
-
-
-
-
-
 const StyledRating = withStyles({
   iconFilled: {
     color: '#ff6d75',
@@ -102,7 +101,7 @@ function valuetext(value) {
 
 function Feed(props) {
   let history = useHistory();
-
+  const [App_type,setApp_type]=useState(false)
   function Bookingdetails(){
     history.push("/doctorbooking")
 }
@@ -185,14 +184,14 @@ function Feed(props) {
         </div>
         <div className="sort_cont">
                <div className="sort">Cost <ReactSVG src={sort} /></div>
-               <div className="sort">Best Offers <ReactSVG src={sort} /></div>
-               <div className="sort">Rating <ReactSVG src={sort} /></div>
+              <div className="best_offers"><div className="sort">Best Offers <ReactSVG src={sort} /></div>
+               <div className="sort">Rating <ReactSVG src={sort} /></div></div>
 
         </div>
         </div>
         <div className="feed_div">
                    <div className="story_details">
-                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="avatar_div"> <img src={avatar} onClick={Bookingdetails}/></div>
                      <div className="pimary_detail">
                        <div className="detail1">Dr.Farah</div>
                        <div className="detail2">MD-Conservative Dentistry</div>
@@ -220,13 +219,37 @@ function Feed(props) {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <Player src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
+      // className='react-player'
+      className="react_video"
+      width='100%'
+      height='100%'
+      // playsInline
+     
+    />
+     <ShareIcon className="vd_share"/>
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <Player src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
+      // className='react-player'
+      className="react_video"
+      width='100%'
+      height='100%'
+      playsInline
+     
+    />
+     <ShareIcon className="vd_share"/>
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <Player src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
+      // className='react-player'
+      className="react_video"
+      width='100%'
+      height='100%'
+      playsInline
+     
+    />
+     <ShareIcon className="vd_share"/>
     </div>
   </div>
 
@@ -238,18 +261,29 @@ function Feed(props) {
   <Button className="redbtn" onClick={Bookingdetails}>10:50AM</Button>
   <Button className="redbtn" onClick={Bookingdetails}>2:00PM</Button>
   <Button className="greenbtn" onClick={Bookingdetails}>3:00PM</Button>
-  <Button className="redbtn" onClick={Bookingdetails}>3:45PM</Button>
+  <Button className="redbtn" onClick={()=>setApp_type(!App_type)}>3:45PM</Button>
   <Button className="greenbtn" onClick={Bookingdetails}>8:00PM</Button>
   <Button className="greenbtn"onClick={Bookingdetails}>8:30PM</Button>
 
+{/* Appointment Type */}
+{App_type&&<div className="appoint_type_doc">
+   <label>Choose Appointment Type</label>
+  <div className="type_div"> <div><img src={Internet} style={{width:"40px"}}/><div>OnLine</div></div>
+   <div><img src={Clinic} style={{width:"32px"}}/><div>InClinic</div></div></div>
+</div>}
 
+{/* end */}
+{App_type&&<div className="internet_type">
+  <div><img src={Internet_type}/></div>
+</div>
+}
 
   </div>
 
         </div>
         <div className="feed_div">
                    <div className="story_details">
-                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="avatar_div"> <img src={avatar} onClick={Bookingdetails}/></div>
                      <div className="pimary_detail">
                        <div className="detail1">Dr.Farah</div>
                        <div className="detail2">MD-Conservative Dentistry</div>
@@ -277,13 +311,38 @@ function Feed(props) {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    
+            <Player src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
+      // className='react-player'
+      className="react_video"
+      width='100%'
+      height='100%'
+      playsInline
+     
+    />
+     <ShareIcon className="vd_share"/>
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+    <Player src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
+      // className='react-player'
+      className="react_video"
+      width='100%'
+      height='100%'
+      playsInline
+     
+    />
+     <ShareIcon className="vd_share"/>
     </div>
     <div class="carousel-item">
-    <ReactPlayer className="react_video" url={'https://www.youtube.com/watch?v=ysz5S6PUM-U'} />
+    <Player src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
+      // className='react-player'
+      className="react_video"
+      width='100%'
+      height='100%'
+      playsInline
+     
+    />
+     <ShareIcon className="vd_share"/>
     </div>
   </div>
  

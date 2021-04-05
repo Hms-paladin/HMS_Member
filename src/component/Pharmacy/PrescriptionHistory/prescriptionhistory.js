@@ -81,7 +81,7 @@ function PrescriptionHistory(props){
         <div className=" pres_div">
             {/* prescription history list */}
         <div className="pres_headdiv">
-            <label className="pres_h">PrescriptionHistory</label> <img src={filter} style={{cursor:"pointer",width:"20px"}} onClick={filterOpen}/> 
+            <label className="pres_h">Prescription History</label> <img src={filter} style={{cursor:"pointer",width:"20px"}} onClick={filterOpen}/> 
             </div>
              {/* advance filter */}
              {Open &&(
@@ -92,7 +92,7 @@ function PrescriptionHistory(props){
                  <Button className={BtnOpenOut?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("outDelivery")}>Out for Delivery</Button>
                  <Button className={BtnDelivery?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("Delivered")} >Delivered</Button>
                  <Button className={BtnCancel?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("Cancelled")}>Cancelled</Button>
-                 <Button className={BtnPacked?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("Packed")}>packed</Button>
+                 <Button className={BtnPacked?"flt_btns":"flt_btns_change"} onClick={()=>BtnClick("Packed")}>Packed</Button>
              </div>
              <div style={{display:"flex"}}>
                  <div style={{marginRight:"20px"}}><Labelbox type="datepicker" labelname="From Date"/></div>

@@ -5,6 +5,7 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import dateFormat from 'dateformat';
 import moment from 'moment';
+import Favorite from '@material-ui/icons/Favorite'
 import {
 	MuiPickersUtilsProvider,
 	KeyboardTimePicker,
@@ -17,6 +18,7 @@ import DateFnsUtils from '@date-io/date-fns';
 //   KeyboardTimePicker,
 //   KeyboardDatePicker,
 // } from '@material-ui/pickers';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { DatePicker, Select, TimePicker } from 'antd';
 
 
@@ -96,7 +98,7 @@ export default class Labelbox extends Component {
 				<div className="formdiv">
 					<label className="labeltxt">{data.labelname}</label>
 					<div>
-						<input className={`${data.error && "brdred"} brdrcls`} min="0" value={this.props.value} type="number" onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)} onKeyDown={e => (e.key === "e" || e.key === "+" || e.key === "-") && e.preventDefault()} />
+						<input className={`${data.error && "brdred"} brdrcls`} min="0" value={this.props.value} type="number" onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)} placeholder={this.props.placeholder} onKeyDown={e => (e.key === "e" || e.key === "+" || e.key === "-") && e.preventDefault()} />
 						{
 							<div className="Errormsg">
 								<div>{data.error && data.errmsg}</div>
@@ -112,7 +114,7 @@ export default class Labelbox extends Component {
 				<div className="formdiv">
 					<label className="labeltxt">{data.labelname}</label>
 					<div>
-						<textarea className={`${data.error && "brdred"} brdrcls`} rows="3" cols="50" value={this.props.value} onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)}></textarea>
+						<textarea className={`${data.error && "brdred"} brdrcls`} rows="3" cols="50" value={this.props.value} onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)} placeholder={this.props.placeholder}></textarea>
 						{
 							<div className="Errormsg">
 								<div>{data.error && data.errmsg}</div>
@@ -161,12 +163,15 @@ export default class Labelbox extends Component {
 								disablePast={this.props.disablePast ? this.props.disablePast : false}
 								minDate={this.props.minDate ? this.props.minDate : null}
 								variant="variant"
-								format="dd/MM/yyyy"
+								format="dd MMM yyyy"
 								margin="normal"
 								id="date-picker-inline"
+								hintText="Choose Date"
+								defaultValue="07:30"
+								emptyLabel={this.props.emptyLabel}
+								placeholder={this.props.placeholder}
 								value={this.state.selecteddate}
 								onChange={(date) => this.datepickerChange(date)}
-
 							/>
 						</MuiPickersUtilsProvider>
 
@@ -202,6 +207,7 @@ export default class Labelbox extends Component {
 								KeyboardButtonProps={{
 									'aria-label': 'change time',
 								}}
+								keyboardIcon={<AccessTimeIcon />}
 							/>
 						</MuiPickersUtilsProvider>
 						{
@@ -243,7 +249,7 @@ export default class Labelbox extends Component {
 				<div className="formdiv">
 					<label className="labeltxt">{data.labelname}</label>
 
-					<Select disabled={this.props.disabled && true} className={`${data.error && "brdred"} ${data.error && "brdnone"} selectbox`} showSearch value={data.value ? optionValue : 'Select'} optionLabelProp="label"
+					<Select disabled={this.props.disabled && true} className={`${data.error && "brdred"} ${data.error && "brdnone"} selectbox`} showSearch value={data.value ? optionValue :this.props.optionValue} placeholder={this.props.placeholder} optionLabelProp="label"
 						optionFilterProp="label" onChange={(value) => this.props.changeData && this.props.changeData(value)}>
 						{data.dropdown && data.dropdown.length > 0 && data.dropdown.map((item, index) => {
 							return (

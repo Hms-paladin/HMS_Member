@@ -1,0 +1,21 @@
+.confirmpage_head{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+.confirm_hos_head{
+    font-size: 23px;
+    font-weight: 500;
+    font-family: sans-serif;
+    margin: 0px;
+}
+.reschedule_booking_modal p{
+   margin-bottom: 0px !important;
+}
+.confirm_heading{
+    font-weight: 600;
+    font-size: 15px;
+}
+.confirm_subhead{
+        color:#ABA9A9;
+}

@@ -1,0 +1,110 @@
+
+.diet_bookings_parentdiv{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 20px;
+}
+.diet_bookings_parentdiv .book_headdiv{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.diet_bookings_parentdiv  .book_h{
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+.diet_bookings_parentdiv .diet_bookhistory_list{
+    display: flex;
+    padding:10px 23px;
+    justify-content: space-between;
+    align-items: center;
+}
+.diet_bookings_parentdiv .bookhistory_list_parent{
+    box-shadow: 0px 1px 7px #00000021;
+    border-radius: 20px;
+    opacity: 1;
+    margin-bottom: 20px;
+    width:100%;
+    font-weight: 500;
+}
+.diet_bookings_parentdiv .book_nur_img{
+    width:110px;
+    height:110px;
+    border-radius: 50%;
+
+}
+.diet_bookings_parentdiv .book_diet_div{
+    display:flex;
+    align-items: center;
+
+}
+.diet_bookings_parentdiv .diet_bookhistory_list p{
+    margin-bottom: 5px !important;
+    font-weight: 500;
+}
+.diet_bookings_parentdiv .book_text_div{
+    padding-left: 20px;
+}
+.diet_bookings_parentdiv .book_h_name{
+    font-weight: 600;
+    font-size: 20px;
+}
+.diet_bookings_parentdiv .duty_div{
+    display: grid;
+    align-items: center;
+    justify-content: flex-end;
+    height:50%;
+    
+}
+.diet_bookings_parentdiv .duty_snddiv{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+.diet_bookings_parentdiv .book_reshedule{
+    color:#F2951B;
+    font-weight: 600;
+}
+.diet_bookings_parentdiv .b_cancel{
+    color:#FF6464;
+    font-weight: 600;
+    cursor: pointer;
+}
+.diet_bookings_parentdiv .b_cancel_change{
+    color:#fff;
+    background-color: #83AF40;
+    padding: 3px 7px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 5px;
+}
+.diet_bookings_parentdiv .book_shedule{
+    color:#83AF40;
+    font-weight: 600;
+    cursor: pointer;
+}
+// cancel to click part
+.diet_bookings_parentdiv .amt_process{
+    background-color:#E6E6E6;
+    color:#808080;
+    padding:10px 40px;
+    margin-right: 20px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+.diet_bookings_parentdiv .cancel_part_open{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #cccccc;
+}
+.diet_bookings_parentdiv .cancel_part_div{
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+}
