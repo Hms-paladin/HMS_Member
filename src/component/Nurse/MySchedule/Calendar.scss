@@ -111,12 +111,13 @@ border-radius: 0px 0px 20px 20px;
   .tail-datetime-calendar .calendar-date table thead tr > *,
   .tail-datetime-calendar .calendar-date table tbody tr > * {
     width: 35px;
-    height: 47px;
+    height: 50px !important;
     padding: 0;
-    font-size: 16px;
+    font-size: 15px !important;
     text-align: center;
     font-weight: normal;
-    line-height: 35px;
+   line-height: 38px;
+    font-weight: 500 !important;
     border: 0;
     // font-weight: 600;
     text-transform: uppercase;
@@ -189,7 +190,7 @@ border-radius: 0px 0px 20px 20px;
   .tail-datetime-calendar .calendar-date table.calendar-month tbody tr > * {
     width: 81.66666666666667px;
     padding: 5px;
-    line-height: 25px;
+    // line-height: 25px;
   }
   .tail-datetime-calendar .calendar-date table.calendar-month tbody tr > * span {
     display: block;
@@ -357,3 +358,7 @@ border-radius: 0px 0px 20px 20px;
   .LR_icons{
     font-size: 2.2rem !important;
   }
+
+
+
+  
