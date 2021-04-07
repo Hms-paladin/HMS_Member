@@ -115,7 +115,9 @@ function Physiotheraphyfeed(props) {
 }
     const classes = useStyles();
     
-   
+    const App_type_function=()=>{
+      setApp_type(!App_type)
+     }
      
     return(  
         <div className="feed_layout">
@@ -260,7 +262,7 @@ function Physiotheraphyfeed(props) {
   <Button className="redbtn" onClick={Bookingdetails}>10:50AM</Button>
   <Button className="redbtn" onClick={Bookingdetails}>2:00PM</Button>
   <Button className="greenbtn" onClick={Bookingdetails}>3:00PM</Button>
-  <Button className="redbtn" onClick={()=>setApp_type(!App_type)}>3:45PM</Button>
+  <Button className="redbtn" onClick={App_type_function}>3:45PM</Button>
   <Button className="greenbtn" onClick={Bookingdetails}>8:00PM</Button>
   <Button className="greenbtn"onClick={Bookingdetails}>8:30PM</Button>
 
