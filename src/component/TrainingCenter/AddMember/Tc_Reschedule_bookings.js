@@ -20,7 +20,10 @@ export default function Tc_BookingReShedule(props){
         <div className="booking_shedule_tra">
             <Grid container>
                 <Grid item xs={12} md={5}>
-                   <Calendar/>
+                   <Calendar
+                    heading="Reschedule"
+                    Shedule_dots="enable"
+                   />
                 </Grid>
                 <Grid item xs={12} md={7} className="tra_booing_parent">
                 <div className="tra_booking_confirm">

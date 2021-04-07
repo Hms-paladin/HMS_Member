@@ -72,7 +72,7 @@ import Tra_Bookings from '../component/TrainingCenter/Training_Bookings/Tra_Book
 import Tra_BookingHistory from '../component/TrainingCenter/Training_Bookings/Tra_BookingHistory'
 import Tc_BookingReShedule from '../component/TrainingCenter/AddMember/Tc_Reschedule_bookings'
 import Doctorbookingreschedule from "../component/Doctor_Appointment/Doctorbooking Rechedule/doctorbookingreschedule";
-
+import Reschedule from '../component/TrainingCenter/BookingsCalender/Reschedule'
 
 // Trainer
 import TrainerList from "../component/Trainer/TrainerList/TainerList";

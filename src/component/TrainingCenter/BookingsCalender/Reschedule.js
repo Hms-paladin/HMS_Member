@@ -6,7 +6,6 @@ import dateFormat from 'dateformat';
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
 import dateformat from 'dateformat';
-import { BrowserRouter as Router, Switch, Route, useHistory, useRouteMatch, withRouter, useLocation } from "react-router-dom";
 
 
 const moment = extendMoment(originalMoment);
@@ -367,14 +366,12 @@ export default class Calendar extends React.Component {
     );
   };
 
-  componentDidMount(){
-    
-  }
+ 
 
 
 
   render() {
-    const { match, location, history } = this.props
+
 
     console.log(this.state.rangeSelect, "rangeSelect")
 
@@ -481,12 +478,12 @@ export default class Calendar extends React.Component {
 
     return (
       <div className="range_parent_calendar_root">
-          <div className="my_sch">{this.props.heading}</div>
+          <div className="my_sch">My Schedule</div>
         <div className="range_upcom_div">
           <div className="sch_head_name">Liverpool Club</div>
           <div className="upcom_cnt_inside">
-            <div className="mem_pro_cont">Two Member Program</div>
-            <div>80 KWD</div>
+            <div className="mem_pro_cont">Platinum Golf Spring Session</div>
+            <div>150 KWD</div>
           </div>
         </div>
         <div  style={{width:"100%",display:"flex"}}>
@@ -529,14 +526,14 @@ export default class Calendar extends React.Component {
                 <tbody className="table_body">{daysinmonth}</tbody>
               </table>
 
-            {this.props.SelectDate==="enable"&&<div className="date_select_cont">
+            {/* <div className="date_select_cont">
                <label>Select the Start Date</label>
-            </div>}
-            {this.props.Shedule_dots==="enable"&&<div className="days_in_clr_points">
-        <div className="dot_cir_div"><label className="b_dot_circle"></label><label>Completed Days</label></div>
+            </div> */}
+            <div className="daysin_clr">
+        <div className="dot_cir_div"><label className="dot_circle"></label><label>Completed Days</label></div>
         <div className="dot_cir_div"><label className="dot_circle_up"></label><label>Upcoming Days</label></div>
         <div className="dot_cir_div"><label className="dot_circle_ex"></label><label>To be Rescheduled Day</label></div>
-        </div>}
+        </div>
           </div>
         )}
       </div>
