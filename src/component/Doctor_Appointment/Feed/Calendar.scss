@@ -1,0 +1,10 @@
+.doc_calendar_root_div{
+   position:absolute;
+   z-index:200;
+   top:35px;
+   right:0px;
+   box-shadow: 0px 0px 4px 1px #ccc;
+}
+.doc_calendar_root_div .rdrWeekDay:nth-child(6){
+    color: rgb(132, 144, 149) !important;
+}

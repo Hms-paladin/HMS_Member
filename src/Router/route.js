@@ -72,8 +72,7 @@ import Tra_Bookings from '../component/TrainingCenter/Training_Bookings/Tra_Book
 import Tra_BookingHistory from '../component/TrainingCenter/Training_Bookings/Tra_BookingHistory'
 import Tc_BookingReShedule from '../component/TrainingCenter/AddMember/Tc_Reschedule_bookings'
 import Doctorbookingreschedule from "../component/Doctor_Appointment/Doctorbooking Rechedule/doctorbookingreschedule";
-import Reschedule from '../component/TrainingCenter/BookingsCalender/Reschedule'
-
+import Tc_Myschedule from '../component/TrainingCenter/BookingsCalender/Tc_Myschedule'
 // Trainer
 import TrainerList from "../component/Trainer/TrainerList/TainerList";
 // physiotheraphy
@@ -169,7 +168,7 @@ function Routes(props) {
                         <Route path="/tc_bookingshistory" component={Tra_BookingHistory}/>
                         <Route path="/Calendar" component = {Calendar}/>
                         <Route path="/tc_reschedule_bookings" component={Tc_BookingReShedule}/>
-
+                        <Route path="/tc_myschedule" component={Tc_Myschedule}/>
                         <Route path = "/tainerlist" component={TrainerList}/>
                         </Switch>
                         

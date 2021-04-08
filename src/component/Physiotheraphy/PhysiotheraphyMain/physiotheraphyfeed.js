@@ -36,7 +36,7 @@ import search from "../../../images/loupe.png";
 import { Input } from 'antd';
 import Internet_type from '../../../images/internet_type.svg'
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
-
+import Calendar from './Calendar'
 var hashHistory = require('react-router-redux')
 const { Search } = Input;
 const onSearch = value => console.log(value);
@@ -118,7 +118,30 @@ function Physiotheraphyfeed(props) {
     const App_type_function=()=>{
       setApp_type(!App_type)
      }
-     
+     //  type change to colors
+  const [sun_icon,setsun_icon]=useState(false)
+  const [moon_night,setmoon_night]=useState(false)
+  const [men_icon,setmen_icon]=useState(true)
+  const [female_icon,setfemale_icon]=useState(false)
+  const ChangeColor=(data)=>{
+    if(data==="sun_icon"){
+      setsun_icon(!sun_icon)
+    }
+    if(data==="moon_night"){
+      setmoon_night(!moon_night)
+    }
+    if(data==="men_icon"){
+      setmen_icon(!men_icon)
+    }
+    if(data==="female_icon"){
+      setfemale_icon(!female_icon)
+    }
+  }
+  // calendar open function
+  const [c_open,setc_open]=useState(false)
+  const CalendarOpen=()=>{
+    setc_open(!c_open)
+  } 
     return(  
         <div className="feed_layout">
            <div className="filter_container">
@@ -178,25 +201,31 @@ function Physiotheraphyfeed(props) {
 
            </div>
         <div className="feed_rightcol">
-       <div className="search_dropdown feedsearch">
-            <Search
+        <div className="search_dropdown feedsearch">
+            {/* <Search
       placeholder="Physiotherapist or Speciality,Location"
       allowClear
       onSearch={onSearch}
       style={{ width: 300, margin: '0 10px' }}
     ></Search>
-                <img className="searchicon"src={search} />
+                <img className="searchicon"src={search} />   */}
+        <div style={{position:"relative",width:"60%"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"9px",right:"17px",width:"17px"}}/></div>
+
                 </div>
+
         <div className="page_control">
             <div className="controlbtns">
-        <Button className="day"> <ReactSVG src={sun} /></Button>
-        <Button className="night"> <ReactSVG src={moon} /></Button>
+            <Button className={sun_icon?"day_changes":"day"} onClick={()=>ChangeColor("sun_icon")}> <ReactSVG src={sun} /></Button>
+        <Button className={moon_night?"night_changes":"night"} onClick={()=>ChangeColor("moon_night")}> <ReactSVG src={moon} /></Button>
+        <div className="calendar_part_parent">
         <Button className="left"> <ReactSVG src={left} /></Button>
-        <Button className="date">Wed,27-11-2020</Button>
+        <Button className="date" onClick={CalendarOpen}>Wed,27-11-2020</Button>
 
         <Button className="right"> <ReactSVG src={right} /></Button>
-        <Button className="male"> <ReactSVG src={male} /></Button>
-        <Button className="female"> <ReactSVG src={female} /></Button>
+        {c_open?<div><Calendar/></div>:""}
+        </div>
+        <Button className="male" className={men_icon?"male_changes":"male_ic"} onClick={()=>ChangeColor("men_icon")}> <ReactSVG src={male} /></Button>
+        <Button className={female_icon?"female_changes":"female_ic"} onClick={()=>ChangeColor("female_icon")}> <ReactSVG src={female} /></Button>
 
 
 
@@ -214,7 +243,7 @@ function Physiotheraphyfeed(props) {
 
 
                    <div className="story_details">
-                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="avatar_div"> <img src={avatar} onClick={Bookingdetails}/></div>
                      <div className="pimary_detail">
                        <div className="detail1">Dr.Farah</div>
                        <div className="detail2">MD-Conservative Dentistry</div>
@@ -284,7 +313,7 @@ function Physiotheraphyfeed(props) {
         </div>
         <div className="feed_div">
                    <div className="story_details">
-                     <div className="avatar_div"> <img src={avatar} /></div>
+                     <div className="avatar_div"> <img src={avatar} onClick={Bookingdetails}/></div>
                      <div className="pimary_detail">
                        <div className="detail1">Dr.Farah</div>
                        <div className="detail2">MD-Conservative Dentistry</div>
