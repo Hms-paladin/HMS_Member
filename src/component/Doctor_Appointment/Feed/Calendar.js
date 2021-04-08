@@ -14,7 +14,11 @@ export default function RangeCalendar(){
         }
       ])
       return(
-   <div className="doc_calendar_root_div">           
+   <div className="doc_calendar_root_div">    
+
+
+   
+          
 <DateRange
   editableDateInputs={true}
   onChange={item => setState([item.selection])}
