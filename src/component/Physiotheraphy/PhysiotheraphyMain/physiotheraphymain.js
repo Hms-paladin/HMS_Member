@@ -9,10 +9,10 @@ import { NavLink} from "react-router-dom";
 
 // import "./searchresult.scss"
 const images = [
-                    {img:Doctor,title:"Geriatric Physiotheraphy",pathname:"/physiotheraphyfeed"},
-                    {img:Nurse,title:"Musculoskeletal Physiotheraphy",pathname:"/physiotheraphyfeed"},
-                    {img:Report,title:"Paediatric Physiotheraphy",pathname:"/physiotheraphyfeed"},
-                    {img:Trainer,title:"Sports Physiotheraphy",pathname:"/physiotheraphyfeed"},
+                    {img:Doctor,title:"Geriatric Physiotherapy",pathname:"/physiotheraphyfeed"},
+                    {img:Nurse,title:"Musculoskeletal Physiotherapy",pathname:"/physiotheraphyfeed"},
+                    {img:Report,title:"Paediatric Physiotherapy",pathname:"/physiotheraphyfeed"},
+                    {img:Trainer,title:"Sports Physiotherapy",pathname:"/physiotheraphyfeed"},
                     
 ]
 
@@ -20,7 +20,7 @@ const images = [
 
 function Physiotheraphymain(props) {
     return(
-        <div>        <div className="mainpage_heading container">Physiotheraphy Category</div>
+        <div>        <div className="mainpage_heading container">Physiotherapy Category</div>
 
         <div className="container">
         {images.map((data)=>{

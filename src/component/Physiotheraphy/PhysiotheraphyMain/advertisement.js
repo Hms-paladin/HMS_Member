@@ -3,7 +3,7 @@ import Ad_Diet from '../../../images/ad_diet.png'
 import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close';
 import {NavLink, useHistory, useLocation} from 'react-router-dom'
-import Ad from '../../../images/phy_ad.png'
+import Ad from '../../../images/physio_ad.png'
 export default function Ad_Physiotherphy(){
     const [close,setclose]=React.useState(true)
     const Closed=()=>{

@@ -8,7 +8,7 @@ import { extendMoment } from "moment-range";
 import dateformat from 'dateformat';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-
+import Okay from '../../../images/okay.png'
 const moment = extendMoment(originalMoment);
 const Current_date = (dateFormat(new Date(), "ddd, dd mmm yyyy"))
 
@@ -561,8 +561,13 @@ export default class Calendar extends React.Component {
           onClose={this.handleClose}
           // maxWidth={"xs"}
         >
-          <div>fghjkl;ghj</div>
-          <div></div>
+          <div className="reshe_confirm_msg">
+            <img src={Okay}/>
+            <div>Thank You</div>
+            <div>Your Booking has been Rescheduled</div>
+            <Button>Ok</Button>
+          </div>
+          
        
         </Dialog>
 

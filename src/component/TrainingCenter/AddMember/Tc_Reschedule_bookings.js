@@ -23,7 +23,7 @@ export default function Tc_BookingReShedule(props){
                    <Calendar
                     heading="Reschedule"
                     Shedule_dots="enable"
-                    // reschedule="enable"
+                    reschedule="enable"
                    />
                 </Grid>
                 <Grid item xs={12} md={7} className="tra_booing_parent">
