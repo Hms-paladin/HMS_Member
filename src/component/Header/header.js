@@ -24,7 +24,7 @@ const { Search } = Input;
 
 
 const { Header, Content } = Layout;
-const onSearch = value => console.log(value);
+
 
 
 function HeaderLayout(props) {
@@ -76,7 +76,7 @@ function HeaderLayout(props) {
     else if (path_name === "/hospitallist" || path_name==="/proceedpage" || path_name==="/confirmhospital") {
       history.push("/bookingdetails")
     }
-    else if (path_name === "/tc_history") {
+    else if (path_name === "/tc_history"||path_name === "/Trainingdetails"||path_name === "/bookingshedule"||path_name === "/tc_reschedule_bookings"||path_name === "/tc_myschedule"||path_name === "/tc_bookingshistory") {
       history.push("/tc_Bookings")
     }
     else if (path_name === "/physiotheraphyfeed" || path_name === "/physiotherapistbooking") {
@@ -121,7 +121,11 @@ function HeaderLayout(props) {
   const Open = () => {
     setnoti_open(!noti_open)
   }
-
+  const {e_search,sete_search}=useState(false)
+  const onsearch = value =>{
+    sete_search(true)
+    console.log("value",e_search)
+  }
   return (
     <Layout className="layot_header temp">
       <Header style={{ position: 'fixed', zIndex: 10, width: '100%', display: "flex", borderBottom: "1px solid #f0f0f0" }}>
@@ -141,11 +145,11 @@ function HeaderLayout(props) {
           <Dropdown.Toggle id="dropdown-basic">
             <Search
               placeholder="Doctor or Speciality,Clinic"
-              allowClear
-              onSearch={onSearch}
+              // allowClear
+              onSearch={onsearch}
               style={{ width: 300, margin: '0 10px' }}
             />
-            <img className="searchico" src={search} />
+            <img className={e_search?"d-none":"searchico"} src={search} />
           </Dropdown.Toggle>
 
           <Dropdown.Menu >

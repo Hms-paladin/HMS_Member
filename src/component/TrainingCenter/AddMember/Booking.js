@@ -127,6 +127,7 @@ export default function Tra_Bookings(props){
         footer={false}
         onCancel={ModalCloseClick}
         className="confirm_modal"
+        width={800}
         // maxWidth={"md"}
         // style={{width:"800px"}}
        >

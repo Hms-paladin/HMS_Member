@@ -2,17 +2,15 @@ import  React from 'react'
 import {Input} from 'antd'
 import search from '../../../images/search.svg'
 import sort from '../../../images/sort.svg'
-import Thumb from '../../../images/thumb.svg'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
 import percentage from '../../../images/percentage.svg'
 import StarIcon from '@material-ui/icons/Star';
 import Tr_Image1 from '../../../images/tr_cat_image.png'
 import LabImage2 from '../../../images/b_lab.jpeg'
 import {NavLink,path,useHistory} from 'react-router-dom'
-import { Col, Row, Form, FormGroup} from 'reactstrap';
-import ReactPlayer from 'react-player'
+import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
+
 // import './Lab_History.scss'
 // import Map from './Map'
 const { Search } = Input;
@@ -69,10 +67,10 @@ export default function Training_History(props){
                 <div>
                 <Grid container style={{paddingTop:"10px"}}>
                 {Lab_history.map((data,index)=>   
-          <Grid item xs={open?6:12} md={open?6:12}spacing={2} className={open?"paper_items_grid_change":"paper_items_grid"} onClick={PushTrainingdetails}>   
+          <Grid item xs={open?6:12} md={open?6:12}spacing={2} className={open?"paper_items_grid_change":"paper_items_grid"}>   
                 <Paper className={open?"lab_his_item_pchange":"lab_his_item_p"}>    
                 <div style={{display:"flex",width:"100%"}}>
-                <div className="book_nurse_div">  
+                <div className="book_nurse_div" onClick={PushTrainingdetails}>  
                   <img src={data.img} className="lab_his_img"/>
                    <div className="lab_his__text_div">
                       <p className="lab_his_h_name">{data.labname}</p>
@@ -113,13 +111,14 @@ export default function Training_History(props){
             </ol>
          <div class="carousel-inner">
          <div class="carousel-item active">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=qr53U0H3VPs' />
+         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
          </div>
          <div class="carousel-item">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=F60AkbSrD7c' />
+         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
          </div>
-         <div class="carousel-item">
-           <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=tTJ1_CftK3o' />
+         <div class="carousel-item"> 
+         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+
          </div>
         </div>
         </div>

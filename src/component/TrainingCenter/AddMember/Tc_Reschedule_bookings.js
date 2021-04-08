@@ -23,6 +23,7 @@ export default function Tc_BookingReShedule(props){
                    <Calendar
                     heading="Reschedule"
                     Shedule_dots="enable"
+                    // reschedule="enable"
                    />
                 </Grid>
                 <Grid item xs={12} md={7} className="tra_booing_parent">
@@ -86,14 +87,14 @@ export default function Tc_BookingReShedule(props){
         onCancel={ModalCloseClick}
         className="confirm_modal"
         // maxWidth={"md"}
+        width={800}
         // style={{width:"800px"}}
        >
          <ConfirmationModal ModalCloseClick={ModalCloseClick}/>
        </Modal> 
         </div>
        
-    )
-}
+
                 
                 </Grid>
            </Grid>

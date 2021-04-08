@@ -44,7 +44,7 @@ export default function Tra_Bookings(){
                    <p style={{fontSize:"20px"}}>12 sessions</p>
                    <p style={{fontSize:"20px"}}>Two Member Program</p>
                    <div>
-                       <NavLink to="/bookingshedule"><label style={{color:"#F2951B",cursor:"pointer"}}>My schedule</label></NavLink>
+                       <NavLink to="/tc_myschedule"><label style={{color:"#F2951B",cursor:"pointer"}}>My schedule</label></NavLink>
                        <NavLink to="/tc_reschedule_bookings"><label style={{color:"#83AF40",margin:"0px 20px",cursor:"pointer"}}>Reschedule</label></NavLink>
                        <label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={CancelClick}>Cancel</label>
                     </div>

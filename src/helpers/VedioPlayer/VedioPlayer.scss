@@ -16,10 +16,21 @@
     width:100%;
     height:100%;
 }
-.video-react .video-react-big-play-button{
-    top: 50% !important;
-   left: 50% !important;
-   transform: translate(-50%, -50%) !important;
+// .video-react .video-react-big-play-button{
+//     top: 50% !important;
+//    left: 50% !important;
+//    transform: translate(-50%, -50%) !important;
+// }
+ .video-react .video-react-big-play-button{
+    font-size: 3.3em !important;
+    line-height: 2em !important;
+    height: 2em !important;
+    width: 2em !important;
+    border-radius:50%  !important;
+}
+.video-react .video-react-big-play-button.video-react-big-play-button-center{
+    top: 47% !important;
+    left: 53% !important;
 }
 .video-react .video-react-control-bar{
     bottom: 30px !important;

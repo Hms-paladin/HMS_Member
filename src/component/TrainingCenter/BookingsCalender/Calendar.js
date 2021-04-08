@@ -6,8 +6,8 @@ import dateFormat from 'dateformat';
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
 import dateformat from 'dateformat';
-import { BrowserRouter as Router, Switch, Route, useHistory, useRouteMatch, withRouter, useLocation } from "react-router-dom";
-
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
 
 const moment = extendMoment(originalMoment);
 const Current_date = (dateFormat(new Date(), "ddd, dd mmm yyyy"))
@@ -29,9 +29,15 @@ export default class Calendar extends React.Component {
     slotSubtract: 1,
     slotAdd: 1,
     TotalslotsAvailable: [],
-    spinLoad: true
+    spinLoad: true,
+    ModalOpen:false,
   };
-
+  handleClose=()=>{
+    this.setState({ModalOpen:false})
+  }
+  handleOpen=()=>{
+    this.setState({ModalOpen:true})
+  }
 
   daysInMonth = () => {
     return this.state.dateObject.daysInMonth();
@@ -534,13 +540,32 @@ export default class Calendar extends React.Component {
             </div>}
             {this.props.Shedule_dots==="enable"&&<div className="days_in_clr_points">
         <div className="dot_cir_div"><label className="b_dot_circle"></label><label>Completed Days</label></div>
-        <div className="dot_cir_div"><label className="dot_circle_up"></label><label>Upcoming Days</label></div>
-        <div className="dot_cir_div"><label className="dot_circle_ex"></label><label>To be Rescheduled Day</label></div>
+        <div className="dot_cir_div"><label className="b_dot_circle_up"></label><label>Upcoming Days</label></div>
+        <div className="dot_cir_div"><label className="b_dot_circle_ex"></label><label>To be Rescheduled Day</label></div>
         </div>}
+        {this.props.MyShedule_dots==="enable"&&<div className="days_in_clr">
+        <div className="dot_cir_div"><label className="b_dot_circle"></label><label>Completed Days</label></div>
+        <div className="dot_cir_div"><label className="b_dot_circle_up"></label><label>Upcoming Days</label></div>
+        <div className="dot_cir_div"><label className="b_dot_circle_ex"></label><label>To be Rescheduled Day</label></div>
+        <div className="dot_cir_div"><label className="b_res_circle_ex"></label><label> Rescheduled Day</label></div>
+
+        </div>}
+       
           </div>
         )}
       </div>
       </div>
+      {this.props.reschedule==="enable"&&<div className="b_re_div"><Button className="b_reshe" onClick={this.handleOpen}>Reschedule</Button></div>}
+      <Dialog
+          open={this.state.ModalOpen}
+          onClose={this.handleClose}
+          // maxWidth={"xs"}
+        >
+          <div>fghjkl;ghj</div>
+          <div></div>
+       
+        </Dialog>
+
       </div>
     );
   }
