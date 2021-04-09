@@ -18,12 +18,12 @@ import plus from '../../../../images/plus.svg'
 import avatar from '../../../../images/us.svg'
 import edit from "../../../../images/edit.svg"
 // import {NavLink} from 'react-router-dom';
-import ConfirmReshedule from "../../BookroomBooking/confirmRescchedule/ConfirmReschedule"
+// import ConfirmReshedule from "../../BookroomBooking/confirmRescchedule/ConfirmReschedule"
 // import ProceedConfirm from '../HospitalList/ProceedConfirm/ProceedConfirm'
 import roomimg from "../../../../images/BookaRoom/room_img.png"
 import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import Pin from "../../../../images/pin.png"
-// import ProceedConfirm from '../../ProceedConfirm/ProceedConfirm';
+import ProceedConfirm from '../../ProceedConfirm/ProceedConfirm';
 
 
 
@@ -340,7 +340,7 @@ const ModalCloseClick=()=>{
         */}
 
 <Modal
-                  title={false}
+                  title={<div className="bookconfirm">Booking Confirmation</div>}
                   visible={modalOpen}
                   footer={false}
                   size={"lg"}
@@ -350,7 +350,7 @@ const ModalCloseClick=()=>{
                   // className="confirm_modal"
                   onCancel={ModalCloseClick}
                  >
-                   <ConfirmReshedule/>
+                   <ProceedConfirm/>
                   
     
                  </Modal>

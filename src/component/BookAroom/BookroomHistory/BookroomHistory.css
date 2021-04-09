@@ -10,6 +10,11 @@
     justify-content: space-between;
     align-items: center;
 }
+.book_his_cancel{
+    color: #FF6464;
+    /* padding-left: 23px; */
+    cursor: pointer; 
+}
 .book_h{
     color: #333;
     font-size: 18px;

@@ -1,116 +1,94 @@
-import React from 'react';
-// import './ConfirmPage.css';
-import Divider from '@material-ui/core/Divider';
-import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
- 
-export default  function ProceedConfirm(){
+import React from 'react'
+import './ProceedConfirm.css'
+import Pin from "../../../images/pin.png"
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Nurse from '../../../images/nurse.png'
+import {NavLink} from 'react-router-dom'
+import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
+import Hospital  from "../../../images/BookaRoom/room_img.png"
+// import Divider from '@material-ui/core/Divider'
+export default function ProceedConfirm(props){
+    const[HideAdrs,setHideAdrs]=React.useState(false)
+    // elipse function
+    const ElipseOpen=()=>{
+      setHideAdrs(!HideAdrs)
+  }
     return(
-      <div>
-          <div className="confirmpage_head">
-              <div style={{display:'flex'}}>
-                  <p className="confirm_hos_head"> Mayo Clinic Hospital</p>
-                  <span style={{color:'grey', fontSize:'15px', marginRight:'25px'}}>Shaab Sea View</span>
-              </div>
-          </div>
-          <Divider style={{margin:'8px'}}/>
-          <Form>
-              <Row form>
-                  <Col md={3}>
-                      <FormGroup>
-                          <p className="confirm_heading">Name</p>
-                          <p className="confirm_subhead">Dalal</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={3}>
-                      <FormGroup>
-                          <p className="confirm_heading">Room Type</p>
-                          <p className="confirm_subhead">Lulwa</p>
-                      </FormGroup>
-                  </Col>
-                  <h5>Existing Booking</h5>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Check In</p>
-                          <p className="confirm_subhead">08 Dec 2020</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Check Out</p>
-                          <p className="confirm_subhead">10 Dec 2020</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Total days</p>
-                          <p className="confirm_subhead">2</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Cost Per Day (KWD)</p>
-                          <p className="confirm_subhead">400</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Total Cost (KWD)</p>
-                          <p className="confirm_subhead">1200</p>
-                      </FormGroup>
-                  </Col>
-                  <h5>Rescheduled Booking</h5>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Check In</p>
-                          <p className="confirm_subhead">11 Dec 2020</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Check Out</p>
-                          <p className="confirm_subhead">14 Dec 2020</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Total days</p>
-                          <p className="confirm_subhead">4</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Room Type</p>
-                          <p className="confirm_subhead">Lulwa</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Cost Per Day (KWD)</p>
-                          <p className="confirm_subhead">400</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Total Cost (KWD)</p>
-                          <p className="confirm_subhead">1200</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">Already paid (KWD)</p>
-                          <p className="confirm_subhead">800</p>
-                      </FormGroup>
-                  </Col>
-                  <Col md={2}>
-                      <FormGroup>
-                          <p className="confirm_heading">To Pay (KWD)</p>
-                          <p className="confirm_subhead">400</p>
-                      </FormGroup>
-                  </Col>
-              </Row>
+        <div className="booking_confirm">
+           {/* <div className="bookconfirm">BookingConfirmation</div> */}
+           <Grid container spacing={4} className="book_confirm_container">
+               <Grid item sm={12} md={3} className="confirm_nurse_imggrid">
+                  <div className="bk_img_div">
+                    <img src={Hospital} className="confir_nurse"/>
+                     
+                    <span className="span_cont"> <div className="confirm_b_name">
+                        Mayo Clicnic Hospital
+                    </div>
+                    <img src={Pin} style={{width:'18px', height:'18px'}}/>
+
+                    </span>
+                     <p style={{color:'#858585'}}>Shaab sea view<span className="dot_align">...</span></p>
+                    </div>
+                  
+               </Grid>
+               <Grid item xs={12} md={9}>
+               <Form>
+        <Row form>
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Name</p>
+            <p className="mem_con_name">Dalal</p> 
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Check In</p>
+            <p className="mem_con_name">08 Apr 2021</p> 
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Check Out</p>
+            <p className="mem_con_name">10 Apr 2021</p> 
+            </FormGroup>
+          </Col>
+       
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Room Type</p>
+            <p className="mem_con_name">Lulwa</p> 
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Total Days</p>
+            <p className="mem_con_name">2</p> 
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Cost Per Day (KWD)</p>
+            <p className="mem_con_name">400</p> 
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+            <p className="mem_con_namehead">Total Cost (KWD)</p>
+            <p className="mem_con_name">800</p> 
+            </FormGroup>
+          </Col>
+         
+         
+         
+          </Row>
           </Form>
-
-      </div>
+          </Grid>
+            <Grid item xs={12} md={12} style={{textAlign:"center"}}>
+               <NavLink to="/paymentmethod"><Button className="confirm_b_btn">Confirm</Button></NavLink>
+               </Grid>   
+           </Grid>
+           
+       </div>
     )
-
 }

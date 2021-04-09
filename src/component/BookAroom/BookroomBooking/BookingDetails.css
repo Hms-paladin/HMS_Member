@@ -109,10 +109,12 @@
 .cancel_div{
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
 }
 .cancel_align{
     margin-right: 25px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     color:#FF6464;
     font-weight: 600;
     cursor: pointer;

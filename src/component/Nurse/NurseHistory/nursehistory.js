@@ -134,8 +134,8 @@ export default function Nursehistory(props){
               footer={false}
               title={false}
               centered
-              width={800}
-              className="lab_ad_modal"
+              width={1000}
+            //   className="lab_ad_modal"
               >
                 <div className="lab_ad_div_inside">
                <img src={Nurse_ad} style={{width:"100%",height:"100%"}}/>

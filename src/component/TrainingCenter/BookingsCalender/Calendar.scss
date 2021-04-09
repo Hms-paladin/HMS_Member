@@ -12,6 +12,9 @@
   .range_parent_calendar_root .tail-datetime-calendar .calendar-date table thead tr>*:nth-child(6) {
     color: red !important;
   }
+  .d_none{
+    background-color: none !important;
+  }
   
   .range_upcom_div {
     background-color: #83AF40;
@@ -193,6 +196,36 @@
     text-align: center;
   }
   .reshe_confirm_msg{
-    padding:20px;
+    padding:50px;
     text-align: center;
+  }
+
+
+
+
+  // reschedule popup
+  .res_ok_img{
+    width:70px;
+  }
+  .tq_msg{
+    font-size: 20px;
+    color: #83AF40;
+    font-weight: bold;
+  }
+  .ok_btn_re{
+    border: 1px solid #83AF40 !important;
+    background-color:  none !important;
+    border-radius: 50px !important;
+    width:120px !important;
+    color:#83AF40 !important;
+    font-weight: 600 !important;
+  }
+  .re_book{
+     color: #595959;
+  font-weight: 600;
+  margin: 15px;
+  font-size: 15px;
+  }
+  .modal_res{
+
   }

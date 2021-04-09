@@ -72,7 +72,7 @@ export default function BookroomHistory(props){
                             <p className="book_h_name">{data.name}</p>
                             <p className="loaction_align">{data.location}<span className="dot_align" onClick={ModalClickOpen}>...</span></p>
                             <p>{data.Date}</p>
-                            <div className={data.historyid===8?"his_cancel":"history_reschedule"} >{data.history}</div>
+                            <div className={data.historyid===8?"book_his_cancel":"history_reschedule"} >{data.history}</div>
                         </div>
                         </div> 
         
@@ -112,6 +112,7 @@ export default function BookroomHistory(props){
                   size={"lg"}
                   {...props}
                   centered
+                  width={650}
                   className="confirm_modal"
                   onCancel={RepeatClickClose}
                  >

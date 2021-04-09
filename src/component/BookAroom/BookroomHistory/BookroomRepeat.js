@@ -47,7 +47,7 @@ export default function BookroomRepeat(){
           </Col>
           <Col md={2}>
             <FormGroup>
-            <p className="modal_head">total Days</p>
+            <p className="modal_head">Total Days</p>
                    <p className="mem_con_name">2</p>
             </FormGroup>
           </Col>
@@ -61,7 +61,7 @@ export default function BookroomRepeat(){
           </Col>
           <Col md={3}>
             <FormGroup>
-            <p className="modal_head">Cost Per Day(KWD)</p>
+            <p className="modal_head">Total Cost (KWD)</p>
             <p className="mem_con_name">800</p>
             </FormGroup>
           </Col>

@@ -251,15 +251,15 @@ function Feed(props) {
   <div class="carousel-inner">
     <div class="carousel-item active">
 
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' poster={"/assets/poster.png"}/>
 
     </div>
     <div class="carousel-item">
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4' poster={"/assets/poster.png"}/>
       
     </div>
     <div class="carousel-item">
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'  poster={"/assets/poster.png"}/>
     </div>
   </div>
 

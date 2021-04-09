@@ -48,7 +48,7 @@ export default class Calendar extends React.Component {
     return this.state.dateObject.format("Y");
   };
   currentDay = () => {
-    console.log(this.state.dateObject.format("Y"), "currentday")
+    console.log(this.state.dateObject.format("month"), "currentday")
     return this.state.dateObject.format("D");
   };
   firstDayOfMonth = () => {
@@ -56,7 +56,10 @@ export default class Calendar extends React.Component {
     let firstDay = moment(dateObject)
       .startOf("month")
       .format("d"); // Day of week 0...1..5...6
+    console.log(firstDay,"divyarrr")
+      
     return firstDay;
+
   };
   month = () => {
     return this.state.dateObject.format("MMM");
@@ -299,12 +302,14 @@ export default class Calendar extends React.Component {
     var rangeSelect = []
     var rangeSelectFirst = []
     var startDatestore = []
+    const date=new Date()
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-
+    const disblerange=new Date().getDay()===6
+    console.log(new Date().getDay()===0||new Date().getDay()===6,"divya_rrr")
+   
     if (this.state.fulldate.length === 0) {
       startDatestore.push(new Date(this.month() + "-" + this.year() + "-" + d))
-      rangeSelect.push(`selectedclr${d}_${this.month()}_${this.year()}`)
+      rangeSelect.push(`selectedclr${d}_${this.month()}_${this.year()} d_none${new Date().getDay()===5}`)
 
      // send date value to parent
       // this.state.getDate({startdate:new Date(this.month() + "-" + this.year() + "-" + d),enddate:null})
@@ -396,17 +401,20 @@ export default class Calendar extends React.Component {
 
     let daysInMonth = [];
     var hidepastdataleft = []
-
+    var disble=[]
 
     for (let p = 1; p <= this.daysInMonth(); p++) {
-
-      if(dateformat(this.year()+" "+this.month()+" "+p,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd")){
+    
+      if(dateformat(this.year()+" "+this.month()+" "+p,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd")||(new Date().getDay()==5)){
          hidepastdataleft.push(false)
+        //  disble.push(false)
       }
       else{
         hidepastdataleft.push(true)
+        // disble.push(true)
       }
-
+      console.log(disble,"ssshide")
+      
       console.log(new Date(dateformat(this.year()+" "+this.month()+" "+p,"yyyy,mm,dd")),"newdate")
       if(new Date() < new Date(dateformat(this.year()+" "+this.month()+" "+p,"yyyy,mm,dd")) || dateformat(this.year()+" "+this.month()+" "+p,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd") ){
         var hidepastdata = true
@@ -420,7 +428,6 @@ export default class Calendar extends React.Component {
       const startdate = `selectedclr${d}_${this.state.dateObject.format("MMM")}_${this.state.dateObject.format("Y")}`
       let currentDay = d == this.currentDay() ? "today" : "";
       var textgreyhide = new Date() < new Date(dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd")) || dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd") 
-
       daysInMonth.push(
 
         <td key={d} className={`calendar-day ${currentDay} ${!textgreyhide && "cursornonehide"}`} onClick={textgreyhide && (e => { this.onDayClick(e, d); })}>
@@ -429,7 +436,7 @@ export default class Calendar extends React.Component {
             <div className="range_child w-25">
             </div>
             <div
-              className={`${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
+              className={`${startdate===new Date().getDay()==5&&"d_none"} ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
                 startdate === this.state.rangeSelect[this.state.rangeSelect.length - 1] && "table_sec_sel" ||
                 this.state.rangeSelect.includes(startdate) && "table_inter_sel"
                 }`}
@@ -559,13 +566,14 @@ export default class Calendar extends React.Component {
       <Dialog
           open={this.state.ModalOpen}
           onClose={this.handleClose}
-          // maxWidth={"xs"}
+          className="modal_res"
+           maxWidth={400}
         >
           <div className="reshe_confirm_msg">
-            <img src={Okay}/>
-            <div>Thank You</div>
-            <div>Your Booking has been Rescheduled</div>
-            <Button>Ok</Button>
+            <img src={Okay} className="res_ok_img"/>
+            <div className="tq_msg">Thank You</div>
+            <div className="re_book">Your Booking has been <br/> Rescheduled</div>
+            <Button className="ok_btn_re" onClick={this.handleClose}>Ok</Button>
           </div>
           
        

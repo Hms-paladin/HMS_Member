@@ -459,6 +459,7 @@ cursor: pointer;
      display: flex;
      flex-direction: column;
      align-items: center;
+     justify-content: center;
 }
 .bookconfirmmodal .useravatar img{
     width: 100px;
@@ -475,6 +476,7 @@ cursor: pointer;
 }
 .bookconfirmflexrow1,.bookconfirmflexrow2{
     display: flex;
+    margin:10px 0px;
 }
 
 .bookconfirmflexblock1{
