@@ -75,6 +75,8 @@ import Doctorbookingreschedule from "../component/Doctor_Appointment/Doctorbooki
 import Tc_Myschedule from '../component/TrainingCenter/BookingsCalender/Tc_Myschedule'
 // Trainer
 import TrainerList from "../component/Trainer/TrainerList/TainerList";
+import TrainerDetails from '../component/Trainer/TrainerDetails/TrainerDetails'
+import ChatWindow from '../component/Trainer/ChatWindow/chatwindow'
 // physiotheraphy
 import Physiotheraphymain from "../component/Physiotheraphy/PhysiotheraphyMain/physiotheraphymain";
 import Physiotheraphyfeed from "../component/Physiotheraphy/PhysiotheraphyMain/physiotheraphyfeed";
@@ -169,7 +171,10 @@ function Routes(props) {
                         <Route path="/Calendar" component = {Calendar}/>
                         <Route path="/tc_reschedule_bookings" component={Tc_BookingReShedule}/>
                         <Route path="/tc_myschedule" component={Tc_Myschedule}/>
+                        {/* trainer */}
                         <Route path = "/tainerlist" component={TrainerList}/>
+                        <Route path ="/trainerdetails" component={TrainerDetails}/>
+                        <Route path='/ChatWindow' component={ChatWindow}/>
                         </Switch>
                         
         </HeaderLayout>

@@ -104,3 +104,8 @@
         bottom: 8%;
         right:4% !important;
     }
+    @media screen and (min-width: 1024px) {
+        .ad_child_div{
+           height:720px;
+        }
+    }

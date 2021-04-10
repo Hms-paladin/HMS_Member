@@ -1,0 +1,102 @@
+.tra_female{
+    font-size: 25px;
+    font-weight: 600;
+}
+.ant-rate{
+    color: #83AF40 !important;
+}
+.tainer_list_icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+.home_icon_det{
+    // text-align: center;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 17px;
+    background-color: #fff !important;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg{
+        fill:#41AFA5;
+        font-size: 3rem;
+    }
+     div{
+        font-size: 13px;
+        color:#6F6B6B;
+        font-weight: 600;
+        text-align: center;
+    }
+ 
+}
+
+.internet_div_tra_det{
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 17px;
+    background-color: #F0F0F0 !important;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 25px;
+    svg{
+        width:32px;
+        height: 50px;
+    }
+     path{
+        fill: #6e41af;
+    }
+    div{
+        font-size: 13px;
+        color:#6F6B6B;
+        font-weight: 600;
+    }
+   
+}
+.inter_net_img{
+    text-align: center;
+}
+.internet_div_gym_det{
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 17px;
+    background-color: #fff !important;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg{
+        width:28px;
+        height: 50px;
+    }
+    
+    div{
+        font-size: 13px;
+        color:#6F6B6B;
+        font-weight: 600;
+    }
+    path{
+        fill: #af414b;
+    }
+   
+}
+.chat_ic_div{
+    background-color: #83AE40;
+    box-shadow: 0px 3px 6px #34870C57;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+     top: 50%;
+    // bottom: 10px;
+    right: 0px;
+    cursor: pointer;
+}

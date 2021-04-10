@@ -1,0 +1,77 @@
+.pro_modal_parent{
+    color: #242134CC;
+    label{
+        margin-bottom: 0px;
+    }
+}
+.p_title_head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    label {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    Button{
+        border: 0.5px solid #83AF40;
+        border-radius: 50px;
+        color:#83AF40 ;
+        text-transform: none;
+        width:120px;
+        padding: 4px 0px;
+        font-weight: 500;
+    }
+}
+.mem_h{
+    label:nth-child(1){
+        font-size: 20px;
+    }
+    label:nth-child(2){
+       font-size: 21px;
+       font-weight: bold;
+       margin-left: 10px;
+    }
+}
+.w_hrs{
+    div:first-child{
+    font-size: 20px;
+    font-weight: bold;
+    }
+    div:nth-child(2){
+        font-weight: 500;
+        label{
+            font-size: 13px;
+        }
+        label:nth-child(2){
+            font-weight: 400;
+            margin-left: 10px;
+        }
+    }
+}
+.p_det{
+    div{
+        font-size: 20px;
+        font-weight: bold;
+        }
+        label{
+            font-size: 13px;
+            font-weight: 500;
+        }
+}
+.modal_sessions_cont{
+    display:flex;
+    align-items: center;
+    padding: 10px 0px;
+    line-height: 1.2;
+    label{
+        font-size: 4rem;
+        font-weight: bold;
+    }
+}
+.ses_text{
+    margin: 0px 15px;
+    font-size: 20px;
+    div:nth-child(2){
+        color:#83AF40
+    }
+}

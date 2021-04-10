@@ -6,7 +6,7 @@ import Rating from '@material-ui/lab/Rating';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-
+import {Popconfirm} from 'antd'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
@@ -28,14 +28,10 @@ import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied'
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import ReactPlayer from 'react-player'
 import offer_bg from '../../../images/offer_bg.png'
 import star from '../../../images/star.png'
 import Calendar from './Calendar'
 import {useHistory} from 'react-router-dom'
-import sample from '../../../images/sample.mp4'
-import { Player } from 'video-react';
-import ShareIcon from '@material-ui/icons/Share';
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 import Internet_type from '../../../images/internet_type.svg'
 var hashHistory = require('react-router-redux')
@@ -271,22 +267,30 @@ function Feed(props) {
   <Button className="redbtn" onClick={Bookingdetails}>10:50AM</Button>
   <Button className="redbtn" onClick={Bookingdetails}>2:00PM</Button>
   <Button className="greenbtn" onClick={Bookingdetails}>3:00PM</Button>
+  <Popconfirm
+  placement="topRight"
+  icon={false}
+  okText={false}
+  cancelText={false}
+  title={<div className="appoint_type_doc">
+  <label>Choose Appointment Type</label>
+ <div className="type_div"> <div><img src={Internet} style={{width:"40px"}}/><div>OnLine</div></div>
+  <div><img src={Clinic} style={{width:"32px"}}/><div>InClinic</div></div></div>
+</div>}
+  // onConfirm={App_type_function}
+>
+  <div className="online_type">
   <Button className="redbtn" onClick={App_type_function}>3:45PM</Button>
+  {App_type&&<div className="internet_type">
+  <div><img src={Internet_type}/></div>
+</div>}
+</div>
+</Popconfirm>
   <Button className="greenbtn" onClick={Bookingdetails}>8:00PM</Button>
   <Button className="greenbtn"onClick={Bookingdetails}>8:30PM</Button>
 
-{/* Appointment Type */}
-{App_type&&<div className="appoint_type_doc">
-   <label>Choose Appointment Type</label>
-  <div className="type_div"> <div><img src={Internet} style={{width:"40px"}}/><div>OnLine</div></div>
-   <div><img src={Clinic} style={{width:"32px"}}/><div>InClinic</div></div></div>
-</div>}
 
-{/* end */}
-{App_type&&<div className="internet_type">
-  <div><img src={Internet_type}/></div>
-</div>
-}
+
 
   </div>
 
