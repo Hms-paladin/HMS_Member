@@ -67,7 +67,7 @@ export default function Training_History(props){
                 <div>
                 <Grid container style={{paddingTop:"10px"}}>
                 {Lab_history.map((data,index)=>   
-          <Grid item xs={open?6:12} md={open?6:12}spacing={2} className={open?"paper_items_grid_change":"paper_items_grid"}>   
+          <Grid item xs={12} md={12}spacing={2} className={"paper_items_grid"}>   
                 <Paper className={open?"lab_his_item_pchange":"lab_his_item_p"}>    
                 <div style={{display:"flex",width:"100%"}}>
                 <div className="book_nurse_div" onClick={PushTrainingdetails}>  

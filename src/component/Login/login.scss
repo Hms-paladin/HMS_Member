@@ -1,7 +1,8 @@
 .login_head{
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 .login_parent{
     padding: 25px;
@@ -139,4 +140,23 @@
 }
 .d{
     display: none !important;
+}
+.login_parent .react-tel-input .flag-dropdown{
+    border:0px !important;
+    border-bottom: 1px solid #cacaca !important;
+    background-color: transparent !important;
+}
+.login_parent .react-tel-input .form-control{
+    border:0px !important;
+    border-bottom: 1px solid #cacaca !important;
+    width:100%;
+    background-color: transparent !important;
+}
+.enetr_mobile{
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.login_parent .form-control:focus{
+    box-shadow: none !important;
 }

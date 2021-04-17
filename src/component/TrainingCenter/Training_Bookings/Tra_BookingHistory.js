@@ -4,6 +4,7 @@ import {Modal} from 'antd'
 import Tra_CreateReview from './Tra_CreateReview'
 import Tc from '../../../images/tr_cat_image.png'
 import BookingHistoryModal from './Tra_BookingHistoryModal'
+import {NavLink} from 'react-router-dom'
 export default function Tra_BookingHistory(props){
     const [ModalOpen,setModalOpen]=React.useState(false)
     const [open,setopen]=React.useState(false)
@@ -85,7 +86,7 @@ export default function Tra_BookingHistory(props){
                 </div> 
                  
                    <div className="book_his_parent">
-                      <div><label className="his_review" onClick={ReviewClickOpen}>Review</label><label className="his_repeat">Repeat</label></div>
+                      <div><label className="his_review" onClick={ReviewClickOpen}>Review</label><NavLink to="/bookingshedule"><label className="his_repeat">Repeat</label><NavLink/></NavLink></div>
                   </div>
              </div>
             )}

@@ -73,28 +73,45 @@ function HeaderLayout(props) {
     else if (path_name === "/feed" || path_name === "/doctorbooking" || path_name === "/profile" || path_name === "/doctorbookingreschedule" || path_name === "/doctorEdit") {
       history.push("/appointment")
     }
-    else if (path_name === "/hospitallist" || path_name==="/proceedpage" || path_name==="/confirmhospital") {
+    else if (path_name === "/hospitallist" || path_name==="/proceedpage" || path_name==="/confirmhospital"|| path_name==="/reschedulepage") {
       history.push("/bookingdetails")
     }
-    else if (path_name === "/tc_history"||path_name === "/Trainingdetails"||path_name === "/bookingshedule"||path_name === "/tc_reschedule_bookings"||path_name === "/tc_myschedule"||path_name === "/tc_bookingshistory") {
+    else if (path_name === "/tc_history"||path_name === "/Trainingdetails"||path_name === "/bookingshedule"||path_name === "/tc_reschedule_bookings"
+    ||path_name === "/tc_myschedule"||path_name === "/tc_bookingshistory") {
       history.push("/tc_Bookings")
     }
     else if (path_name === "/physiotheraphyfeed" || path_name === "/physiotherapistbooking") {
       history.push("/phy_appointment")
     }
-
+    else if (path_name === "/tainerlist" || path_name === "/Trainer_BookingHistory"||
+     path_name === "/trainerdetails"|| path_name === "/trainerbooking"|| path_name === "/trainer_goalweight"
+     || path_name === "/trainer_bookigreschedule"|| path_name === "/trainer_myschedule"){
+      history.push("/trainer_booking")
+    }
   }
   const CategoryPush = (url) => {
     let path_name = location.pathname
-    if (path_name === "/physiotheraphyfeed") {
+    if (path_name === "/physiotheraphyfeed" || path_name === "/physiotherapistbooking" ) {
       history.push("/physiotheraphy")
     }
-    else if (path_name === "/feed") {
+    // else if (path_name === "/feed") {
+      else{
       history.push("/doctorappointment")
-    }
+      }
   }
   const HistoryPush = (url) => {
-    history.push(url);
+     history.push(url);
+ 
+    
+  }
+  const Appointments=()=>{
+    let path_name = location.pathname
+    if (path_name === "/physiotheraphyfeed" || path_name === "/physiotherapistbooking" || path_name === "/physiotheraphy_ad" ) {
+      history.push("/phy_appointment")
+    }
+    else{
+      history.push("/appointment")
+      }
   }
   // login modal open function
   const [open, setOpen] = useState(false);
@@ -204,7 +221,7 @@ function HeaderLayout(props) {
 
               <Dropdown.Menu>
                 <Dropdown.Item onClick={() => HistoryPush("/profile")} >Profile</Dropdown.Item>
-                <Dropdown.Item onClick={() => HistoryPush("/appointment")}>My Appointments</Dropdown.Item>
+                <Dropdown.Item onClick={Appointments}>My Appointments</Dropdown.Item>
                 <Dropdown.Item onClick={() => HistoryPush("/")}>Logout</Dropdown.Item>
 
               </Dropdown.Menu>

@@ -13,7 +13,7 @@ export default function ConfirmationModal(props){
       setHideAdrs(!HideAdrs)
   }
     return(
-       <div className="booking_confirm">
+       <div className="tc_booking_confirm">
            {/* <div className="bookconfirm">BookingConfirmation</div> */}
            <Grid container spacing={4} className="book_confirm_container">
                <Grid item sm={12} md={4} className="confirm_nurse_imggrid">

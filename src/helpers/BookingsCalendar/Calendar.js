@@ -8,7 +8,7 @@ import { extendMoment } from "moment-range";
 import dateformat from 'dateformat';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import Okay from '../../../images/okay.png'
+import Okay from '../../images/okay.png'
 const moment = extendMoment(originalMoment);
 const Current_date = (dateFormat(new Date(), "ddd, dd mmm yyyy"))
 
@@ -31,6 +31,7 @@ export default class Calendar extends React.Component {
     TotalslotsAvailable: [],
     spinLoad: true,
     ModalOpen:false,
+    disblerange:[],
   };
   handleClose=()=>{
     this.setState({ModalOpen:false})
@@ -304,18 +305,18 @@ export default class Calendar extends React.Component {
     var startDatestore = []
     const date=new Date()
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const disblerange=new Date().getDay()===6
-    console.log(new Date().getDay()===0||new Date().getDay()===6,"divya_rrr")
+    var disblerange=[]
    
-    if (this.state.fulldate.length === 0) {
+    if (this.state.fulldate.length === 0 || this.state.fulldate.length === 0 && new Date().getDay()==5) {
       startDatestore.push(new Date(this.month() + "-" + this.year() + "-" + d))
-      rangeSelect.push(`selectedclr${d}_${this.month()}_${this.year()} d_none${new Date().getDay()===5}`)
-
+      rangeSelect.push(`selectedclr${d}_${this.month()}_${this.year()}`)
+      disblerange.push(true)
      // send date value to parent
       // this.state.getDate({startdate:new Date(this.month() + "-" + this.year() + "-" + d),enddate:null})
+      console.log(disblerange,"falsw")
     }
-    else if (this.state.fulldate.length === 1) {
-
+    else if (this.state.fulldate.length === 1 || new Date().getDay()===0) {
+      disblerange.push(false)
       var initialstartDate = this.state.startDatestore[0]
       var initialendDate = new Date(new Date(this.month() + "-" + this.year() + "-" + d))
 
@@ -346,7 +347,7 @@ export default class Calendar extends React.Component {
         arr.push(new Date(dt));
         dt.setDate(dt.getDate() + 1);
         rangeSelect.push(`selectedclr${dt.getDate()}_${monthNames[dt.getMonth()]}_${moment(new Date(dt)).format("YYYY")}`)
-
+       console.log(rangeSelect,"seelct")
       }
     }
     else if (this.state.fulldate.length === 2) {
@@ -405,7 +406,7 @@ export default class Calendar extends React.Component {
 
     for (let p = 1; p <= this.daysInMonth(); p++) {
     
-      if(dateformat(this.year()+" "+this.month()+" "+p,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd")||(new Date().getDay()==5)){
+      if(dateformat(this.year()+" "+this.month()+" "+p,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd")){
          hidepastdataleft.push(false)
         //  disble.push(false)
       }
@@ -428,18 +429,19 @@ export default class Calendar extends React.Component {
       const startdate = `selectedclr${d}_${this.state.dateObject.format("MMM")}_${this.state.dateObject.format("Y")}`
       let currentDay = d == this.currentDay() ? "today" : "";
       var textgreyhide = new Date() < new Date(dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd")) || dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd") 
+      var fridaydate=new Date().getDay()==5
+      console.log(fridaydate,"fghjk")
       daysInMonth.push(
 
-        <td key={d} className={`calendar-day ${currentDay} ${!textgreyhide && "cursornonehide"}`} onClick={textgreyhide && (e => { this.onDayClick(e, d); })}>
+        <td key={d} className={`calendar-day ${currentDay} ${!textgreyhide && "cursornonehide"} `} onClick={textgreyhide && (e => { this.onDayClick(e, d); })}>
           <div className="range_parent w-100">
 
             <div className="range_child w-25">
             </div>
             <div
-              className={`${startdate===new Date().getDay()==5&&"d_none"} ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
+              className={`  ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
                 startdate === this.state.rangeSelect[this.state.rangeSelect.length - 1] && "table_sec_sel" ||
-                this.state.rangeSelect.includes(startdate) && "table_inter_sel"
-                }`}
+                this.state.rangeSelect.includes(startdate) && "table_inter_sel" }`}
             >
               <span className={`${!textgreyhide && "colornonepast"} table-body`}>
                 {d}
@@ -496,10 +498,13 @@ export default class Calendar extends React.Component {
       <div className="range_parent_calendar_root">
           <div className="my_sch">{this.props.heading}</div>
         <div className="range_upcom_div">
-          <div className="sch_head_name">Liverpool Club</div>
+          <div className="sch_head_name">
+            <div>{this.props.Name_of_type}</div>
+            {this.props.upcomingdays==="enable" &&<div><label className="mem_pro_cont">Remaining Days -</label><label className="sch_head_days">0</label></div>}
+          </div>
           <div className="upcom_cnt_inside">
-            <div className="mem_pro_cont">Two Member Program</div>
-            <div>80 KWD</div>
+            <div className="mem_pro_cont">{this.props.category}</div>
+            <div>{this.props.amt}</div>
           </div>
         </div>
         <div  style={{width:"100%",display:"flex"}}>

@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
 import Labelbox from '../../../helpers/labelbox/labelbox'
-import { Switch,Input,Slider,Modal} from 'antd';
+import { Switch,Input,Modal} from 'antd';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
 import Nurse_2 from '../../../images/lab.png'
@@ -11,6 +11,7 @@ import Percentage from '../../../images/percentage.svg'
 import {NavLink,useRouteMatch,useParams} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 import RangeCalendar from './RangeCalendar'
+import Slider from '@material-ui/core/Slider';
 import Nurse_ad from '../../../images/Nurse_ad.png'
 import './nursehistory.scss'
 export default function Nursehistory(props){
@@ -64,17 +65,40 @@ export default function Nursehistory(props){
     const CloseModal=()=>{
         setopenmodal(false)
     }
+    
+function valuetext(value) {
+    return `${value}`;
+  }
+  
     return(
      <> 
     <Grid container className="nusre_hisparent">
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4} className="nurse_grid_items_p">
+            <div className="nurse_grid_items_div">
             <div className="filter_fstdiv">
                 <div className="fli_head">Filter</div>
                 <div className="mnth_cost"><label className="fli">Monthly Cost Range</label><label className="mnth_amt">500 KWD</label></div>
-                <div> <Slider defaultValue={60}/></div>
+                <div> 
+                
+                    <Slider
+                   defaultValue={50}
+                   getAriaValueText={valuetext}
+                   aria-labelledby="discrete-slider-always"
+                   step={10}
+                    valueLabelDisplay="on"
+                    />
+                    </div>
                 <div className="mnth_secondcost"><label className="mnth_samt">200 KWD</label><label className="mnth_samt">600 KWD</label></div>
                 <div className="mnth_cost"><label className="fli">Experience</label><label className="mnth_amt">5 Years</label></div>
-                <div> <Slider defaultValue={30}/></div>
+                <div> 
+                    <Slider
+                   defaultValue={70}
+                   getAriaValueText={valuetext}
+                   aria-labelledby="discrete-slider-always"
+                   step={10}
+                    valueLabelDisplay="on"
+                    />
+                    </div>
                 <div className="mnth_cost"><label className="mnth_samt">1 Year</label><label className="mnth_samt">25 Years</label></div>
                 <div style={{marginTop:"15px"}}><Labelbox type="select" labelname="Nationality" errmsg={errmsg}/></div>
                 <div className="mnth_cost" style={{marginTop:"15px"}}>
@@ -91,7 +115,7 @@ export default function Nursehistory(props){
                 <div style={{width:"100%"}}><RangeCalendar/></div>
                 <div><Button className="apply_btn">Apply</Button></div>
             </div>
-
+            </div>
         </Grid>
         <Grid item xs={12} md={8} className="snd_part_nurhis">
      
@@ -135,7 +159,7 @@ export default function Nursehistory(props){
               title={false}
               centered
               width={1000}
-            //   className="lab_ad_modal"
+              className="lab_ad_modal"
               >
                 <div className="lab_ad_div_inside">
                <img src={Nurse_ad} style={{width:"100%",height:"100%"}}/>

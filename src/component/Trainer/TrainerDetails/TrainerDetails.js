@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useState} from "react"
 import Thumb from '../../../images/thumb.svg'
 import Tr_Image1 from '../../../images/tr_cat_image.png'
 import percentage from '../../../images/percentage.svg'
@@ -13,14 +13,20 @@ import HomeIcon from '@material-ui/icons/Home';
 import Internet from '../../../images/internet.svg'
 import Gym from '../../../images/gym.svg'
 import Chat from '../../../images/chat.svg'
+import Trainer from "../../../images/trainer.png";
 // import Tra_ad from "../../../images/doctorappoinment.png";
 import Dialog from '@material-ui/core/Dialog';
 import ProgramModal from './Modal'
+import ChatWindow from "../ChatWindow/chatwindow"
 export default function Training_Details(){
     const [proceed,setproceed]=React.useState(false)
     const [Duties,setDuties]=React.useState(false)
     const [HideAdrs,setHideAdrs]=React.useState(false)
     const [visible,setvisible]=React.useState(false)
+    const [chatOpen,setchatOpen]=useState(false)
+    const HandleOpenChat=()=>{
+        setchatOpen(true)
+    }
     const ElipseOpen=()=>{
         setHideAdrs(!HideAdrs)
     }
@@ -34,12 +40,12 @@ export default function Training_Details(){
         <div style={{width:"100%",position:"relative"}} className="nurse_de_parent">
         <div className="nursede_parent">
             <div style={{height:"40vh",width:"100%"}}>
-            <img src={Tra_ad} className="Pro_tra_img"/>
+            <img src={Trainer} className="Pro_tra_img"/>
             </div>
         </div>
         <Grid container>
             <Grid item sm={4} md={4} className="nurse_de_fstgrid">
-            <div><img src={Tr_Image1} style={{width:"125px",marginBottom:"10px",border:"1px solid #fff",borderRadius:"50%"}}/></div>
+            <div><img src={Trainer} style={{width:"125px",height:"125px",marginBottom:"10px",border:"1px solid #fff",borderRadius:"50%"}}/></div>
             <div className="nurse_de_fstdiv"><div className="nurse_de_fstitems"><div className="nurse_star_rating"><label>4.0</label><StarIcon/></div></div>
             <div className="nurs_review">161 Reviews</div>
             <div style={{marginTop:"23px"}}><img src={Thumb} style={{width:"25px"}}/><label className="review_per">93%</label><label>(15 reviews)</label></div>
@@ -54,6 +60,9 @@ export default function Training_Details(){
                <div>{HideAdrs?<label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:<label className="lab_adrs">Shamiya</label>}
                                    <span className="elipse" onClick={ElipseOpen}>...</span></div>
                </div>
+            </Grid>
+            <Grid item sm={4} md={4} className="tra_thirdgrid">
+                 <div>5 Years</div>
             </Grid>
             <Grid item sm={12} md={12} className="cmy_sup">
                 <div ><div>Dalal</div><div>"I appreciate your timely support width awesome trainers and awesome Lifestyle!!!!".</div></div>
@@ -103,8 +112,8 @@ export default function Training_Details(){
           <ProgramModal/>
     </Dialog>
     {/* chat window */}
-    <div className="chat_ic_div"><ReactSVG src={Chat}/></div>
-       
+    <div className="chat_ic_div"><ReactSVG src={Chat} onClick={HandleOpenChat}/></div>
+       {/* {chatOpen&&<div><ChatWindow chatOpen={chatOpen}/></div>} */}
         </div>
     )
 }

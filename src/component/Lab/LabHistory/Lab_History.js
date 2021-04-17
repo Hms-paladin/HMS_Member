@@ -200,7 +200,7 @@ export default function Lab_History(props){
            footer={false}
            title={false}
            centered
-           width={700}
+           width={900}
            className="lab_ad_modal"
            >
              <div className="lab_ad_div_inside">

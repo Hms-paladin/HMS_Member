@@ -1,14 +1,14 @@
 import React,{useState} from "react";
 import "./myappointments.scss";
 import plus from '../../../images/plus.png'
-import history from '../../../images/history-button.svg'
+// import history from '../../../images/history-button.svg'
 import filter from '../../../images/filter2.svg'
 import { ReactSVG } from 'react-svg'
 import { Button } from "@material-ui/core";
 import Labelbox from "../../../helpers/labelbox/labelbox";
 import nurse from '../../../images/trainer.png'
 import { Rate } from 'antd';
-
+import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 import {Modal} from 'antd'
 
 
@@ -21,7 +21,7 @@ var hashHistory = require('react-router-redux')
 
                   
 
-function History(props) {
+function Phy_History(props) {
     const [showfilterForm,setShowfilter] = useState(false)
      
     const openfilter = () => {
@@ -41,13 +41,19 @@ const ReviewOpenClick=()=>{
 const ReviewCloseClick=()=>{
    setreviewOpen(false)
 }
+
+const HistoryPush=(url)=>{
+    let history = useHistory();
+    history.push(url);
+  //   window.location.reload()
+    }
      
     return(
         <div className="myappointments_layout">
             <div className="appointmentsheadflex">
                 <div>History</div>
                 <div className="appointment_icons">
-                    <img src={plus}/>
+                    <img src={plus} onClick={()=>HistoryPush("/physiotheraphyfeed")}/>
                     {/* <ReactSVG src={history}/> */}
                     <ReactSVG src={filter} onClick={openfilter}/>
 
@@ -166,4 +172,4 @@ const ReviewCloseClick=()=>{
        </Modal>
         </div>
     )}
-    export default History;
+    export default Phy_History;

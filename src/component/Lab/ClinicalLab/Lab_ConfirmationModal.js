@@ -17,8 +17,10 @@ export default function ConfirmationModal(props){
            {/* <div className="bookconfirm">BookingConfirmation</div> */}
            <Grid container spacing={4} className="book_confirm_container">
                <Grid item sm={12} md={4} className="confirm_nurse_imggrid">
+                 <div>
                   <div className="Nurse_img_div"><img src={Nurse} className="confir_nurse"/></div>
                   <div className="confirm_b_name">Best Clinical Lab</div>
+                  </div>
                </Grid>
                <Grid item xs={12} md={8}>
                <Form>
@@ -66,7 +68,7 @@ export default function ConfirmationModal(props){
           </Form>
           </Grid>
             <Grid item xs={12} md={12} style={{textAlign:"center"}}>
-               <NavLink to="paymentmethod"><Button className="confirm_b_btn">Confirm</Button></NavLink>
+               <NavLink to="/paymentmethod"><Button className="confirm_b_btn">Confirm</Button></NavLink>
                </Grid>   
            </Grid>
            

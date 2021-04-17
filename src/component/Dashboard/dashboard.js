@@ -21,7 +21,7 @@ const images = [
                     {img:Pharmacy,title:"Pharmacy",pathname:"/prescriptionhistory"},
                     {img:Lab,title:"Lab",pathname:"/labhistory"},
                     {img:Physotheropy,title:"Physiotherapy",pathname:"/physiotheraphy_ad"},
-                    {img:BookRoom,title:"Book a Room", pathname:"/hospitallist"}
+                    {img:BookRoom,title:"Book a Room", pathname:"/bookaroom_ad"}
                 ]
 
 function Dashboard(props) {

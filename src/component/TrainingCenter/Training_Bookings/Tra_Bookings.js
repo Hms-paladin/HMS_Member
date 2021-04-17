@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from "react-router-dom";
+import {NavLink,useHistory} from "react-router-dom";
 import {Modal} from 'antd'
 import HistoryButton from '../../../images/history-button.svg'
 import Tc from '../../../images/tr_cat_image.png'
@@ -10,6 +10,8 @@ export default function Tra_Bookings(){
     const CancelClick=()=>{
         setCancelOpen(!CancelOpen)
     }
+    
+  let history = useHistory();
      // elipse function
      const ElipseOpen=()=>{
         setHideAdrs(!HideAdrs)
@@ -21,10 +23,13 @@ export default function Tra_Bookings(){
     const ReOpenClose=()=>{
         setReOpen(false)
     }
+    const historyPush=()=>{
+        history.push("/tc_bookingshistory")
+    }
     return(
         <div className="Tra_bookings_parentdiv">
              <div className="book_headdiv">
-            <label className="book_h">Bookings</label><NavLink to="/tc_bookingshistory"><img src={HistoryButton} style={{cursor:"pointer",width:"20px"}}/></NavLink>
+            <label className="book_h">Bookings</label><img src={HistoryButton} onClick={historyPush} style={{cursor:"pointer",width:"20px"}}/>
             </div>
             <div className="bookhistory_list_parent">
              <div className="diet_bookhistory_list">

@@ -7,28 +7,27 @@ export default function ProgramModal(){
     const [HideAdrs,setHideAdrs]=useState(false)
  return(
      <div className="pro_modal_parent">
-         <div className="p_title_head"><label>Liverpool Club</label><NavLink to="/bookingshedule"><Button>Select</Button></NavLink></div>
+         <div className="p_title_head"><label>Farah</label><NavLink to="/trainerbooking"><Button>Select</Button></NavLink></div>
          <div>
-             {HideAdrs?<label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:<label className="lab_adrs">Adailia</label>}
-             <span className="elipse" onClick={()=>setHideAdrs(!HideAdrs)}>...</span>
+            <label className="type_fitness">Indoor Fitness</label>
+   
           </div>
-          <div className="mem_h"><label>Two Member Program</label><label>80 KWD</label></div>
+          <div className="mem_h"><label>Burn IT</label><label>160 KWD</label></div>
           <div className="modal_sessions_cont">
               <label>12</label>
-              <div className="ses_text"><div>sessions</div><div>Sat-Thu</div></div>
+              <div className="ses_text"><div>sessions</div><div>Mon - Thu - Sat</div></div>
               <div style={{position:"relative"}}>
-                         <img src={percentage} style={{width:"55px"}}/>
-                         <div className="per_inside_div"><p>{"20"+"%"}</p><p>off</p></div>
+                         <img src={percentage} style={{width:"70px"}}/>
+                         <div className="tra_per_inside_div"><p>{"20"+"%"}</p><p>off</p></div>
              </div>
           </div>
-          <div className="w_hrs">
-              <div>Working Hours</div>
-              <div><label>Saturday-Thursday</label><label>04:00 PM-07:00 PM</label></div>
-          </div>
+   
           <div className="p_det">
               <div>Programs Details</div>
-              <div><label>Requirements:</label><label>5 to 14 years 0ld</label></div>
-              <div><label>Course details:</label><label>4 sessions per week, 12 total sessions</label></div>
+              <p className="program_det_tra">Lose weight, gain strength and tone muscles in 30 minutes. Inspired by High Intensity Interval Training (HIIT), 
+                you use your own body weight and minimal equipment like elastic bands, 
+                dumbbells and kettle bells. Burn It is for women who are ready for a new fitness challenge.</p>
+                <div>Keywords :</div>
           </div>
      </div>
  )

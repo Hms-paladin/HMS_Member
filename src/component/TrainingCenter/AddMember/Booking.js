@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nurseimage1 from '../../../images/pharmacy.png'
 import Nurseimage2 from '../../../images/nurse.png'
 import Nurseimage3 from '../../../images/doctorappoinment.png'
@@ -51,6 +51,11 @@ export default function Tra_Bookings(props){
    const ElipseOpen=()=>{
     setHideAdrs(!HideAdrs)
 }
+const [state,setState]=useState({name:""})
+const HandleChange=(data)=>{
+  let data_value=data
+  setState({name:data_value})
+}
     return(
         <div className="lab_booking_confir_root">
          <div className="member_parent_div">
@@ -77,9 +82,16 @@ export default function Tra_Bookings(props){
         <Label for="exampleEmail" sm={6} >Name</Label>
         <Col sm={6}>
         {/* <label className="Nurse_form_de">Dalal</label> */}
-        {[...Array(2)].map((data)=><Tag closable className="tag_tra_name">
-          Dalal
-        </Tag>)}
+        {editOpen===false?<label className="Nurse_form_de">Dalal</label>
+           :<Labelbox type="text" 
+           changeData={(data)=>HandleChange(data,"name")}
+           value={state.name}
+           />}
+         {editOpen===false?<EditIcon className="edit_nur_name" onClick={EditClick}/>:
+          <SaveIcon className="edit_nur_name" onClick={SaveClick}/>}
+        {/* {[...Array(2)].map((data)=><Tag closable className="tag_tra_name">
+        {state.name}
+        </Tag>)} */}
         </Col>
       </FormGroup>
       <FormGroup row>

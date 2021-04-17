@@ -157,21 +157,20 @@ export default class Labelbox extends Component {
 							<KeyboardDatePicker
 							    placeholder={this.props.placeholder}
 								disableToolbar={true}
-								autoOk={true}
+								// autoOk={true}
 								clearable={false}
 								disableUnderline={true}
 								disableFuture={this.props.disableFuture ? this.props.disableFuture : false}
 								disablePast={this.props.disablePast ? this.props.disablePast : false}
 								minDate={this.props.minDate ? this.props.minDate : null}
 								variant="variant"
-								format="dd MMM yyyy"
+								format={this.props.format?this.props.format:"dd MMM yyyy"}
 								margin="normal"
 								id="date-picker-inline"
 								hintText="Choose Date"
 								defaultValue="07:30"
 								emptyLabel={this.props.emptyLabel}
-								placeholder={this.props.placeholder}
-								value={this.state.selecteddate}
+								value={this.props.value === "" ? null : this.props.value}
 								onChange={(date) => this.datepickerChange(date)}
 							/>
 						</MuiPickersUtilsProvider>

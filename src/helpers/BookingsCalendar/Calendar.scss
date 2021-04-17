@@ -21,18 +21,19 @@
     margin: 15px 20px 0px;
     border-radius: 10px;
     padding: 5px 20px;
-    height:60px;
+    // height:60px;
     display: flex;
     justify-content: space-between;
     color: #fff;
+    line-height: 1.8;
   }
   .upcom_cnt_inside{
     text-align: end;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
   }
   .mem_pro_cont{
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
   }
   // myschedue css
@@ -51,7 +52,7 @@
   }
   .sch_head_name{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 0px !important;
   }
   .sch_head_days{
@@ -228,4 +229,8 @@
   }
   .modal_res{
 
+  }
+  .d_none{
+     display: none !important;
+    color:#F7B930 !important;
   }

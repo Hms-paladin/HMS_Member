@@ -18,6 +18,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
 import {useHistory} from 'react-router-dom'
 import { ReactSVG } from 'react-svg'
+import Trainer from "../../../images/trainer.png";
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 var hashHistory = require('react-router-redux')
 
@@ -76,7 +77,7 @@ const Lab_history=[
       rating:4.5,
       review:12,
       re_per:85,
-      img:LabImage,
+      img:Trainer,
   },
   {
       id:2,
@@ -95,7 +96,7 @@ const Lab_history=[
         <div className="feed_layout">
           <Grid container spacing={10}>
           <Grid item xs={12} md={4}>
-           <div className="filter_container">
+           <div className="filter_container_icons">
                <h5>Filter</h5>
                <div className ="tainerlist_home">
                   <div className="home_icon"><div><HomeIcon/><div>Home</div></div></div>

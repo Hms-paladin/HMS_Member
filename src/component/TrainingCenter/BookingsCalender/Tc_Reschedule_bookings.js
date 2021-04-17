@@ -1,5 +1,5 @@
 import React from 'react'
-import Calendar from  '../BookingsCalender/Calendar'
+import Calendar from  '../../../helpers/BookingsCalendar/Calendar'
 import Grid from '@material-ui/core/Grid'
 import { Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import { NavLink} from "react-router-dom";
@@ -24,6 +24,11 @@ export default function Tc_BookingReShedule(props){
                     heading="Reschedule"
                     Shedule_dots="enable"
                     reschedule="enable"
+ 
+                    
+                     category="Two Member Program"
+                     amt="160 KWD"
+                     Name_of_type="Liverpool Club"
                    />
                 </Grid>
                 <Grid item xs={12} md={7} className="tra_booing_parent">
@@ -36,9 +41,9 @@ export default function Tc_BookingReShedule(props){
         <Label for="exampleEmail" sm={6} >Name</Label>
         <Col sm={6}>
         {/* <label className="Nurse_form_de">Dalal</label> */}
-        {[...Array(2)].map((data)=><Tag closable className="tag_tra_name">
+        <div style={{display:"flex"}}>{[...Array(2)].map((data)=><div closable className="tag_x_name">
           Dalal
-        </Tag>)}
+        </div>)}</div>
         </Col>
       </FormGroup>
       <FormGroup row>

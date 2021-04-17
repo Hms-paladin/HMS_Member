@@ -1,12 +1,6 @@
 import React from 'react'
-import Calendar from  '../BookingsCalender/Calendar'
+import Calendar from  '../../../helpers/BookingsCalendar/Calendar'
 import Grid from '@material-ui/core/Grid'
-import { Col, Form, FormGroup, Label, Input } from 'reactstrap';
-import { NavLink} from "react-router-dom";
-import Button from '@material-ui/core/Button';
-import {Tag,Modal} from 'antd'
-import ConfirmationModal from '../AddMember/ConfirmationModal'
-import CloseIcon from '@material-ui/icons/Close';
 export default function Tc_Myschedule(props){
       // modal functions
   const [modalOpen,setmodalOpen]=React.useState(false)
@@ -23,6 +17,10 @@ export default function Tc_Myschedule(props){
                    <Calendar
                     heading="Myschedule"
                     MyShedule_dots="enable"
+                    category="Two Member Program"
+                    amt="160 KWD"
+                    Name_of_type="Farah"
+
                    />
                 </Grid>
                

@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import {Slider} from 'antd'
+import Slider from '@material-ui/core/Slider';
 import Labelbox from '../../../helpers/labelbox/labelbox'
 import Diet_BookingConfirmation from '../AddMember/Diet_BookingConfirmation'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
@@ -45,6 +45,10 @@ export default function GoalWeight(){
     {
         setAddOpen(false)
     }
+        
+function valuetext(value) {
+    return `${value}`;
+  }
     return(
         <div>
             <div className="goal_weight_parent">
@@ -92,9 +96,26 @@ export default function GoalWeight(){
                         </div>:""}
 
                         <div className="mnth_cost"><label className="fli">Duration Days</label><label className="mnth_amt">30 Days</label></div>
-                        <div> <Slider defaultValue={60}/></div>
+                        <div> 
+                                 
+                            <Slider
+                   defaultValue={40}
+                   getAriaValueText={valuetext}
+                   aria-labelledby="discrete-slider-always"
+                   step={10}
+                    valueLabelDisplay="on"
+                    />
+                            </div>
                         <div className="mnth_cost"><label className="fli">Intake Calories / Days</label><label className="mnth_amt">1200 Cal</label></div>
-                        <div> <Slider defaultValue={60}/></div>
+                        <div> 
+                            <Slider
+                   defaultValue={60}
+                   getAriaValueText={valuetext}
+                   aria-labelledby="discrete-slider-always"
+                   step={10}
+                    valueLabelDisplay="on"
+                    />
+                            </div>
                         
                      </Grid>
                      {/* textbox and labels */}

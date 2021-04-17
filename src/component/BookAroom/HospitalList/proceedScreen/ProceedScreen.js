@@ -17,6 +17,7 @@ import close from '../../../../images/cancel.svg'
 import plus from '../../../../images/plus.svg'   
 import avatar from '../../../../images/us.svg'
 import edit from "../../../../images/edit.svg"
+import VedioPlayer from '../../../../helpers/VedioPlayer/VedioPlayer'
 // import {NavLink} from 'react-router-dom';
 // import ConfirmReshedule from "../../BookroomBooking/confirmRescchedule/ConfirmReschedule"
 // import ProceedConfirm from '../HospitalList/ProceedConfirm/ProceedConfirm'
@@ -112,25 +113,33 @@ const ModalCloseClick=()=>{
                                 <Labelbox type="datepicker"/>
                             </div>
                           </div>   
-                      </div>  
-                      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" style={{width:'400px', marginLeft:'16%'}}>
-                      <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                      </ol>
-                      <div class="carousel-inner_reschedule coursel_reschedule_align">
-                          <div class="carousel-item active">
-                            <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=-kxQerPX_Rc' />
-                          </div>
-                          <div class="carousel-item">
-                            <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=JllCZCOZJkk' />
-                          </div>
-                          <div class="carousel-item">
-                            <ReactPlayer className="react_video" url='https://www.youtube.com/watch?v=7waDSzAh28k' />
-                          </div>
-                      </div>
-                    </div>
+                      </div> 
+                      {/* vedioplayer */}
+                      <div style={{marginLeft:"30px"}}>
+                      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+    </div>
+    <div class="carousel-item">
+     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+
+    </div>
+    <div class="carousel-item">
+     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+      
+    </div>
+  </div>
+ 
+</div>
+</div>
+
+                    {/* end */}
                   </div>
                   <div>
 

@@ -104,6 +104,12 @@
  .cancelspanbtn{
      color: #FF6565;
  }
+ .doct_change_color{
+     background-color: #83AF40;
+     color: #fff;
+    padding: 8px 15px;
+     border-radius: 50px;
+ }
 .queuespanbtn{
     color: #FEB911;
 }
@@ -112,6 +118,7 @@
     justify-content: center;
     border-top: 1px solid #ddd;
     padding: 40px;
+    margin-top: 15px;
 }
 .cancellationoption Button{
     background-color: #ddd;

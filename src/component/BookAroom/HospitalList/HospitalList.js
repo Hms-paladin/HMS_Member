@@ -23,7 +23,6 @@ import { Input,Modal } from 'antd';
 import HospitalOffer from "../HospitalList/HospitalOffer";
 
 
-
 var hashHistory = require('react-router-redux')
 
 const { Search } = Input;
@@ -92,7 +91,13 @@ function valuetext(value) {
                
 
 function HospitalList(props) {
-
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
   const [ModalOpen,setModalOpen]=React.useState(false)
 const ModalClickOpen=()=>{
     setModalOpen(true)
@@ -107,6 +112,7 @@ const ModalClickClose=()=>{
     history.push("/doctorbooking")
 }
     const classes = useStyles();
+    
     return(  
         <div className="hos_list_container">
            <div  className="filter_div">
@@ -121,15 +127,17 @@ const ModalClickClose=()=>{
 
            </div>
           <div className="second_head">  
-          <div style={{display:'flex'}}>
-           <Search className="search_hospitallist"
+          <div style={{display:'flex',justifyContent:"center",alignItems:"center"}}>
+          {/* <Search className="search_hospitallist"
                 placeholder="Search"
                 allowClear 
                 style={{ width: 300, margin: '0 10px' }}
            /> 
-                <img className="searchicon_hos"src={search} /> 
+                <img className="searchicon_hos"src={search} />  */}
+        <div style={{position:"relative",width:"500px"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"7px",right:"17px",width:"20px"}}/></div>
 
-          </div>
+          </div> 
+
         
             <div className="second_div">
                <div className="second_details">
@@ -175,6 +183,7 @@ const ModalClickClose=()=>{
                             </div>
                         </div>
                     </div>
+                     
             </div>
            </div>
          

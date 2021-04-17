@@ -26,62 +26,62 @@ export default function ConfirmationModal(props){
                <Grid item xs={12} md={9}>
                <Form>
         <Row form>
-          <Col md={2}>
+          <Col md={2} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">Name</p>
             <p className="mem_con_name">Dalal</p> 
             </FormGroup>
           </Col>
-          <Col md={2}>
+          <Col md={2} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">Start Date</p>
             <p className="mem_con_name">1 Apr 2021</p> 
             </FormGroup>
           </Col>
-          <Col md={2}>
+          <Col md={2} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">End Date</p>
             <p className="mem_con_name">03 Apr 2021</p> 
             </FormGroup>
           </Col>
        
-          <Col md={3}>
+          <Col md={3} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">Designed Duties</p>
             <p className="mem_con_name">Caring, Baby sitting, In-Home Care, Coordinate with physician</p> 
             </FormGroup>
           </Col>
-          <Col md={3}>
+          <Col md={3} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">Excluded Days</p>
             <p className="mem_con_name">Wed 18 Nov 2019, Thu 19 Nov 2019, Mon 23 Nov 2019</p> 
             </FormGroup>
           </Col>
-          <Col md={2}>
+          <Col md={2} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">Duty Hours</p>
             <p className="mem_con_name">12:00 Hrs</p> 
             </FormGroup>
           </Col>
-          <Col md={2}>
+          <Col md={2} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">Start Time</p>
             <p className="mem_con_name">09:00 AM</p> 
             </FormGroup>
           </Col>
-          <Col md={2}>
+          <Col md={2} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">End Time</p>
             <p className="mem_con_name">09:00 PM</p> 
             </FormGroup>
           </Col>
-          <Col md={3}>
+          <Col md={3} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">Cost Per Month(KWD)</p>
             <p className="mem_con_name">480</p> 
             </FormGroup>
           </Col>
-          <Col md={3}>
+          <Col md={3} sm={4}>
             <FormGroup>
             <p className="mem_con_namehead">General Duties</p>
             <p className="mem_con_name">Baby Care, Elderly Care</p> 

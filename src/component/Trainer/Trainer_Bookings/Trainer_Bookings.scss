@@ -1,0 +1,146 @@
+
+.Tra_bookings_parentdiv{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 20px;
+}
+.Tra_bookings_parentdiv .book_headdiv{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Tra_bookings_parentdiv  .book_h{
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+.Tra_bookings_parentdiv .diet_bookhistory_list{
+    display: flex;
+    padding:10px 23px;
+    justify-content: space-between;
+    align-items: center;
+}
+.Tra_bookings_parentdiv .bookhistory_list_parent{
+    box-shadow: 0px 1px 7px #00000021;
+    border-radius: 20px;
+    opacity: 1;
+    margin-bottom: 20px;
+    width:100%;
+    font-weight: 500;
+}
+.Tra_bookings_parentdiv .book_nur_img{
+    width:110px;
+    height:110px;
+    border-radius: 50%;
+
+}
+.Tra_bookings_parentdiv .book_diet_div{
+    display:flex;
+    align-items: center;
+
+}
+.Tra_bookings_parentdiv .diet_bookhistory_list p{
+    margin-bottom: 5px !important;
+    font-weight: 500;
+}
+.Tra_bookings_parentdiv .book_text_div{
+    padding-left: 20px;
+}
+.Tra_bookings_parentdiv .book_text_div p{
+    margin-bottom: 0px !important;
+}
+.Tra_bookings_parentdiv .book_text_div label{
+    margin-bottom: 0px !important;
+}
+.Tra_bookings_parentdiv .book_h_name{
+    font-weight: 600;
+    font-size: 20px;
+}
+.Tra_bookings_parentdiv .duty_div{
+    display: grid;
+    align-items: center;
+    justify-content: flex-end;
+    height:50%;
+    
+}
+.Tra_bookings_parentdiv .duty_snddiv{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+.Tra_bookings_parentdiv .book_reshedule{
+    color:#F2951B;
+    font-weight: 600;
+}
+.Tra_bookings_parentdiv .b_cancel{
+    color:#FF6464;
+    font-weight: 600;
+    cursor: pointer;
+}
+.Tra_bookings_parentdiv .b_cancel_change{
+    color:#fff;
+    background-color: #83AF40;
+    padding: 3px 7px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 5px;
+}
+.Tra_bookings_parentdiv .book_shedule{
+    color:#83AF40;
+    font-weight: 600;
+    cursor: pointer;
+}
+// cancel to click part
+.Tra_bookings_parentdiv .amt_process{
+    background-color:#E6E6E6;
+    color:#808080;
+    padding:10px 40px;
+    margin-right: 20px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+.Tra_bookings_parentdiv .cancel_part_open{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #cccccc;
+}
+.Tra_bookings_parentdiv .cancel_part_div{
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+}
+
+.tc_amt_kwd{
+   color: #939393;
+   font-size: 20px;
+   margin-left: 10px;
+}
+.b_form_n{
+    font-size: 16px;
+    font-weight: 200;
+    padding-bottom: 4px !important;
+}
+.book_form_name{ 
+   background-color: #83AF40;
+    padding: 0px 15px;
+     border-radius: 50px;
+    color: #fff;
+    font-weight: 400;
+    margin-right: 4px;
+}
+.tainerlist_home_inner_booking{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+.tra_vd_icon{
+    fill: #82AE40 !important;
+    font-size: 2.2rem !important;
+    margin-right: 20px;
+}

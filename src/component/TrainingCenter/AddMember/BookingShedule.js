@@ -1,5 +1,5 @@
 import React from 'react'
-import Calendar from  '../BookingsCalender/Calendar'
+import Calendar from  '../../../helpers/BookingsCalendar/Calendar'
 import Grid from '@material-ui/core/Grid'
 import Tra_Bookings from './Booking'
 import './BookingShedule.scss'
@@ -11,7 +11,14 @@ export default function BookingShedule(){
                    <Calendar
                    heading="Booking"
                    SelectDate="enable"
-                   />
+
+                   
+                    category="Two Member Program"
+                    amt="160 KWD"
+                    Name_of_type="Liverpool Club"
+               />
+
+               
                 </Grid>
                 <Grid item xs={12} md={7} className="tra_booing_parent">
                 <div className="tra_booking_confirm">

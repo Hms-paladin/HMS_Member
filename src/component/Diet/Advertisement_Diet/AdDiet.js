@@ -15,7 +15,7 @@ export default function AdvertisementDiet(){
     let history=useHistory()
     useEffect(()=>{
       if(close===false){
-          history.push("/Diet_History")
+          history.push("/Diet_history")
       }
     },[close])
     return(

@@ -52,6 +52,7 @@ import Doctorbooking from "../component/Doctor_Appointment/Doctorbooking/doctorb
 
 // Book a Room
 import HospitalList from "../component/BookAroom/HospitalList/HospitalList";
+import BookaRoom_ad from '../component/BookAroom/advertisement'
 // import BookingHospital from "../BookAroom/BookroomBooking/BookingHospital";
 import BookingDetails from "../component/BookAroom/BookroomBooking/BookingDetails";
 import BookroomHistory from "../component/BookAroom/BookroomHistory/BookroomHistory";
@@ -66,17 +67,23 @@ import ProceedReschedule from "../component/BookAroom/BookroomBooking/proceedRes
 import TrainingCategory from '../component/TrainingCenter/TrainingCategory/TrainingCategory'
 import Training_History from '../component/TrainingCenter/TrainingCenterHistory/History'
 import Training_Details from '../component/TrainingCenter/TrainingDetails/TrainingDetails'
-import Calendar from '../component/TrainingCenter/BookingsCalender/Calendar'
+// import Calendar from '../'
 import BookingShedule from '../component/TrainingCenter/AddMember/BookingShedule' 
 import Tra_Bookings from '../component/TrainingCenter/Training_Bookings/Tra_Bookings'
 import Tra_BookingHistory from '../component/TrainingCenter/Training_Bookings/Tra_BookingHistory'
-import Tc_BookingReShedule from '../component/TrainingCenter/AddMember/Tc_Reschedule_bookings'
+import Tc_BookingReShedule from '../component/TrainingCenter/BookingsCalender/Tc_Reschedule_bookings'
 import Doctorbookingreschedule from "../component/Doctor_Appointment/Doctorbooking Rechedule/doctorbookingreschedule";
 import Tc_Myschedule from '../component/TrainingCenter/BookingsCalender/Tc_Myschedule'
 // Trainer
 import TrainerList from "../component/Trainer/TrainerList/TainerList";
 import TrainerDetails from '../component/Trainer/TrainerDetails/TrainerDetails'
 import ChatWindow from '../component/Trainer/ChatWindow/chatwindow'
+import TrainerBooking from '../component/Trainer/Calendar_Bookings/Booking'
+import GoalWeight_Trainer from '../component/Trainer/GoalWeight/GoalWeight'
+import TrainerBookings from '../component/Trainer/Trainer_Bookings/Trainer_Bookings'
+import Trainer_BookingHistory from '../component/Trainer/Trainer_Bookings/Trainer_BookingHistory'
+import Trainer_Myschedule from '../component/Trainer/Calendar_Bookings/Trainer_Myschedule'
+import BookingReSchedule from '../component/Trainer/Calendar_Bookings/RescheduleBooking'
 // physiotheraphy
 import Physiotheraphymain from "../component/Physiotheraphy/PhysiotheraphyMain/physiotheraphymain";
 import Physiotheraphyfeed from "../component/Physiotheraphy/PhysiotheraphyMain/physiotheraphyfeed";
@@ -84,6 +91,7 @@ import Physiotherapistbooking from "../component/Physiotheraphy/PhysiotheraphyMa
 import Phy_Myappointment from '../component/Physiotheraphy/Myappointments/myappointments'
 import Ad_Physiotherphy from '../component/Physiotheraphy/PhysiotheraphyMain/advertisement'
 import Dashboard from '../component/Dashboard/dashboard'
+import Phy_History from '../component/Physiotheraphy/Myappointments/history'
 import { Switch,useParams} from "react-router-dom";
 var hashHistory = require('react-router-redux')
 function Routes(props) {
@@ -143,6 +151,7 @@ function Routes(props) {
                           <Route path="/physiotheraphyfeed" component={Physiotheraphyfeed} exact/>
                           <Route path="/phy_appointment" component={Phy_Myappointment} exact/>
                           <Route path="/physiotherapistbooking" component={Physiotherapistbooking} exact/>
+                          <Route path="/phy_history" component={Phy_History}/>
 
                          {/* advertisement */}
                          <Route path="/advertisement" component={Advertisement} exact/>
@@ -151,6 +160,7 @@ function Routes(props) {
 
                         {/* Book a Room */}
                         <Route path ="/hospitallist" component={HospitalList}/> 
+                        <Route path="/bookaroom_ad" component={BookaRoom_ad}/>
                         {/* <Route path ="/bookinghospital" component={BookingHospital}/> */}
                         <Route path ="/bookingdetails" component={BookingDetails}/>
                         <Route path="/bookroomhistory" component={BookroomHistory}/>
@@ -166,15 +176,23 @@ function Routes(props) {
                         <Route path="/tc_history" component = {Training_History}/>
                         <Route path="/Trainingdetails" component = {Training_Details}/>
                         <Route path="/bookingshedule" component = {BookingShedule}/>
-                        <Route path="/tc_Bookings" component = {Tra_Bookings}/>
-                        <Route path="/tc_bookingshistory" component={Tra_BookingHistory}/>
-                        <Route path="/Calendar" component = {Calendar}/>
+                        <Route path="/tc_Bookings" component = {Tra_Bookings} exact/>
+                        <Route path="/tc_bookingshistory" component={Tra_BookingHistory} exact/>
+                        
                         <Route path="/tc_reschedule_bookings" component={Tc_BookingReShedule}/>
                         <Route path="/tc_myschedule" component={Tc_Myschedule}/>
                         {/* trainer */}
                         <Route path = "/tainerlist" component={TrainerList}/>
                         <Route path ="/trainerdetails" component={TrainerDetails}/>
                         <Route path='/ChatWindow' component={ChatWindow}/>
+                        <Route path='/trainerbooking' component={TrainerBooking}/>
+                        <Route path="/trainer_goalweight" component={GoalWeight_Trainer}/>
+                        <Route path="/trainer_booking" component={TrainerBookings}/>
+                        <Route path="/trainer_bookinghistory" component={Trainer_BookingHistory}/>
+                        <Route path="/trainer_myschedule" component={Trainer_Myschedule}/>
+                        <Route path="/trainer_bookigreschedule" component={BookingReSchedule}/>
+                        {/* calendar */}
+                        {/* <Route path="/Calendar" component = {Calendar}/> */}
                         </Switch>
                         
         </HeaderLayout>
