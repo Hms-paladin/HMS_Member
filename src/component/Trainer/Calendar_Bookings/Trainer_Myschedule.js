@@ -20,7 +20,7 @@ export default function Trainer_Myschedule(props){
                         amt="160 KWD"
                         Name_of_type="Farah"
                         upcomingdays="enable"
-                        MyShedule_dots="enable"
+                        trainer_MyShedule_dots="enable"
                    />
                 </Grid>
                

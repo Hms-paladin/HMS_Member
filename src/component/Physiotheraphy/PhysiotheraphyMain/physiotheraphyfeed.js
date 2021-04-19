@@ -37,6 +37,7 @@ import { Input } from 'antd';
 import Internet_type from '../../../images/internet_type.svg'
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 import Calendar from './Calendar'
+import {Popconfirm} from 'antd'
 var hashHistory = require('react-router-redux')
 const { Search } = Input;
 const onSearch = value => console.log(value);
@@ -291,23 +292,30 @@ function Physiotheraphyfeed(props) {
   <Button className="redbtn" onClick={Bookingdetails}>10:50AM</Button>
   <Button className="redbtn" onClick={Bookingdetails}>2:00PM</Button>
   <Button className="greenbtn" onClick={Bookingdetails}>3:00PM</Button>
+  <Popconfirm
+  placement="topRight"
+  icon={false}
+  okText={false}
+  cancelText={false}
+  title={<div className="appoint_type_doc">
+  <label>Choose Appointment Type</label>
+ <div className="type_div"> <div><img src={Internet} style={{width:"40px"}}/><div>OnLine</div></div>
+  <div><img src={Clinic} style={{width:"32px"}}/><div>InClinic</div></div></div>
+</div>}
+  // onConfirm={App_type_function}
+>
+  <div className="online_type">
   <Button className="redbtn" onClick={App_type_function}>3:45PM</Button>
+  {App_type&&<div className="internet_type">
+  <div><img src={Internet_type}/></div>
+</div>}
+</div>
+</Popconfirm>
   <Button className="greenbtn" onClick={Bookingdetails}>8:00PM</Button>
   <Button className="greenbtn"onClick={Bookingdetails}>8:30PM</Button>
 
 
-{/* Appointment Type */}
-{App_type&&<div className="appoint_type_doc">
-   <label>Choose Appointment Type</label>
-  <div className="type_div"> <div><img src={Internet} style={{width:"40px"}}/><div>OnLine</div></div>
-   <div><img src={Clinic} style={{width:"32px"}}/><div>InClinic</div></div></div>
-</div>}
 
-{/* end */}
-{App_type&&<div className="internet_type">
-  <div><img src={Internet_type}/></div>
-</div>
-}
   </div>
 
         </div>

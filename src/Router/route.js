@@ -176,8 +176,8 @@ function Routes(props) {
                         <Route path="/tc_history" component = {Training_History}/>
                         <Route path="/Trainingdetails" component = {Training_Details}/>
                         <Route path="/bookingshedule" component = {BookingShedule}/>
-                        <Route path="/tc_Bookings" component = {Tra_Bookings} exact/>
-                        <Route path="/tc_bookingshistory" component={Tra_BookingHistory} exact/>
+                        <Route path="/tc_Bookings" component = {Tra_Bookings}/>
+                        <Route path="/tc_bookings_history" component={Tra_BookingHistory}/>
                         
                         <Route path="/tc_reschedule_bookings" component={Tc_BookingReShedule}/>
                         <Route path="/tc_myschedule" component={Tc_Myschedule}/>

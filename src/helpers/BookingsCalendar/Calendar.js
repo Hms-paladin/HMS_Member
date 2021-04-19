@@ -569,6 +569,14 @@ export default class Calendar extends React.Component {
         <div className="dot_cir_div"><label className="b_res_circle_ex"></label><label> Rescheduled Day</label></div>
 
         </div>}
+        {this.props.trainer_MyShedule_dots==="enable"&&<div className="days_in_clr">
+        <div className="dot_cir_div"><label className="b_dot_circle"></label><label>Completed Days</label></div>
+        <div className="dot_cir_div"><label className="b_dot_circle_up"></label><label>Remaining Days</label></div>
+        <div className="dot_cir_div"><label className="b_dot_circle_ex"></label><label>To be Rescheduled Day</label></div>
+        <div className="dot_cir_div"><label className="b_res_circle_ex"></label><label> Rescheduled Day</label></div>
+
+        </div>}
+       
        
           </div>
         )}
