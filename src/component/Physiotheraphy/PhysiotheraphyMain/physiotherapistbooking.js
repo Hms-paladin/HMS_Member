@@ -34,8 +34,8 @@ import clock from '../../../images/clock.svg'
 import location from '../../../images/location.svg'
 import avatar from '../../../images/us.svg'
 import {Modal} from 'antd'
-
-
+import Avatar from '../../../helpers/Upload/Upload'
+import SliderComp from '../../../helpers/Slider/Slider'
 
 
 
@@ -177,32 +177,20 @@ return(
                 <div style={{display:'flex',marginTop:"5px"}}><div className="rating_numeric_bg">4.3<img src={star}/></div><span className="offer_rate">5 % Offer</span></div>
                 <div style={{display:'flex'}} className="verification">Medical registration verified <span className="tick"><ReactSVG src={tick}/></span></div>
                 <div className="reviewrating"><ReactSVG src={like}/><span>93 %</span>(115 reviews)</div>
-                <div className="detailpara">
-                <div id="carouselExampleIndicators" class="carousel slide" >
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-        <div className="reviewpost">
-                 <div className="heads">Dalal</div>
+             
+                         {/* slider */}
+                         <div className="detailpara">
+                <SliderComp>
+           
+             {[...Array(5)].map((img,index)=>(
+                <div>
+                <div className="heads">Dalal</div>
                  <div>I had the best experience with Dr.Hannah</div>
-        </div>
-    </div>
-    <div class="carousel-item">
-        <div className="reviewpost"> 
-        <div className="heads">Dalal</div>
-                 <div>I had the best experience with Dr.Hannah</div>
-
-        </div>
-    </div>
-    
-  </div>
-  </div>
-
-
+                 </div>  
+               ))}
+               </SliderComp>
                 </div>
+                {/* end */}
                 <div style={{fontWeight:'500',color:"grey"}}>Hannah is one of the best doctor.We had great experience</div>
                 <div className="consultingdiv"><div className="consultingtype"><Labelbox labelname="Select service"  type="select" /></div>
                 <div className="durationdiv"><div>Duration</div><div style={{fontSize:"18px"}}>0h 30mins</div></div>
@@ -257,7 +245,9 @@ return(
                     </div>
                 </div>
                {addmemberForm && <div className="addmember_mini">
-                  <div className="avatar_uploaderdiv"><div className="avatar_uploader"><ReactSVG src={avatar}/> </div><div>Add Photo</div></div>
+                  <div className="avatar_uploaderdiv">
+                    <Avatar/>
+                    <div>Add Photo</div></div>
                   <div><Labelbox type="text"labelname="Name"/></div>
                   <div className="formflex"><div style={{width:"50%",marginRight:"10px"}}><Labelbox type="select"labelname="Gender"/></div><div style={{width:"50%"}}><Labelbox type="datepicker"labelname="Date of Birth"/></div></div>
 

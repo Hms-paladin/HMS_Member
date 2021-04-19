@@ -10,6 +10,7 @@ import './TrainingDetails.scss'
 // import Tra_ad from "../../../images/doctorappoinment.png";
 import Dialog from '@material-ui/core/Dialog';
 import ProgramModal from './Modal'
+import SliderComp from '../../../helpers/Slider/Slider'
 export default function Training_Details(){
     const [proceed,setproceed]=React.useState(false)
     const [Duties,setDuties]=React.useState(false)
@@ -48,7 +49,12 @@ export default function Training_Details(){
                </div>
             </Grid>
             <Grid item sm={12} md={12} className="cmy_sup">
+            <SliderComp>
+           
+           {[...Array(5)].map((img,index)=>(
                 <div ><div>Dalal</div><div>"Nice place,good work out! The center is very well equipped to satisfy any fitness enthusiast".</div></div>
+           ))}
+            </SliderComp>  
             </Grid>
             </Grid>
             {/* Training Programs */}

@@ -182,3 +182,27 @@
 .lab_ad_bth{
     
 }
+@media only screen and (max-width: 1124px) and (min-width: 959px) 
+ { 
+    .lab_his_item_p{
+        width:60% !important;
+    }
+}
+@media only screen and (max-width: 1359px) and (min-width: 1124px) 
+ { 
+    .lab_his_item_p{
+        width:50% !important;
+    }
+}
+@media only screen and (max-width: 959px) and (min-width: 768px) 
+ { 
+    .lab_his_item_p{
+        width:75% !important;
+    }
+}
+@media only screen and (max-width: 768px) and (min-width: 500px) 
+ { 
+    .lab_his_item_p{
+        width:90% !important;
+    }
+}

@@ -11,6 +11,7 @@ import StarIcon from '@material-ui/icons/Star';
 import Grid from '@material-ui/core/Grid';
 import BookingConfirmation from './BookingConfirmation'
 import DesignDuties from './DesignDuties'
+import SliderComp from '../../../helpers/Slider/Slider'
 import './NurseDetails.scss'
 export default function NurseDetails(){
     const [proceed,setproceed]=React.useState(false)
@@ -25,6 +26,9 @@ export default function NurseDetails(){
     function DutiesClick(){
         setDuties(true)
     }
+    var settings = {
+        dots: true
+      };
     return(
         <div style={{width:"100%"}} className="nurse_de_parent">
         <div className="nursede_parent">
@@ -54,7 +58,13 @@ export default function NurseDetails(){
             <div className="mnth_kwd">480 KWD / Month</div><div className="exp_yrs">5 Years</div>
             </Grid>
             <Grid item sm={12} md={12} className="cmy_sup">
-                <div ><div>Dalal</div><div>"I appreciate your timely support when I was in agony and facing a lot of anxiety.My heartfelt thank to wellness company".</div></div>
+            <SliderComp>
+           
+            {[...Array(5)].map((img,index)=>(
+                <div ><div>Dalal</div>
+                <div>"I appreciate your timely support when I was in agony and facing a lot of anxiety.My heartfelt thank to wellness company".</div>
+                </div>))}
+                </SliderComp> 
             </Grid>
             </Grid>
             {/* nurse information */}

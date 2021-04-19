@@ -25,7 +25,7 @@ import roomimg from "../../../../images/BookaRoom/room_img.png"
 import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import Pin from "../../../../images/pin.png"
 import ProceedConfirm from '../../ProceedConfirm/ProceedConfirm';
-
+import Avatar from '../../../../helpers/Upload/Upload'
 
 
 function ProceedScreen(props){
@@ -221,7 +221,10 @@ const ModalCloseClick=()=>{
              </>
              {
                 addmemberForm && <div className="addmember_mini">
-                  <div className="avatar_uploaderdiv"><div className="avatar_uploader"><ReactSVG src={avatar}/> </div><div>Add Photo</div></div>
+                  <div className="avatar_uploaderdiv">
+                   
+                      <Avatar/>
+                      <div>Add Photo</div></div>
                   <div><Labelbox type="text"labelname="Name"/></div>
                   <div className="formflex"><Labelbox type="select"labelname="Gender"/><Labelbox type="text"labelname="Date of Birth"/></div>
                   <div><Labelbox type="text"labelname="Mobile number"/></div>

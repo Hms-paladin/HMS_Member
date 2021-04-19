@@ -167,6 +167,7 @@
   .days_in_clr_points div:nth-child(2){
     margin: 0px 13px;
   }
+  
   // for tc_myschedule
   .b_res_circle_ex{
     background-color:#F7B930;
@@ -227,10 +228,32 @@
   margin: 15px;
   font-size: 15px;
   }
-  .modal_res{
-
-  }
+  
   .d_none{
-     display: none !important;
+     
     color:#F7B930 !important;
   }
+.range_parent_calendar_root .tail-datetime-calendar .calendar-date table tbody tr>*:nth-child(6) .table_inter_sel{
+  background-color: #fff !important;
+  color:red !important;
+  // border-top-right-radius: 50px 50px;
+}
+.range_parent_calendar_root .tail-datetime-calendar .calendar-date table tbody tr>*:nth-child(6) .table_sec_sel{
+  background-color: #fff !important;
+  color:red !important;
+}
+.range_parent_calendar_root .tail-datetime-calendar .calendar-date table tbody tr>*:nth-child(6) .table_fir_sel{
+  background-color: #fff !important;
+  color:red !important;
+}
+  @media only screen and (max-width: 959px) and (min-width:768px) 
+{
+  .range_parent_calendar_root{
+    width:75% !important;
+  }
+}
+@media  screen and(max-width: 768px){
+  .range_parent_calendar_root{
+    width:100% !important;
+  }
+}

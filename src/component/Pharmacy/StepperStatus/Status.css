@@ -24,3 +24,8 @@
     font-weight: 600;
     font-size: 12px;
 }
+@media only screen and (max-width: 1080px) {
+  .stepper_container .MuiStepConnector-alternativeLabel{
+    top:52px !important;
+}
+}

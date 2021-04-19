@@ -110,7 +110,6 @@ import { Pagination, Navigation, Lazy } from "swiper/dist/js/swiper.esm";
 
 
 
-
 const images = [
   {img:Doctor,title:"Dentistry"},
   {img:Nurse,title:"Hematologist"},

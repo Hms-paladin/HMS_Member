@@ -95,7 +95,7 @@ const Lab_history=[
     return(  
         <div className="feed_layout">
           <Grid container spacing={10}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} className="fil_cont_div">
            <div className="filter_container_icons">
                <h5>Filter</h5>
                <div className ="tainerlist_home">

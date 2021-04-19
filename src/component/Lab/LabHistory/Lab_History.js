@@ -19,6 +19,7 @@ import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 import Map from './Map'
 import Lab_ad from '../../../images/Lab_ad1.png'
 import CloseIcon from '@material-ui/icons/Close';
+import SliderComp from '../../../helpers/Slider/Slider'
 const { Search } = Input;
 export default function Lab_History(props){
     const [open,setClose]=React.useState(false)
@@ -109,13 +110,17 @@ export default function Lab_History(props){
                    {/* description in lab */}
                    <div className="lab_descrip">
                 
-        
-       
+                   <SliderComp>
+           
+                {[...Array(5)].map((img,index)=>(
+                    <div>
                     <label>Dalal</label>
                        <div>
                            Lab is clean.Home pick up sample service is really fine.On time service.
                        </div>
-       
+                      </div> 
+                ))}
+                    </SliderComp>
                    </div>
                   
 
