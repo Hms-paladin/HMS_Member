@@ -514,3 +514,21 @@ cursor: pointer;
 .doctorbooking_layout .image-gallery-svg{
     width:28px !important;
 }
+
+
+
+@media screen and (max-width: 959px) {
+    .doctorbooking_layout{
+       flex-direction: column !important;
+    }
+    .flex1{
+        width:50% !important;
+    }
+    .doctorbooking_layout .flex2{
+        width:75% !important
+    }
+    .doctorbooking_layout .flex3{
+        width:55% !important;
+        margin-top: 20px;
+    }
+}

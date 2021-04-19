@@ -18,6 +18,7 @@ import Trainer from "../../../images/trainer.png";
 import Dialog from '@material-ui/core/Dialog';
 import ProgramModal from './Modal'
 import ChatWindow from "../ChatWindow/chatwindow"
+import SliderComp from '../../../helpers/Slider/Slider'
 export default function Training_Details(){
     const [proceed,setproceed]=React.useState(false)
     const [Duties,setDuties]=React.useState(false)
@@ -65,7 +66,12 @@ export default function Training_Details(){
                  <div>5 Years</div>
             </Grid>
             <Grid item sm={12} md={12} className="cmy_sup">
+            <SliderComp>
+           
+           {[...Array(5)].map((img,index)=>(
                 <div ><div>Dalal</div><div>"I appreciate your timely support width awesome trainers and awesome Lifestyle!!!!".</div></div>
+           ))}
+           </SliderComp>
             </Grid>
             </Grid>
             <div className ="tainer_list_icons">

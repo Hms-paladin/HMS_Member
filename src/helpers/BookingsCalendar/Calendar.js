@@ -29,6 +29,7 @@ export default class Calendar extends React.Component {
     slotSubtract: 1,
     slotAdd: 1,
     TotalslotsAvailable: [],
+    from_to_date:[],
     spinLoad: true,
     ModalOpen:false,
     disblerange:[],
@@ -161,7 +162,7 @@ export default class Calendar extends React.Component {
     console.log(fromdate,"monthmatch")
     console.log(todate,"monthmatch")
 
-    this.getslots(fromdate,todate )
+    // this.getslots(fromdate,todate )
 
     let curr = "";
     if (this.state.showYearTable === true) {
@@ -212,7 +213,7 @@ export default class Calendar extends React.Component {
     console.log(fromdate,"monthmatch")
     console.log(todate,"monthmatch")
 
-    this.getslots(fromdate,todate )
+    // this.getslots(fromdate,todate )
 
     let curr = "";
     if (this.state.showYearTable === true) {
@@ -303,19 +304,22 @@ export default class Calendar extends React.Component {
     var rangeSelect = []
     var rangeSelectFirst = []
     var startDatestore = []
+    var from_to_date=[]
     const date=new Date()
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     var disblerange=[]
    
-    if (this.state.fulldate.length === 0 || this.state.fulldate.length === 0 && new Date().getDay()==5) {
+    if (this.state.fulldate.length === 0) {
       startDatestore.push(new Date(this.month() + "-" + this.year() + "-" + d))
       rangeSelect.push(`selectedclr${d}_${this.month()}_${this.year()}`)
+      from_to_date.push(`${d}-${this.month()}-${this.year()}`)
       disblerange.push(true)
-     // send date value to parent
-      // this.state.getDate({startdate:new Date(this.month() + "-" + this.year() + "-" + d),enddate:null})
+    //  send date value to parent
+      // this.props.getDate({startdate:new Date(this.month() + "-" + this.year() + "-" + d),enddate:null})
+   
       console.log(disblerange,"falsw")
     }
-    else if (this.state.fulldate.length === 1 || new Date().getDay()===0) {
+    else if (this.state.fulldate.length === 1) {
       disblerange.push(false)
       var initialstartDate = this.state.startDatestore[0]
       var initialendDate = new Date(new Date(this.month() + "-" + this.year() + "-" + d))
@@ -347,6 +351,7 @@ export default class Calendar extends React.Component {
         arr.push(new Date(dt));
         dt.setDate(dt.getDate() + 1);
         rangeSelect.push(`selectedclr${dt.getDate()}_${monthNames[dt.getMonth()]}_${moment(new Date(dt)).format("YYYY")}`)
+        from_to_date.push(`${dt.getDate()}-${monthNames[dt.getMonth()]}-${moment(new Date(dt)).format("YYYY")}`)
        console.log(rangeSelect,"seelct")
       }
     }
@@ -375,6 +380,7 @@ export default class Calendar extends React.Component {
         rangeSelect: rangeSelect,
         rangeSelectFirst: rangeSelectFirst,
         startDatestore: startDatestore,
+        from_to_date:from_to_date
       },
     );
   };
@@ -403,6 +409,7 @@ export default class Calendar extends React.Component {
     let daysInMonth = [];
     var hidepastdataleft = []
     var disble=[]
+    var disblerange=[]
 
     for (let p = 1; p <= this.daysInMonth(); p++) {
     
@@ -429,8 +436,8 @@ export default class Calendar extends React.Component {
       const startdate = `selectedclr${d}_${this.state.dateObject.format("MMM")}_${this.state.dateObject.format("Y")}`
       let currentDay = d == this.currentDay() ? "today" : "";
       var textgreyhide = new Date() < new Date(dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd")) || dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd") 
-      var fridaydate=new Date().getDay()==5
-      console.log(fridaydate,"fghjk")
+      disblerange.push(new Date().d==5)
+      console.log(disblerange,"fghjk")
       daysInMonth.push(
 
         <td key={d} className={`calendar-day ${currentDay} ${!textgreyhide && "cursornonehide"} `} onClick={textgreyhide && (e => { this.onDayClick(e, d); })}>
@@ -439,7 +446,7 @@ export default class Calendar extends React.Component {
             <div className="range_child w-25">
             </div>
             <div
-              className={`  ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
+              className={` ${startdate === new Date().getDay()!==5 &&"d_none"} ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
                 startdate === this.state.rangeSelect[this.state.rangeSelect.length - 1] && "table_sec_sel" ||
                 this.state.rangeSelect.includes(startdate) && "table_inter_sel" }`}
             >
@@ -548,7 +555,7 @@ export default class Calendar extends React.Component {
               </table>
 
             {this.props.SelectDate==="enable"&&<div className="date_select_cont">
-               <label>Select the Start Date</label>
+            {this.state.from_to_date.length>0?<label>{(this.state.from_to_date[0] +"to"+ this.state.from_to_date.pop())}</label>:<label>Select the Start Date</label>}
             </div>}
             {this.props.Shedule_dots==="enable"&&<div className="days_in_clr_points">
         <div className="dot_cir_div"><label className="b_dot_circle"></label><label>Completed Days</label></div>

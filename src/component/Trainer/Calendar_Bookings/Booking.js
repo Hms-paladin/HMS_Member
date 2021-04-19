@@ -7,7 +7,7 @@ export default function BookingShedule(){
     return(
         <div className="booking_shedule_tra">
             <Grid container>
-                <Grid item xs={12} md={5}>
+                <Grid item xs={12} md={5} className="bookings_cal_range">
                    <Calendar
                    heading="Booking"
                    SelectDate="enable"

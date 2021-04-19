@@ -11,6 +11,7 @@ import search from '../../../images/search.svg'
 import MealPlanModal from './MealPlanModal'
 import './Diet_history.scss'
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
+import SliderComp from '../../../helpers/Slider/Slider'
 const { Search } = Input;
 export default function Diet_History(){
     const [HideAdrs,setHideAdrs]=React.useState(false)
@@ -97,11 +98,17 @@ export default function Diet_History(){
                    <div className="reviews_div"><img src={Thumb} style={{width:"20px"}}/><label className="lab_r_per">95%</label><label className="re_per">(19 reviews)</label></div>  
                    {/* description in Diet */}
                    <div className="lab_descrip">
-                  
+                   <SliderComp>
+           
+               {[...Array(5)].map((img,index)=>(
+                   <div>
                     <label>Dalal</label>
                        <div>
                            Keto diet gives me a very nice variety of unique and very delicious foods to try and eat.
                        </div>
+                    </div>   
+                ))}
+               </SliderComp>
                     </div>
           
                   

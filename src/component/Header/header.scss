@@ -253,3 +253,29 @@ margin-left: 10px !important;
  }
  .btn-primary:focus {
  }
+
+
+//  active header
+.active_color{
+    box-shadow: 0.2px 10px 10px #B4B4B448;
+border-radius: 0px 0px 20px 20px;
+color: #83AF40 !important;
+border-bottom: 0px !important;
+font-weight: bold;
+font-size: 14px;
+width:100px !important;
+text-align: center;
+
+}
+.active_color:hover{
+    color: #83AF40 !important;
+    border-bottom: 0px !important;
+    box-shadow: 0.2px 10px 10px #B4B4B448;
+}
+.header_link_css{
+    font-size: 14px;
+    width:100px !important;
+    text-align: center;
+    color:#333 !important;
+    border-bottom: 0px !important;
+}

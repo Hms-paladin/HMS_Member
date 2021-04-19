@@ -34,8 +34,9 @@ function HeaderLayout(props) {
   const [b_hide, setb_hide] = useState(false)
   const [b_enable, setb_enable] = useState(false)
   let history = useHistory();
+  const location_path = window.location.href
   useEffect(() => {
-    let path_name = location.pathname
+   
 
     if (location.pathname != "/") {
       setlogin_disble(true)
@@ -150,9 +151,9 @@ function HeaderLayout(props) {
         <img onClick={() => HistoryPush("/")} className="HMSlogo" src={Logo} />
 
         {/* </div> */}
-        <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%" }}>
-          <Menu.Item key="1" onClick={() => HistoryPush("/")} ><div>Home</div></Menu.Item>
-          <Menu.Item key="2">Shopping</Menu.Item>
+        <Menu mode="horizontal" defaultSelectedKeys={['1']} style={{ zIndex: 1, width: '100%', left: "10%",margin:"0px 0px 3px 4%",fontWeight:"600",borderBottom:"0px" }}>
+          <Menu.Item key="1" onClick={() => HistoryPush("/")} className={`${location_path.endsWith("/")?"active_color":"header_link_css"}`} ><div>Home</div></Menu.Item>
+          <Menu.Item key="2" style={{marginLeft:"10px" }} className={"header_link_css"} >Shopping</Menu.Item>
           {/* <Menu.Item key="3">One Watch</Menu.Item> */}
           {/* <Menu.Item key="3">One Watch</Menu.Item> */}
           <Menu.Item key="3">
