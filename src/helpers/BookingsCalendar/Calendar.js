@@ -446,7 +446,7 @@ export default class Calendar extends React.Component {
             <div className="range_child w-25">
             </div>
             <div
-              className={` ${startdate === new Date().getDay()!==5 &&"d_none"} ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
+              className={` ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
                 startdate === this.state.rangeSelect[this.state.rangeSelect.length - 1] && "table_sec_sel" ||
                 this.state.rangeSelect.includes(startdate) && "table_inter_sel" }`}
             >
