@@ -119,7 +119,7 @@ export default function Training_Details(){
     </Dialog>
     {/* chat window */}
     <div className="chat_ic_div"><ReactSVG src={Chat} onClick={HandleOpenChat}/></div>
-       {/* {chatOpen&&<div><ChatWindow chatOpen={chatOpen}/></div>} */}
+       {chatOpen&&<div><ChatWindow chatOpen={chatOpen}/></div>}
         </div>
     )
 }

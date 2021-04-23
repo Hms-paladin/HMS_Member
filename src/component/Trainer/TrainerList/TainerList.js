@@ -19,10 +19,12 @@ import HomeIcon from '@material-ui/icons/Home';
 import {useHistory} from 'react-router-dom'
 import { ReactSVG } from 'react-svg'
 import Trainer from "../../../images/trainer.png";
+import {Input} from 'antd'
+import search from '../../../images/search.svg'
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
 var hashHistory = require('react-router-redux')
 
-
+const { Search } = Input;
 const StyledRating = withStyles({
   iconFilled: {
     color: '#ff6d75',
@@ -96,6 +98,7 @@ const Lab_history=[
         <div className="feed_layout">
           <Grid container spacing={10}>
           <Grid item xs={12} md={4} className="fil_cont_div">
+            
            <div className="filter_container_icons">
                <h5>Filter</h5>
                <div className ="tainerlist_home">
@@ -110,7 +113,10 @@ const Lab_history=[
            </Grid>
 
                  
-                <Grid item xs={12} md={8}  className={"paper_items_grid_trainer"}>   
+                <Grid item xs={12} md={8}  className={"paper_items_grid_trainer"}>  
+                <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <div style={{position:"relative",marginBottom:"10px",width:"75%"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"7px",right:"17px"}}/></div>
+                </div>
                 {Lab_history.map((data,index)=>  <Paper className={"tra_his_item_p"}>    
                 <div style={{display:"flex",width:"100%"}}>
                 <div className="book_nurse_div" onClick={Bookingdetails}>  

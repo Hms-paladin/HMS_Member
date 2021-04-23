@@ -446,7 +446,7 @@ export default class Calendar extends React.Component {
             <div className="range_child w-25">
             </div>
             <div
-              className={` ${startdate === new Date().getDay()!==5 &&"d_none"} ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
+              className={` ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
                 startdate === this.state.rangeSelect[this.state.rangeSelect.length - 1] && "table_sec_sel" ||
                 this.state.rangeSelect.includes(startdate) && "table_inter_sel" }`}
             >
@@ -569,6 +569,14 @@ export default class Calendar extends React.Component {
         <div className="dot_cir_div"><label className="b_res_circle_ex"></label><label> Rescheduled Day</label></div>
 
         </div>}
+        {this.props.trainer_MyShedule_dots==="enable"&&<div className="days_in_clr">
+        <div className="dot_cir_div"><label className="b_dot_circle"></label><label>Completed Days</label></div>
+        <div className="dot_cir_div"><label className="b_dot_circle_up"></label><label>Remaining Days</label></div>
+        <div className="dot_cir_div"><label className="b_dot_circle_ex"></label><label>To be Rescheduled Day</label></div>
+        <div className="dot_cir_div"><label className="b_res_circle_ex"></label><label> Rescheduled Day</label></div>
+
+        </div>}
+       
        
           </div>
         )}

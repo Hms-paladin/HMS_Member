@@ -4,7 +4,7 @@ import {Modal} from 'antd'
 import HistoryButton from '../../../images/history-button.svg'
 import Tc from '../../../images/tr_cat_image.png'
 import './Tra_Bookings.scss'
-export default function Tra_Bookings(){
+export default function Tra_Bookings(props){
     const [CancelOpen,setCancelOpen]=React.useState(false)
     const[HideAdrs,setHideAdrs]=React.useState(false)
     const CancelClick=()=>{
@@ -23,13 +23,13 @@ export default function Tra_Bookings(){
     const ReOpenClose=()=>{
         setReOpen(false)
     }
-    const historyPush=()=>{
-        history.push("/tc_bookingshistory")
+    const historyPush=(url)=>{
+        history.push(url)
     }
     return(
         <div className="Tra_bookings_parentdiv">
              <div className="book_headdiv">
-            <label className="book_h">Bookings</label><img src={HistoryButton} onClick={historyPush} style={{cursor:"pointer",width:"20px"}}/>
+            <label className="book_h">Bookings</label><img src={HistoryButton} onClick={()=>historyPush("/tc_bookings_history")} style={{cursor:"pointer",width:"20px"}}/>
             </div>
             <div className="bookhistory_list_parent">
              <div className="diet_bookhistory_list">

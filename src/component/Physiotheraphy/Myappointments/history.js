@@ -41,9 +41,9 @@ const ReviewOpenClick=()=>{
 const ReviewCloseClick=()=>{
    setreviewOpen(false)
 }
+let history = useHistory();
 
 const HistoryPush=(url)=>{
-    let history = useHistory();
     history.push(url);
   //   window.location.reload()
     }

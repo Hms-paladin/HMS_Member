@@ -86,7 +86,7 @@ export default function Tra_BookingHistory(props){
                 </div> 
                  
                    <div className="book_his_parent">
-                      <div><label className="his_review" onClick={ReviewClickOpen}>Review</label><NavLink to="/bookingshedule"><label className="his_repeat">Repeat</label><NavLink/></NavLink></div>
+                      <div><label className="his_review" onClick={ReviewClickOpen}>Review</label><NavLink to="/bookingshedule"><label className="his_repeat">Repeat</label></NavLink></div>
                   </div>
              </div>
             )}

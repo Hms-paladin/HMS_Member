@@ -92,7 +92,7 @@ function HeaderLayout(props) {
   }
   const CategoryPush = (url) => {
     let path_name = location.pathname
-    if (path_name === "/physiotheraphyfeed" || path_name === "/physiotherapistbooking" ) {
+    if (path_name === "/physiotheraphyfeed" || path_name === "/physiotherapistbooking" || path_name === "/phy_appointment" || path_name === "/Phy_History" ) {
       history.push("/physiotheraphy")
     }
     // else if (path_name === "/feed") {
@@ -180,7 +180,7 @@ function HeaderLayout(props) {
 
         {login_disble ?
           <div style={{ display: "flex" }}>
-            {console.log(b_hide,"b_hide")}
+           
             <img src={calendar} className={!b_hide ? "change_cal_icon" : "cal_icon"} onClick={Change_Bookings} />
             {/* <div className="notif_icon" onClick={Open}>
     <NotificationsIcon/><div></div>

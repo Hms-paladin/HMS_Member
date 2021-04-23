@@ -18,11 +18,25 @@ import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog';
 import search from '../../../images/search.svg'
 import Tra_ad from '../../../images/tr_add.jpg'
+import CarosalComp from '../../../helpers/CarosalSlider/CarosalSlider'
+import { Next } from "react-bootstrap/esm/PageItem";
 export default function TrainingCategory(props) {
     const images = [
         {img:Doctor,title:"Horse Riding"},
         {img:Nurse,title:"Swimming"},
         {img:Report,title:"Football"},
+        {img:Trainer,title:"Drive In"},
+        {img:TrainingCenter,title:"Martial Arts"},
+        {img:DietMeal,title:"Tennis"},
+       
+        {img:Trainer,title:"Drive In"},
+        {img:TrainingCenter,title:"Martial Arts"},
+        {img:DietMeal,title:"Tennis"},
+       
+        {img:Trainer,title:"Drive In"},
+        {img:TrainingCenter,title:"Martial Arts"},
+        {img:DietMeal,title:"Tennis"},
+       
         {img:Trainer,title:"Drive In"},
         {img:TrainingCenter,title:"Martial Arts"},
         {img:DietMeal,title:"Tennis"},
@@ -43,26 +57,23 @@ const handleClose = () => {
   setOpen(false);
 };
 
-   
     return(
         <>
         <div className="tra_cat_head_div">
             <div>Training Category</div>  
            <div style={{position:"relative",width:"400px"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"11px",right:"11px",width:"15px",height:"15px"}}/></div>
         </div>
-        <div className="training_container"> 
-         <div className="trainer_category_img">  
+        <CarosalComp>
         {images.map((data)=>{
-            return(
-            <div className="tra_imgContainer" goToSlide={goToSlide}>
-               <NavLink to="/tc_history"><img src = {data.img} /></NavLink> 
-                <div className="imgTitle">{data.title}</div>
-            </div> 
-            )  
-        })}
-        </div>
-        <div><ArrowForwardIosIcon className="tra_right_arrow" onClick={(e)=>gotoslideright(e,images.length)}/></div>
-        </div>
+      return(
+         <div className="img_cat_Container">
+         <NavLink to="/feed"><img src = {data.img} /></NavLink> 
+         <div className="imgTitle">{data.title}</div>
+         </div> 
+      )})}
+
+            
+          </CarosalComp>
         <Dialog
         open={open}
         onClose={handleClose}
