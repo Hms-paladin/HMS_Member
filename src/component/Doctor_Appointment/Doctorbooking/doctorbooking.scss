@@ -1,3 +1,10 @@
+ul.MuiMenu-list > li.MuiListItem-button, div.MuiInput-underline > div.MuiSelect-selectMenu {
+    color:  #000 !important;
+}
+div.bookbtnflex > button.MuiButton-text > span.MuiButton-label, div.cnfrmbtn > a > button.MuiButton-text > span.MuiButton-label,
+div.pay_now_container > a > button.pay_now_button > span.MuiButton-label{
+    color: #fff !important;
+}
 .doctorbooking_layout{
     padding: 30px 30px 30px 100px;
     display: flex;
@@ -150,6 +157,7 @@ bottom: -30px;}
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 20px;
+    padding-left: 20px;
 }
 .selecttime_div{
     display: flex;

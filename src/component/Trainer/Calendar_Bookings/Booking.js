@@ -3,7 +3,9 @@ import Calendar from  '../../../helpers/BookingsCalendar/Calendar'
 import Grid from '@material-ui/core/Grid'
 import AvailableSlots from './AvailableSlots'
 // import './BookingShedule.scss'
-export default function BookingShedule(){
+export default function BookingShedule(props){
+
+    console.log("booking props", props)
     return(
         <div className="booking_shedule_tra">
             <Grid container>
@@ -11,14 +13,14 @@ export default function BookingShedule(){
                    <Calendar
                    heading="Booking"
                    SelectDate="enable"
-                   category="Indoor-Fitness-Burn IT"
-                   amt="160 KWD"
-                   Name_of_type="Farah"
+                   category={props.location.state.tr_package_name}
+                   amt={props.location.state.tr_cost + "KWD"}
+                   Name_of_type={props.location.data.trainerList.trainerName}
                    />
                 </Grid>
                 <Grid item xs={12} md={7} className="tra_booing_parent">
                 <div className="tra_booking_confirm">
-                  <AvailableSlots/>
+                  <AvailableSlots dataToBind={props}/>
                 </div>
                 </Grid>
            </Grid>

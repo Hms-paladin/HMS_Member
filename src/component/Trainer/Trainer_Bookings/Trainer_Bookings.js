@@ -10,9 +10,12 @@ import Internet from '../../../images/internet.svg'
 import Gym from '../../../images/gym.svg'
 import Trainer from "../../../images/trainer.png";
 import VideocamIcon from '@material-ui/icons/Videocam';
-export default function Tra_Bookings(){
+export default function Tra_Bookings(props){
     const [CancelOpen,setCancelOpen]=React.useState(false)
     const[HideAdrs,setHideAdrs]=React.useState(false)
+
+    console.log("props training", props)
+
     const CancelClick=()=>{
         setCancelOpen(!CancelOpen)
     }

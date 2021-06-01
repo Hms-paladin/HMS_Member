@@ -2,19 +2,34 @@ import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import './Modal.scss'
 import percentage from '../../../images/percentage.svg'
-import { NavLink } from 'react-router-dom'
-export default function ProgramModal(){
+import { NavLink, useHistory } from 'react-router-dom'
+
+export default function ProgramModal({dataToChild, dataToC}){
+    let history = useHistory();
+    
     const [HideAdrs,setHideAdrs]=useState(false)
+
+    console.log("modalData", dataToChild, dataToC)
+    function SelectDetails() {
+      history.push({
+        pathname: "/trainerbooking",
+        state: {
+             dataToChild,
+             dataToC
+        }
+      })
+    }
+
  return(
      <div className="pro_modal_parent">
-         <div className="p_title_head"><label>Farah</label><NavLink to="/trainerbooking"><Button>Select</Button></NavLink></div>
+         <div className="p_title_head"><label>{dataToC.trainerList.trainerName}</label><div onClick={SelectDetails}><Button>Select</Button></div></div>
          <div>
-            <label className="type_fitness">Indoor Fitness</label>
+            <label className="type_fitness">{dataToC.trainerList.trainingCategoryName}</label>
    
           </div>
-          <div className="mem_h"><label>Burn IT</label><label>160 KWD</label></div>
+          <div className="mem_h"><label>{dataToChild.tr_package_name}</label><label>{dataToChild.tr_cost} KWD</label></div>
           <div className="modal_sessions_cont">
-              <label>12</label>
+              <label>{dataToChild.tr_session}</label>
               <div className="ses_text"><div>sessions</div><div>Mon - Thu - Sat</div></div>
               <div style={{position:"relative"}}>
                          <img src={percentage} style={{width:"70px"}}/>
@@ -24,9 +39,7 @@ export default function ProgramModal(){
    
           <div className="p_det">
               <div>Programs Details</div>
-              <p className="program_det_tra">Lose weight, gain strength and tone muscles in 30 minutes. Inspired by High Intensity Interval Training (HIIT), 
-                you use your own body weight and minimal equipment like elastic bands, 
-                dumbbells and kettle bells. Burn It is for women who are ready for a new fitness challenge.</p>
+              <p className="program_det_tra">{dataToChild.tr_package_details}</p>
                 <div>Keywords :</div>
           </div>
      </div>

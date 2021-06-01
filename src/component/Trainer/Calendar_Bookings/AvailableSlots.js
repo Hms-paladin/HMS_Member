@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './AvailableSlots.scss'
 import Button from '@material-ui/core/Button'
 import {NavLink} from 'react-router-dom'
-export default function AvailableSlots(){
+export default function AvailableSlots({dataToBind}){
 
 const [slotslist,setslotslist]=useState(false)   
 const [slotId,setslotId]=useState("") 

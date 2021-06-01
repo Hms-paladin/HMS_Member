@@ -5,6 +5,9 @@
 .ant-rate{
     color: #83AF40 !important;
 }
+button.applybtn > span.MuiButton-label{
+    color: #fff !important;
+}
 .tainer_list_icons{
     display: flex;
     justify-content: center;
@@ -15,7 +18,7 @@
     // text-align: center;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 17px;
-    background-color: #fff !important;
+    background-color: #fff;
     width: 85px;
     height: 85px;
     display: flex;
@@ -33,11 +36,13 @@
     }
  
 }
-
+.cursorpointer{
+    cursor: pointer !important;
+}
 .internet_div_tra_det{
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 17px;
-    background-color: #F0F0F0 !important;
+    background-color: #fff;
     width: 85px;
     height: 85px;
     display: flex;
@@ -58,13 +63,16 @@
     }
    
 }
+.active {
+    background-color: #ebebeb !important;
+}
 .inter_net_img{
     text-align: center;
 }
 .internet_div_gym_det{
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 17px;
-    background-color: #fff !important;
+    background-color: #fff;
     width: 85px;
     height: 85px;
     display: flex;

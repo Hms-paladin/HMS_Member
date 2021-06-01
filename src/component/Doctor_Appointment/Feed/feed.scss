@@ -1,5 +1,66 @@
 @import "~video-react/styles/scss/video-react"; 
 
+div.ad_doc_btn > a > button.MuiButtonBase-root > span.MuiButton-label {
+    color: #fff !important;
+}
+
+.react-calendar__tile--active {
+    background: #83AF40 !important;
+    color: white;
+}
+
+.react-calendar {
+    width: 100% !important;
+    //margin-top: 10px !important;
+    margin-bottom: 10px !important;
+
+}
+#date-picker-inline{
+    text-align: center !important;;
+}
+.MuiTypography-root, .MuiMenuItem-gutters, .MuiSelect-selectMenu{
+    color: #000 !important;
+}
+h4.MuiTypography-h4, h6.MuiPickersToolbarText-toolbarTxt{
+    color: #fff !important;
+}
+
+.MuiButtonBase-root,  #date-picker-inline {
+    color: #fff !important;
+}
+.divcalendar{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    background: rgb(131, 175, 64);
+}
+.MuiPickersToolbar-toolbar {
+    background-color: rgb(131, 175, 64) !important;
+}
+.MuiPickersDay-daySelected {
+    color: #fff !important;
+    font-weight: 500 !important;
+    background-color: rgb(131, 175, 64) !important;
+}
+.MuiPickersDay-daySelected > .MuiIconButton-label > .MuiTypography-root {
+    color: #fff !important;
+}
+
+.MuiFormControl-marginNormal {
+    margin-top: 10px !important;
+}
+.MuiIconButton-label{
+    color: black I !important;
+}
+
+.h1div{
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+    color: #fff !important;
+    // text-align: center !important;
+    padding: 1% 2% !important;
+    font-size: 150% !important;
+}
+
 .feed_layout{
     padding: 30px 150px;
 }
@@ -16,7 +77,10 @@
     {
     height: 5px !important;
 }
-.filter_container .MuiSlider-root {
+.MuiInputBase-input{
+    color: #fff !important;
+}
+.filter_container .MuiSlider-root, .MuiButton-label {
     color: #83AF40;
 }
 .Costfiler{
@@ -286,6 +350,13 @@ font-size: 12px;
     margin-top: 15px;
 
 }
+
+div.time_slots > button.MuiButtonBase-root > span.MuiButton-label{
+    color: #83AF40 !important;
+}
+div.filter_container > div > button.MuiButtonBase-root > span.MuiButton-label{
+    color: #fff !important;
+}
 .carousel-item img{
     width: 100%;
     height:100%
@@ -367,7 +438,8 @@ justify-content: space-between;
 height: 28px !important ;
 margin-right: 12px !important; 
 margin-top: 10px !important;
-width: 80px !important;
+// width: 92px !important;
+// white-space: nowrap;
 }
 .redbtn{
     background-color: #fbeae5 !important; 

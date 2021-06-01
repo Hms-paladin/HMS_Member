@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import './TrainerList.scss'
 import Rating from '@material-ui/lab/Rating';
 import PropTypes from 'prop-types';
@@ -22,6 +22,11 @@ import Trainer from "../../../images/trainer.png";
 import {Input} from 'antd'
 import search from '../../../images/search.svg'
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
+
+
+import { useDispatch, connect } from "react-redux";
+import { GetTrainerList } from "../../../actions/trainerlistaction";
+
 var hashHistory = require('react-router-redux')
 
 const { Search } = Input;
@@ -59,7 +64,22 @@ function valuetext(value) {
                   
 
 function TrainerList(props) {
+  const dispatch = useDispatch();
   let history = useHistory();
+  console.log("trainerList", props)
+
+const data = { 
+	"limit":10,
+	"pageno":1,
+	"typeSearch":true,
+	"searchContent":"i",
+	"filter":false,
+	"modeId":"1"
+}
+
+  useEffect(() => {
+    dispatch(GetTrainerList(data));
+  }, []);
 
   const homeitems=[
   {
@@ -68,29 +88,16 @@ function TrainerList(props) {
   },
  
 ]
-function Bookingdetails(){
-  history.push("/trainerdetails")
+function Bookingdetails(state) {
+  console.log("event Trainer", state)
+  history.push({
+    pathname: "/trainerdetails",
+    state: { 
+      trainerId: state.trainerId,
+      trainingId: state.tr_training_id
+    }
+  })
 }
-const Lab_history=[
-  {
-      id:1,
-      labname:"Farah",
-      off:10,
-      rating:4.5,
-      review:12,
-      re_per:85,
-      img:Trainer,
-  },
-  {
-      id:2,
-      labname:"YIACO Medical Center",
-      off:15,
-      rating:4.7,
-      review:16,
-      re_per:93,
-      img:LabImage2,
-  }
-]
 
     const classes = useStyles();
 
@@ -109,24 +116,21 @@ const Lab_history=[
               <div> 
                   <Button className="applybtn">Apply</Button></div>
            </div>
-     
            </Grid>
-
-                 
                 <Grid item xs={12} md={8}  className={"paper_items_grid_trainer"}>  
                 <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
                 <div style={{position:"relative",marginBottom:"10px",width:"75%"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"7px",right:"17px"}}/></div>
                 </div>
-                {Lab_history.map((data,index)=>  <Paper className={"tra_his_item_p"}>    
+                {props.trainerList.map((data,index)=>  <Paper className={"tra_his_item_p"}>    
                 <div style={{display:"flex",width:"100%"}}>
-                <div className="book_nurse_div" onClick={Bookingdetails}>  
-                  <img src={data.img} className="lab_his_img"/>
+                <div className="book_nurse_div" onClick={() => Bookingdetails(data)}>  
+                  <img src={data.vendor_profile_path} className="lab_his_img"/>
                 
                    <div className="lab_his__text_div">
-                      <p className="lab_his_h_name">{data.labname}</p>
-                      <p className="lab_adrs">Fitness</p>
+                      <p className="lab_his_h_name">{data.trainingName}</p>
+                      <p className="lab_adrs">{data.training_mode}</p>
                       <p className="lab_adrs">34 Years / 5 Years Experience</p>
-                    <label className="lab_adrs">Shamiya</label>
+                    <label className="lab_adrs">{data.vendor_name}</label>
                       
                        {/* star icons */}
                        <div className="star_ra_div">
@@ -160,32 +164,30 @@ const Lab_history=[
                    {/* Vedio */}
                    <div id="carouselExampleIndicators" class="carousel slide" >
             <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            { data.mediaDetails.map((index) => (          
+              <li data-target="#carouselExampleIndicators" data-slide-to="{ index }" class="active"></li>
+              ))}
             </ol>
          <div class="carousel-inner">
-         <div class="carousel-item active">
-           <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-         </div>
-         <div class="carousel-item">
-         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-
-         </div>
-         <div class="carousel-item">
-         <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-         </div>
+           {data.mediaDetails.map(data => (
+            <div class="carousel-item active">
+              <VedioPlayer src={data.media_filename}/>
+            </div>
+           ))}
         </div>
         </div>
                 </Paper>
                 )}
                 </Grid>
-                </Grid>
-      
-      
-  
-     
+                </Grid>    
         </div> 
     ) 
 }
-export default TrainerList;
+
+
+const mapStateToProps = (state) =>
+({
+  trainerList: state.trainerListReducer.getTrainerListPatient || []
+});
+
+export default connect(mapStateToProps)(TrainerList);
