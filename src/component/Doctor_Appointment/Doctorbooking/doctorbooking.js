@@ -28,6 +28,7 @@ import plus from '../../../images/plus.svg'
 import close from '../../../images/cancel.svg'
 
 
+
 const images = [
     {
         original: 'http://lorempixel.com/1000/600/nature/3/',
