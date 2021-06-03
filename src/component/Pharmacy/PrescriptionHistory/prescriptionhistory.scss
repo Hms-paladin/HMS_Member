@@ -78,18 +78,24 @@
     text-transform: none !important;
     margin-right: 3% !important;
     min-width: 16% !important;
-    color:#fff !important;
+    .MuiButton-label {
+    color:#fff ;
+       
+    }
 }
 
 // search css
 .pres_search{
     background-color:#83AF40 !important ;
     text-transform: none !important;
-    color:#fff !important;
     border-radius: 2px !important;
     min-width: 15% !important;
     padding: 6px 20px !important;
     border-radius: 50px !important;
+    .MuiButton-label {
+        color:#fff ;
+           
+        }
 }
 
 

@@ -7,14 +7,14 @@ import Labelbox from '../../../helpers/labelbox/labelbox';
 import { NavLink } from "react-router-dom";
 import { findAllByDisplayValue } from '@testing-library/react';
 import { useDispatch, connect } from "react-redux";
-import { GetPrescriptionHistoryDetails } from '../../../actions/prescriptionhistoryaction'
+import { GetPrescriptionHistoryDetails, GetStatusListFilter } from '../../../actions/prescriptionhistoryaction'
 import moment from 'moment';
 
 
 function PrescriptionHistory(props) {
     const dispatch = useDispatch();
     const [Open, Close] = React.useState(false)
-    const [BtnOpen, setBtnOpen] = React.useState(false)
+    const [status, setStatus] = useState(false)
     const [BtnOpenOut, setBtnOpenOut] = React.useState(true)
     const [BtnDelivery, setBtnDelivery] = React.useState(true)
     const [BtnCancel, setBtnCancel] = React.useState(true)
@@ -23,12 +23,15 @@ function PrescriptionHistory(props) {
 
     useEffect(() => {
         dispatch(GetPrescriptionHistoryDetails())
+       
     }, [])
 
     useEffect(() => {
         setPrescriptionDetails(props.GetPrescriptionHistoryDetails[0]?.details)
-    }, [props.GetPrescriptionHistoryDetails])
+        setStatus(props.GetStatusListFilter)
+    }, [props.GetPrescriptionHistoryDetails, props.GetStatusListFilter])
 
+    console.log(status, "status")
 
     function BtnClick(data) {
         // setBtnOpen(clrchanged=>!clrchanged)
@@ -47,6 +50,7 @@ function PrescriptionHistory(props) {
 
     }
     function filterOpen() {
+        dispatch(GetStatusListFilter())
         Close(true)
     }
     function filterClose() {
@@ -126,6 +130,8 @@ const mapStateToProps = (state) =>
     console.log(state.prescriptionhistoryReducer.GetPrescriptionHistoryDetails, "states"),
     {
         GetPrescriptionHistoryDetails: state.prescriptionhistoryReducer.GetPrescriptionHistoryDetails,
+        GetStatusListFilter: state.prescriptionhistoryReducer.GetStatusListFilter,
+
 
     }
 );

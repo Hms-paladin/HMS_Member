@@ -15,7 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import Labelbox from '../../../helpers/labelbox/labelbox'
 import Button from '@material-ui/core/Button';
 import { NavLink, useParams } from "react-router-dom";
-import { GetParticularPrescriptionDetails } from '../../../actions/prescriptionhistoryaction';
+import { GetParticularPrescriptionDetails, DeletePrescriptionDetails, CancelPrescriptionOrder, PatientPharmacyConfirmOrder } from '../../../actions/prescriptionhistoryaction';
 import { useDispatch, connect } from "react-redux";
 import './orderdetails.scss'
 import moment from 'moment';
@@ -43,10 +43,12 @@ function OrderTable(props) {
   const [particularDetails, setParticularDetails] = useState({})
   const [medicineDetails, setMedicineDetails] = useState([])
   const [rowData, setRowData] = useState([])
+  const [medicineId, setMedicineId] = useState()
   let { rowId } = useParams()
 
-  const ModalOpenClick = () => {
+  const ModalOpenClick = (id) => {
     setmodalOpen(true)
+    setMedicineId(id)
   }
   const ModalCloseClick = () => {
     setmodalOpen(false)
@@ -57,15 +59,6 @@ function OrderTable(props) {
   const EditClose = () => {
     seteditOpen(true)
   }
-  // const rows = [
-  //   createData('Dolo 650', 6, <span>25<DeleteIcon onClick={ModalOpenClick} style={{ fill: "#D11A2A", cursor: "pointer", position: "relative" }} /></span>),
-  //   createData('Naproxen', 10, <span>25<DeleteIcon onClick={ModalOpenClick} style={{ fill: "#D11A2A", cursor: "pointer", position: "relative" }} /></span>),
-  //   createData('Tylenol', 20, <span>30<DeleteIcon onClick={ModalOpenClick} style={{ fill: "#D11A2A", cursor: "pointer", position: "relative" }} /></span>),
-  //   createData('Paracetamol', 6, <span>15<DeleteIcon onClick={ModalOpenClick} style={{ fill: "#D11A2A", cursor: "pointer", position: "relative" }} /></span>),
-  //   createData('Paracetamol', 6, <span>15<DeleteIcon onClick={ModalOpenClick} style={{ fill: "#D11A2A", cursor: "pointer", position: "relative" }} /></span>),
-  //   createData('Paracetamol', 6, <span>15<DeleteIcon onClick={ModalOpenClick} style={{ fill: "#D11A2A", cursor: "pointer", position: "relative" }} /></span>),
-
-  // ];
 
   useEffect(() => {
     dispatch(GetParticularPrescriptionDetails(rowId))
@@ -78,7 +71,7 @@ function OrderTable(props) {
 
   }, [props.GetParticularPrescriptionDetails])
 
-  // console.log(particularDetails, "particularDetails")
+
 
   useEffect(() => {
     let rowDataList = []
@@ -89,7 +82,7 @@ function OrderTable(props) {
         calories: data.quantity,
         fat: <>
           {data.amount}
-          <DeleteIcon onClick={ModalOpenClick} style={{ fill: "#D11A2A", cursor: "pointer", position: "relative" }} />
+          <DeleteIcon onClick={() => ModalOpenClick(data.medicineId)} style={{ fill: "#D11A2A", cursor: "pointer", position: "relative" }} />
         </>
 
       })
@@ -98,7 +91,23 @@ function OrderTable(props) {
     setRowData(rowDataList)
   }, [props.GetParticularPrescriptionDetails])
 
+  const deleteList = () => {
+    console.log(medicineId, "medicineId")
+    // let medicineid=medicineDetails.
+    dispatch(DeletePrescriptionDetails(medicineId)).then((response) => {
+      setmodalOpen(false)
+    })
+  }
 
+  const cancelOrder = () => {
+    dispatch(CancelPrescriptionOrder(particularDetails.orderId)).then((response) => {
+    })
+  }
+
+  const confirmOrder = () => {
+    dispatch(PatientPharmacyConfirmOrder(particularDetails)).then((response) => {
+    })
+  }
 
   return (
     <div className="order_de">
@@ -106,9 +115,9 @@ function OrderTable(props) {
       <div>
         <Layout style={{ marginBottom: "18px" }}>
           <Header style={{ fontSize: "18px" }} className="h_styles">
-            <div><label>Order ID</label><label style={{ color: "#939393", marginLeft: "12px" }}>{particularDetails.orderNumber}</label></div>
-            <div>Dr.{particularDetails.doctorName}</div>
-            <div>{moment(particularDetails.prescript_date).format('DD-MMM-YYYY').split(',')}</div>
+            <div><label>Order ID</label><label style={{ color: "#939393", marginLeft: "12px" }}>{particularDetails && particularDetails.orderNumber}</label></div>
+            <div>Dr.{particularDetails && particularDetails.doctorName}</div>
+            <div>{moment(particularDetails && particularDetails.prescript_date).format('DD-MMM-YYYY').split(',')}</div>
           </Header>
         </Layout>
       </div>
@@ -137,7 +146,7 @@ function OrderTable(props) {
           </TableBody>
         </Table>
       </TableContainer>
-      <div className="t_amt_parent"><div className="t_amt_child"><div className="t_amt"><label style={{ color: "#333", fontSize: "18px", fontWeight: "bold" }}>Total Amount :</label><label style={{ color: "#939393", fontSize: "18px", fontWeight: "bold", paddingLeft: "7px" }}>{particularDetails.total_amount + " KWD"}</label></div></div></div>
+      <div className="t_amt_parent"><div className="t_amt_child"><div className="t_amt"><label style={{ color: "#333", fontSize: "18px", fontWeight: "bold" }}>Total Amount :</label><label style={{ color: "#939393", fontSize: "18px", fontWeight: "bold", paddingLeft: "7px" }}>{particularDetails && particularDetails.total_amount + " KWD"}</label></div></div></div>
       <Modal
         title={false}
         visible={modalOpen}
@@ -150,7 +159,15 @@ function OrderTable(props) {
         // confirmLoading={confirmLoading}
         onCancel={ModalCloseClick}
       >
-        <DeleteRecord Close={ModalCloseClick} />
+
+        <div className="record_delete">
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: "25px", color: "#333", fontWeight: "bold", marginBottom: "8px" }}>Are you sure?</div>
+            <div style={{ color: "#595959", fontSize: "17px" }}>You want to delete this record</div>
+            <div style={{ marginTop: "25px" }}><Button className="order_cancel" onClick={() => setmodalOpen(false)}>Cancel</Button><Button className="order_save" onClick={deleteList}>OK</Button></div>
+          </div>
+        </div>
+        {/* <DeleteRecord Close={ModalCloseClick} /> */}
       </Modal>
       {/* delivery status view */}
       <div style={{ margin: "10px 0px 10px 5px", fontWeight: "bold" }}>
@@ -164,7 +181,7 @@ function OrderTable(props) {
             <div style={{ margin: "5px 10px 0px 10px" }}><HomeIcon className="home_icon" /></div>
 
             <div style={{ width: "100%" }}>
-              {editOpen === true ? <div><label style={{ fontSize: "16px", fontWeight: "bold" }}>Delivery  home</label><div>{particularDetails.patientName}</div></div>
+              {editOpen === true ? <div><label style={{ fontSize: "16px", fontWeight: "bold" }}>Delivery  home</label><div>{particularDetails && particularDetails.patientName}</div></div>
 
                 : <div>
                   {/* <Labelbox type="textarea" errmsg={false} /> */}
@@ -186,8 +203,8 @@ function OrderTable(props) {
       </div>
       {/* button */}
       <div style={{ textAlign: "center", marginTop: "10px" }}>
-        <Button className="cancel_odr">Cancel Order</Button>
-        <NavLink to="paymentmethod"><Button className="confirm">Confirm and pay</Button></NavLink>
+        <Button className="cancel_odr" onClick={cancelOrder}>Cancel Order</Button>
+        <NavLink to="/paymentmethod"><Button className="confirm" onClick={confirmOrder}>Confirm and pay</Button></NavLink>
       </div>
     </div>
   );
