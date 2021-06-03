@@ -1,0 +1,120 @@
+.ava_slots_div{
+    box-shadow: 0px 3px 6px #00000029;
+border-radius: 20px 20px 0px 0px;
+background-color: #F1F1F1;
+height: 60px;
+font-size: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+}
+.slot_parent_inner_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 0 32%;
+    margin:10% 30px 0px 30px ;
+    Button{
+        background: #83AF4040;
+     border: 1px solid #83AF40;
+    border-radius: 3px;
+    color: #83AF40;
+    height:45px;
+    width:120px;
+    flex: 0 0 33.333333%;
+    margin-bottom: 30px;
+    }
+}
+.b_dot_avail_up{
+    background-color: #83AF40;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    margin-right: 4px;
+}
+.b_dot_avail_ex{
+    background-color: #E0EBCF;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    margin-right: 4px;
+}
+.b_res_avail_ex{
+    background-color: #FDCABB;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    margin-right: 4px;
+}
+.ava_dot_cir_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    label{
+        margin-bottom: 0px;
+    }
+}
+.ava_dot_cir_div:nth-child(2){
+    padding: 0px 20px;
+    
+}
+.algn_cnt_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:20px;
+    Button{
+    border: 1px solid #83AF40;
+    border-radius: 39px;
+    color: #fff;
+    background-color:#83AF40;
+    width: 150px;
+    font-weight: 600;
+    text-transform: none;
+    }
+    Button:hover{
+        background-color:#83AF40;
+    }
+}
+.Changecolor{
+    background-color: red !important;
+}
+
+
+@media  screen and(max-width: 959px){
+ .bookings_cal_range{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+}
+@media only  screen and(max-width: 1280px) and (min-width: 1024px) {
+  .tra_booking_confirm{
+      width:75% !important;
+  }
+}
+@media only  screen and(max-width: 1280px) and (min-width: 1024px) {
+    .tra_booking_confirm{
+        width:75% !important;
+    }
+  }
+  @media only  screen and(max-width: 1024px) and (min-width:959px) {
+    .tra_booking_confirm{
+        width:93% !important;
+    }
+  }
+  @media   screen and(max-width: 959px){
+    .tra_booking_confirm{
+        margin-top: 15px;
+        width:69% !important;
+    }
+  }
+  @media   screen and(max-width: 768px){
+    .tra_booking_confirm{
+        margin-top: 15px;
+        width:90% !important;
+    }
+  }

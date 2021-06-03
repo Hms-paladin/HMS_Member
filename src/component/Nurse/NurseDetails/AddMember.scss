@@ -1,0 +1,22 @@
+.add_mem_parent{
+    padding:10px 8%;
+}
+.gender_date_div{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.add_mem_parent .formdiv{
+    margin-bottom: 10px;
+}
+.add_mem_parent .formdiv:first-child{
+    padding-right: 15px;
+}
+.add_mem_parent .height_cms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 11px;
+    top: 6px;
+}

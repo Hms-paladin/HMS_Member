@@ -1,0 +1,33 @@
+.share_root{  
+    box-shadow: inset 1px 1px 10px #08c;
+    padding:20px;
+    height:100%;
+    text-align: center;
+    display: grid;
+    background-color: black;
+    
+}
+.close_share_icon{
+    fill:#fff !important;
+    position: absolute;
+    right:17px;
+    cursor: pointer;
+}
+.close_share_icon:hover{
+    fill: #616161 !important;
+}
+.share_head{
+    font-size: 22px;
+    text-align: center;
+    font-weight: 500;
+     margin-top: 10%;
+    color: #fff;
+}
+.react-share__ShareButton{
+    padding-right: 10px !important;
+    cursor: pointer;
+}
+.Share_modal .MuiDialog-paper{
+    height:450px !important;
+    position: relative;
+}

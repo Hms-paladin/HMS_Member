@@ -1,0 +1,151 @@
+.filter_container_icons{
+    box-shadow: 0px 0px 4px 1px #ccc;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 10px;
+    margin-right: 40px;
+    
+}
+.tra_his_item_p{
+    padding: 20px;
+    margin-bottom: 13px;
+    box-shadow: 0px 0px 4px 1px #ccc !important;
+    border-radius: 6px !important;
+}
+.tainerlist_home{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+}
+.home_icon{
+    text-align: center;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 17px;
+    background-color: #fff !important;
+    width: 70px;
+    height: 72px;
+    svg{
+        fill:#41AFA5;
+        font-size: 2.3rem;
+    }
+     div{
+        font-size: 13px;
+        color:#6F6B6B;
+    }
+ 
+}
+
+.internet_div_tra{
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 17px;
+    background-color: #fff !important;
+    width: 70px;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg{
+        width:27px;
+    }
+     path{
+        fill: #6e41af;
+    }
+    div{
+        font-size: 13px;
+        color:#6F6B6B;
+    }
+   
+}
+.inter_net_img{
+    text-align: center;
+}
+.internet_div_gym{
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 17px;
+    background-color: #fff !important;
+    width: 70px;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg{
+        width:22px;
+    }
+    
+    div{
+        font-size: 13px;
+        color:#6F6B6B;
+    }
+   
+}
+// profile and card inside items
+.tainerlist_home_inner_p{
+    display: flex;
+    cursor: pointer;
+   
+}
+.home_icon_inner_p{
+    svg{
+        fill:#41AFA5;
+        font-size: 1.5rem;
+    }
+     div{
+        font-size: 10px;
+        color:#6F6B6B;
+        font-weight: 500;
+    }
+}
+.internet_div_tra_inner_p{
+    padding: 0px 10px;
+    svg{
+        width:17px;
+        height:25px;
+    }
+     path{
+        fill: #6e41af;
+    }
+    div{
+        font-size: 10px;
+        color:#6F6B6B;
+        font-weight: 500;
+    }
+}
+.internet_div_gym_inner_p{
+    svg{
+        width:15px;
+        height:25px;
+    }
+    
+    div{
+        font-size: 10px;
+        color:#6F6B6B;
+        font-weight: 500;
+    }
+}
+
+@media screen and (max-width: 959px) {
+   .filter_container_icons{
+       width:50%;
+       margin-right: 0px !important;
+   }
+   .fil_cont_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
+@media only screen and (max-width: 1100px) and (min-width: 959px) 
+ { 
+    .filter_container_icons{
+        width:300px !important;
+    }
+}
+@media only screen and (max-width: 1359px) and (min-width: 959px) 
+{
+    .filter_container_icons{
+        width:100%;
+        margin-right: 0px !important;
+    }
+}

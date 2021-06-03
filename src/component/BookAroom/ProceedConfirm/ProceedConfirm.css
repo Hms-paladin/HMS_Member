@@ -1,0 +1,8 @@
+.bk_img_div{
+   text-align: center;
+}
+.span_cont{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
