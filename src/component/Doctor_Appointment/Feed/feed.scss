@@ -1,3 +1,66 @@
+@import "~video-react/styles/scss/video-react"; 
+
+div.ad_doc_btn > a > button.MuiButtonBase-root > span.MuiButton-label {
+    color: #fff !important;
+}
+
+.react-calendar__tile--active {
+    background: #83AF40 !important;
+    color: white;
+}
+
+.react-calendar {
+    width: 100% !important;
+    //margin-top: 10px !important;
+    margin-bottom: 10px !important;
+
+}
+#date-picker-inline{
+    text-align: center !important;;
+}
+.MuiTypography-root, .MuiMenuItem-gutters, .MuiSelect-selectMenu{
+    color: #000 !important;
+}
+h4.MuiTypography-h4, h6.MuiPickersToolbarText-toolbarTxt{
+    color: #fff !important;
+}
+
+.MuiButtonBase-root,  #date-picker-inline {
+    color: #fff !important;
+}
+.divcalendar{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    background: rgb(131, 175, 64);
+}
+.MuiPickersToolbar-toolbar {
+    background-color: rgb(131, 175, 64) !important;
+}
+.MuiPickersDay-daySelected {
+    color: #fff !important;
+    font-weight: 500 !important;
+    background-color: rgb(131, 175, 64) !important;
+}
+.MuiPickersDay-daySelected > .MuiIconButton-label > .MuiTypography-root {
+    color: #fff !important;
+}
+
+.MuiFormControl-marginNormal {
+    margin-top: 10px !important;
+}
+.MuiIconButton-label{
+    color: black I !important;
+}
+
+.h1div{
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+    color: #fff !important;
+    // text-align: center !important;
+    padding: 1% 2% !important;
+    font-size: 150% !important;
+}
+
 .feed_layout{
     padding: 30px 150px;
 }
@@ -7,14 +70,17 @@
     width: 30%;
     font-weight: 500;
     border-radius: 10px;
-    margin-right: 80px;
+    margin-right: 40px;
     height: 100%;
 }
 .filter_container .MuiSlider-rail,.MuiSlider-track,.MuiSlider-mark
     {
     height: 5px !important;
 }
-.filter_container .MuiSlider-root {
+.MuiInputBase-input{
+    color: #fff !important;
+}
+.filter_container .MuiSlider-root, .MuiButton-label {
     color: #83AF40;
 }
 .Costfiler{
@@ -31,12 +97,17 @@ font-size: 12px;
     text-align:center !important;
     width: 100% !important;
     color: #fff !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    font-size: 18px !important;
 }
 .feed_layout{
     display: flex;
     justify-content: space-between;
 }
+// .female .MuiButton-root:hover{
+//     background-color: #83AF40 !important;
+// }
 .page_control{
     box-shadow: 0px 0px 4px 1px #ccc;
     padding: 10px;
@@ -58,6 +129,20 @@ font-size: 12px;
     height: 30px !important;
     min-width: unset !important;
     margin-right: 5px !important;
+}
+.day_changes,.night_changes{
+    background-color: #83AF40 !important;
+    path{
+        fill:#fff !important;
+    }
+}
+
+.day_changes,.night_changes{
+    border: 0px solid #ccc !important;
+    width: 36px !important;
+    height: 30px !important;
+    min-width: unset !important;
+    margin-right: 5px !important; 
 }
 .left,.right{
     border: 1px solid #83AF40 !important;
@@ -89,7 +174,7 @@ font-size: 12px;
     fill: #fff;
 }
 .night path{
-    fill: grey;
+    fill: #ccc;
 }
 .controlbtns{
     display: flex;
@@ -101,31 +186,40 @@ font-size: 12px;
      color: #fff !important;
      height: 30px !important;
 }
-.male,.female{
+.male_ic,.female_ic{
     border: 1px solid #ccc !important;
     width: 36px !important;
     height: 30px !important;
     min-width: unset !important;
     margin-right: 5px !important;
 }
-.male svg{
+.male_changes,.female_changes{
+    border: 0px solid #ccc !important;
+    width: 36px !important;
+    height: 30px !important;
+    min-width: unset !important;
+    margin-right: 5px !important;
+}
+.female_changes,.male_changes{
+    background-color: #83AF40 !important;
+    svg{
+        fill:#fff;
+        width: 22px;
+        height: 22px ;
+    }
+}
+.male_ic svg{
     width: 25px;
     height: 25px ;
-    fill: grey;
+    fill: #ccc;
 }
-.female{
-    background-color: #83AF40 !important;
-}
-.female svg{
+
+.female_ic svg{
     width: 22px;
     height: 22px ;
-    fill: #fff;
+    fill: #ccc ;
 }
-.female:hover{
-    background: #83AF40 !important;
-    opacity: 70% !important;
 
-}
 .sort{
     display: flex;
 }
@@ -137,6 +231,12 @@ font-size: 12px;
 .sort svg{
     width: 16px;
     height: 16px;
+}
+.best_offers{
+    display: flex;
+    div{
+        margin-right: 5px;
+    }
 }
 @media only screen and (max-width: 1220px) {
     .feed_layout{
@@ -199,7 +299,7 @@ font-size: 12px;
     width: 50%;
 }
 .pimary_detail .detail3,.detail2{
-    color: grey;
+    color: #ccc;
 }
 .pimary_detail .detail3{
     font-size: 10px !important;
@@ -225,11 +325,18 @@ font-size: 12px;
     margin-bottom: 0px !important;
 }
 
-
+.vd_share{
+    position: absolute;
+    fill: #f8f9fa !important;
+    top: 25px;
+    right: 25px;
+    font-size: 2.5rem !important;
+    cursor: pointer;
+}
 
 .carousel-indicators li{
     height: 10px !important;
-    width: 10px ;
+    width: 10px !important;
     border-radius: 50px !important;
     border: 0px !important;
     background-color: grey;
@@ -243,6 +350,13 @@ font-size: 12px;
     margin-top: 15px;
 
 }
+
+div.time_slots > button.MuiButtonBase-root > span.MuiButton-label{
+    color: #83AF40 !important;
+}
+div.filter_container > div > button.MuiButtonBase-root > span.MuiButton-label{
+    color: #fff !important;
+}
 .carousel-item img{
     width: 100%;
     height:100%
@@ -251,6 +365,16 @@ font-size: 12px;
     width: 100% !important;
     height: 100% !important;
 }
+.player-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+  }
+  
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 .offer_percent{
     width: 50px;
     height: 50px;
@@ -302,7 +426,7 @@ justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
     margin-top: 15px !important;
-
+    position: relative;
 
 }
 
@@ -314,7 +438,8 @@ justify-content: space-between;
 height: 28px !important ;
 margin-right: 12px !important; 
 margin-top: 10px !important;
-width: 80px !important;
+// width: 92px !important;
+// white-space: nowrap;
 }
 .redbtn{
     background-color: #fbeae5 !important; 
@@ -327,4 +452,52 @@ margin-top: 10px !important;
 
 width: 80px !important;
 
+}
+
+
+
+// appointment type css
+.appoint_type_doc{
+    // box-shadow: 0px 4px 8px #00000029;
+    // border-radius: 10px;
+    // position: absolute;
+    // padding: 20px;
+    // bottom: 90px;
+    // background-color: #fff;
+    // right: 0;
+}
+.type_div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    div{
+        text-align: center;
+    }
+}
+.internet_type{
+    position: absolute;
+    background-color: #83AF40;
+    width: 20px;
+    height: 20px;
+    right: 6px;
+    bottom: 20px;
+    /* top: -4px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* padding: 8px; */
+
+   img{
+       width:10px;
+   }
+}
+.calendar_part_parent{
+    position:relative;
+}
+.online_type{
+    position: relative;
+}
+.ant-popover-buttons{
+    display: none;
 }

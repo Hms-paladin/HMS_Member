@@ -1,7 +1,9 @@
 import React from "react";
 import "./editprofile.scss";
 import Labelbox from '../../../helpers/labelbox/labelbox'
-import avatar from "../../../images/user.png";
+// import avatar from "../../../images/user.png";
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import Avatar from '../../../helpers/Upload/Upload'
 import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 
 var hashHistory = require('react-router-redux')
@@ -25,13 +27,16 @@ function Editprofile(props) {
               <div className="editprofile">
                   <div className="edit_header">Edit profile</div>
                   <div className="img_flex_row">
-                      <img src={avatar}/>
+                      <div className="upload_place_plus">
+                       <Avatar/>
+                       <AddBoxIcon className="plus_ad"/>
+                       </div>
                       <span onClick={Update}>Update</span>
                    </div>
                   <div className="flex_row">
                     
                   <div className="lblbox"> <Labelbox type="text" labelname="Name"/>  </div>
-                  <div className="lblbox"><Labelbox type="text" labelname="Date of Birth"/></div>
+                  <div className="lblbox"><Labelbox type="datepicker" labelname="Date of Birth"/></div>
 
                   </div>
                  <div className="flex_row">
@@ -47,7 +52,7 @@ function Editprofile(props) {
                     </div>
                     <div className="flex_row">
                     
-                    <div className="lblbox"> <Labelbox type="text" labelname="Expected Delivery Date"/>  </div>
+                    <div className="lblbox"> <Labelbox type="datepicker" labelname="Expected Delivery Date"/>  </div>
                     <div className="lblbox"><Labelbox type="text" labelname="Baby Name"/></div>
   
                     </div>

@@ -100,7 +100,13 @@ export default function OrderPacking() {
           <KeyboardArrowDownIcon className="down_arr" onClick={TrackClick}/>:
       <KeyboardArrowUpIcon className="down_arr" onClick={TrackClick}/>}
       </div>
-      {TrackOpen===true?<div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",marginTop:"17px"}}><div style={{width:"50%",boxShadow:" 0px 3px 10px #00000029",borderRadius:"15px"}}><div style={{width:"100%"}}><CustomizedSteppers/></div></div></div>:null}
+      {TrackOpen===true?<div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",marginTop:"17px"}}>
+        <div style={{width:"50%",boxShadow:" 0px 3px 10px #00000029",borderRadius:"15px"}} className="pha_track_div">
+          <div style={{width:"100%"}}>
+          <CustomizedSteppers/>
+          </div>
+          </div>
+          </div>:null}
        </div>
      
     </div>

@@ -1,9 +1,10 @@
 
-.bookings_parentdiv{
+.nurse_bookings_parentdiv{
     margin-left: 10%;
     margin-right: 10%;
     padding-top: 20px;
 }
+
 .book_headdiv{
     margin-bottom: 10px;
     display: flex;
@@ -30,7 +31,7 @@
     width:110px;
     height:110px;
     border-radius: 50%;
-
+    cursor: pointer;
 }
 .book_nurse_div{
     display:flex;
@@ -54,16 +55,17 @@
     height:50%;
     
 }
-.duty_snddiv{
+.nurse_bookings_parentdiv .duty_snddiv{
     width: 100%;
     height: 50%;
     display: flex;
     align-items: flex-end;
-    justify-content: space-around;
+    justify-content: flex-end;
 }
-.book_reshedule{
+.nurse_bookings_parentdiv .book_reshedule{
     color:#F2951B;
     font-weight: 600;
+    margin-right: 25px;
 }
 .b_cancel{
     color:#FF6464;
@@ -78,7 +80,7 @@
     font-weight: 600;
     cursor: pointer;
 }
-.book_shedule{
+.nurse_bookings_parentdiv .book_shedule{
     color:#83AF40;
     font-weight: 600;
     cursor: pointer;

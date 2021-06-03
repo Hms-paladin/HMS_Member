@@ -4,16 +4,22 @@
     padding: 8px;
 }
 .nusre_hisparent{
-    padding:15px 10% 0px;
+    padding:20px 10% 0px;
 }
 .off_per{
     position: absolute;
     top:6px;
-    left:13px;    
+    left:13px;  
+    font-size: 15px;  
 }
 .srch_his{
     border-radius: 20px !important;
-    border:1px solid #7070707d !important;
+    // border:1px solid #7070707d !important;
+        box-shadow: 0px 0px 5px 0px #ccc !important; 
+        border-radius: 20px !important;
+        /* border: 1px solid #7070707d !important; */
+        height: 37px;
+        border: none !important;
 } 
 .fli{
     font-weight: 600;
@@ -23,10 +29,20 @@
     margin-bottom: 10px;
     
 }
+.l_gender_div{
+    width:50%;
+}
+.snd_part_nurhis{
+    padding-left: 3%;
+}
+.nur_his_sort{
+    width:10px;
+}
 .mnth_cost{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width:100%;
 }
 .mnth_amt{
     color:#83AF40;
@@ -66,6 +82,7 @@ background-color: #83AF40 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 8px;
 }
 .nur_age{
     padding-right: 10px;
@@ -92,6 +109,7 @@ background-color: #83AF40 !important;
     padding: 18px 0px 0px 40px; 
     color:#666666;
     font-size: 15px;
+    font-weight: 500;
 }
 .scnd_chld p{
     margin-bottom: 8px !important;
@@ -113,7 +131,7 @@ background-color: #83AF40 !important;
     display: table-row-group;
 }
 .off_per p{
-  margin-bottom: 0px !important;
+  margin-bottom: -6px !important;
   font-weight: bold;
   color: #fff;
 }
@@ -142,9 +160,60 @@ background-color: #83AF40 !important;
     height:8px !important;
 }
 .nusre_hisparent .ant-slider-handle{
-    width:17px !important;
-    height:17px !important;
+    width:15px !important;
+    height:15px !important;
 }
 .nusre_hisparent .ant-slider{
     margin:0px 0px 12px !important;
+}
+
+
+// nurse modal
+.lab_ad_bth{
+    position: absolute;
+    right: 25px;
+    bottom: 20px;
+
+   Button{
+       background-color: #83AF40;
+       color: #fff;
+       text-transform: none;
+       border-radius: 1px;
+       font-size: 16px;
+       font-weight: 600;
+       width:120px;
+   }
+   Button:hover{
+    background-color: #83AF40;
+
+   }
+}
+.lab_ad_div_inside{
+    position: relative;
+}
+.lab_ad_modal .ant-modal-body{
+    padding: 0px !important;
+}
+
+
+// slider css
+ .MuiSlider-rail,.MuiSlider-track,.MuiSlider-mark
+    {
+    height: 5px !important;
+}
+ .MuiSlider-root {
+    color: #83AF40 !important;
+}
+
+// media query
+@media screen and (max-width: 959px) {
+.nurse_grid_items_p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nurse_grid_items_div{
+    width:70% !important;
+    margin-bottom: 15px;
+}
 }

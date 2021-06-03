@@ -1,0 +1,178 @@
+.menu_list_details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.d_img_div{
+    display: flex;
+    align-items: center;
+}
+.menu_list_details p{
+    margin-bottom: 0px !important;
+}
+.d_menu_head{
+    font-weight: bold;
+    font-size: 18px;
+}
+.d_del_adrs{
+    color:#333333;
+}
+.mplan_per{
+    
+}
+.menu_d_name{
+    font-size: 15px;
+    color:#83AF40;
+    font-weight: 600;
+}
+.menu_amt{
+    font-weight: 600;
+    font-size: 15px;
+}
+.d_fst_imgdiv{
+    display: flex;
+    align-items: center;
+}
+.diet_menu_div{
+    padding-right: 30px;
+}
+// buttons css
+.week_btns{
+    border-radius:0px 50px 50px !important;
+    margin-top: 20px;
+}
+.week_btns .MuiButton-root:last-child{
+    border-radius: 0px 50px 50px 0px !important;
+}
+.week_btns .MuiButton-root:first-child{
+    border-radius: 50px 0px 0px 50px !important;
+}
+.week_btns .MuiButton-root{
+    font-size: 14px !important;
+    text-transform: none !important;
+    background-color: #F0F0F0 !important;
+    border: none !important;
+    padding:8px 30px !important;
+    color:#333  !important;
+    font-weight: 500 !important;
+}
+// repeat menu css
+.re_menu_of{
+    font-size: 18px;
+    color:#707070;
+    margin-bottom: 0px !important;
+    margin-top: 15px;
+}
+.re_menu_div{
+    display: flex;
+    align-items: center;
+    margin-top: -11px;
+}
+// select btn css
+.d_select_btn_div{
+    text-align: end;
+}
+.s_btn{
+    width:100px !important;
+    text-transform: none !important;
+    background-color: #83AF40 !important;
+    border-radius: 50px !important;
+    color:#fff !important;
+}
+// antd tab css
+.tab_list_view .ant-tabs-tab{
+    font-size: 20px !important;
+}
+.tab_list_view .ant-tabs-nav-list{
+    justify-content: space-evenly !important;
+    width:100%;
+}
+.tab_list_view .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    color:#83AF40 !important;
+}
+.tab_list_view .ant-tabs-ink-bar{
+    height:3px !important;
+    background-color: #83AF40 !important;
+}
+.tab_list_view{
+    box-shadow: 0px 0px 4px 1px #00000029;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.b_fast_img{
+    width:95px;
+    border-radius: 50%;
+    height: 95px;
+}
+.b_fast_imgparent_div{
+    position: relative;
+    box-shadow: 0px 0px 4px 1px #00000029;
+    border-radius: 15px;
+    height: 100px;
+    width:200px;
+    margin: 10% 5% 3% 0px;
+    cursor: pointer;
+}
+.b_fast_img_div{
+    position: absolute;
+        top: -36px;
+        left: 50%;
+        transform: translate(-50%, -14%);
+        box-shadow: 0px 0px 4px 1px #00000029;
+        padding:10px;
+        border-radius: 50%;
+}
+.b_fast_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height:470px;
+    overflow-y: scroll;
+}
+.b_fast_name{
+    
+    font-weight: 500;
+    padding-left: 10px;
+    margin-bottom: 8px !important;
+    font-size: 12px;
+    color: #707070;
+   
+}
+.bottom_labels_d{
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    padding:0px 10px;
+    align-items: center;
+}
+.b_fast_tick{
+    background-color: #83AF40;
+    margin-bottom: 8px;
+    border-radius: 50px;
+    fill: #fff !important;
+    padding: 3px;
+}
+.d_select_div{
+    width:30%;
+    margin:10px  20px 0px 0px; 
+}
+.d_select_div .ant-select{
+    box-shadow: 0 0 1.5px 0px #ccc;
+}
+.d_datepicker{
+    width:30%;
+}
+@media only screen and (max-width: 1124px) {
+    .week_btns .MuiButton-root{
+        padding: 8px 20px !important;
+        font-size: 12px;
+    }
+    .d_select_div{
+        width:50%;
+    }
+    .d_datepicker{
+        width:50%;
+    }
+}

@@ -3,6 +3,9 @@
     height: 100%;
     display:flex;
 }
+.nurse_star_rating label{
+    margin-bottom: 0px !important;
+}
 .nurse_star_rating{
     width: 63px;
     height: 30px;
@@ -35,7 +38,7 @@
 .nurs_de_name{
     color:#333;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 2.5rem;
 }
 .grid_seconditem{
     display: flex;
@@ -65,9 +68,10 @@ border-radius: 3px;
 .cmy_sup{
     box-shadow: 0px 2px 11px #00000029;
     color:#696969;
-    padding:15px 25px;
+    padding:15px 25px 20px 25px;
     font-size: 16px;
     margin-top: 10px !important;
+    margin-bottom: 25px;
 }
 .nurse_detl{
     display: flex;
@@ -102,4 +106,8 @@ border-radius: 3px;
 .booking_confr{
     box-shadow: 0px 3px 16px #00000029;
     border-radius: 14px;   
+}
+.grid_seconditem  .lab_adrs{
+    font-size: 15px;
+    color:#BCBABA;
 }

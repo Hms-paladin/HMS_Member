@@ -1,0 +1,121 @@
+
+.bookings_parentdiv{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 20px;
+}
+.book_headdiv{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.book_head{
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+.booktype_div{
+    display: flex;
+    padding:10px 23px;
+}
+.bookhistory_list_parent{
+    box-shadow: 0px 1px 7px #00000021;
+    border-radius: 20px;
+    opacity: 1;
+    margin-bottom: 20px;
+    width:100%;
+}
+.book_img{
+    width:110px;
+    height:110px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+.book_div{
+    display:flex;
+    align-items: center;
+    width:65%;
+}
+.bookhistory_list p{
+    margin-bottom: 4px !important;
+}
+.book_sec_div{
+    padding-left: 20px;
+}
+.book_h_name{
+    font-weight: 600;
+    font-size: 20px;
+}
+.room_div{
+    display: grid;
+    align-items: center;
+    justify-content: flex-end;
+    height:50%;
+    font-weight: 600;
+    padding-top: 30px;
+    font-size: 16px;
+    
+}
+.book_cancel{
+    display: flex; 
+    margin: 17px;
+    justify-content: flex-end;
+}
+.book_reshedule{
+    color:#F2951B;
+    font-weight: 600;
+}
+/* .b_cancel{
+    color:#FF6464;
+    font-weight: 600;
+    cursor: pointer;
+} */
+.b_cancel_change{
+    color:#fff;
+    background-color: #83AF40;
+    padding: 3px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.book_shedule{
+    color:#83AF40;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 25px;
+}
+/* // cancel to click part */
+.amt_process{
+    background-color:#E6E6E6;
+    color:#808080;
+    padding:10px 40px;
+    margin-right: 20px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+.cancel_part_open{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #cccccc;
+}
+.cancel_part_div{
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+}
+.cancel_div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
+}
+.cancel_align{
+    margin-right: 25px;
+    /* margin-bottom: 20px; */
+    color:#FF6464;
+    font-weight: 600;
+    cursor: pointer;
+}

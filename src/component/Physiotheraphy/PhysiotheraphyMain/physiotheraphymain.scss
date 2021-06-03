@@ -1,0 +1,18 @@
+.mainpage_heading{
+    font-size: 20px;
+    font-weight: 600;
+ 
+    padding-top: 30px;
+}
+.feedsearch{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.feedsearch .searchicon{
+  position: relative;
+height: 18px;
+z-index: 1;
+top: 5px;
+right: 38px;
+}

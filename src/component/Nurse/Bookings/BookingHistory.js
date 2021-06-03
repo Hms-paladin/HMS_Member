@@ -75,6 +75,7 @@ export default function BookingHistory(props){
               size={"lg"}
               {...props}
               centered
+              width={900}
               className="confirm_modal"
               onCancel={ModalClickClose}
              >

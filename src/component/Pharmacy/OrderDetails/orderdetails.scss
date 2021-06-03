@@ -5,8 +5,9 @@
     border-bottom: 0px !important;
 }
 .order_de .MuiTableCell-head{
- color:#333 !important;
  font-size: 18px !important;
+ font-weight: 600;
+color: #333333 !important;
 }
 // .MuiTable-root{
 //     width:120% !important;
@@ -25,7 +26,7 @@
 .t_amt{
   background-color: #ECEDEF;
   border-radius: 5px;
-  padding: 12px;
+  padding: 12px 20px;
   width:100%;
   display: flex;
   justify-content: center;
@@ -39,9 +40,7 @@
     align-items: center; 
     margin-top: 20px;
 }
-.t_amt_child{
-    width:25%;
-}
+
 // modalcss
 .delete_modal{
     border-radius: 50px!important;
@@ -114,6 +113,9 @@
     color:#fff !important;
     background-color: #83AF40 !important;
     text-transform: none !important;
+    .MuiButton-label {
+        color: white;
+    }
 }
 
 // labelbox textarea css

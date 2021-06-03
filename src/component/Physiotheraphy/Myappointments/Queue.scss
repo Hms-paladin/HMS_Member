@@ -1,0 +1,306 @@
+
+.imageitem ::selection {
+  background: none !important;
+}
+.prof_img_caro ::selection {
+  background: none !important;
+}
+
+.carousel-control.left 
+{
+    background-image:none !important; 
+  }
+
+.carousel-control.right 
+{
+    background-image:none !important; 
+  }
+  .queueimage
+  {
+  	width:100%;
+    height:100%;
+    border-radius: 50%;
+  }
+  .queueimage_container
+  {
+    width:100%;
+    height:100%;
+  }
+  .second_image
+  {
+  	border-radius: 50%;
+    width:150px;
+    top: 45%;
+    right: 56%;
+    transform:none !important;
+    height:150px;
+    border: 1px solid #fff;
+    bottom: 0px;
+    position: absolute;
+}
+  
+  .third_image
+  {
+       border-radius: 50%;
+    width:150px;
+    border: 1px solid #fff;
+    bottom: 0;
+    top: 45%;
+    right: 53%;
+    height:150px;
+    position: absolute;
+
+
+
+  }
+   .fourth_image
+  {
+  	border-radius: 50%;
+    width:150px;
+    height:150px;
+    bottom: 0;
+    right: 33%;
+    top: 45%;
+    position: absolute;
+    border: 1px solid #fff;
+  }
+   .fivth_image
+  {
+  	border-radius: 50%;
+    width:150px;
+    bottom: 0;
+    top: 45%;
+    right: 40%;
+    height:150px;
+    position: absolute;
+    border: 1px solid #fff;
+  }
+   .sixth_image
+  {
+     border-radius: 50%;
+    width: 150px;
+    top:45%;
+    right:40%;
+    height:150px;
+    /* bottom: 173px; */
+    position:absolute;
+    border: 1px solid #fff;
+    left: 37%;
+  }
+  .first_image
+  {
+    position:relative;
+  }
+
+.six
+{
+  width:100%;
+  height:100%;
+  border-radius: 50%;
+
+}
+.sd
+{
+  position:absolute;
+}
+.image1
+{
+  width:20px;
+  height:20px;
+}
+.queue_image
+{
+  width:100%;
+  height:100%;
+  border-radius: 50%;
+}
+  .css-1qzevvg 
+ {
+   top:45% !important;
+   width:100% !important;
+   position:absolute !important; 
+   right: 0 !important;
+
+ }
+ .css-1qzevvg img
+ {
+  margin-left: 15px !important;
+  margin-right:15px !important;
+ }
+
+ .ImageCarouselDynamic
+ {
+  position: relative;
+  border:none;
+  position: relative;
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+ } 
+ .image:after{
+  opacity: 0.6 !important;
+}
+ .image1
+ {
+  position:relative;
+ }
+
+ .right_arrow:active
+  {
+     color:green;
+  }
+ .carosal_arrow
+ {
+position: absolute;
+    top: 160px;
+    right: 65px;
+    width: 94%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: left;
+    font-size: 55px;
+
+    }
+    .left_arrow{
+    position: absolute;
+    left: 67px;
+    width: 40px;
+    cursor:pointer;
+    color:grey !important;
+}
+
+
+.left_arrow:active
+{
+  color:green;
+}
+  .details_queueimage
+  {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .details_queuediv
+  {
+    display: inline-block;
+    margin-left: 10px;
+    color:grey;
+    position: relative;
+    top: 20px;
+    font-size: 1.25rem;
+    white-space: nowrap;
+
+  }
+  .queue_detailsintimeimage
+  {
+    margin:20px;
+  }
+  .queue_detailsintimeimage_container
+  {
+    padding:20px;
+  }
+ .css-1fzpoyk
+ {
+  
+  transform: translateY(-50%) translateX(-50%) !important;
+  left:75%;
+  opacity: 1!important;
+ }
+
+ .queuediv_detailsintime
+ {
+     margin-right: 20px;
+     margin-left: 8%;
+     position:relative;
+     top:20px;
+     font-size: 1.25rem;
+     color:grey;
+     white-space: nowrap;
+ }
+ .right_arrow
+ {
+  color:grey !important;
+  cursor:pointer;
+ }
+ @media only screen and (max-width:959px){
+
+ .image
+ {
+  width:110px !important;
+  height:110px !important;
+ 
+ }
+.carosal_arrow
+ {
+position: absolute;
+    top: 112px;
+     right: 33px;
+    font-size: 38px;
+  }
+    .left_arrow{
+    position: absolute;
+    left: 30px;
+    width: 40px;
+
+  }
+  .right_arrow
+  {
+    position: absolute;
+    right:-38px;
+
+  }
+    .imageitem
+    {
+      width: 200px !important;
+    height: 250px !important;
+    }
+.queuecomp_container_doctor .queue_clinic_div {
+   width:100%;
+  }
+ 
+}
+@media only screen and (max-width:579px){
+
+  .image
+  {
+   width:80px !important;
+   height:80px !important;
+  }
+ .carosal_arrow
+  {
+ position: absolute;
+     top: 112px;
+      right: 33px;
+     font-size: 38px;
+   }
+     .left_arrow{
+     position: absolute;
+     left: 30px;
+     width: 40px;
+ 
+   }
+   .right_arrow
+   {
+     position: absolute;
+     right:-38px;
+ 
+   }
+     .imageitem
+     {
+       width: 145px !important;
+     height: 250px !important;
+     }
+  
+ .queuecomp_container_doctor .queue_clinic_div {
+    width:100%;
+   }
+}
+  .queuetime{
+    color:  #83AF40 !important;
+   display: flex;
+   justify-content:center;
+   align-items: center;
+   position: relative;
+   top:20px;
+   font-weight: 600;
+  }
+  
+  

@@ -5,6 +5,7 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import dateFormat from 'dateformat';
 import moment from 'moment';
+import Favorite from '@material-ui/icons/Favorite'
 import {
 	MuiPickersUtilsProvider,
 	KeyboardTimePicker,
@@ -17,6 +18,7 @@ import DateFnsUtils from '@date-io/date-fns';
 //   KeyboardTimePicker,
 //   KeyboardDatePicker,
 // } from '@material-ui/pickers';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { DatePicker, Select, TimePicker } from 'antd';
 
 
@@ -96,7 +98,7 @@ export default class Labelbox extends Component {
 				<div className="formdiv">
 					<label className="labeltxt">{data.labelname}</label>
 					<div>
-						<input className={`${data.error && "brdred"} brdrcls`} min="0" value={this.props.value} type="number" onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)} onKeyDown={e => (e.key === "e" || e.key === "+" || e.key === "-") && e.preventDefault()} />
+						<input className={`${data.error && "brdred"} brdrcls`} min="0" value={this.props.value} type="number" onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)} placeholder={this.props.placeholder} onKeyDown={e => (e.key === "e" || e.key === "+" || e.key === "-") && e.preventDefault()} />
 						{
 							<div className="Errormsg">
 								<div>{data.error && data.errmsg}</div>
@@ -112,7 +114,7 @@ export default class Labelbox extends Component {
 				<div className="formdiv">
 					<label className="labeltxt">{data.labelname}</label>
 					<div>
-						<textarea className={`${data.error && "brdred"} brdrcls`} rows="3" cols="50" value={this.props.value} onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)}></textarea>
+						<textarea className={`${data.error && "brdred"} brdrcls`} rows="3" cols="50" value={this.props.value} onChange={(e) => this.props.changeData && this.props.changeData(e.target.value)} placeholder={this.props.placeholder}></textarea>
 						{
 							<div className="Errormsg">
 								<div>{data.error && data.errmsg}</div>
@@ -153,20 +155,23 @@ export default class Labelbox extends Component {
 						{/*<DatePicker value={moment(this.props.value)?moment(this.props.value):new Date()} open={this.state.open}  onFocus={()=>this.setState({open:true})} onChange={(date)=>this.datepickerChange(date)}  className="datepickerchnge" style={{width:'100%',}} format="YYYY-MM-DD"  />*/}
 						<MuiPickersUtilsProvider utils={DateFnsUtils}>
 							<KeyboardDatePicker
+							    placeholder={this.props.placeholder}
 								disableToolbar={true}
-								autoOk={true}
+								// autoOk={true}
 								clearable={false}
 								disableUnderline={true}
 								disableFuture={this.props.disableFuture ? this.props.disableFuture : false}
 								disablePast={this.props.disablePast ? this.props.disablePast : false}
 								minDate={this.props.minDate ? this.props.minDate : null}
 								variant="variant"
-								format="dd/MM/yyyy"
+								format={this.props.format?this.props.format:"dd MMM yyyy"}
 								margin="normal"
 								id="date-picker-inline"
-								value={this.state.selecteddate}
+								hintText="Choose Date"
+								defaultValue="07:30"
+								emptyLabel={this.props.emptyLabel}
+								value={this.props.value === "" ? null : this.props.value}
 								onChange={(date) => this.datepickerChange(date)}
-
 							/>
 						</MuiPickersUtilsProvider>
 
@@ -202,6 +207,7 @@ export default class Labelbox extends Component {
 								KeyboardButtonProps={{
 									'aria-label': 'change time',
 								}}
+								keyboardIcon={<AccessTimeIcon />}
 							/>
 						</MuiPickersUtilsProvider>
 						{
@@ -243,7 +249,7 @@ export default class Labelbox extends Component {
 				<div className="formdiv">
 					<label className="labeltxt">{data.labelname}</label>
 
-					<Select disabled={this.props.disabled && true} className={`${data.error && "brdred"} ${data.error && "brdnone"} selectbox`} showSearch value={data.value ? optionValue : 'Select'} optionLabelProp="label"
+					<Select disabled={this.props.disabled && true} className={`${data.error && "brdred"} ${data.error && "brdnone"} selectbox`} showSearch value={data.value ? optionValue :this.props.optionValue} placeholder={this.props.placeholder} optionLabelProp="label"
 						optionFilterProp="label" onChange={(value) => this.props.changeData && this.props.changeData(value)}>
 						{data.dropdown && data.dropdown.length > 0 && data.dropdown.map((item, index) => {
 							return (

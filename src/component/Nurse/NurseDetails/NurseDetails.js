@@ -11,21 +11,29 @@ import StarIcon from '@material-ui/icons/Star';
 import Grid from '@material-ui/core/Grid';
 import BookingConfirmation from './BookingConfirmation'
 import DesignDuties from './DesignDuties'
+import SliderComp from '../../../helpers/Slider/Slider'
 import './NurseDetails.scss'
 export default function NurseDetails(){
     const [proceed,setproceed]=React.useState(false)
     const [Duties,setDuties]=React.useState(false)
+    const [HideAdrs,setHideAdrs]=React.useState(false)
+    const ElipseOpen=()=>{
+        setHideAdrs(!HideAdrs)
+    }
     function ProceedClick(){
         setproceed(true)
     }
     function DutiesClick(){
         setDuties(true)
     }
+    var settings = {
+        dots: true
+      };
     return(
         <div style={{width:"100%"}} className="nurse_de_parent">
         <div className="nursede_parent">
             <div style={{height:"250px",width:"100%"}}>
-            <img src={Nurse} style={{width:"100%",height:"100%"}}/>
+            <img src={Nurse} className="Pro_tra_img"/>
             </div>
         </div>
         <Grid container>
@@ -40,16 +48,23 @@ export default function NurseDetails(){
                 <div style={{textAlign:"center"}}>
             <div className="nurs_de_name">Rose</div>
                <div><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="start_emp_fill"/></div> 
-               <div style={{fontSize:"20px",fontWeight:"600"}}>27 Years / Female</div>
-               <div style={{color:"#666666",fontSize:"20px"}}>Wellness company</div>
-               <div>Jabriya</div>
+               <div style={{fontSize:"22px",fontWeight:"600"}}>27 Years / Female</div>
+               <div style={{color:"#666666",fontSize:"22px"}}>Wellness company</div>
+               <div>{HideAdrs?<label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:<label className="lab_adrs">Jabriya</label>}
+                                   <span className="elipse" onClick={ElipseOpen}>...</span></div>
                </div>
             </Grid>
             <Grid item sm={4} md={4} className="nurse_thirdgrid">
             <div className="mnth_kwd">480 KWD / Month</div><div className="exp_yrs">5 Years</div>
             </Grid>
             <Grid item sm={12} md={12} className="cmy_sup">
-                <div ><div>Dalal</div><div>"I appreciate your timely support when I was in agony and facing a lot of anxiety.My heartfelt thank to wellness company".</div></div>
+            <SliderComp>
+           
+            {[...Array(5)].map((img,index)=>(
+                <div ><div>Dalal</div>
+                <div>"I appreciate your timely support when I was in agony and facing a lot of anxiety.My heartfelt thank to wellness company".</div>
+                </div>))}
+                </SliderComp> 
             </Grid>
             </Grid>
             {/* nurse information */}

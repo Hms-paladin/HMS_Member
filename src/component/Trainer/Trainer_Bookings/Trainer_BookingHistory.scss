@@ -1,0 +1,48 @@
+.Tc_history .book_his_parent{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 20px;
+    font-weight: 600;
+}
+.Tc_history .his_cancel{
+   color:#FF6464;
+   padding-left: 23px;
+   cursor:pointer;
+}
+.Tc_history .his_repeat{
+    color: #539AE7;
+    cursor:pointer;
+}
+.Tc_history .his_reschedule{
+    color:#83AF40;
+    padding-left: 23px;
+}
+.Tc_history .his_review{
+    color:#83AF40;
+    padding-right: 15px;
+    cursor:pointer;
+}
+.Tc_history .bookhistory_list_item{
+    padding:10px 23px 3px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    // align-items: center;
+}
+.Tc_history .bookhistory_list_item p{
+    margin-bottom: 0px !important;
+}
+.Tc_history .book_text_div label{
+    margin-bottom: 0px !important;
+}
+.Tc_history .b_form_n{
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 4px !important;
+}
+.Tc_history{
+margin-left: 10%;
+margin-right: 10%;
+padding-top: 20px;
+}

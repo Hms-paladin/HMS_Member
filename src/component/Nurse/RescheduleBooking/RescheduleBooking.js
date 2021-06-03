@@ -80,7 +80,8 @@ export default function RescheduleBooking(props){
         visible={modalOpen}
         footer={false}
         onCancel={ModalCloseClick}
-        className="confirm_modal"
+        // className="confirm_modal"
+        width={900}
         // maxWidth={"md"}
         // style={{width:"800px"}}
        >
