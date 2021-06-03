@@ -148,7 +148,7 @@ function Reports(props) {
                 {/* second part */}
                 <Grid item xs={6} md={8} className="reports_snd_grid">
                     <div className="medical_rpt_head">Dalal Medical Reports</div>
-                    <div className="r_sort_div"><span><label>Test</label><img src={sort} className="r_sort" onClick={() => AlphaSorting("alpha")} /></span>
+                    <div className="r_sort_div"><span><label>Test</label><img src={sort} className="r_sort" onClick={() => Sorting("alpha")} /></span>
                         <span><label>Date</label><img src={sort} className="r_sort" onClick={() => Sorting("date")} /></span>
                     </div>
                     <div className="member_reports_parent">
