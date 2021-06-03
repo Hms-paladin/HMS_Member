@@ -1,0 +1,186 @@
+.nursede_parent{
+    width: 100%;
+    height: 100%;
+    display:flex;
+}
+.nurse_star_rating label{
+    margin-bottom: 0px !important;
+}
+.nurse_star_rating{
+    width: 63px;
+    height: 30px;
+    color: #fff;
+    background-color:#83AF40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nurse_de_fstgrid{
+    padding-left:3%;
+}
+.nurse_de_parent .formdiv .Errormsg{
+   display: none !important;
+}
+// .nurse_de_fstitems{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+.review_per{
+    padding: 5px 10px 0px 10px;
+    color: #83AF40;
+    font-weight: 600;
+}
+.nurs_review{
+    color: #8E8C8C;
+    font-size: 12px;
+}
+.nurs_de_name{
+    color:#333;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+.grid_seconditem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.exp_yrs{
+background-color: #cccccc5c;
+padding: 7px 15px;
+font-weight: 600;
+border-radius: 3px;
+}
+.Pro_tra_img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.nurse_de_fstdiv{
+    padding-left: 25px;
+}
+.nurse_thirdgrid{
+    padding-top: 32px;
+    display: flex;
+    justify-content:space-around;
+    align-items: flex-start;
+}
+.mnth_kwd{
+    font-size: 22px;
+    color: #83AF40;
+    font-weight: 600;
+}
+.cmy_sup{
+    box-shadow: 0px 2px 11px #00000029;
+    color:#696969;
+    padding:15px 25px 20px 25px;
+    font-size: 16px;
+    margin-top: 10px !important;
+    margin-bottom: 25px;
+}
+.nurse_detl{
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.nurse_de_icons{
+    margin-right: 4%;
+}
+.nurse_dehead{
+    font-size: 17px;
+    font-weight: 600;
+}
+.nurse_detl p{
+    margin-bottom: 6px !important;
+    font-size: 18px !important;
+}
+.nurse_duties_container{
+    padding:3% 12%;
+}
+.nurse_de_fstgrid {
+    position: relative;
+    top:-44px;
+
+}
+.star_fill{
+    fill:#83AE40 !important;
+}
+.start_emp_fill{
+    color:#ABA9A9 !important;
+}
+.booking_confr{
+    box-shadow: 0px 3px 16px #00000029;
+    border-radius: 14px;   
+}
+.grid_seconditem  .lab_adrs{
+    font-size: 15px;
+    color:#BCBABA;
+}
+
+
+// programs css
+.program_div{
+    padding:20px;
+    width:15%;
+    border: 1px solid #F0F0F0;
+    border-radius: 10px !important;
+    position: relative;
+    font-weight: 500;
+    color:#83AF40 !important;
+    cursor: pointer;
+    margin-right: 30px;
+    div div{
+        text-align: center;
+        margin-bottom: 3px;
+    }
+    div div:nth-child(1){
+        font-size: 18px; 
+        font-weight: 400;  
+    }
+    div div:nth-child(3){
+        font-size: 16px; 
+        font-weight: 400;  
+    }
+    div div:nth-child(4){
+        font-weight: bold;
+        font-size: 19px;
+    }
+}
+.grid_program_cont{
+    padding: 4% 4% 2% 4% ;
+}
+.pro_head{
+   font-size: 22px;
+   font-weight: bold;
+   margin-bottom: 2%;
+}
+.session_cont{
+    font-size: 30px;
+    font-weight: bold;
+}
+.per_in_div{
+    position: absolute;
+    top: 6px;
+    left: 14px;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+}
+.per_in_div p{
+    margin-bottom: -4px !important;
+}
+.parent_pro_div{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width:100%;
+}
+
+
+
+
+
+// program modal.js
+.program_modal .MuiDialog-paper {
+    padding: 25px 35px;
+}

@@ -1,0 +1,530 @@
+.cover_image_cont{
+  width: 100%;
+  height: 35vh;
+}
+.cover_image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.major_detail{
+  padding-left: 50px;
+  padding-right: 30px;
+  display: flex;
+  position: relative;
+}
+.profileimg_cont{
+  border-radius: 100px;
+  height: 120px;
+  width: 120px;
+  box-shadow: 0px 0px 2px 3px #ccc;
+  top: -35px;
+  background: #fff;
+  padding: 3px;
+  position: absolute;
+}
+.profileimg{
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+}
+.Nameinfo{
+  font-weight: 500;
+  margin-top: 10px;
+  width: 80%;
+}
+.Nameinfo .name{
+  font-size: 20px;
+  font-weight: 600;
+}
+.editbtn{
+box-shadow: 0px 0px 5px 1px #ccc;
+  color: #83AF40 !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+  border-radius: 30px !important;
+  margin-top: 15px !important;
+}
+.tabmenus{
+  padding-left: 50px;
+  padding-right: 30px;
+}
+
+.add_memberform{
+  padding: 20px 30px 20px 50px;
+  background: #ddd;
+  border-bottom: 2px dashed #bbb;
+  display: flex;
+  justify-content: space-between;
+
+}
+.addmemberbtn{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.addmemberbtn .cancelbtn{
+  border: 1px solid grey;
+  border-radius: 25px;
+  width: 45%;
+  font-weight: 500 !important;
+  color: grey !important;
+  height: 45px;
+}
+.addmemberbtn .submitbtn{
+  border-radius: 25px;
+  width: 45%;
+  font-weight: 500 !important;
+  color: #fff !important;
+  background-color: #83AF40 !important;
+  height: 45px;
+}
+.add_memberform .img_cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px 20px;
+  width: 15%;
+}
+.add_memberform .name_cont{
+  margin: 0px 20px;
+  width: 30%;
+
+}
+.add_memberform     .relationship_cont{
+  margin: 0px 20px;
+  width: 30%;
+}
+.relationship_cont .height{
+display: flex;
+justify-content: space-between;
+}
+.height .unit{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-weight: 500;
+  color: grey;
+}
+
+.add_memberform .name_cont .gender{
+  display: flex;
+  justify-content: space-between;
+}
+.add_memberform .img_cont img{
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+}
+.familymemberheader{
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  font-size: 30px;
+  font-weight: 500;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 30px;
+}
+.memberimg{
+  width: 100px;
+  height: 100px;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+
+}
+.memberimg img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  box-shadow: 0px 0px 3px 2px #ccc;
+
+}
+.familymember_imgs{
+  display: flex;
+  padding-left: 50px;
+  padding-right: 30px;
+  background-color: #ddd;
+  flex-wrap: wrap;
+}
+.membername{
+  text-align: center;
+}
+.moredetail{
+  margin: 20px 30px 20px 50px;
+  
+  box-shadow: 0px 2px 5px 2px #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.minicard{
+  display: flex;
+  align-items: center;
+  width: 200px;
+  margin: 10px;
+  font-size: 14px;
+}
+.minicard img{
+  height: 100%;
+  width: 100%;
+  
+}
+.minicard_icon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+
+
+}
+.minicard .name{
+  font-weight: 600;
+}
+.minicard .details{
+overflow: hidden;
+  text-overflow: ellipsis;
+  width: 160px;
+}
+.vaccinationimg_cont{
+  width: 80px;
+  height: 80px;
+  margin-bottom: 5px;
+ 
+
+}
+
+.vaccinationimg_cont img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+
+.nextvaccination{
+  margin: 20px 30px 20px 50px;
+  
+  box-shadow: 0px 2px 5px 2px #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.vaccinationimg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px;
+}
+.vaccinationdetail{
+  color: grey;
+}
+.vaccinationhead{
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+}
+.nextvaccination .viewbtn{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #83AF40 !important;
+  color: #fff !important;
+  text-transform: none !important;
+  height: 30px !important;
+  border-bottom-right-radius: 10px !important;
+}
+.appointmentdetail{
+  margin: 20px 30px 20px 50px;
+  
+  box-shadow: 0px 2px 5px 2px #ccc;
+  border-radius: 10px;
+  display: flex;
+
+  position: relative;  
+}
+.selfcont{
+  width: 70px;
+  height: 70px;
+
+}
+.selfcont img{
+  width: 100%;
+  height: 100%;
+}
+.appointmenthead{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.appointmenthead .head{
+  font-size: 20px;
+  font-weight: 700;
+}
+.appointmenthead .doctor{
+  font-weight: 600;
+}
+.appointmentdate{
+  font-weight: 500;
+}
+.nextappointment .viewbtn{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #83AF40 !important;
+  color: #fff !important;
+  text-transform: none !important;
+  height: 30px !important;
+  border-bottom-right-radius: 10px !important;
+}
+.fitness{
+  display: flex;
+  margin: 30px 30px 30px 50px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.watchimg{
+  width: 150px;
+  height: 150px;
+  box-shadow: 0px 0px 5px 2px #ccc;
+  border-radius: 100px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+}
+.watchimg img{
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+}
+.smalldot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: #ccc;
+  margin-right: 10px;
+}
+.bigdot{
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background-color: #ccc;
+  margin-right: 20px;
+}
+.dashedline{
+  width: 100%;
+  border-bottom: 2px dashed grey;
+  height: 15px;
+}
+.tabletname{
+  margin-right: 5px;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 16px;
+
+}
+.dosage{
+  margin-left: 5px;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 16px;
+}
+.tablets{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+}
+.medicationhead{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0px;
+
+}
+.medicationhead{
+  font-size: 26px;
+  font-weight: 700;
+  padding: 5px 20px 0px 50px;
+}
+.healthtip_collapse{
+  padding-left: 50px;
+  padding-right: 30px;
+}
+.healthtip_collapse .ant-collapse-borderless{
+  background-color:#fff !important ;
+}
+
+.healthtip_collapse .ant-collapse-header{
+  font-size: 26px;
+  font-weight: 700;
+  padding-left: 0px !important;
+}
+.healthtip_collapse .ant-collapse-arrow{
+  right: 0px !important;
+  left: unset !important;
+  font-size: 16px !important;
+  color: black !important;
+}
+.healthtip_content{
+  box-shadow: 0px 2px 5px 2px #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.healthtip_collapse .ant-collapse-content-box{
+padding-left: 0px !important;
+padding-right: 0px !important;
+}
+.healthtip_content .subhead{
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.healthtip_content .msg{
+  color: grey;
+  font-size: 16px;
+}
+.prescription_collapse{
+  padding-left: 50px;
+  padding-right: 30px;
+}
+.prescription_collapse .ant-collapse-header{
+  font-size: 26px;
+  font-weight: 700;
+  padding-left: 0px !important;
+}
+.prescription_collapse .ant-collapse-arrow{
+  right: 0px !important;
+  left: unset !important;
+  font-size: 16px !important;
+  color: black !important;
+}
+.prescription_collapse .ant-collapse-borderless{
+  background-color:#fff !important ;
+}
+.prescription_content{
+  display: flex;
+  box-shadow: 0px 2px 5px 2px #ccc;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+.prescription_box{
+  margin: 10px 20px;
+  font-weight: 500;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.pres_img{
+  width: 100px;
+  height: 130px;
+}
+.pres_img img{
+  width: 100%;
+  height: 100%;
+}
+.prescription_collapse .ant-collapse-content-box{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.modal-profile .ant-modal-content{
+  width: 662px;
+  height: 584px;
+  /* box-shadow: 0px 0px 3px 1px #ccc; */
+  border-radius: 8px;
+}
+.position_set {
+  position: relative;
+  top: 80px;
+  width: 41.5%;
+  height: 300px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.box_background {
+  position: absolute;
+  top: 25px;
+  width: 675px;
+  height: 150px;
+ 
+  border-bottom-left-radius: 73px;
+  border-top-left-radius: 73px;
+  left: 0px;
+  display: inline-block;
+  box-shadow: 0px 3px 10px #00000029;
+  opacity: 1;
+}
+
+.round_text {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color:black;
+}
+
+.box_circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0px;
+background:ghostwhite;
+  left: 0px;
+  display: inline-block;
+  box-shadow: 0px 3px 10px #00000040;
+opacity: 1;
+}
+.mini-box_background {
+  position: absolute;
+  top: 0px;
+  width: 195px;
+  height: 28px;
+  background-color: #83AF40 !important;
+  border-bottom-left-radius: 73px !important;
+  border-top-left-radius: 73px !important;
+  left: 95px !important;
+  display: inline-block !important;
+  border-top-right-radius: 73px;
+  border-bottom-right-radius: 73px;
+}
+.box_text {
+  color:black;
+  position: absolute;
+  left: 220px;
+  margin-top: 40px
+}
+
+.box {
+  position: relative;
+  width: 1400px;
+  height: 190px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 10px #00000021;
+  border-radius: 20px;
+  opacity: 1;
+  margin-top: 35px;
+  margin-left: 35px;
+
+}
+.nextvaccination .time_dalal{
+  position: absolute;
+  right: 15px;
+  text-transform: none !important;
+  height: 30px ;
+  border-bottom-right-radius: 10px !important;
+
+}

@@ -1,0 +1,44 @@
+.Lab_history .book_his_parent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    font-weight: 600;
+}
+.Lab_history .his_cancel{
+   color:#FF6464;
+   padding-left: 23px;
+   cursor:pointer;
+}
+.Lab_history .his_repeat{
+    color: #539AE7;
+    cursor:pointer;
+}
+.Lab_history .his_reschedule{
+    color:#83AF40;
+    padding-left: 23px;
+}
+.Lab_history .his_review{
+    color:#83AF40;
+    padding-right: 15px;
+    cursor:pointer;
+}
+.Lab_history .bookhistory_list_item{
+    padding:10px 23px 3px;
+    display: flex;
+}
+.Lab_history .bookhistory_list_item p{
+    margin-bottom: 3px !important;
+}
+.Lab_history{
+margin-left: 10%;
+margin-right: 10%;
+padding-top: 20px;
+}
+// elipse css
+.Lab_history .lab_adrs{
+    color:#AEADAD !important;
+    font-weight: 500;
+    margin-bottom: 3px !important;
+    
+}

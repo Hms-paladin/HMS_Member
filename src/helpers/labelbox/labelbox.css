@@ -10,7 +10,7 @@
     color: #666666;
     display: block;
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 500;
 }
 
 .formdiv .brdrcls {
@@ -27,6 +27,8 @@
 .formdiv .brdred {
     border: 1px solid red;
 }
+
+
 
 .formdiv .brdnone .ant-select-selection{
     border: none !important;
@@ -129,4 +131,34 @@ border-color: red;
 
 .formdiv .MuiInputBase-inputAdornedEnd{
     color: #797777;
+}
+
+
+
+
+/* labelbox css */
+.formdiv .MuiSvgIcon-root{
+    fill: #6c757dcf !important;
+}
+.formdiv .MuiFormControl-marginNormal{
+    border: 1px solid #d9d9d9;
+    border-radius: 2px !important;
+    box-shadow: 0 0 1.5px 0px #ccc;
+}
+ .formdiv .MuiInputBase-inputAdornedEnd{
+    color:none !important;
+}
+ .formdiv .MuiInput-underline:before{
+    border-bottom: 0px !important;
+}
+ .formdiv .MuiInputBase-input{
+    padding:10px 0px 7px 10px !important; 
+    font-size: 13px !important;
+    /* color:#ABA9A9 !important; */
+}
+.MuiInput-underline:after{
+    border-bottom: 0px !important;
+}
+.formdiv  .MuiSvgIcon-root{
+    fill: #bfbfbf !important;
 }
