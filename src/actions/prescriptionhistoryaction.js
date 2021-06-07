@@ -4,15 +4,15 @@ import axios from "axios";
 import { notification } from 'antd';
 import moment from "moment";
 
-export const GetPrescriptionHistoryDetails = () => async dispatch => {
+export const GetPrescriptionHistoryDetails = (data) => async dispatch => {
     try {
         axios({
             method: 'POST',
             url: apiurl + 'patientPrescriptionHistoryDetails',
             data: {
-                "patientId": 16,
+                "patientId": 38,
                 // localStorage.getItem("user_id")
-                "filter": false,
+                "filter": data === 1 ? true : false,
                 "statusIdList": "" || 0,
                 "filterFromDate": "" || 0,
                 "filterToDate": "" || 0,
@@ -83,6 +83,7 @@ export const DeletePrescriptionDetails = (data) => async dispatch => {
             .then((response) => {
 
                 if (response.data.status === 1) {
+                    dispatch(PatientPharmacyConfirmOrder())
                     notification.success({
                         message: 'Deleted Successfully',
                     });

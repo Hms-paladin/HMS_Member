@@ -76,7 +76,7 @@ function OrderTable(props) {
   useEffect(() => {
     let rowDataList = []
     medicineDetails && medicineDetails.map((data, index) => {
-      console.log(data.medicineName, "GetParticularPrescriptionDetails")
+      console.log(data, "GetParticularPrescriptionDetails")
       rowDataList.push({
         name: data.medicineName,
         calories: data.quantity,

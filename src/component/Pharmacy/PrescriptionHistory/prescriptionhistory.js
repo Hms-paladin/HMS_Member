@@ -23,7 +23,7 @@ function PrescriptionHistory(props) {
 
     useEffect(() => {
         dispatch(GetPrescriptionHistoryDetails())
-       
+
     }, [])
 
     useEffect(() => {
@@ -43,7 +43,7 @@ function PrescriptionHistory(props) {
         }
         if (data === "Cancelled") {
             setBtnCancel(!BtnCancel)
-        }
+        }   
         if (data === "Packed") {
             setBtnPacked(!BtnPacked)
         }
@@ -55,6 +55,10 @@ function PrescriptionHistory(props) {
     }
     function filterClose() {
         Close(false)
+    }
+
+    const searchData = () => {
+        dispatch(GetPrescriptionHistoryDetails(1))
     }
 
 
@@ -78,13 +82,12 @@ function PrescriptionHistory(props) {
                     <div style={{ display: "flex" }}>
                         <div style={{ marginRight: "20px" }}><Labelbox type="datepicker" labelname="From Date" /></div>
                         <div><Labelbox type="datepicker" labelname="To Date" /></div>
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "12px 0px 0px 20px" }} ><Button className="pres_search">Search</Button></div>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "12px 0px 0px 20px" }} ><Button className="pres_search" onClick={searchData}>Search</Button></div>
                     </div>
                 </div>
             )}
             {/* advancefilter end */}
             {prescriptionDetails && prescriptionDetails.map((data, index) => {
-                console.log(data.prescriptionId, "details")
                 return (
                     <NavLink to={`/orderdetails/${data.prescriptionId}`}>
 
