@@ -17,7 +17,7 @@ import Paper from '@material-ui/core/Paper'
 import './Reports.scss'
 import { IndeterminateCheckBox } from '@material-ui/icons'
 import { connect, useDispatch } from "react-redux";
-import { GetLabResultMemberList } from "../../actions/ReportActions"
+import { GetLabResultMemberList, GetParticularMemLabResult } from "../../actions/ReportActions"
 import moment from "moment";
 function Reports(props) {
     const dispatch = useDispatch();
@@ -25,55 +25,60 @@ function Reports(props) {
     const [familymembers, setFamilyMembers] = useState([])
     const [memberlist, setMemberList] = useState([])
     const [testReport, setTestReport] = useState([])
-    const Members = [
-        { name: "Lina", report: 3, img: Image1 }, { name: "Abdullah", report: 5, img: Image2 }, { name: "Nasser", report: 6, img: Image3 }, { name: "Dina", report: 4, img: Image4 }
-    ]
-    var TestReport = [
-        { id: 1, r_name: "X ray-Teeth", date: "03-11-2020" }, { id: 2, r_name: "Blood Test", date: "20-01-2021" }, { id: 3, r_name: "Root Test", date: "08-01-2021" },
-        { id: 4, r_name: "Cavity Test", date: "02-01-2018" }
-    ]
+    const [testInfo, setTestInfo] = useState({})
+    const [patientInfo, setPatientInfo] = useState({ pat_id: 0, pat_name: "" })
+    const [IsSort, setIsSort] = useState(true)
+    const [IsDateSort, setIsDateSort] = useState(true)
     const [open, setOpen] = useState(false);
     const [share, setshare] = useState(false)
-    let value = ""
-    let testreport = ""
-    // const [value,setvalue]=useState([])
+    let testinfo = ""
     const [visible, setvisible] = useState(false)
     const handleClickOpen = (id) => {
         setOpen(true);
         setshare(false)
         setvisible(true)
-
-        testreport = TestReport.find((data, index) => {
-            // testreport.push(data)
-            //   value.push({r_name:data.r_name,date:data.date,id:data.id})
-            return (id === data.id)
+        testinfo = testReport.find((data, index) => {
+            return (id === data.testDetailsId)
         })
+        setTestInfo(testinfo)
 
-        console.log("div", testreport.r_name)
+
+        // testreport = TestReport.find((data, index) => {
+        //     // testreport.push(data)
+        //     //   value.push({r_name:data.r_name,date:data.date,id:data.id})
+        //     return (id === data.id)
+        // })
+
+        // console.log("div", testreport.r_name)
     };
     const ShareOpen = () => {
         setOpen(false);
         setshare(true)
         setvisible(true)
-        testreport = TestReport;
+        // testreport = TestReport;
     }
     const handleClose = () => {
         setOpen(false);
         setshare(false)
         setvisible(false)
     };
-    const FileType = "sss.txt"
+    const FileType = "sss.pdf"
     const status = ""
     const data = [{ report: "Blood Test", date: "02-02-2021" }, { report: "Blood Test", date: "02-02-2021" }]
-    const download = (blob) => {
+    const download = (id, blob) => {
+        testinfo = testReport.find((data, index) => {
+            return (id === data.testDetailsId)
+        })
+        let filename = testinfo.testName;
+        let file = testinfo.lab_test_file_name
         const url = window.URL.createObjectURL(
-            new Blob([blob]),
+            new Blob([file]),
         );
         const link = document.createElement('a');
-        link.href = url;
+        link.href = file;
         link.setAttribute(
             'download',
-            `FileName.file`,
+            filename,
         );
 
         // Append to html link element page
@@ -88,40 +93,61 @@ function Reports(props) {
 
     useEffect(() => {
         dispatch(GetLabResultMemberList())
-        setTestReport(TestReport)
     }, [])
 
     useEffect(() => {
         let member = props.getLabResultMemberList
-        setMemberList(member)
+        // setMemberList(member)
+        console.log(member,"temp")
         member.map((data) => {
-            setParentMembers(data.parrentMember)
-            setFamilyMembers(data.familyMember)
+            let parent=data.parrentMember.filter((item)=>item.resportsCount != 0)
+            let family=data.familyMember.filter((item)=>item.resportsCount != 0)
+            setParentMembers(parent)
+            setFamilyMembers(family)
         })
+        
     }, [props.getLabResultMemberList])
 
-    const GenerateReport = (patientid) => {
-        alert(patientid)
+    useEffect(() => {
+        let result = props.getParticularMemLabResult
+        result.map((data => {
+            setTestReport(data.details)
+        }))
+    }, [props.getParticularMemLabResult])
+
+    const GenerateReport = (patientid, patientname) => {
+        dispatch(GetParticularMemLabResult(patientid))
+        setPatientInfo({
+            pat_id: patientid,
+            pat_name: patientname,
+        })
     }
     const Sorting = (type) => {
         if (type == "alpha") {
-            let sorting = TestReport.sort((a, b) => a.r_name.localeCompare(b.r_name))
-            setTestReport(sorting)
+            setIsSort(!IsSort)
+            dispatch(GetParticularMemLabResult(patientInfo.pat_id, true, false))
+            // let sorting = testReport.sort((a, b) => a.testName.localeCompare(b.testName))
+            // console.log(sorting,"ssss")
+            // setTestReport(sorting)
         }
         if (type == "date") {
-            let sorting = TestReport.sort(function(a, b){
-                var aa = a.date.split('/').reverse().join(),
-                    bb = b.date.split('/').reverse().join();
-                return aa < bb ? -1 : (aa > bb ? 1 : 0);
-            });           
-            setTestReport(sorting)
+            setIsDateSort(!IsDateSort);
+            dispatch(GetParticularMemLabResult(patientInfo.pat_id, false, true))
+            // let sorting = testReport.sort(function(a, b){
+            //     let a_date=moment(a.date).format('DD/MM/YYYY')
+            //     let b_date=moment(b.date).format('DD/MM/YYYY')
+            //     var aa = a_date.split('/').reverse().join(),
+            //         bb = b_date.split('/').reverse().join();
+            //     return aa < bb ? -1 : (aa > bb ? 1 : 0);
+            // });           
+            // setTestReport(sorting)
         }
     }
 
 
-    console.log(testReport, "divya")
+    console.log(testInfo, "testInfo")
+    console.log(testReport, "testReport")
     console.log(parentmembers, "parent")
-    console.log(familymembers, "family")
 
     return (
         <div>
@@ -131,14 +157,14 @@ function Reports(props) {
                     <div className="member_reports_parent">
                         {parentmembers.map((item) => {
                             return (
-                                <Paper className="medical_report_paper" onClick={() => GenerateReport(item.patientId)}>
+                                <Paper className="medical_report_paper" onClick={() => GenerateReport(item.patientId, item.patientName)}>
                                     <div><img src={item.profile_image} className="member_img" /></div>
                                     <div className="med_div"><p className="med_name">{item.patientName}</p><p className="repts">{item.resportsCount + " Reports"}</p></div>
                                 </Paper>)
                         })}
                         {familymembers.map((item) => {
                             return (
-                                <Paper className="medical_family_member" onClick={() => GenerateReport(item.patientId)}>
+                                <Paper className="medical_family_member" onClick={() => GenerateReport(item.patientId, item.patientName)}>
                                     <div><img src={item.profile_image} className="member_img" /></div>
                                     <div className="med_div"><p className="med_name">{item.patientName}</p><p className="repts">{item.resportsCount + " Reports"}</p></div>
                                 </Paper>)
@@ -146,28 +172,33 @@ function Reports(props) {
                     </div>
                 </Grid>
                 {/* second part */}
+
                 <Grid item xs={6} md={8} className="reports_snd_grid">
-                    <div className="medical_rpt_head">Dalal Medical Reports</div>
-                    <div className="r_sort_div"><span><label>Test</label><img src={sort} className="r_sort" onClick={() => Sorting("alpha")} /></span>
-                        <span><label>Date</label><img src={sort} className="r_sort" onClick={() => Sorting("date")} /></span>
-                    </div>
-                    <div className="member_reports_parent">
-                        {testReport.map((data, index) =>
+                    {testReport.length > 0 &&
+                        <>
+                            <div className="medical_rpt_head">{patientInfo.pat_name + " Medical Reports"}</div>
+                            <div className="r_sort_div">
+                                <span onClick={() => Sorting("alpha")}><label>Test</label><img src={sort} className="r_sort" /></span>
+                                <span onClick={() => Sorting("date")} ><label>Date</label><img src={sort} className="r_sort" /></span>
+                            </div>
+                            <div className="member_reports_parent">
+                                {testReport && testReport.map((data, index) =>
 
-                            <Paper className="medical_reports_paper">
-                                <div>
-                                    <p className="report_test_name">{data.r_name}</p>
-                                    <p className="report_test_date">{data.date}</p>
-                                </div>
-                                <div className="med_icons_div">
-                                    <div><p className="report_icon_head">Share</p><ShareIcon className="report_icons" onClick={() => ShareOpen(index)} /></div>
-                                    <div style={{ margin: "0px 25px" }}><p className="report_icon_head">Download</p><GetAppIcon className="report_icons" onClick={download} /></div>
-                                    <div><p className="report_icon_view">View</p><VisibilityIcon className="report_view" onClick={() => handleClickOpen(data.id)} /></div>
-
-                                </div>
-                            </Paper>
-                        )}
-                    </div>
+                                    <Paper className="medical_reports_paper">
+                                        <div>
+                                            <p className="report_test_name">{data.testName}</p>
+                                            <p className="report_test_date">{moment(data.date).format('DD/MM/YYYY')}</p>
+                                        </div>
+                                        <div className="med_icons_div">
+                                            <div><p className="report_icon_head">Share</p><ShareIcon className="report_icons" onClick={() => ShareOpen(index)} /></div>
+                                            <div style={{ margin: "0px 25px" }}><p className="report_icon_head">Download</p><GetAppIcon className="report_icons" onClick={() => download(data.testDetailsId)} /></div>
+                                            <div><p className="report_icon_view">View</p><VisibilityIcon className="report_view" onClick={() => handleClickOpen(data.testDetailsId)} /></div>
+                                        </div>
+                                    </Paper>
+                                )}
+                            </div>
+                        </>
+                    }
                 </Grid>
             </Grid>
             {visible && <Dialog
@@ -182,8 +213,8 @@ function Reports(props) {
             >
                 {open ? <div className="login_parent">
                     <CloseIcon className="l_closeicon" onClick={handleClose} />
-                    <label className="med_rpt_view_text">{testreport && testreport.r_name}</label>
-                    <img src={Teeth} style={{ width: "100%" }} />
+                    <label className="med_rpt_view_text">{testInfo.testName}</label>
+                    <img src={testInfo.lab_test_file_name} style={{ width: "100%" }} />
                 </div> :
                     share ? < Share handleClose={handleClose} /> : ""}
             </Dialog>}
@@ -193,5 +224,6 @@ function Reports(props) {
 }
 const mapStatetoProps = (state) => ({
     getLabResultMemberList: state.ReportReducer.getLabResultMemberList || [],
+    getParticularMemLabResult: state.ReportReducer.getParticularMemLabResult || [],
 })
 export default connect(mapStatetoProps)(Reports);
