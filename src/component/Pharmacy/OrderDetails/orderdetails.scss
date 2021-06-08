@@ -113,6 +113,9 @@ color: #333333 !important;
     color:#fff !important;
     background-color: #83AF40 !important;
     text-transform: none !important;
+    .MuiButton-label {
+        color: white;
+    }
 }
 
 // labelbox textarea css

@@ -466,4 +466,4 @@ const mapStateToProps = (state) =>
 
 });
 
-export default connect(mapStateToProps)(Doctorbooking);   
+export default connect(mapStateToProps)(Doctorbooking);
