@@ -12,6 +12,7 @@
     padding:10px 8%;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .medical_family_member{
     box-shadow: 0px 0px 4px 1px #00000029 !important; 
@@ -20,6 +21,7 @@
     padding:10px 8%;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .member_img{
     width:60px;
@@ -56,6 +58,7 @@
 .r_sort_div{
     text-align: end;
     font-weight: 500;
+    cursor: pointer;
 }
 .r_sort_div :first-child{
     margin-left: 10px;
