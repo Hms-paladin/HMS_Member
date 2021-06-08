@@ -47,10 +47,10 @@
     border-radius: 30px !important;
     margin-top: 15px !important;
 }
-.tabmenus{
-    padding-left: 50px;
-    padding-right: 30px;
-}
+// .tabmenus{
+//     padding-left: 50px;
+//     padding-right: 30px;
+// }
 
 .add_memberform{
     padding: 20px 30px 20px 50px;
@@ -202,7 +202,16 @@ overflow: hidden;
     height: 80px;
     margin-bottom: 5px;
    
+    display:flex;
+    justify-content: center;
+    align-items: flex-end;
 
+}
+.nextvacci_scroll{
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow-x: scroll; 
 }
 
 .vaccinationimg_cont img{
@@ -211,28 +220,36 @@ overflow: hidden;
     border-radius: 50px;
 }
 
-.nextvaccination{
+.nextvaccination_head{
     margin: 20px 30px 20px 50px;
-    
     box-shadow: 0px 2px 5px 2px #ccc;
     border-radius: 10px;
+}
+.nextvacci{
     display: flex;
     align-items: center;
     position: relative;
 }
-.vaccinationimg{
+.vaccination_img{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 15px;
 }
+.vaccination_pimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0px 0px 0px;
+}
 .vaccinationdetail{
     color: grey;
 }
-.vaccinationhead{
+.vaccinationhead_p{
     color: black;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
+    padding:10px 0px 0px 10px;
 }
 .nextvaccination .viewbtn{
     position: absolute;
@@ -471,3 +488,37 @@ overflow: hidden;
       top: -83px;
       color:#4A4A4A;
   }
+  .profile_dummy_img{
+    font-size: 3.7rem !important;
+    background: #ccc;
+    border-radius: 50%;
+    fill: #fff !important;
+    padding: 5px;
+    cursor: pointer;
+  }
+  .tabmenus .ant-tabs-nav .ant-tabs-tab{
+    font-size: 18px !important;
+    border-left: 1px   solid #ccc !important;
+    font-weight: bold;
+  }
+  .tabmenus .ant-tabs-ink-bar{
+      height:2px !important;
+  }
+
+
+//   edit profile
+.edit_patient_profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    width:900px;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+.snd_part{
+    color: #777777;
+    margin-top: 10px;
+    font-weight: 400 !important;
+}

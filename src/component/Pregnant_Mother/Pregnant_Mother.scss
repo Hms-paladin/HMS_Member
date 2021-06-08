@@ -46,10 +46,10 @@ box-shadow: 0px 0px 5px 1px #ccc;
   border-radius: 30px !important;
   margin-top: 15px !important;
 }
-.tabmenus{
-  padding-left: 50px;
-  padding-right: 30px;
-}
+// .tabmenus{
+//   padding-left: 50px;
+//   padding-right: 30px;
+// }
 
 .add_memberform{
   padding: 20px 30px 20px 50px;
@@ -206,7 +206,7 @@ overflow: hidden;
 
 .nextvaccination{
   margin: 20px 30px 20px 50px;
-  
+  height:90px;
   box-shadow: 0px 2px 5px 2px #ccc;
   border-radius: 10px;
   display: flex;
@@ -527,4 +527,13 @@ opacity: 1;
   height: 30px ;
   border-bottom-right-radius: 10px !important;
 
+}
+
+// spinner css
+.fade_div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

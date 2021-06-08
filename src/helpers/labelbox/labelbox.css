@@ -12,6 +12,9 @@
     font-size: 14px;
     font-weight: 500;
 }
+.Errormsg{
+    color:red;
+}
 
 .formdiv .brdrcls {
     width: 100%;
@@ -161,4 +164,7 @@ border-color: red;
 }
 .formdiv  .MuiSvgIcon-root{
     fill: #bfbfbf !important;
+}
+.MuiOutlinedInput-adornedEnd{
+    padding-right: 0px !important;
 }

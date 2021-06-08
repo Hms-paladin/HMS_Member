@@ -15,7 +15,7 @@ div.ad_doc_btn > a > button.MuiButtonBase-root > span.MuiButton-label {
     margin-bottom: 10px !important;
 
 }
-#date-picker-inline{
+.feed_layout #date-picker-inline{
     text-align: center !important;;
 }
 .MuiTypography-root, .MuiMenuItem-gutters, .MuiSelect-selectMenu{
@@ -498,6 +498,6 @@ width: 80px !important;
 .online_type{
     position: relative;
 }
-.ant-popover-buttons{
-    display: none;
-}
+// .ant-popover-buttons{
+//     display: none;
+// }

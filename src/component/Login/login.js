@@ -47,6 +47,7 @@ export default function Login(props){
       if(phone===""){
         setError(true)
       }
+      // var value=phone
       var ms = 298999;
      var d = new Date(1000*Math.round(ms/1000)); // round to nearest second
     function pad(i) { return ('0'+i).slice(-2); }
@@ -72,6 +73,7 @@ export default function Login(props){
           setsignup(false)
           setvisible(true)
         }
+        // setLoggedIn(())
     }
     return(
       <>
