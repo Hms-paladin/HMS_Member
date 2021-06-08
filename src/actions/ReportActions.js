@@ -1,12 +1,12 @@
 import { LAB_RESULT_MEMBERLIST, PARTICULAR_MEMBER_LABRESULT } from "../utils/Constants"
-import { newapiurl } from "../utils/baseUrl";
+import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
 export const GetLabResultMemberList = () => async dispatch => {
     try {
         // patientId:localStorage.getItem("user_id")
         axios({
             method: 'POST',
-            url: newapiurl + 'Patient/labResultMembersList',
+            url: apiurl + 'Patient/labResultMembersList',
             data: {
                 patientId: localStorage.getItem("user_id")
             }
@@ -25,7 +25,7 @@ export const GetParticularMemLabResult = (patientid, IsSort, IsDateSort) => asyn
     try {
         axios({
             method: 'POST',
-            url: newapiurl + 'Patient/particularMemberLabResults',
+            url: apiurl + 'Patient/particularMemberLabResults',
             data: {
                 patientId: patientid,
                 nameBasedSorting: IsSort ? IsSort : false,

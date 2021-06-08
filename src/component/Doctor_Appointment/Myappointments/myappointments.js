@@ -8,7 +8,7 @@ import { ReactSVG } from 'react-svg'
 import { Button } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 import Labelbox from "../../../helpers/labelbox/labelbox";
-
+import ValidationLibrary from "../../../helpers/validationfunction";
 import { useDispatch, connect } from "react-redux";
 import { GetMyAppointments,PatientList,DoctorList ,cancelDoctorAppointment,patientAppointmentAdvancedFilter} from "../../../actions/myappointmentsaction";
 import Moment from 'moment';
@@ -169,19 +169,19 @@ function checkValidation(data, key) {
                         changeData={(data) =>
                             checkValidation(data, "start_date")
                         }
-                        value={Leave_Update.start_date.value}
-                        error={Leave_Update.start_date.error}
-                        errmsg={Leave_Update.start_date.errmsg} />
+                        value={MyAppoinments.start_date.value}
+                        error={MyAppoinments.start_date.error}
+                        errmsg={MyAppoinments.start_date.errmsg} />
 
                     <Labelbox type="datepicker" 
                         // disablePast={true}
                         labelname="To Date"
                         changeData={(data) =>
-                            checkValidation(data, "start_date")
+                            checkValidation(data, "end_date")
                         }
-                        value={Leave_Update.start_date.value}
-                        error={Leave_Update.start_date.error}
-                        errmsg={Leave_Update.start_date.errmsg} />
+                        value={MyAppoinments.end_date.value}
+                        error={MyAppoinments.end_date.error}
+                        errmsg={MyAppoinments.end_date.errmsg} />
 
                     {/* <Labelbox type="datepicker" labelname="To Date"/> */}
                     <div className="applybtndiv"><Button className="applybtn"onClick={advancedFilter} >Apply</Button></div>
