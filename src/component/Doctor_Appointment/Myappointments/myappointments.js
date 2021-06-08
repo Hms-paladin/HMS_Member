@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect
 import Labelbox from "../../../helpers/labelbox/labelbox";
 
 import { useDispatch, connect } from "react-redux";
-import { GetMyAppointments } from "../../../actions/myappointmentsaction";
+import { GetMyAppointments,PatientList,DoctorList ,cancelDoctorAppointment,patientAppointmentAdvancedFilter} from "../../../actions/myappointmentsaction";
 import Moment from 'moment';
 
 
@@ -24,9 +24,24 @@ var hashHistory = require('react-router-redux')
 
 function Myappointment(props) {
     const dispatch = useDispatch();
+    const [patientList, setPatientList] = useState({})
+    const [doctorList, setDoctorList] = useState({})
     const [patientId, setPatientId] = React.useState("16");
     let history = useHistory();
-
+    const [MyAppoinments, setMyAppointments] = useState({
+    start_date: {
+        value: "",
+        validation: [{ "name": "required" }],
+        error: null,
+        errmsg: null,
+    },
+    end_date: {
+        value: "",
+        validation: [{ "name": "required" }],
+        error: null,
+        errmsg: null,
+    },
+})
     useEffect(() => {
         setPatientId("16");
         localStorage.setItem('patientId', patientId);
@@ -68,11 +83,61 @@ const data = {
 }
     useEffect(() => {
         dispatch(GetMyAppointments(data));
+        dispatch(PatientList());
+        dispatch(DoctorList());
       }, []);
+
+useEffect(() => {
+
+    let DoctorList = [];
+    props.DoctorList.map((data) =>
+        DoctorList.push({ id: data.doctorId, value: data.doctorName })
+    );
+    setDoctorList({ DoctorList });
+
+    let PatientList = [];
+    props.PatientList.map((data) =>
+        PatientList.push({ id: data.patient_id, value: data.patientName })
+    );
+    setPatientList({ PatientList });
+
+}, [props.DoctorList,props.PatientList])
+
       Moment.locale('en');
       var dt = props.myAppointments.book_date;
     console.log("myAppointmentsProps", props)
      
+const cancelAppoinment = (id) => {
+    
+    dispatch(cancelDoctorAppointment(id)).then(() => {
+        dispatch(GetMyAppointments(data));
+    })
+}   
+
+const advancedFilter = () => {
+    
+    dispatch(patientAppointmentAdvancedFilter());
+} 
+
+function checkValidation(data, key) {
+  
+    var errorcheck = ValidationLibrary.checkValidation(
+        data,
+        MyAppoinments[key].validation
+    );
+    let dynObj = {
+        value: data,
+        error: !errorcheck.state,
+        errmsg: errorcheck.msg,
+        validation: MyAppoinments[key].validation,
+    };
+
+  
+    setMyAppointments((prevState) => ({
+        ...prevState,
+        [key]: dynObj,
+    }));
+}
     return(
         <div className="myappointments_layout">
             <div className="appointmentsheadflex">
@@ -87,11 +152,39 @@ const data = {
            {showfilterForm && <div className="appointmentlistpaper">
                 <div className="advfilterhead">Advance Filter</div>
                 <div className="advfilterflex">
-                    <div className="flexr1"><Labelbox type="select" labelname="Member Name"/></div>
-                    <div className="flexr1"><Labelbox type="select" labelname="Doctor Name"/></div>
-                    <Labelbox type="datepicker" labelname="From Date"/>
-                    <Labelbox type="datepicker" labelname="To Date"/>
-                    <div className="applybtndiv"><Button className="applybtn">Apply</Button></div>
+                    <div className="flexr1">
+                        <Labelbox type="select" 
+                        dropdown={doctorList.DoctorList}
+                        labelname="Member Name"/>
+                     </div>
+                    <div className="flexr1">
+                        <Labelbox type="select" 
+                        dropdown={patientList.PatientList} 
+                        labelname="Doctor Name"/>
+                        </div>
+                    {/* <Labelbox type="datepicker" labelname="From Date"/> */}
+                    <Labelbox type="datepicker" 
+                        // disablePast={true}
+                        labelname="From Date"
+                        changeData={(data) =>
+                            checkValidation(data, "start_date")
+                        }
+                        value={Leave_Update.start_date.value}
+                        error={Leave_Update.start_date.error}
+                        errmsg={Leave_Update.start_date.errmsg} />
+
+                    <Labelbox type="datepicker" 
+                        // disablePast={true}
+                        labelname="To Date"
+                        changeData={(data) =>
+                            checkValidation(data, "start_date")
+                        }
+                        value={Leave_Update.start_date.value}
+                        error={Leave_Update.start_date.error}
+                        errmsg={Leave_Update.start_date.errmsg} />
+
+                    {/* <Labelbox type="datepicker" labelname="To Date"/> */}
+                    <div className="applybtndiv"><Button className="applybtn"onClick={advancedFilter} >Apply</Button></div>
                 </div>
             </div>}
             {props.myAppointments.map((data) => (                
@@ -102,7 +195,7 @@ const data = {
             <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">{data.book_amount} KWD</span></div><div className="paymenttime"></div></div>
             <div className="listpaperflex"><div className="appnttypeclr">Appointment Type</div><div className="reviewbtn"><span onClick={()=>RescheduleBooking(data)}>Reschedule</span>
             <span className={showcancelForm?"doct_change_color":"cancelspanbtn"} onClick={opencancelForm} >Cancel</span><span className={queue?"doct_change_color":"queuespanbtn"} onClick={QueueOpen}>Queue</span></div></div>
-           {showcancelForm && <div className="cancellationoption"><Button>Add {data.book_amount} KWD to wallet</Button><Button>Process Refund {data.book_amount} KWD</Button></div>}
+           {showcancelForm && <div className="cancellationoption"><Button onClick={()=>cancelAppoinment(data.bookingId)} >Add {data.book_amount} KWD to wallet</Button><Button onClick={()=>cancelAppoinment(data.bookingId)}>Process Refund {data.book_amount} KWD</Button></div>}
            {queue&&<Queue/>}
         </div>
             ))}
@@ -113,7 +206,9 @@ const data = {
     
 const mapStateToProps = (state) =>
 ({
-    myAppointments: state.doctorAppointmentReducer.getMyAppointmentsList || []
+    myAppointments: state.doctorAppointmentReducer.getMyAppointmentsList || [],
+    DoctorList: state.doctorAppointmentReducer.DoctorList || [],
+    PatientList: state.doctorAppointmentReducer.PatientList || []
 });
 
 export default connect(mapStateToProps)(Myappointment);
