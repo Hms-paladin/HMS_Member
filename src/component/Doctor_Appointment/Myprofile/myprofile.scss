@@ -502,7 +502,22 @@ overflow: hidden;
     font-weight: bold;
   }
   .tabmenus .ant-tabs-ink-bar{
-      height:2px !important;
+      height:3px !important;
+  }
+  .tabmenus .ant-tabs-tab-btn{
+      margin-left: 20px !important;
+  }
+  .tabmenus .ant-tabs-nav-list {
+    justify-content: space-evenly !important;
+    width: 100%;
+  }
+  .tabmenus .ant-tabs-tab{
+      width:100%;
+      margin:0px 5px 0px 0px !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+
   }
 
 
@@ -521,4 +536,9 @@ overflow: hidden;
     color: #777777;
     margin-top: 10px;
     font-weight: 400 !important;
+}
+.medication_list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

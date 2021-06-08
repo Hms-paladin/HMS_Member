@@ -93,6 +93,9 @@ import Ad_Physiotherphy from '../component/Physiotheraphy/PhysiotheraphyMain/adv
 import Dashboard from '../component/Dashboard/dashboard'
 import Phy_History from '../component/Physiotheraphy/Myappointments/history'
 import { Switch,useParams} from "react-router-dom";
+import MedicationFilter from '../component/Pregnant_Women/Medication'
+
+import MotherMedication from '../component/Mother/MotherMedication'
 var hashHistory = require('react-router-redux')
 function Routes(props) {
     return (
@@ -191,6 +194,8 @@ function Routes(props) {
                         <Route path="/trainer_bookinghistory" component={Trainer_BookingHistory}/>
                         <Route path="/trainer_myschedule" component={Trainer_Myschedule}/>
                         <Route path="/trainer_bookigreschedule" component={BookingReSchedule}/>
+                        <Route path="/Medication" component={MedicationFilter}/>
+                        <Route path="/MotherMedication" component={MotherMedication}/>
                         {/* calendar */}
                         {/* <Route path="/Calendar" component = {Calendar}/> */}
                         </Switch>

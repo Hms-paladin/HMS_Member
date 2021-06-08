@@ -213,6 +213,18 @@ overflow: hidden;
   align-items: center;
   position: relative;
 }
+.nextvaccination_medic,.next_vaccination_change{
+  margin: 20px 30px 20px 50px;
+  height:90px;
+  box-shadow: 0px 2px 5px 2px #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.next_vaccination_change{
+  background-color: #83AF40;
+}
 .vaccinationimg{
   display: flex;
   flex-direction: column;

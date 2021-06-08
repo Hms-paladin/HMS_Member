@@ -47,8 +47,13 @@ export default class Avatar extends React.Component {
         }),
       );
     }
+    this.props.IMageChange(this.state.FileList,this.state.imageChanged)
   };
-
+  componentDidMount(){
+    if(this.props.fileList){
+      this.setState({fileList:this.props.fileListData})
+    }
+  }
   render() {
     const { loading, imageUrl } = this.state;
     console.log("imageUrl",this.state.FileList)
@@ -70,7 +75,7 @@ export default class Avatar extends React.Component {
         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
         beforeUpload={beforeUpload}
         onChange={this.handleChange}
-        fileList={this.props.FileList}
+        fileList={this.state.FileList}
       >
         {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
       </Upload>

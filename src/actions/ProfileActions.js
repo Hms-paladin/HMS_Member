@@ -1,6 +1,6 @@
 import { GET_MEMBER_PROFILE,GET_PATIENT_HEALTHTIPS,GET_PATIENT_PERSCRIPTION} from "../utils/Constants";
 import {ADD_PATIENT_DETAILS,UPDATE_PATIENT_DETAILS,DELETE_MEMBER,GET_RELATIONSHIP} from '../utils/Constants'
-import {PARTICULAR_VACCINATION,GET_PERSCRIPTION,UPDATE_BASIC_DETAILS} from '../utils/Constants'
+import {PARTICULAR_VACCINATION,GET_PERSCRIPTION,UPDATE_BASIC_DETAILS,GET_MEDICATION,GET_PARTICULAR_MEDICATION} from '../utils/Constants'
 import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
 import moment from 'moment'
@@ -231,6 +231,50 @@ export const  UpdateBasicPatientDetails= (formdata,patientId) => async (dispatch
                     message:response.data.msg
                 })  
             }
+        })
+        
+    } catch (err) {
+    }
+};
+
+
+export const GetMedicationList = (patient) => async (dispatch) => {
+    try {
+        axios({
+            method: 'POST',
+            url: apiurl + "Patient/medicationPatientList",
+            data:  {
+               "patientId":"38",
+               "currentDate":moment().format('YYYY-MM-DD'),
+	           "morningSession":false,
+	           "afternoonSession":false,
+	           "nightSession":false
+            }
+        })
+        .then((response) => {
+            dispatch({ type: GET_MEDICATION,payload: response.data.data })
+        })
+        
+    } catch (err) {
+    }
+};
+
+export const GetParticularMedicationList = (patientId) => async (dispatch) => {
+    alert(patientId)
+    try {
+        axios({
+            method: 'POST',
+            url: apiurl + "Patient/particularPatientMedicationList",
+            data:  {
+               "patientId":patientId,
+               "currentDate":moment().format('YYYY-MM-DD'),
+	           "morningSession":false,
+	           "afternoonSession":false,
+	           "nightSession":false
+            }
+        })
+        .then((response) => {
+            dispatch({ type: GET_PARTICULAR_MEDICATION,payload: response.data.data })
         })
         
     } catch (err) {

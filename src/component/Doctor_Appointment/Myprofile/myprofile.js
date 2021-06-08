@@ -162,6 +162,8 @@ function Myprofile(props) {
     const [VaccationViewData,setVaccationViewData]=useState([])
     const [NextAppointment,setNextAppointment]=useState([])
     const [patient_id,setpatient_id]=useState([])
+    const [fileList,
+    ]=useState([])
     const openForm = () => {
         setShowForm(true)
     }
@@ -354,11 +356,15 @@ function Myprofile(props) {
        
     }
     console.log("patientId",props)
-    
+    const changeImageUpload=(file,imageChanged)=>{
+        alert(imageChanged)
+         console.log("ddddd",file[0]?.name)
+    }
+  
     return(
         <div>
             <div className="cover_image_cont">
-            <img className="cover_image" src={profileDetails.img}/>
+            <img className="cover_image" src={profileDetails.img} srcset=".svg"/>
             </div>
             <div className="major_detail">
                 <div style={{width:"180px",height:"100px"}}>
@@ -400,7 +406,9 @@ function Myprofile(props) {
           {showForm &&  <div className="add_memberform">
                 <div className="img_cont">
                      <Avatar 
-                     FileList/>
+                     IMageChange={(file,imageChanged)=>changeImageUpload(file,imageChanged)}
+                     fileListData={fileList}
+                     />
                      <span>Add photo</span>
                 </div>
                 <div className="name_cont">
@@ -673,7 +681,7 @@ function Myprofile(props) {
          
              </TabPane>
              <TabPane tab="Medication" key="4" disabled>
-                 <MotherMedication/>
+                 <MotherMedication medication={profileDetails.patientId}/>
              </TabPane>
              <TabPane tab="Health Tips" key="5" disabled>
           
