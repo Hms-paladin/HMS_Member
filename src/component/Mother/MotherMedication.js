@@ -43,6 +43,9 @@ const handleProfileClick = (id) => {
     setMedicationList(MedicationData)
   },[props.MedicationDetails])
   console.log("ssss",props)
+  const onResentCard=()=>{
+    setShowdetailsTrue(false)
+  }
   return (
     <React.Fragment>
         
@@ -66,7 +69,7 @@ const handleProfileClick = (id) => {
       </div>
       )}
       </div>:
-      <MedicationFilter MedicationList={PatientMedication} showDetailsEnable={showDetails}/>}
+      <MedicationFilter MedicationList={PatientMedication} showDetailsEnable={showDetails} onResentCard={onResentCard}/>}
       
     </React.Fragment>
   );
@@ -74,7 +77,6 @@ const handleProfileClick = (id) => {
 const mapStateToProps = (state) =>
 ({
  MedicationDetails:state.GetProfileDetails.Medication,
- 
 
 });
 

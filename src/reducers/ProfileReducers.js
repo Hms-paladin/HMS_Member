@@ -5,7 +5,8 @@ import { GET_MEMBER_PROFILE,GET_PATIENT_HEALTHTIPS,
   PARTICULAR_VACCINATION,
   UPDATE_BASIC_DETAILS,
   GET_MEDICATION,
-  GET_PARTICULAR_MEDICATION
+  GET_PARTICULAR_MEDICATION,
+  GET_PERSCRIPTION
 } from "../utils/Constants.js";
 const initalState = {
   ProfileDetails: [],healthTips:[],Perscription:[],UpdatePatientDetails:[],
@@ -32,7 +33,9 @@ const GetProfileDetails= (state = initalState, action) => {
     case GET_MEDICATION:
       return {...state,Medication:action.payload} 
     case GET_PARTICULAR_MEDICATION:
-      return {...state,ParticularMedication:action.payload}             
+      return {...state,ParticularMedication:action.payload}  
+    // case GET_PERSCRIPTION:
+    //   return {...state,Perscription:action.payload}             
     default:
       return state;
   }

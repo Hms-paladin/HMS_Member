@@ -248,8 +248,9 @@ overflow: hidden;
 .vaccinationhead_p{
     color: black;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
     padding:10px 0px 0px 10px;
+    font-weight: 700;
 }
 .nextvaccination .viewbtn{
     position: absolute;
@@ -409,6 +410,7 @@ overflow: hidden;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 .healthtip_collapse .ant-collapse-content-box{
   padding-left: 0px !important;
@@ -450,7 +452,7 @@ overflow: hidden;
 .prescription_box{
     margin: 10px 20px;
     font-weight: 500;
-    
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -503,9 +505,10 @@ overflow: hidden;
   }
   .tabmenus .ant-tabs-ink-bar{
       height:3px !important;
+      background:#83AF40 !important;
   }
   .tabmenus .ant-tabs-tab-btn{
-      margin-left: 20px !important;
+      margin-left: 10px !important;
   }
   .tabmenus .ant-tabs-nav-list {
     justify-content: space-evenly !important;
@@ -517,7 +520,10 @@ overflow: hidden;
       display: flex !important;
       align-items: center;
       justify-content: center;
-
+  }
+  .tabmenus .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+      color:#83AF40 !important;
+      font-weight: bold !important;
   }
 
 
@@ -541,4 +547,7 @@ overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.prescription_content,.nextvaccination_head .ant-skeleton-paragraph{
+    padding:15px !important;
 }

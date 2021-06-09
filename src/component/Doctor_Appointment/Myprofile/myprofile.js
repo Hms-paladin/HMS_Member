@@ -33,6 +33,7 @@ import { Tabs,Icon} from 'antd';
 import {connect,useDispatch} from 'react-redux'
 import NextVaccinationMother from '../../Mother/NextVaccination'
 import MotherMedication from '../../Mother/MotherMedication'
+import PrescriptionView from '../../Pregnant_Mother/PrescriptionModal'
 import MotherDevice from '../../Mother/MotherDevices'
 import ValidationLibrary from '../../../helpers/validationfunction'
 import PersonIcon from '@material-ui/icons/Person';
@@ -44,7 +45,7 @@ AddPatientDetails,
 GetRelationship,
 DeleteMember,
 ParticularPatientVaccination,
-UpdateBasicPatientDetails
+UpdateBasicPatientDetails,
 } from '../../../actions/ProfileActions'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 const { Panel } = Collapse;
@@ -151,9 +152,7 @@ function Myprofile(props) {
         //     ...prevState,
         //   }))
       };
-    const Elipse=()=>{
-        setelp(!elp)
-    }
+   
     const [elp,setelp]=useState(false)
     const [showForm,setShowForm] = useState(false)
     const [profileDetails,setprofileDetails]=useState(false)
@@ -162,6 +161,8 @@ function Myprofile(props) {
     const [VaccationViewData,setVaccationViewData]=useState([])
     const [NextAppointment,setNextAppointment]=useState([])
     const [patient_id,setpatient_id]=useState([])
+    const [PerscriptionData,setPerscriptionData]=useState([])
+    const [loading,setloading]=useState(true)
     const [fileList,
     ]=useState([])
     const openForm = () => {
@@ -282,7 +283,21 @@ function Myprofile(props) {
         {img:calendar,variant:"Date of birth",detail:profileDetails.dob},
         {img:smartphone,variant:"Mobile",detail:profileDetails.phno},
         {img:envelope,variant:"Email",detail:profileDetails.email},
-        {img:address,variant:"Address",detail:<div>{profileDetails.name+profileDetails.address}<span className="elp" onClick={Elipse}>...</span></div>},
+        {img:address,variant:"Address",detail:
+        <Popconfirm 
+        title={
+        <>
+        <div>Address</div>
+        <div>{profileDetails.name+profileDetails.address}</div>
+        </>
+        }
+        icon={false}
+        okText={false}
+        cancelText={false} 
+        >   
+        <div>{profileDetails.name+profileDetails.address}<span className="elp">...</span></div>
+       </Popconfirm>
+        },
         // {img:calendar,variant:"Expected Delivery Date",detail:"12 Dec"},
         {img:driver,variant:"Civil ID",detail:"-"},
         {img:insurance,variant:"Insurance",detail:"-"}, 
@@ -294,8 +309,21 @@ function Myprofile(props) {
        dispatch(GetRelationship())
     
 
-    },[])
+    },[profileDetails.patientId])
+    const Vaccination=props.ProfileDetails[0]&&props.ProfileDetails[0].vaccinationList
+    const Medication=props.ProfileDetails[0]&&props.ProfileDetails[0].patientMedication
+    const [healthloading,sethealthloading]=useState(true)
+    const [vacci_load,setvacci_load]=useState(true)
     useEffect(()=>{
+        if(props.Perscription.length>0){
+            setloading(false)
+        }
+        if(props.HealthTips.length>0){
+            sethealthloading(false)
+        }
+        if(Vaccination&&Vaccination.length>0){
+            setvacci_load(false)
+        }
         props.ProfileDetails.map((data)=>{
             setprofileDetails({
                 img:data.profile_image,
@@ -326,12 +354,10 @@ function Myprofile(props) {
             })
         })
         setNextAppointment(NextAppoint)
-     },[props]) 
+     },[props,loading]) 
      const DeletePatient=(id)=>{
        dispatch(DeleteMember(id))
      }
-    const Vaccination=props.ProfileDetails[0]&&props.ProfileDetails[0].vaccinationList
-    const Medication=props.ProfileDetails[0]&&props.ProfileDetails[0].patientMedication
     function MedicationView(){
         var MedicationData=Medication.map((data)=>{
             return(
@@ -351,9 +377,16 @@ function Myprofile(props) {
         setVaccationViewData(VaccationData)
         setcurrentKey("2")
         settabdisble(true)
-        }
-      
-       
+        } 
+    }
+    function PerscriptionView(id){
+        var PerscriptionList=props.Perscription.find((data)=>{
+            return(
+                data.patientId==id
+            )
+        })
+        setPerscriptionData(PerscriptionList)
+        setcurrentKey("6")
     }
     console.log("patientId",props)
     const changeImageUpload=(file,imageChanged)=>{
@@ -528,16 +561,13 @@ function Myprofile(props) {
                 </div>
                     )  
                 })}
-                {elp&&
-                <div className="ad_elpse">
-                    <p>Arabian Gulf Road | Next to National Museum, Salmiya,Hawali Governorate 13057,Kuwait</p>
-                </div>}
+                
             </div>
             <div className="nextvaccination_head">
             <div className="vaccinationhead_p">Next Vaccination Appointment</div>
-
             <div className={Vaccination>3?"nextvacci_scroll":"nextvacci"}>
-
+            {vacci_load ?<Skeleton  paragraph={{ rows: 3 }} active title={false} loading={vacci_load}/>:
+             <>
             {props.ProfileDetails[0]&&props.ProfileDetails[0].vaccinationList.map((data,index)=>
                 <>
                 <div className="vaccinationimg">
@@ -556,7 +586,9 @@ function Myprofile(props) {
                     {/* <Button className="viewbtn">View</Button> */}
                 </>
 
-             )} 
+             )}
+             </>
+             } 
             </div>
             </div>
             <div className="nextappointment">
@@ -631,12 +663,16 @@ function Myprofile(props) {
       <div className="healthtip_collapse">
       <Collapse bordered={false} defaultActiveKey={['1']}>
     <Panel header="Health Tips" key="1">
+    {healthloading?<div className="healthtip_content"><Skeleton  paragraph={{ rows: 3 }} active title={false} loading={healthloading}/></div>:
+    <>
     {props.HealthTips.map((data,index)=>
         <div className="healthtip_content">
             <div className="subhead">{data.healthtip_title===null?<Skeleton.Input style={{ width: 500,height:10 }} active size='small' />:data.healthtip_title}</div>
             <div className="msg">{data.health_tip}</div>
            </div>
     )}
+    </>
+  }
         {/* <div className="healthtip_content">
         <div className="subhead">Work up a sweat</div> 
         <div className="msg">To improve overall cardiovascular health, the AHA suggests 30 minutes of moderate exercise, five days per week.
@@ -657,16 +693,18 @@ function Myprofile(props) {
       <Collapse bordered={false} defaultActiveKey={['1']}>
     <Panel header="Prescription" key="1">
         <div className="prescription_content">
-            <div className="prescription_box">
+        {loading?<Skeleton  paragraph={{ rows: 4 }} active title={false} loading={loading}/>:
+           <>
+            {props.Perscription.map((data)=>
+            
+            <div className="prescription_box" onClick={()=>PerscriptionView(data.patientId)}>
                 <div className="pres_img"><img src={prescription}/></div>
-                <div>Dhina</div>
+                <div>{data.patientName}</div>
 
             </div>
-            <div className="prescription_box">
-                <div className="pres_img"><img src={prescription}/></div>
-                <div>Dhina</div>
-
-            </div>
+            )}
+            </>
+         }
         </div>
     
        
@@ -687,7 +725,7 @@ function Myprofile(props) {
           
              </TabPane>
              <TabPane tab="Prescription History" key="6" disabled>
-                {/* <MotherDevice/> */}
+                <PrescriptionView PerscriptionData={PerscriptionData}/>
              </TabPane>
              <TabPane tab="Devices" key="7" disabled>
                 <MotherDevice/>
@@ -706,7 +744,7 @@ const mapStateToProps = (state) =>
     Perscription:state.GetProfileDetails.Perscription,
     Relationship:state.GetProfileDetails.Relationship,
     particularVaccination:state.GetProfileDetails.particularVaccination,
-    UpdateBasic_Details:state.GetProfileDetails.UpdateBasic_Details
+    UpdateBasic_Details:state.GetProfileDetails.UpdateBasic_Details,
 
 });
 

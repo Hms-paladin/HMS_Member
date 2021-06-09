@@ -198,13 +198,14 @@ const StateClear=()=>{
                     </div><div className="flex_row">
                     
                     <div className="lblbox"> 
-                    <Labelbox type="select" labelname="Civil ID"
+                    <Labelbox type="text" labelname="Civil ID"
                     changeData={(data) => checkValidation(data, "gender")}
                     // dropdown={[{id:1,value:"Male"},{id:2,value:"Female"}]}
-                    value={ProfileDetails.gender.value}
-                    error={ProfileDetails.gender.error}
-                    errmsg={ProfileDetails.gender.errmsg}
-                    />  </div>
+                    // value={ProfileDetails.gender.value}
+                    // error={ProfileDetails.gender.error}
+                    // errmsg={ProfileDetails.gender.errmsg}
+                    />  
+                    </div>
                     <div className="lblbox"><Labelbox type="text" labelname="Mobile"
                      changeData={(data) => checkValidation(data, "mobile")}
                      value={ProfileDetails.mobile.value}

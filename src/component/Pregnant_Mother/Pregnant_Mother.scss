@@ -549,3 +549,41 @@ opacity: 1;
   justify-content: center;
   align-items: center;
 }
+
+
+
+// prescription css
+.D_name{
+  font-size: 25px;
+  color:#83AF40;
+  font-weight: bold;
+}
+.d_years{
+  color: #333;
+  font-weight: 500 !important;
+  padding-left: 10px;
+  font-size: 18px !important;
+}
+.doctor_name{
+  font-size: 25px;
+  font-weight: 500;
+  padding:8px 0px;
+}
+.d_date{
+  color:#939393;
+  font-size: 17px;
+}
+.d_time{
+  color:#939393;
+  font-size: 15px;
+  padding-left: 10px;
+}
+.first_grid_pres{
+  padding:2% 0% 0% 5% !important;
+}
+
+.medication_list svg{
+  fill:#ccc !important;
+  font-size:2.5rem;
+  cursor: pointer;
+}
