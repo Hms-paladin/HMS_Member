@@ -260,7 +260,6 @@ export const GetMedicationList = (patient) => async (dispatch) => {
 };
 
 export const GetParticularMedicationList = (patientId) => async (dispatch) => {
-    alert(patientId)
     try {
         axios({
             method: 'POST',
