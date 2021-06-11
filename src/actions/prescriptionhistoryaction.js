@@ -4,7 +4,7 @@ import axios from "axios";
 import { notification } from 'antd';
 import moment from "moment";
 
-export const GetPrescriptionHistoryDetails = (data) => async dispatch => {
+export const GetPrescriptionHistoryDetails = (data, statuslist, medicine) => async dispatch => {
     try {
         axios({
             method: 'POST',
@@ -13,9 +13,9 @@ export const GetPrescriptionHistoryDetails = (data) => async dispatch => {
                 "patientId": 38,
                 // localStorage.getItem("user_id")
                 "filter": data === 1 ? true : false,
-                "statusIdList": "" || 0,
-                "filterFromDate": "" || 0,
-                "filterToDate": "" || 0,
+                "statusIdList":  0,
+                "filterFromDate":  0,
+                "filterToDate":  0,
                 "limit": 10,
                 "pageno": 1
             }

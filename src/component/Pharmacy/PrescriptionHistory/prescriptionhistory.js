@@ -9,6 +9,8 @@ import { findAllByDisplayValue } from '@testing-library/react';
 import { useDispatch, connect } from "react-redux";
 import { GetPrescriptionHistoryDetails, GetStatusListFilter } from '../../../actions/prescriptionhistoryaction'
 import moment from 'moment';
+import ValidationLibrary from "../../../helpers/validationfunction";
+
 
 
 function PrescriptionHistory(props) {
@@ -20,6 +22,22 @@ function PrescriptionHistory(props) {
     const [BtnCancel, setBtnCancel] = React.useState(true)
     const [BtnPacked, setBtnPacked] = React.useState(true)
     const [prescriptionDetails, setPrescriptionDetails] = useState([])
+    const [statuslist, setStatusList] = useState()
+    const [medicine, setMedicine] = useState({
+        fromdate: {
+            value: "",
+            validation: [{ "name": "required" }],
+            error: null,
+            errmsg: null,
+        },
+        todate: {
+            value: "",
+            validation: [{ "name": "required" }],
+            error: null,
+            errmsg: null,
+        },
+
+    })
 
     useEffect(() => {
         dispatch(GetPrescriptionHistoryDetails())
@@ -31,20 +49,22 @@ function PrescriptionHistory(props) {
         setStatus(props.GetStatusListFilter)
     }, [props.GetPrescriptionHistoryDetails, props.GetStatusListFilter])
 
-    console.log(status, "status")
-
     function BtnClick(data) {
         // setBtnOpen(clrchanged=>!clrchanged)
         if (data === "outDelivery") {
+            setStatusList(data)
             setBtnOpenOut(!BtnOpenOut)
         }
         if (data === "Delivered") {
+            setStatusList(data)
             setBtnDelivery(!BtnDelivery)
         }
         if (data === "Cancelled") {
+            setStatusList(data)
             setBtnCancel(!BtnCancel)
-        }   
+        }
         if (data === "Packed") {
+            setStatusList(data)
             setBtnPacked(!BtnPacked)
         }
 
@@ -57,8 +77,56 @@ function PrescriptionHistory(props) {
         Close(false)
     }
 
+    function checkValidation(data, key) {
+        var errorcheck = ValidationLibrary.checkValidation(
+            data,
+            medicine[key].validation
+        );
+        let dynObj = {
+            value: data,
+            error: !errorcheck.state,
+            errmsg: errorcheck.msg,
+            validation: medicine[key].validation,
+        };
+
+        // if (data && key == "tot_leave") {
+        //     medicine.exam_days.validation[1].params = data
+        //     setMedicine((prevState) => ({
+        //         ...prevState,
+        //     }));
+        // }
+
+        // if (key === "leavetype" && data) {
+        //     handleCancel()
+        //     setEditBtn(false)
+        //     let From_key = [
+        //         "fromdate", "todate", "reasoncmt", "address", "contactperson", "fromtime", "totime", "client", "assignedby", "referred_by", "profess_course", "tot_leave", "exam_days", "other_days", "subject", "exam_date",
+        //     ];
+
+        //     From_key.map((data) => {
+        //         try {
+        //             medicine[data].error = null;
+        //         } catch (error) {
+        //             throw error;
+        //         }
+        //     });
+
+        // }
+
+
+        setMedicine((prevState) => ({
+            ...prevState,
+            [key]: dynObj,
+        }));
+    }
+
     const searchData = () => {
-        dispatch(GetPrescriptionHistoryDetails(1))
+        dispatch(GetPrescriptionHistoryDetails(1, statuslist, medicine)).then(
+            (response) => {
+                // setPrescriptionDetails(props.GetPrescriptionHistoryDetails[0]?.details)
+
+            }
+        );
     }
 
 
@@ -80,13 +148,25 @@ function PrescriptionHistory(props) {
                         <Button className={BtnPacked ? "flt_btns" : "flt_btns_change"} onClick={() => BtnClick("Packed")}>Packed</Button>
                     </div>
                     <div style={{ display: "flex" }}>
-                        <div style={{ marginRight: "20px" }}><Labelbox type="datepicker" labelname="From Date" /></div>
-                        <div><Labelbox type="datepicker" labelname="To Date" /></div>
+                        <div style={{ marginRight: "20px" }}>
+                            <Labelbox type="datepicker" labelname="From Date"
+                                changeData={(data) => checkValidation(data, "fromdate")}
+                                value={medicine.fromdate.value}
+                                error={medicine.fromdate.error}
+                                errmsg={medicine.fromdate.errmsg} /></div>
+
+                        <div><Labelbox type="datepicker" labelname="To Date"
+                            changeData={(data) => checkValidation(data, "todate")}
+                            value={medicine.todate.value}
+                            error={medicine.todate.error}
+                            errmsg={medicine.todate.errmsg} /></div>
+
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "12px 0px 0px 20px" }} ><Button className="pres_search" onClick={searchData}>Search</Button></div>
                     </div>
                 </div>
             )}
             {/* advancefilter end */}
+
             {prescriptionDetails && prescriptionDetails.map((data, index) => {
                 return (
                     <NavLink to={`/orderdetails/${data.prescriptionId}`}>
