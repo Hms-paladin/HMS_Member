@@ -2,11 +2,12 @@ import React from "react";
 
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 
-function Map() {
+function Map(props) {
+  console.log(props.LatLong,"LatLong")
   return (
     <GoogleMap
       defaultZoom={10}
-      defaultCenter={{ lat: 13.09565, lng: 80.22039 }}
+      defaultCenter={{ lat: props.Lat, lng:  props.Long }}
     />
   );
 }
