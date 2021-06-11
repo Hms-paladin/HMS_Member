@@ -50,22 +50,24 @@ const handleProfileClick = (id) => {
     <React.Fragment>
         
         {!showDetails?
-         <div>
-      <h1 style={{ marginLeft: "55px" }}>Medication</h1>
+         <div style={{fontWeight:"500",fontSize:"15px"}}>
+      <h4 style={{ marginLeft: "55px",fontWeight:"600" }}>Medication</h4>
      
       {MedicationList.length>0&&MedicationList.map((data)=>
-      <div className={"nextvaccination_medic"}  onClick={()=>handleProfileClick(data.patientId)}>
-        <div className="vaccinationimg">
+      <div className={"nextvaccination_medic_div"}  onClick={()=>handleProfileClick(data.patientId)}>
+        <div className="vaccination_img_div">
+          <div style={{display:"flex"}}>
           <div className="vaccinationimg_cont">
             <img src={data.img}/>
           </div>
         </div>
         <div className="vaccinationdetail">
           <div className="vaccinationhead">{data.name}</div>
-          <div  style={{color:'black'}}>{data.age+"Years"}</div>
+          <div  style={{color:'black'}}>{data.age+" "+"Years"}</div>
           <div>{moment(data.date).format("DD-MMM-YYYY")}</div>
         </div>
-        <div className="time_dalal">{moment(data.date).format("HH:MM")}</div>
+        </div>
+        <div className="time_dalal" style={{marginRight:"20px"}}>{moment(data.date).format("HH:MM a")}</div>
       </div>
       )}
       </div>:

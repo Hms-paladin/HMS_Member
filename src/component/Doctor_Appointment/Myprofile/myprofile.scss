@@ -244,6 +244,7 @@ overflow: hidden;
 }
 .vaccinationdetail{
     color: grey;
+    margin-left: 20px;
 }
 .vaccinationhead_p{
     color: black;
@@ -571,4 +572,10 @@ overflow: hidden;
    height:30px !important;
    font-weight: 600 !important;
    width:100px !important
+}
+ .vaccination_img_div{
+display: flex;
+/* flex-direction: column; */
+align-items: center;
+margin: 15px;
 }
