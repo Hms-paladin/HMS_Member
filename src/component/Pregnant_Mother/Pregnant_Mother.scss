@@ -423,12 +423,6 @@ padding-right: 0px !important;
 .prescription_collapse .ant-collapse-borderless{
   background-color:#fff !important ;
 }
-.prescription_content{
-  display: flex;
-  box-shadow: 0px 2px 5px 2px #ccc;
-  border-radius: 10px;
-  flex-wrap: wrap;
-}
 .prescription_box{
   margin: 10px 20px;
   font-weight: 500;
@@ -586,4 +580,43 @@ opacity: 1;
   fill:#ccc !important;
   font-size:2.5rem;
   cursor: pointer;
+}
+
+// prescription Details
+
+.pres_patient_detail .custom_labelbox .formdiv .brdrcls{
+  margin:0px 15px 0px 0px !important;
+  height:35px !important;
+  width:200px !important;
+}
+.last_div .formdiv .labeltxt{
+   display: none !important;
+}
+.pres_days_deta .custom_labelbox .formdiv .brdrcls{
+  height:35px !important;
+  width:60px !important;
+}
+.last_div .custom_labelbox .formdiv .brdrcls{
+  height:35px !important;
+  width:500px !important;
+}
+.pres_days_deta,.pres_patient_detail{
+  display: flex;
+}
+.pres_days_child{
+  display: flex;  
+}
+.pres_parent{
+    padding: 10px;
+    background-color: #cccccc52;
+    margin: 0px 0px 0px 8px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.prescrip_detail .slick-slide{
+   height: 300px !important;
+}
+.pres_history{
+  font-weight: bold;
+  font-size: 20px;
 }

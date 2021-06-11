@@ -1,5 +1,7 @@
 import { GET_MEMBER_PROFILE,GET_PATIENT_HEALTHTIPS,GET_PATIENT_PERSCRIPTION} from "../utils/Constants";
 import {ADD_PATIENT_DETAILS,UPDATE_PATIENT_DETAILS,DELETE_MEMBER,GET_RELATIONSHIP} from '../utils/Constants'
+import {GET_DOCTOR_NAME,GET_PATIENT_NAME,GET_PRESCRIPTION_HISTORY} from '../utils/Constants'
+import {PARTICULAR_PRESCRIPTION_HISTORY} from '../utils/Constants'
 import {PARTICULAR_VACCINATION,GET_PERSCRIPTION,UPDATE_BASIC_DETAILS,GET_MEDICATION,GET_PARTICULAR_MEDICATION} from '../utils/Constants'
 import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
@@ -64,24 +66,30 @@ export const GetPatientPerscription = (patientId) => async (dispatch) => {
     } catch (err) {
     }
 };
-export const  AddPatientDetails= (data,patientId) => async (dispatch) => {
+export const  AddPatientDetails= (data,patientId,uploaddata,imageChanged) => async (dispatch) => {
 console.log("data",patientId)
+var formdata=new FormData()
+formdata.set("name",data.name.value)
+formdata.set("gender",data.gender.value)
+formdata.set("dob",data.date.value)
+formdata.set("relationId",data.relationship.value)
+formdata.set("heightcm",data.height.value)
+formdata.set("weightkg",data.weight.value)
+formdata.set("phoneno",data.mobileno.value)
+formdata.set("parentpatientId",patientId)
+if(imageChanged===true){
+ for(var i=0 ; i>= uploaddata.length;i++)  { 
+formdata.append("uploadFile",uploaddata[i].originFileObj)
+ }  
+}else{
+formdata.append("uploadFile","")
+}
+
     try {
         axios({
             method: 'POST',
             url: apiurl + 'Patient/addPatientmemberDetails',
-            data:  { 
-	           name:data.name.value,
-               gender:data.gender.value,
-               dob:data.date.value,
-               relationId:data.relationship.value,
-               heightcm:data.height.value,
-               weightkg:data.weight.value,
-               phoneno:data.mobileno.value,
-               parentpatientId:patientId,
-               uploadFile:""
-
-            }
+            data:formdata  
         })
         .then((response) => {
 
@@ -274,6 +282,74 @@ export const GetParticularMedicationList = (patientId) => async (dispatch) => {
         })
         .then((response) => {
             dispatch({ type: GET_PARTICULAR_MEDICATION,payload: response.data.data })
+        })
+        
+    } catch (err) {
+    }
+};
+
+export const DoctorName  = (id) => async (dispatch) => {
+
+    const response = await axios({
+        method: "post",
+        url: apiurl + "Patient/doctorListForPrescriptionFilter",
+        data: {
+            "selectedPatientId":id
+        },
+      });
+    return dispatch({ type: GET_DOCTOR_NAME, payload: response.data.data });
+};
+
+export const PatientName  = () => async (dispatch) => {
+    const response = await axios({
+        method: "post",
+        url: apiurl + "Patient/patientListForPrescriptionFilter",
+        data: {
+            "patientId":"38"
+        },
+      });
+    return dispatch({ type: GET_PATIENT_NAME, payload: response.data.data });
+};
+
+export const GetPerscriptionHistory = (FilterTrue,data) => async (dispatch) => {
+    // alert(FilterTrue)
+    try {
+        axios({
+            method: 'POST',
+            url: apiurl + "Patient/patientPrescriptionHistory",
+            data:  {
+                "patientId":"38",
+	            "currentDate":moment().format('YYYY-MM-DD'),
+	            "advanceFilter":FilterTrue,
+	            "doctorId":data.doctor.value||"",
+	            "fromDate":data.from_date.value||"",
+	            "toDate":data.to_date.value||"",
+	            "pageno":1,
+	            "limit":20
+            }
+        })
+        .then((response) => {
+            dispatch({ type: GET_PRESCRIPTION_HISTORY,payload: response.data.data })
+        })
+        
+    } catch (err) {
+    }
+};
+
+
+export const ParticularPerscriptionHistory = (PrescriptionId) => async (dispatch) => {
+    // alert(FilterTrue)
+    try {
+        axios({
+            method: 'POST',
+            url: apiurl + "Patient/particularPatientPrescriptionHistoryDetails",
+            data:  {
+                "prescriptionId":PrescriptionId,
+                "currentDate":moment().format('YYYY-MM-DD')
+            }
+        })
+        .then((response) => {
+            dispatch({ type: PARTICULAR_PRESCRIPTION_HISTORY,payload: response.data.data })
         })
         
     } catch (err) {

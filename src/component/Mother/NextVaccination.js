@@ -76,7 +76,7 @@ function NextVaccinationMother(props) {
           </div>
         </div>
         <div className="vaccinationdetail">
-          <div className="vaccinationhead">{vaccinationView[0]?.age_in_days}</div>
+          <div className="vaccinationhead">{vaccinationView[0]?.age_in_days>0 || vaccinationView[0]?.age_in_days>30?"At Birth":vaccinationView[0]?.age_in_days}</div>
           <div style={{ color: "black" }}>{data.vaccine}</div>
          
         </div>

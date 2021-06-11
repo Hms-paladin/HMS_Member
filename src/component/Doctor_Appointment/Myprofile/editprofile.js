@@ -5,20 +5,48 @@ import Labelbox from '../../../helpers/labelbox/labelbox'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import Avatar from '../../../helpers/Upload/Upload'
 import {connect,useDispatch} from 'react-redux'
+import {Upload,message} from 'antd'
 import {UpdatePatientDetails} from '../../../actions/ProfileActions'
 import { BrowserRouter as Router, Switch, Route,useHistory,Link,NavLink,Redirect} from "react-router-dom";
 import ValidationLibrary from '../../../helpers/validationfunction'
-var hashHistory = require('react-router-redux')
+import AvatarImage from '@material-ui/icons/Face';
 
+var hashHistory = require('react-router-redux')
 
 
 
                   
 
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+
+function beforeUpload(file) {
+  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png' || file.type==='image/svg';
+  if (!isJpgOrPng) {
+    message.error('You can only upload JPG/PNG file!');
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    message.error('Image must smaller than 2MB!');
+  }
+  return isJpgOrPng;
+}
+const uploadButton = (
+  <div>
+    <AvatarImage className="avatar_img"/>
+  </div>
+);
 function Editprofile(props) {
     let history = useHistory();
     let dispatch=useDispatch();
-     const [patientId,setpatientId]=useState("")
+    const [patientId,setpatientId]=useState("")
+    const [loading,setloading]=useState(true)
+    const [fileList,setfilelist]=useState([])
+    const [imageChanged,setimageChanged]=useState(false)
+    const [imageUrl,setimageUrl]=useState("")
      const [ProfileDetails,setProfileDetails]=useState({
       name:{
           value:"",
@@ -76,6 +104,22 @@ function Editprofile(props) {
     },
 
   })  
+  const handleChange = info => {
+    if (info.file.status === 'uploading') {
+    //   this.setState({ loading: true });
+    //   return;
+    }
+    if (info.file.status === 'done') {
+
+        setfilelist(info)
+      
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, imageUrl =>{
+       setimageUrl(imageUrl)
+       setimageChanged(true)
+        }) 
+    }
+  };
   function checkValidation(data, key) {
     
     var errorcheck = ValidationLibrary.checkValidation(
@@ -103,7 +147,8 @@ ProfileDetails.D_date.value=PatientData[0].expected_del_date
 ProfileDetails.address.value=PatientData[0].address
 ProfileDetails.babyname.value=PatientData[0].baby_name
 ProfileDetails.mobile.value=PatientData[0].phone_no
-ProfileDetails.gender.value=PatientData[0].gender
+ProfileDetails.gender.value=PatientData[0].gender==="1"?1:PatientData[0].gender==="2"?2:""
+setimageUrl(PatientData[0].profile_image)
 }
 setProfileDetails((prevState)=>({
   ...prevState,
@@ -119,7 +164,7 @@ const Update=()=>{
   formdata.set("name",ProfileDetails.name.value)
   formdata.set("dob",ProfileDetails.dob.value)
   formdata.set("email",ProfileDetails.email.value)
-  formdata.set("gender","M")
+  formdata.set("gender",ProfileDetails.gender.value)
   formdata.set("phone_no",ProfileDetails.mobile.value)
   formdata.set("address",ProfileDetails.address.value)
   formdata.set("expected_del_date",ProfileDetails.D_date.value)
@@ -135,6 +180,7 @@ const Update=()=>{
   setProfileDetails((prevState)=>({
     ...prevState,
 }))
+setimageUrl("")
 }
 const StateClear=()=>{
   let Key=["name","dob","email","mobile","address","D_date","babyname"]
@@ -152,7 +198,20 @@ const StateClear=()=>{
                   <div className="edit_header">Edit profile</div>
                   <div className="img_flex_row">
                       <div className="upload_place_plus">
-                       <Avatar/>
+                       <div className="uploads">
+                                 <Upload
+                                   name="avatar"
+                                   listType="picture-card"
+                                   className="avatar-uploader"
+                                   showUploadList={false}
+                                   action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                   beforeUpload={beforeUpload}
+                                   onChange={handleChange}
+                                >
+    
+                            {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                            </Upload>
+                       </div>
                        <AddBoxIcon className="plus_ad"/>
                        </div>
                       <span onClick={Update}>Update</span>
@@ -173,6 +232,7 @@ const StateClear=()=>{
                      value={ProfileDetails.dob.value}
                      error={ProfileDetails.dob.error}
                      errmsg={ProfileDetails.dob.errmsg}
+                     disableFuture={true}
                     />
                     </div>
 
@@ -198,12 +258,12 @@ const StateClear=()=>{
                     </div><div className="flex_row">
                     
                     <div className="lblbox"> 
-                    <Labelbox type="text" labelname="Civil ID"
+                    <Labelbox type="select" labelname="Gender"
                     changeData={(data) => checkValidation(data, "gender")}
-                    // dropdown={[{id:1,value:"Male"},{id:2,value:"Female"}]}
-                    // value={ProfileDetails.gender.value}
-                    // error={ProfileDetails.gender.error}
-                    // errmsg={ProfileDetails.gender.errmsg}
+                    dropdown={[{id:1,value:"Male"},{id:2,value:"Female"}]}
+                    value={ProfileDetails.gender.value}
+                    error={ProfileDetails.gender.error}
+                    errmsg={ProfileDetails.gender.errmsg}
                     />  
                     </div>
                     <div className="lblbox"><Labelbox type="text" labelname="Mobile"

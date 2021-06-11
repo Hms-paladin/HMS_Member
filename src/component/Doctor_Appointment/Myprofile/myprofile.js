@@ -29,7 +29,7 @@ import camera from '../../../images/camera.jpg'
 import Avatar from '../../../helpers/Upload/Upload'
 import moment from 'moment'
 import {Skeleton} from 'antd'
-import { Tabs,Icon} from 'antd';
+import { Tabs,Upload} from 'antd';
 import {connect,useDispatch} from 'react-redux'
 import NextVaccinationMother from '../../Mother/NextVaccination'
 import MotherMedication from '../../Mother/MotherMedication'
@@ -37,6 +37,9 @@ import PrescriptionView from '../../Pregnant_Mother/PrescriptionModal'
 import MotherDevice from '../../Mother/MotherDevices'
 import ValidationLibrary from '../../../helpers/validationfunction'
 import PersonIcon from '@material-ui/icons/Person';
+import AvatarImage from '@material-ui/icons/Face';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import PerscriptionHistory from '../../Pregnant_Mother/Prescription'
 import {
 GetMemberProfile,
 GetPatientHealthTips,
@@ -55,17 +58,29 @@ const { TabPane } = Tabs;
 
 
 
-const images = [
-    {img:Doctor,title:"Ashwin"},
-    {img:Nurse,title:"Arun"},
-    {img:Report,title:"Ranjith"},
-    {img:Trainer,title:"Vijay"},
-    {img:TrainingCenter,title:"Surya"},
-    {img:DietMeal,title:"Prakash"},
-    {img:Pharmacy,title:"Sahil"},
 
-]
-       
+function getBase64(img, callback) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+  }
+  
+  function beforeUpload(file) {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png' || file.type==='image/svg';
+    if (!isJpgOrPng) {
+      message.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('Image must smaller than 2MB!');
+    }
+    return isJpgOrPng;
+  }
+  const uploadButton = (
+    <div>
+      <AvatarImage className="avatar_img"/>
+    </div>
+  );
 
 function Myprofile(props) {
     const [tabdisble,settabdisble]=useState(false)
@@ -81,24 +96,23 @@ function Myprofile(props) {
             }
         })
     }
-    // function ScrollFamily(){
-    //     window.scrollTo(0, 400);
-    // }
-    // function ScrollNextVaccination(){
-    //     window.scrollTo(0, 650);
-    // } function ScrollNextAppointment(){
-    //     window.scrollTo(0, 700);
-    // } function ScrollMedication(){
-    //     window.scrollTo(0, 1200);
-    // } function ScrollHealthtip(){
-    //     window.scrollTo(0, 1500);
-    // }
-    // function ScrollPrescription(){
-    //     window.scrollTo(0, 1800);
-    // }
-    // function ScrollDevices(){
-    //     window.scrollTo(0, 1000);
-    // }
+
+    const handleChange = info => {
+        if (info.file.status === 'uploading') {
+        //   this.setState({ loading: true });
+        //   return;
+        }
+        if (info.file.status === 'done') {
+    
+            setfilelist(info)
+          
+          // Get this url from response in real world.
+          getBase64(info.file.originFileObj, imageUrl =>{
+           setimageUrl(imageUrl)
+           setimageChanged(true)
+            }) 
+        }
+      };
     const [FamilyProfile,setFamilyProfile]=useState({
         name:{
             value:"",
@@ -132,19 +146,20 @@ function Myprofile(props) {
       },
       height:{
         value:"",
-        validation:[],
+        validation:[{ name: "required" }],
         error:null,
         errormsg:null
       },
       weight:{
         value:"",
-        validation:[],
+        validation:[{ name: "required" }],
         error:null,
         errormsg:null
       }
 
     })   
     const [currentKey,setcurrentKey]=useState("1")
+    const [UploadData,setuploadData]=useState([])
     const handleClick = key => {
         console.log('click ', key);
         setcurrentKey(key)
@@ -163,8 +178,9 @@ function Myprofile(props) {
     const [patient_id,setpatient_id]=useState([])
     const [PerscriptionData,setPerscriptionData]=useState([])
     const [loading,setloading]=useState(true)
-    const [fileList,
-    ]=useState([])
+    const [fileList,setfilelist]=useState([])
+    const [imageChanged,setimageChanged]=useState(false)
+    const [imageUrl,setimageUrl]=useState("")
     const openForm = () => {
         setShowForm(true)
     }
@@ -211,16 +227,17 @@ function Myprofile(props) {
             dispatch(UpdateBasicPatientDetails(formdata,profileDetails.patientId)).then(()=>{
               StateClear()
               setShowForm(false)
+              
             })
       } 
         else{  
-        dispatch(AddPatientDetails(FamilyProfile,profileDetails.patientId)).then(()=>{
+        dispatch(AddPatientDetails(FamilyProfile,profileDetails.patientId,fileList,imageChanged)).then(()=>{
             StateClear()
         })
       }
       
 
-    
+       setimageUrl("")
         setShowForm(false)
     }
    
@@ -241,12 +258,13 @@ function Myprofile(props) {
         setpatient_id(PatientMemberid)
 
         FamilyProfile.name.value=data.name
-        FamilyProfile.gender.value=data.gender
+        FamilyProfile.gender.value=data.gender==="Male"?1:data.gender==="Female"?2:""
         FamilyProfile.date.value=data.dob
         FamilyProfile.mobileno.value=data.phone_no
         FamilyProfile.relationship.value=data.relation_id
         FamilyProfile.weight.value=data.weight
         FamilyProfile.height.value=data.height
+        setimageUrl(data.patientMemberImage)
         setFamilyProfile((prevState) =>({
             ...prevState,
         }))
@@ -287,15 +305,15 @@ function Myprofile(props) {
         <Popconfirm 
         title={
         <>
-        <div>Address</div>
-        <div>{profileDetails.name+profileDetails.address}</div>
+        <div>Address:</div>
+        <span>{profileDetails.name+","+profileDetails.address}</span>
         </>
         }
         icon={false}
         okText={false}
         cancelText={false} 
         >   
-        <div>{profileDetails.name+profileDetails.address}<span className="elp">...</span></div>
+        <div>{profileDetails.name+","+profileDetails.address}<span className="elp">...</span></div>
        </Popconfirm>
         },
         // {img:calendar,variant:"Expected Delivery Date",detail:"12 Dec"},
@@ -314,6 +332,7 @@ function Myprofile(props) {
     const Medication=props.ProfileDetails[0]&&props.ProfileDetails[0].patientMedication
     const [healthloading,sethealthloading]=useState(true)
     const [vacci_load,setvacci_load]=useState(true)
+  
     useEffect(()=>{
         if(props.Perscription.length>0){
             setloading(false)
@@ -388,11 +407,24 @@ function Myprofile(props) {
         setPerscriptionData(PerscriptionList)
         setcurrentKey("6")
     }
-    console.log("patientId",props)
-    const changeImageUpload=(file,imageChanged)=>{
-        alert(imageChanged)
-         console.log("ddddd",file[0]?.name)
-    }
+    // console.log("patientId",imageChanged)
+    // const changeImageUpload=(file,imageChanged,img)=>{
+    //     alert(imageChanged)
+    //     f(file)
+    //     var list=[]
+    //     list.push(file)
+    //      var fileData=list[0].fileList.map((data)=>{
+    //          return {name:data.name}
+    //      })
+    //      var ddd=fileData[0].name
+    //     //  setuploadData({ddd})
+       
+    //     setuploadData(file)
+    //     setimageChanged(imageChanged)
+   
+    // }
+    console.log("check",props)
+    console.log("file",imageChanged)
   
     return(
         <div>
@@ -438,10 +470,25 @@ function Myprofile(props) {
             {/* Form starts here */}
           {showForm &&  <div className="add_memberform">
                 <div className="img_cont">
-                     <Avatar 
-                     IMageChange={(file,imageChanged)=>changeImageUpload(file,imageChanged)}
-                     fileListData={fileList}
-                     />
+                     {/* <Avatar 
+                     IMageChange={(file,imageChanged,img)=>changeImageUpload(file,imageChanged,img)}
+                     FileList={fileList}
+                     imageChanged={imageChanged}
+                     /> */}
+                                 <div className="uploads">
+                                 <Upload
+                                   name="avatar"
+                                   listType="picture-card"
+                                   className="avatar-uploader"
+                                   showUploadList={false}
+                                   action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                   beforeUpload={beforeUpload}
+                                   onChange={handleChange}
+                                >
+    
+                      {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                        </Upload>
+                       </div>
                      <span>Add photo</span>
                 </div>
                 <div className="name_cont">
@@ -465,6 +512,7 @@ function Myprofile(props) {
                     value={FamilyProfile.date.value}
                     error={FamilyProfile.date.error}
                     errmsg={FamilyProfile.date.errmsg}
+                    disableFuture={true}
                     />
                     </div>
                     <div className="number">
@@ -519,7 +567,7 @@ function Myprofile(props) {
                  icon={false}
                 title={
                     <div className="edit_patient_profile">
-               <div><div>Gender</div><div className="snd_part">{data.gender==="M"?"Male":"Female"}</div></div>
+               <div><div>Gender</div><div className="snd_part">{data.gender}</div></div>
                <div><div>Mobile Number</div><div className="snd_part">{data.phone_no===""?"---":data.phone_no}</div></div>
                <div><div>Height</div><div className="snd_part">{data.height+ data.height_unit}</div></div>
                <div><div>Weight</div><div className="snd_part">{data.weight+data.weight_unit}</div></div>
@@ -648,7 +696,7 @@ function Myprofile(props) {
                   <div className="tablets">                  
                       <div className="tabletname">{data.medicineName}</div>
                   <div className="dashedline"></div>
-                  <div className="dosage">{"Daily"+ data.day + "Tablet"}</div>
+                  <div className="dosage">{"Daily"+" "+ data.day+" "+ "Tablet"}</div>
                   </div> 
                   )} 
               </div>
@@ -692,21 +740,26 @@ function Myprofile(props) {
     <div className="prescription_collapse">
       <Collapse bordered={false} defaultActiveKey={['1']}>
     <Panel header="Prescription" key="1">
+        <div className="prescription_parent">
         <div className="prescription_content">
         {loading?<Skeleton  paragraph={{ rows: 4 }} active title={false} loading={loading}/>:
            <>
             {props.Perscription.map((data)=>
             
-            <div className="prescription_box" onClick={()=>PerscriptionView(data.patientId)}>
+            <div className="prescription_box" >
                 <div className="pres_img"><img src={prescription}/></div>
                 <div>{data.patientName}</div>
 
             </div>
             )}
+
             </>
+
          }
         </div>
-    
+        {loading===false&&<div className="view_pre_parent"><Button className="viewbtn" onClick={()=>PerscriptionView()}>View</Button></div>}
+
+        </div>
        
     </Panel>
     </Collapse>
@@ -719,13 +772,15 @@ function Myprofile(props) {
          
              </TabPane>
              <TabPane tab="Medication" key="4" disabled>
+
                  <MotherMedication medication={profileDetails.patientId}/>
              </TabPane>
              <TabPane tab="Health Tips" key="5" disabled>
           
              </TabPane>
              <TabPane tab="Prescription History" key="6" disabled>
-                <PrescriptionView PerscriptionData={PerscriptionData}/>
+                {/* <PrescriptionView PerscriptionData={PerscriptionData}/> */}
+                <PerscriptionHistory/>
              </TabPane>
              <TabPane tab="Devices" key="7" disabled>
                 <MotherDevice/>

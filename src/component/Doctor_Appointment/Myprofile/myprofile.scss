@@ -262,6 +262,19 @@ overflow: hidden;
     height: 30px !important;
     border-bottom-right-radius: 10px !important;
 }
+.prescription_parent .viewbtn{
+    bottom: 0px;
+    right: 0px;
+    background-color: #83AF40 !important;
+    color: #fff !important;
+    text-transform: none !important;
+    height: 30px !important;
+    border-bottom-right-radius: 10px !important;
+}
+.view_pre_parent{
+    display: flex;
+    justify-content: flex-end;
+}
 .appointmentdetail{
     margin: 20px 30px 20px 50px;
     
@@ -445,9 +458,12 @@ overflow: hidden;
 }
 .prescription_content{
     display: flex;
-    box-shadow: 0px 2px 5px 2px #ccc;
-    border-radius: 10px;
+    
     flex-wrap: wrap;
+}
+.prescription_parent{
+    box-shadow: 0px 2px 5px 2px #ccc;
+        border-radius: 10px;
 }
 .prescription_box{
     margin: 10px 20px;
@@ -550,4 +566,9 @@ overflow: hidden;
 }
 .prescription_content,.nextvaccination_head .ant-skeleton-paragraph{
     padding:15px !important;
+}
+.edit_patient_profile .ant-btn-sm{
+   height:30px !important;
+   font-weight: 600 !important;
+   width:100px !important
 }
