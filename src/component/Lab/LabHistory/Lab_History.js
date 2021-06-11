@@ -1,4 +1,4 @@
-import  React from 'react'
+import  React,{useEffect,useState} from 'react'
 import {Input} from 'antd'
 import search from '../../../images/search.svg'
 import sort from '../../../images/sort.svg'
@@ -20,10 +20,14 @@ import Map from './Map'
 import Lab_ad from '../../../images/Lab_ad1.png'
 import CloseIcon from '@material-ui/icons/Close';
 import SliderComp from '../../../helpers/Slider/Slider'
+import {GetLabList} from '../../../actions/LabHistoryAction'
+import { connect, useDispatch } from "react-redux";
 const { Search } = Input;
-export default function Lab_History(props){
+function Lab_History(props){
+  const dispatch = useDispatch();
     const [open,setClose]=React.useState(false)
     const[HideAdrs,setHideAdrs]=React.useState(false)
+    const [LabDetails,setLabDetails]=useState([])
      // elipse function
      const ElipseOpen=()=>{
         setHideAdrs(!HideAdrs)
@@ -56,6 +60,18 @@ export default function Lab_History(props){
     const CloseModal=()=>{
         setopenmodal(false)
     }
+    useEffect(()=>{
+      dispatch(GetLabList())
+      // console.log(props.GetLabList,"props.GetLabList")
+  },[])
+  useEffect(()=>{
+    props.GetLabList.map((data)=>{
+      setLabDetails(data.details)
+    })
+    console.log(props.GetLabList,"props.GetLabList")
+},[props.GetLabList])
+
+console.log(LabDetails,"LabDetails")
     return(
         <div>
            
@@ -219,3 +235,7 @@ export default function Lab_History(props){
         </div>
     )
 }
+const mapStatetoProps = (state) => ({
+  GetLabList:state.LabHistoryReducer.getLabList||[],
+})
+export default connect(mapStatetoProps)(Lab_History);
