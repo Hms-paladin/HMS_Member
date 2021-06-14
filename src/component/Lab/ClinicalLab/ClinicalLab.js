@@ -1,11 +1,11 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Labelbox from '../../../helpers/labelbox/labelbox'
 import Grid from '@material-ui/core/Grid';
 import './ClinicalLab.scss'
 import Button from '@material-ui/core/Button';
 import Lab_AddMember from './AddMember'
 import Lab_BookingConfirmation from './Lab_BookingConfirmation'
-export default function Clinical_lab(props) {
+function Clinical_lab(props) {
     const Test=[
         {
             id:1,
@@ -52,7 +52,6 @@ export default function Clinical_lab(props) {
     const ElipseOpen=()=>{
         setHideAdrs(!HideAdrs)
     }
-   
     return(
         <div className="clinicallab_parent">
            <Grid container spacing={4}>
@@ -104,3 +103,4 @@ export default function Clinical_lab(props) {
     )
 
 }
+export default Clinical_lab;

@@ -114,3 +114,18 @@
     text-align: center;
     width:100%;
 }
+.share_icons{
+    display: flex;
+    margin: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+    >.react-share__ShareButton{
+        padding: 5px !important;
+    }
+}
+.share_title{
+    font-size: 23px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 15px;
+}
