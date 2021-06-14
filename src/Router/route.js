@@ -114,7 +114,8 @@ function Routes(props) {
                     <Route path="/orderdetails/:rowId" component={OrderTable} exact />
                     <Route path="/paymentreceive" component={PaymentReceived} exact />
                     <Route path="/paymentmethod" component={PaymentMethod} exact />
-                    <Route path="/orderpacking" component={OrderPacking} exact />
+                    <Route path="/OrderDetails-Packed" component={OrderPacking} exact />
+
                     {/* reports */}
                     <Route path="/reports" component={Reports} />
                     <Route path="/download" component={download} />

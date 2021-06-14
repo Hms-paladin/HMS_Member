@@ -3,7 +3,7 @@ const initalState = {
   getDoctorServiceDDL: [],
 };
 
-const masterDropdownReducer= (state = initalState, action) => {
+const masterDropdownReducer = (state = initalState, action) => {
   switch (action.type) {
     case GET_DOCTOR_SERVICE_DROPDOWN:
       return { ...state, getDoctorServiceDDL: action.payload };

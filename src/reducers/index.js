@@ -6,6 +6,7 @@ import prescriptionhistoryReducer from './prescriptionhistoryreducer';
 import GetProfileDetails from './ProfileReducers';
 import ReportReducer from "./ReportReducer"
 import LabHistoryReducer from "./LabHistoryReducer";
+import PatientNurseSearch from './nursingmodulereducer';
 
 export default combineReducers({
    doctorAppointmentReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
    GetProfileDetails,
    ReportReducer,
    LabHistoryReducer,
+   PatientNurseSearch
 })
 

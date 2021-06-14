@@ -19,6 +19,10 @@ import { GetParticularPrescriptionDetails, DeletePrescriptionDetails, CancelPres
 import { useDispatch, connect } from "react-redux";
 import './orderdetails.scss'
 import moment from 'moment';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import CustomizedSteppers from '../StepperStatus/Status';
+import PaymentMethod from '../../../component/Payment/PaymentMethod/PaymentMethod'
 
 const { Header } = Layout
 
@@ -44,7 +48,14 @@ function OrderTable(props) {
   const [medicineDetails, setMedicineDetails] = useState([])
   const [rowData, setRowData] = useState([])
   const [medicineId, setMedicineId] = useState()
+  const [TrackOpen, setTrackOpen] = React.useState(false)
+  const [btnChange, setBtnChange] = useState(false)
   let { rowId } = useParams()
+
+
+  const TrackClick = () => {
+    setTrackOpen(opened => !opened)
+  }
 
   const ModalOpenClick = (id) => {
     setmodalOpen(true)
@@ -71,12 +82,14 @@ function OrderTable(props) {
 
   }, [props.GetParticularPrescriptionDetails])
 
+  console.log(medicineDetails, "GetParticularPrescriptionDetails")
 
 
   useEffect(() => {
     let rowDataList = []
-    medicineDetails && medicineDetails.map((data, index) => {
-      console.log(data, "GetParticularPrescriptionDetails")
+    props.GetParticularPrescriptionDetails[0]?.medicineDetails && props.GetParticularPrescriptionDetails[0]?.medicineDetails.map((data, index) => {
+      console.log(data, "GetParticularPrescriptionDetailss")
+
       rowDataList.push({
         name: data.medicineName,
         calories: data.quantity,
@@ -105,10 +118,13 @@ function OrderTable(props) {
   }
 
   const confirmOrder = () => {
+    setBtnChange(true)
     dispatch(PatientPharmacyConfirmOrder(particularDetails)).then((response) => {
-    })
-  }
 
+    })
+
+  }
+  console.log(btnChange, "btnchane")
   return (
     <div className="order_de">
       <div style={{ fontSize: "20px", color: "#333", fontWeight: "bold", marginBottom: "25px" }}>Pharmacy - Order Details</div>
@@ -204,7 +220,27 @@ function OrderTable(props) {
       {/* button */}
       <div style={{ textAlign: "center", marginTop: "10px" }}>
         <Button className="cancel_odr" onClick={cancelOrder}>Cancel Order</Button>
-        <NavLink to="/paymentmethod"><Button className="confirm" onClick={confirmOrder}>Confirm and pay</Button></NavLink>
+        {btnChange ?
+          <div style={{ textAlign: "center", marginTop: "15px", position: "relative" }}><Button className="confirm">Track Order</Button>
+            <div className="tra_div">
+              {TrackOpen === false ?
+                <KeyboardArrowDownIcon className="down_arr" onClick={TrackClick} /> :
+                <KeyboardArrowUpIcon className="down_arr" onClick={TrackClick} />}
+            </div>
+            {TrackOpen === true ? <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "17px" }}>
+              <div style={{ width: "50%", boxShadow: " 0px 3px 10px #00000029", borderRadius: "15px" }} className="pha_track_div">
+                <div style={{ width: "100%" }}>
+                  <CustomizedSteppers />
+                </div>
+              </div>
+            </div> : null}
+          </div>
+          :
+          <NavLink to="/paymentmethod">
+            <Button className="confirm" onClick={confirmOrder}>Confirm and pay</Button>
+          </NavLink>
+
+        }
       </div>
     </div>
   );
