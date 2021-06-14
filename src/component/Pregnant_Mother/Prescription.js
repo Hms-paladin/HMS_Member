@@ -103,7 +103,7 @@ function PerscriptionHistory(props) {
     const Submit=()=>{
         setFilterTrue(true)
         dispatch(GetPerscriptionHistory(FilterTrue,PersFilter)).then(()=>{
-            StateClear()
+            // StateClear()
             setloading(false)
         })
         setPersFilter((prevState)=>({
@@ -139,12 +139,12 @@ function PerscriptionHistory(props) {
         })
         setDoctorlist({Doctor,Patient})
      },[props.Doctorname,loading,props.PerscriptionHistory])
-     const StateClear=()=>{
-         const Key=["doctor","patient","from_date","to_date"]
-         Key.map((data)=>{
-            PersFilter[data].value=""
-         })
-     }
+    //  const StateClear=()=>{
+    //      const Key=["doctor","patient","from_date","to_date"]
+    //      Key.map((data)=>{
+    //         PersFilter[data].value=""
+    //      })
+    //  }
     return(
         <div>
         {Prescription===false?
