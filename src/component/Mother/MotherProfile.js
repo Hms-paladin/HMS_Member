@@ -67,11 +67,9 @@ function MotherProfile(props) {
   // const { TabPane } = Tabs;
 
   const handleProfileClick = () => {
-    alert("no no");
     ShowdetailsTrue(!showDetails);
   };
   const handleAddFamily = () => {
-    alert("no no");
     AddFamilyTrue(!AddFamily);
   };
   const showModal = () => {

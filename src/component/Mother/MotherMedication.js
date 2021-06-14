@@ -1,111 +1,85 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import dalal from "../../images/PregnantMother/bg_mother.jpg";
 import "../Pregnant_Mother/Pregnant_Mother.scss";
-
-
+import {connect,useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom'
+import {GetMedicationList,GetParticularMedicationList} from '../../actions/ProfileActions'
+import MedicationFilter from '../Pregnant_Women/Medication'
+import moment from 'moment'
 function MotherMedication(props) {
-    const [showDetails, ShowdetailsTrue] = useState(false);
-
-const handleProfileClick = () => {
-    alert("no no");
-    ShowdetailsTrue(!showDetails);
+    const [showDetails, setShowdetailsTrue] = useState(false);
+    const [MedicationList,setMedicationList]=useState([])
+    const [PatientMedication,setPatientMedication]=useState([])
+    let dispatch=useDispatch()
+    let history=useHistory()
+const handleProfileClick = (id) => {
+  var PatientId=props.MedicationDetails.find((data)=>{
+    return(
+      data.patientId==id
+    )
+  })
+  console.log("medd",PatientId)
+  setPatientMedication(PatientId)
+  setShowdetailsTrue(true);
   };
+  useEffect(()=>{
+    dispatch(GetMedicationList())
+  },[MedicationList.patientId])
+  useEffect(()=>{
+  },[])
+
+  useEffect(()=>{
+    let MedicationData=[]
+    let ParticularMedication=[]
+    props.MedicationDetails.map((data)=>{
+      MedicationData.push({
+        name:data.patientName,
+        age:data.age,
+        date:data.presciptionDate,
+        img:data.profileImage,
+        patientId:data.patientId
+      }) 
+    })
+    setMedicationList(MedicationData)
+  },[props.MedicationDetails])
+  console.log("ssss",props)
+  const onResentCard=()=>{
+    setShowdetailsTrue(false)
+  }
   return (
     <React.Fragment>
         
+        {!showDetails?
+         <div style={{fontWeight:"500",fontSize:"15px"}}>
+      <h4 style={{ marginLeft: "55px",fontWeight:"600" }}>Medication</h4>
      
-      <h1 style={{ marginLeft: "55px" }}>Medication</h1>
-      <div className="nextvaccination" style={{ background: "#83AF4030" }}>
-        <div className="vaccinationimg">
+      {MedicationList.length>0&&MedicationList.map((data)=>
+      <div className={"nextvaccination_medic_div"}  onClick={()=>handleProfileClick(data.patientId)}>
+        <div className="vaccination_img_div">
+          <div style={{display:"flex"}}>
           <div className="vaccinationimg_cont">
-            <img src={dalal}  onClick={handleProfileClick} />
+            <img src={data.img}/>
           </div>
         </div>
         <div className="vaccinationdetail">
-          <div className="vaccinationhead">Dalal</div>
-          <div  style={{color:'black'}}>Vitamin K</div>
-          <div>1 Sachet</div>
+          <div className="vaccinationhead">{data.name}</div>
+          <div  style={{color:'black'}}>{data.age+" "+"Years"}</div>
+          <div>{moment(data.date).format("DD-MMM-YYYY")}</div>
         </div>
-        <div className="time_dalal">9:00 AM</div>
+        </div>
+        <div className="time_dalal" style={{marginRight:"20px"}}>{moment(data.date).format("HH:MM A")}</div>
       </div>
-      {showDetails !== false ? (
-          <div>
-      <h1 style={{ marginLeft: "55px" }}>Dalal Medication</h1>
-      <div className="nextvaccination">
-        <div className="vaccinationimg">
-       
-        </div>
-        <div className="vaccinationdetail">
-          <div className="vaccinationhead"  style={{color:'#83AF40'}}>Tylenol</div>
-          <div style={{color:'black'}}> 2 Capsules</div>
-          <div>After Food</div>
-        </div>
-        <div className="time_dalal">8:30 AM</div>
-      </div>
-      <div className="nextvaccination">
-        <div className="vaccinationimg">
-       
-        </div>
-        <div className="vaccinationdetail">
-          <div className="vaccinationhead" style={{color:'#83AF40'}}>B12 Injection</div>
-          <div  style={{color:'black'}}>1 Vial</div>
-          <div>After Food</div>
-        </div>
-        <div className="time_dalal">12:30 PM</div>
-      </div>
-      <div className="nextvaccination">
-        <div className="vaccinationimg">
-       
-        </div>
-        <div className="vaccinationdetail">
-          <div className="vaccinationhead" style={{color:'#83AF40'}}>Rantidine</div>
-          <div  style={{color:'black'}}> 2 Capsules</div>
-          <div>After Food</div>
-        </div>
-        <div className="time_dalal">6:30 PM</div>
-      </div>
-      <div className="nextvaccination">
-        <div className="vaccinationimg">
-       
-        </div>
-        <div className="vaccinationdetail">
-          <div className="vaccinationhead" style={{color:'#83AF40'}}>Volini</div>
-          <div  style={{color:'black'}}> Apply on Skin</div>
-          <div>After Food</div>
-        </div>
-        <div className="time_dalal">10:00 PM</div>
-      </div>
-      </div>
-      ) : null}
-   
-      <div className="nextvaccination">
-        <div className="vaccinationimg">
-          <div className="vaccinationimg_cont">
-            <img src={dalal} />
-          </div>
-        </div>
-        <div className="vaccinationdetail">
-          <div className="vaccinationhead">Nasser</div>
-          <div  style={{color:'black'}}>Vitamin C</div>
-          <div>1 Sachet</div>
-        </div>
-        <div className="time_dalal">9:00 Am</div>
-      </div>
-      <div className="nextvaccination">
-        <div className="vaccinationimg">
-          <div className="vaccinationimg_cont">
-            <img src={dalal} />
-          </div>
-        </div>
-        <div className="vaccinationdetail">
-          <div className="vaccinationhead">Lina</div>
-          <div  style={{color:'black'}}>Vitamin K</div>
-          <div>1 Sachet</div>
-        </div>
-        <div className="time_dalal">2:00 PM</div>
-      </div>
+      )}
+      </div>:
+      <MedicationFilter MedicationList={PatientMedication} showDetailsEnable={showDetails} onResentCard={onResentCard}/>}
       
     </React.Fragment>
   );
 }
-export default MotherMedication;
+const mapStateToProps = (state) =>
+({
+ MedicationDetails:state.GetProfileDetails.Medication,
+
+});
+
+export default connect(mapStateToProps)(MotherMedication);
