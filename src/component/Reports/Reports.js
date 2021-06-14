@@ -1,10 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import D_Image from '../../images/nurse.png'
-import Image1 from '../../images/image1.png'
-import Image2 from '../../images/image2.png'
-import Image3 from '../../images/image3.png'
-import Image4 from '../../images/image4.png'
-import Teeth from '../../images/xray_teeth.jpg'
 import sort from '../../images/sort.svg'
 import ShareIcon from '@material-ui/icons/Share';
 import CloseIcon from '@material-ui/icons/Close';
@@ -15,10 +9,30 @@ import Grid from '@material-ui/core/Grid'
 import Dialog from '@material-ui/core/Dialog';
 import Paper from '@material-ui/core/Paper'
 import './Reports.scss'
-import { IndeterminateCheckBox } from '@material-ui/icons'
+// import { saveAs } from 'file-saver';
+import { Document, Page } from 'react-pdf';
+// import {PDFViewer} from 'pdf-viewer-reactjs'
+import { IndeterminateCheckBox, LaptopWindows } from '@material-ui/icons'
 import { connect, useDispatch } from "react-redux";
 import { GetLabResultMemberList, GetParticularMemLabResult } from "../../actions/ReportActions"
 import moment from "moment";
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    LinkedinShareButton,
+    PinterestShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+} from "react-share";
+import {
+    EmailIcon,
+    FacebookIcon,
+    LinkedinIcon,
+    PinterestIcon,
+    TwitterIcon,
+    WhatsappIcon,
+} from "react-share";
+
 function Reports(props) {
     const dispatch = useDispatch();
     const [parentmembers, setParentMembers] = useState([])
@@ -33,6 +47,11 @@ function Reports(props) {
     const [share, setshare] = useState(false)
     let testinfo = ""
     const [visible, setvisible] = useState(false)
+
+    let file = "https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"
+    let pdf_file = "https://arxiv.org/pdf/quant-ph/0410100.pdf";
+    var fileExtension = pdf_file.split('.').pop();
+
     const handleClickOpen = (id) => {
         setOpen(true);
         setshare(false)
@@ -65,32 +84,71 @@ function Reports(props) {
     const FileType = "sss.pdf"
     const status = ""
     const data = [{ report: "Blood Test", date: "02-02-2021" }, { report: "Blood Test", date: "02-02-2021" }]
-    const download = (id, blob) => {
+
+    const download = (id) => {
+
+        // const FileType = require('file-type/browser');
+        // var fileType;
+        // (async () => {
+        //     alert("hi")
+        //     const response = await fetch(pdf_file);
+        //     fileType = await FileType.fromStream(response.body);
+        //     console.log(fileType, "ffff");
+        //     if(fileType.ext == "jpg"){func_jpg()}
+        //     else if(fileType.ext == "pdf"){func_pdf()}
+        // })();
+
+
+
+
         testinfo = testReport.find((data, index) => {
             return (id === data.testDetailsId)
         })
+        console.log(testinfo, "testinfo")
         let filename = testinfo.testName;
-        let file = testinfo.lab_test_file_name
-        const url = window.URL.createObjectURL(
-            new Blob([file]),
-        );
-        const link = document.createElement('a');
-        link.href = file;
-        link.setAttribute(
-            'download',
-            filename,
-        );
+        let url = testinfo.lab_test_file_name;
 
-        // Append to html link element page
-        document.body.appendChild(link);
 
-        // Start download
-        link.click();
+        if (fileExtension == "jpg") {
+            fetch(file, {
+                method: "GET",
+                headers: {}
+            })
+                .then(response => {
+                    response.arrayBuffer().then(function (buffer) {
+                        const url = window.URL.createObjectURL(new Blob([buffer]));
+                        const link = document.createElement("a");
+                        link.href = url;
+                        link.setAttribute("download", "picture.jpg"); //or any other extension
+                        document.body.appendChild(link);
+                        link.click();
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+        else if (fileExtension == "pdf") {
+            fetch(pdf_file, {
+                method: "GET",
+                headers: {}
+            })
+                .then(response => {
+                    response.arrayBuffer().then(function (buffer) {
+                        const url = window.URL.createObjectURL(new Blob([buffer]));
+                        const link = document.createElement("a");
+                        link.href = url;
+                        link.setAttribute("download", "Report.pdf"); //or any other extension
+                        document.body.appendChild(link);
+                        link.click();
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
 
-        // Clean up and remove the link
-        link.parentNode.removeChild(link);
+        }
     }
-
     useEffect(() => {
         dispatch(GetLabResultMemberList())
     }, [])
@@ -98,14 +156,14 @@ function Reports(props) {
     useEffect(() => {
         let member = props.getLabResultMemberList
         // setMemberList(member)
-        console.log(member,"temp")
+        console.log(member, "temp")
         member.map((data) => {
-            let parent=data.parrentMember.filter((item)=>item.resportsCount != 0)
-            let family=data.familyMember.filter((item)=>item.resportsCount != 0)
+            let parent = data.parrentMember.filter((item) => item.resportsCount != 0)
+            let family = data.familyMember.filter((item) => item.resportsCount != 0)
             setParentMembers(parent)
             setFamilyMembers(family)
         })
-        
+
     }, [props.getLabResultMemberList])
 
     useEffect(() => {
@@ -143,7 +201,9 @@ function Reports(props) {
             // setTestReport(sorting)
         }
     }
-
+    const Sharehandle = () => {
+        // alert("hi")
+    }
 
     console.log(testInfo, "testInfo")
     console.log(testReport, "testReport")
@@ -214,9 +274,52 @@ function Reports(props) {
                 {open ? <div className="login_parent">
                     <CloseIcon className="l_closeicon" onClick={handleClose} />
                     <label className="med_rpt_view_text">{testInfo.testName}</label>
-                    <img src={testInfo.lab_test_file_name} style={{ width: "100%" }} />
+                    {fileExtension == "jpg" ? <img src={file} style={{ width: "100%" }} /> :
+                        <center><a href={pdf_file} target="_blank">{testInfo.testName + " Report.pdf"}</a></center>}
                 </div> :
-                    share ? < Share handleClose={handleClose} /> : ""}
+                    share ?
+                    <>
+                        <div className="share_title">Share Medical Reports</div>
+                        <CloseIcon className="l_closeicon" onClick={handleClose} />
+                        <div className="share_icons">
+                            <FacebookShareButton
+                                url="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"
+                                quote={"Medical Report"}
+                            >
+                                <FacebookIcon iconFillColor="white" round={true}></FacebookIcon>
+                            </FacebookShareButton >
+                            <WhatsappShareButton
+                                url="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"
+                                title={"Medical Report"}
+                            >
+                                <WhatsappIcon iconFillColor="white" round={true}></WhatsappIcon>
+                            </WhatsappShareButton>
+                            <EmailShareButton
+                                subject={"Medical Report"}
+                                body="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"
+                                separator={""}
+                            >
+                                <EmailIcon iconFillColor="white" round={true}></EmailIcon>
+                            </EmailShareButton>
+                            <LinkedinShareButton
+                                title={"Medical Report"}
+                                url="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"
+                            >
+                                <LinkedinIcon iconFillColor="white" round={true}></LinkedinIcon>
+                            </LinkedinShareButton>
+                            <TwitterShareButton
+                                title={"Medical Report"}
+                                url="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"
+                            >
+                                <TwitterIcon iconFillColor="white" round={true}></TwitterIcon>
+                            </TwitterShareButton>
+                            <PinterestShareButton
+                                media="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"
+                                url="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"
+                                description={"Medical Report"}>
+                                <PinterestIcon iconFillColor="white" round={true}></PinterestIcon>
+                            </PinterestShareButton>
+                        </div></> : ""}
             </Dialog>}
             <pre className="status">{status}</pre>
         </div>

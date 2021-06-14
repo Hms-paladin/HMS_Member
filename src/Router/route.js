@@ -92,7 +92,13 @@ import Phy_Myappointment from '../component/Physiotheraphy/Myappointments/myappo
 import Ad_Physiotherphy from '../component/Physiotheraphy/PhysiotheraphyMain/advertisement'
 import Dashboard from '../component/Dashboard/dashboard'
 import Phy_History from '../component/Physiotheraphy/Myappointments/history'
-import { Switch, useParams } from "react-router-dom";
+import { Switch,useParams} from "react-router-dom";
+
+
+import MedicationFilter from '../component/Pregnant_Women/Medication'
+import PrescriptionView from '../component/Pregnant_Mother/PrescriptionModal'
+import MotherMedication from '../component/Mother/MotherMedication'
+import PerscriptionHistory from '../component/Pregnant_Mother/PrescriptionModal'
 var hashHistory = require('react-router-redux')
 function Routes(props) {
     return (
@@ -154,49 +160,48 @@ function Routes(props) {
                     <Route path="/physiotherapistbooking" component={Physiotherapistbooking} exact />
                     <Route path="/phy_history" component={Phy_History} />
 
-                    {/* advertisement */}
-                    <Route path="/advertisement" component={Advertisement} exact />
-                    <Route path='/physiotheraphy_ad' component={Ad_Physiotherphy} />
-
-
-                    {/* Book a Room */}
-                    <Route path="/hospitallist" component={HospitalList} />
-                    <Route path="/bookaroom_ad" component={BookaRoom_ad} />
-                    {/* <Route path ="/bookinghospital" component={BookingHospital}/> */}
-                    <Route path="/bookingdetails" component={BookingDetails} />
-                    <Route path="/bookroomhistory" component={BookroomHistory} />
-                    <Route path="/reschedulepage" component={BookingReschedule} />
-                    <Route path="/confirmhospital" component={ConfirmBooking} />
-                    {/* <Route path = "/paymentmethodbook" component={PaymentMethodBook}/> */}
-                    {/* <Route path="/paymentreceived" component={PaymentReceived_Book}/> */}
-                    <Route path="/proceedpage" component={ProceedScreen} />
-                    <Route path="/confirmpage" component={ConfirmPage} />
-                    <Route path="/resheduleproceed" component={ProceedReschedule} />
-                    {/* Training Center */}
-                    <Route path="/trainingcategory" component={TrainingCategory} />
-                    <Route path="/tc_history" component={Training_History} />
-                    <Route path="/Trainingdetails" component={Training_Details} />
-                    <Route path="/bookingshedule" component={BookingShedule} />
-                    <Route path="/tc_Bookings" component={Tra_Bookings} />
-                    <Route path="/tc_bookings_history" component={Tra_BookingHistory} />
-
-                    <Route path="/tc_reschedule_bookings" component={Tc_BookingReShedule} />
-                    <Route path="/tc_myschedule" component={Tc_Myschedule} />
-                    {/* trainer */}
-                    <Route path="/tainerlist" component={TrainerList} />
-                    <Route path="/trainerdetails" component={TrainerDetails} />
-                    <Route path='/ChatWindow' component={ChatWindow} />
-                    <Route path='/trainerbooking' component={TrainerBooking} />
-                    <Route path="/trainer_goalweight" component={GoalWeight_Trainer} />
-                    <Route path="/trainer_booking" component={TrainerBookings} />
-                    <Route path="/trainer_bookinghistory" component={Trainer_BookingHistory} />
-                    <Route path="/trainer_myschedule" component={Trainer_Myschedule} />
-                    <Route path="/trainer_bookigreschedule" component={BookingReSchedule} />
-                    {/* calendar */}
-                    {/* <Route path="/Calendar" component = {Calendar}/> */}
-                </Switch>
-
-            </HeaderLayout>
+                        {/* Book a Room */}
+                        <Route path ="/hospitallist" component={HospitalList}/> 
+                        <Route path="/bookaroom_ad" component={BookaRoom_ad}/>
+                        {/* <Route path ="/bookinghospital" component={BookingHospital}/> */}
+                        <Route path ="/bookingdetails" component={BookingDetails}/>
+                        <Route path="/bookroomhistory" component={BookroomHistory}/>
+                        <Route path="/reschedulepage" component={BookingReschedule}/>
+                        <Route path="/confirmhospital" component={ConfirmBooking}/>
+                        {/* <Route path = "/paymentmethodbook" component={PaymentMethodBook}/> */}
+                        {/* <Route path="/paymentreceived" component={PaymentReceived_Book}/> */}
+                        <Route path = "/proceedpage" component = {ProceedScreen}/>
+                        <Route path = "/confirmpage" component = {ConfirmPage} />
+                        <Route path="/resheduleproceed" component = {ProceedReschedule}/>
+                        {/* Training Center */}          
+                        <Route path="/trainingcategory" component = {TrainingCategory}/>
+                        <Route path="/tc_history" component = {Training_History}/>
+                        <Route path="/Trainingdetails" component = {Training_Details}/>
+                        <Route path="/bookingshedule" component = {BookingShedule}/>
+                        <Route path="/tc_Bookings" component = {Tra_Bookings}/>
+                        <Route path="/tc_bookings_history" component={Tra_BookingHistory}/>
+                        
+                        <Route path="/tc_reschedule_bookings" component={Tc_BookingReShedule}/>
+                        <Route path="/tc_myschedule" component={Tc_Myschedule}/>
+                        {/* trainer */}
+                        <Route path = "/tainerlist" component={TrainerList}/>
+                        <Route path ="/trainerdetails" component={TrainerDetails}/>
+                        <Route path='/ChatWindow' component={ChatWindow}/>
+                        <Route path='/trainerbooking' component={TrainerBooking}/>
+                        <Route path="/trainer_goalweight" component={GoalWeight_Trainer}/>
+                        <Route path="/trainer_booking" component={TrainerBookings}/>
+                        <Route path="/trainer_bookinghistory" component={Trainer_BookingHistory}/>
+                        <Route path="/trainer_myschedule" component={Trainer_Myschedule}/>
+                        <Route path="/trainer_bookigreschedule" component={BookingReSchedule}/>
+                        <Route path="/Medication" component={MedicationFilter}/>
+                        <Route path="/MotherMedication" component={MotherMedication}/>
+                        <Route path="/PrescriptionView" component={PrescriptionView}/>
+                        <Route path="/PerscriptionHistory" component={PerscriptionHistory}/>
+                        {/* calendar */}
+                        {/* <Route path="/Calendar" component = {Calendar}/> */}
+                        </Switch>
+                        
+        </HeaderLayout>
         </Router>
     );
 }

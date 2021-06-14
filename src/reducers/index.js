@@ -4,6 +4,8 @@ import masterDropdownReducer from "./masterdropdownreducer";
 import trainerListReducer from "./trainerlistreducer";
 import prescriptionhistoryReducer from './prescriptionhistoryreducer';
 import GetProfileDetails from './ProfileReducers';
+import ReportReducer from "./ReportReducer"
+import LabHistoryReducer from "./LabHistoryReducer";
 import PatientNurseSearch from './nursingmodulereducer';
 
 export default combineReducers({
@@ -12,6 +14,8 @@ export default combineReducers({
    trainerListReducer,
    prescriptionhistoryReducer,
    GetProfileDetails,
+   ReportReducer,
+   LabHistoryReducer,
    PatientNurseSearch
 })
 

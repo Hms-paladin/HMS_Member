@@ -29,18 +29,30 @@ function Myappointment(props) {
     const [patientId, setPatientId] = React.useState("16");
     let history = useHistory();
     const [MyAppoinments, setMyAppointments] = useState({
-    start_date: {
-        value: "",
-        validation: [{ "name": "required" }],
-        error: null,
-        errmsg: null,
-    },
-    end_date: {
-        value: "",
-        validation: [{ "name": "required" }],
-        error: null,
-        errmsg: null,
-    },
+        member_name: {
+            value: "",
+            validation: [{ "name": "required" }],
+            error: null,
+            errmsg: null,
+        },
+        doctor_name: {
+            value: "",
+            validation: [{ "name": "required" }],
+            error: null,
+            errmsg: null,
+        },
+        start_date: {
+            value: "",
+            validation: [{ "name": "required" }],
+            error: null,
+            errmsg: null,
+        },
+        end_date: {
+            value: "",
+            validation: [{ "name": "required" }],
+            error: null,
+            errmsg: null,
+        },
 })
     useEffect(() => {
         setPatientId("16");
@@ -71,9 +83,15 @@ function Myappointment(props) {
     const openfilter = () => {
         setShowfilter(!showfilterForm)
     }
-    const QueueOpen = () => {
+    const QueueOpen = (index) => {
+        if(props.myAppointments[index].ismodel===1)
+        props.myAppointments[index].ismodel=0
+        else
+        props.myAppointments[index].ismodel=1
         setqueue(!queue)
         setShowForm(false)
+
+        // console.log(props.myAppointments[index],index,"props.myAppointments")
     }
 const data = {
 	patientId: "16",
@@ -115,8 +133,29 @@ const cancelAppoinment = (id) => {
 }   
 
 const advancedFilter = () => {
-    
-    dispatch(patientAppointmentAdvancedFilter());
+    var mainvalue = {};
+    var targetkeys = Object.keys(MyAppoinments);
+    for (var i in targetkeys) {
+        var errorcheck = ValidationLibrary.checkValidation(
+            MyAppoinments[targetkeys[i]].value,
+            MyAppoinments[targetkeys[i]].validation
+        );
+        MyAppoinments[targetkeys[i]].error = !errorcheck.state;
+        MyAppoinments[targetkeys[i]].errmsg = errorcheck.msg;
+        mainvalue[targetkeys[i]] = MyAppoinments[targetkeys[i]].value;
+    }
+    var filtererr = targetkeys.filter((obj) => MyAppoinments[obj].error == true);
+
+    if (filtererr.length > 0){
+        
+    }
+    else{
+    dispatch(patientAppointmentAdvancedFilter(MyAppoinments));
+    }
+
+    setMyAppointments((prevState) => ({
+        ...prevState,
+    }));
 } 
 
 function checkValidation(data, key) {
@@ -138,6 +177,7 @@ function checkValidation(data, key) {
         [key]: dynObj,
     }));
 }
+
     return(
         <div className="myappointments_layout">
             <div className="appointmentsheadflex">
@@ -153,14 +193,35 @@ function checkValidation(data, key) {
                 <div className="advfilterhead">Advance Filter</div>
                 <div className="advfilterflex">
                     <div className="flexr1">
-                        <Labelbox type="select" 
+                        {/* <Labelbox type="select" 
                         dropdown={doctorList.DoctorList}
-                        labelname="Member Name"/>
+                        labelname="Member Name"/> */}
+
+                        <Labelbox type="select"
+                        dropdown={doctorList.DoctorList}
+                        changeData={(data) =>
+                            checkValidation(data, "member_name")
+                        }
+                        labelname="Member Name"
+                        value={MyAppoinments.member_name.value}
+                        error={MyAppoinments.member_name.error}
+                        errmsg={MyAppoinments.member_name.errmsg} />
                      </div>
                     <div className="flexr1">
-                        <Labelbox type="select" 
+                        {/* <Labelbox type="select" 
                         dropdown={patientList.PatientList} 
-                        labelname="Doctor Name"/>
+                        labelname="Doctor Name"/> */}
+
+                        <Labelbox type="select"
+                        dropdown={patientList.PatientList} 
+                        changeData={(data) =>
+                            checkValidation(data, "doctor_name")
+                        }
+                        labelname="Doctor Name"
+                        value={MyAppoinments.doctor_name.value}
+                        error={MyAppoinments.doctor_name.error}
+                        errmsg={MyAppoinments.doctor_name.errmsg} />
+
                         </div>
                     {/* <Labelbox type="datepicker" labelname="From Date"/> */}
                     <Labelbox type="datepicker" 
@@ -182,23 +243,26 @@ function checkValidation(data, key) {
                         value={MyAppoinments.end_date.value}
                         error={MyAppoinments.end_date.error}
                         errmsg={MyAppoinments.end_date.errmsg} />
-
+            
                     {/* <Labelbox type="datepicker" labelname="To Date"/> */}
                     <div className="applybtndiv"><Button className="applybtn"onClick={advancedFilter} >Apply</Button></div>
                 </div>
             </div>}
-            {props.myAppointments.map((data) => (                
+            {props.myAppointments.map((data,index) => { 
+                // props.myAppointments[index].ismodel=0
+                return(              
             <div className="appointmentlistpaper">
             <div className="listpaperflex"><div className="doctrname">{data.doctorName}</div><div className="appointdate">{Moment(dt).format('d MMM yy')}<span className="appointtime">{Moment(dt).format('hh:mm a')}</span></div></div>
             <div className="listpaperflex"><div className="patname">{data.clinicDetails[0].vendor_location}</div><div></div></div>
             <div className="listpaperflex"><div className={data.payment_status == 1 ? 'paidbg' : ''}>{data.payment_status == 1 ? 'Paid' : 'UnPaid'}</div><div className="paymentdate"></div></div>
             <div className="listpaperflex"><div className="amntcap">Amount <span className="amntinkwd">{data.book_amount} KWD</span></div><div className="paymenttime"></div></div>
             <div className="listpaperflex"><div className="appnttypeclr">Appointment Type</div><div className="reviewbtn"><span onClick={()=>RescheduleBooking(data)}>Reschedule</span>
-            <span className={showcancelForm?"doct_change_color":"cancelspanbtn"} onClick={opencancelForm} >Cancel</span><span className={queue?"doct_change_color":"queuespanbtn"} onClick={QueueOpen}>Queue</span></div></div>
+            <span className={showcancelForm?"doct_change_color":"cancelspanbtn"} onClick={()=>opencancelForm(index)} >Cancel</span><span className={queue?"doct_change_color":"queuespanbtn"} onClick={()=>QueueOpen(index)}>Queue</span></div></div>
            {showcancelForm && <div className="cancellationoption"><Button onClick={()=>cancelAppoinment(data.bookingId)} >Add {data.book_amount} KWD to wallet</Button><Button onClick={()=>cancelAppoinment(data.bookingId)}>Process Refund {data.book_amount} KWD</Button></div>}
-           {queue&&<Queue/>}
+           {data.ismodel&&data.ismodel===1&&<Queue appointment_details={data} />}
         </div>
-            ))}
+                )
+                })}
             
 
         </div>

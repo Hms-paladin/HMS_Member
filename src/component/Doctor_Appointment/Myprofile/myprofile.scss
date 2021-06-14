@@ -47,10 +47,10 @@
     border-radius: 30px !important;
     margin-top: 15px !important;
 }
-.tabmenus{
-    padding-left: 50px;
-    padding-right: 30px;
-}
+// .tabmenus{
+//     padding-left: 50px;
+//     padding-right: 30px;
+// }
 
 .add_memberform{
     padding: 20px 30px 20px 50px;
@@ -175,7 +175,8 @@
     align-items: center;
     width: 200px;
     margin: 10px;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 400;
 }
 .minicard img{
     height: 100%;
@@ -202,7 +203,16 @@ overflow: hidden;
     height: 80px;
     margin-bottom: 5px;
    
+    display:flex;
+    justify-content: center;
+    align-items: flex-end;
 
+}
+.nextvacci_scroll{
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow-x: scroll; 
 }
 
 .vaccinationimg_cont img{
@@ -211,28 +221,38 @@ overflow: hidden;
     border-radius: 50px;
 }
 
-.nextvaccination{
+.nextvaccination_head{
     margin: 20px 30px 20px 50px;
-    
     box-shadow: 0px 2px 5px 2px #ccc;
     border-radius: 10px;
+}
+.nextvacci{
     display: flex;
     align-items: center;
     position: relative;
 }
-.vaccinationimg{
+.vaccination_img{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 15px;
 }
+.vaccination_pimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0px 0px 0px;
+}
 .vaccinationdetail{
     color: grey;
+    margin-left: 20px;
 }
-.vaccinationhead{
+.vaccinationhead_p{
     color: black;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
+    padding:10px 0px 0px 10px;
+    font-weight: 700;
 }
 .nextvaccination .viewbtn{
     position: absolute;
@@ -243,6 +263,19 @@ overflow: hidden;
     text-transform: none !important;
     height: 30px !important;
     border-bottom-right-radius: 10px !important;
+}
+.prescription_parent .viewbtn{
+    bottom: 0px;
+    right: 0px;
+    background-color: #83AF40 !important;
+    color: #fff !important;
+    text-transform: none !important;
+    height: 30px !important;
+    border-bottom-right-radius: 10px !important;
+}
+.view_pre_parent{
+    display: flex;
+    justify-content: flex-end;
 }
 .appointmentdetail{
     margin: 20px 30px 20px 50px;
@@ -352,7 +385,8 @@ overflow: hidden;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 20px 0px;
+
 }
 .medicationhead{
     display: flex;
@@ -365,7 +399,7 @@ overflow: hidden;
 .medicationhead{
     font-size: 26px !important;
     font-weight: 700;
-    padding: 5px 20px 0px 50px;
+    // padding: 5px 20px 0px 50px;
 }
 .healthtip_collapse{
     padding-left: 50px;
@@ -392,6 +426,7 @@ overflow: hidden;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 .healthtip_collapse .ant-collapse-content-box{
   padding-left: 0px !important;
@@ -426,14 +461,17 @@ overflow: hidden;
 }
 .prescription_content{
     display: flex;
-    box-shadow: 0px 2px 5px 2px #ccc;
-    border-radius: 10px;
+    
     flex-wrap: wrap;
+}
+.prescription_parent{
+    box-shadow: 0px 2px 5px 2px #ccc;
+        border-radius: 10px;
 }
 .prescription_box{
     margin: 10px 20px;
     font-weight: 500;
-    
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -471,3 +509,77 @@ overflow: hidden;
       top: -83px;
       color:#4A4A4A;
   }
+  .profile_dummy_img{
+    font-size: 3.7rem !important;
+    background: #ccc;
+    border-radius: 50%;
+    fill: #fff !important;
+    padding: 5px;
+    cursor: pointer;
+  }
+  .tabmenus .ant-tabs-nav .ant-tabs-tab{
+    font-size: 18px !important;
+    border-left: 1px   solid #ccc !important;
+    font-weight: bold;
+  }
+  .tabmenus .ant-tabs-ink-bar{
+      height:3px !important;
+      background:#83AF40 !important;
+  }
+  .tabmenus .ant-tabs-tab-btn{
+      margin-left: 10px !important;
+  }
+  .tabmenus .ant-tabs-nav-list {
+    justify-content: space-evenly !important;
+    width: 100%;
+  }
+  .tabmenus .ant-tabs-tab{
+      width:100%;
+      margin:0px 5px 0px 0px !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+  }
+  .tabmenus .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+      color:#83AF40 !important;
+      font-weight: bold !important;
+  }
+  
+
+
+//   edit profile
+.edit_patient_profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    width:900px;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+.snd_part{
+    color: #777777;
+    margin-top: 10px;
+    font-weight: 400 !important;
+}
+.medication_list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.prescription_content,.nextvaccination_head .ant-skeleton-paragraph{
+    padding:15px !important;
+}
+.edit_patient_profile .ant-btn-sm{
+   height:30px !important;
+   font-weight: 600 !important;
+   width:100px !important
+}
+ .vaccination_img_div{
+display: flex;
+/* flex-direction: column; */
+align-items: center;
+margin: 15px;
+}
+

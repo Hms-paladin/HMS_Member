@@ -12,6 +12,9 @@
     font-size: 14px;
     font-weight: 500;
 }
+.Errormsg{
+    color:red;
+}
 
 .formdiv .brdrcls {
     width: 100%;
@@ -141,9 +144,9 @@ border-color: red;
     fill: #6c757dcf !important;
 }
 .formdiv .MuiFormControl-marginNormal{
-    border: 1px solid #d9d9d9;
+    /* border: 1px solid #d9d9d9; */
     border-radius: 2px !important;
-    box-shadow: 0 0 1.5px 0px #ccc;
+    /* box-shadow: 0 0 1.5px 0px #ccc; */
 }
  .formdiv .MuiInputBase-inputAdornedEnd{
     color:none !important;
@@ -161,4 +164,7 @@ border-color: red;
 }
 .formdiv  .MuiSvgIcon-root{
     fill: #bfbfbf !important;
+}
+.MuiOutlinedInput-adornedEnd{
+    padding-right: 0px !important;
 }
