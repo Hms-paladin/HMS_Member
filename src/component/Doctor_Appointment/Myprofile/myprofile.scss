@@ -175,7 +175,8 @@
     align-items: center;
     width: 200px;
     margin: 10px;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 400;
 }
 .minicard img{
     height: 100%;
@@ -384,7 +385,8 @@ overflow: hidden;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 20px 0px;
+
 }
 .medicationhead{
     display: flex;
@@ -397,7 +399,7 @@ overflow: hidden;
 .medicationhead{
     font-size: 26px !important;
     font-weight: 700;
-    padding: 5px 20px 0px 50px;
+    // padding: 5px 20px 0px 50px;
 }
 .healthtip_collapse{
     padding-left: 50px;
@@ -542,6 +544,7 @@ overflow: hidden;
       color:#83AF40 !important;
       font-weight: bold !important;
   }
+  
 
 
 //   edit profile
@@ -579,3 +582,4 @@ display: flex;
 align-items: center;
 margin: 15px;
 }
+

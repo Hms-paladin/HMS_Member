@@ -102,23 +102,28 @@ function PerscriptionHistory(props) {
   
     const Submit=()=>{
         setFilterTrue(true)
-        dispatch(GetPerscriptionHistory(FilterTrue,PersFilter))
+        dispatch(GetPerscriptionHistory(FilterTrue,PersFilter)).then(()=>{
+            StateClear()
+            setloading(false)
+        })
         setPersFilter((prevState)=>({
             ...prevState,
         }))
     }
      useEffect(()=>{
        dispatch(PatientName())
-       dispatch(GetPerscriptionHistory(FilterTrue,PersFilter))
+       dispatch(GetPerscriptionHistory(FilterTrue,PersFilter)).then(()=>{
+        setloading(false)
+       })
        
      },[FilterTrue])
      useEffect(()=>{
        dispatch(DoctorName())
      },[props.DoctorName])    
     useEffect(()=>{
-        if(props.PerscriptionHistory[0]?.details.length>0){
-            setloading(false)
-        }
+        // if(props.PerscriptionHistory[0]?.details.length>0){
+        //     setloading(false)
+        // }
         let Doctor=[]
         let Patient=[]
         props.Doctorname.map((data)=>{
@@ -134,7 +139,12 @@ function PerscriptionHistory(props) {
         })
         setDoctorlist({Doctor,Patient})
      },[props.Doctorname,loading,props.PerscriptionHistory])
-     
+     const StateClear=()=>{
+         const Key=["doctor","patient","from_date","to_date"]
+         Key.map((data)=>{
+            PersFilter[data].value=""
+         })
+     }
     return(
         <div>
         {Prescription===false?
@@ -198,7 +208,7 @@ function PerscriptionHistory(props) {
                 </div>
                 </div>
                <div className="listpaperflex">
-                   <div className="patname">{Moment(data.presciptionDate).format('DD MMM YYYY')}</div><div>{Moment(data.presciptionDate).format('hh:mm a')}</div></div>
+                   <div className="patname">{Moment(data.presciptionDate).format('DD MMM YYYY')}</div><div>{Moment(data.presciptionDate).format('hh:mm A')}</div></div>
             </div>
             ))}
             </>

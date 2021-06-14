@@ -67,7 +67,7 @@ const handleProfileClick = (id) => {
           <div>{moment(data.date).format("DD-MMM-YYYY")}</div>
         </div>
         </div>
-        <div className="time_dalal" style={{marginRight:"20px"}}>{moment(data.date).format("HH:MM a")}</div>
+        <div className="time_dalal" style={{marginRight:"20px"}}>{moment(data.date).format("HH:MM A")}</div>
       </div>
       )}
       </div>:

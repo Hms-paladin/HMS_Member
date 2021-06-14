@@ -684,7 +684,7 @@ function Myprofile(props) {
 
         
       </div>
-      <div className="medicationhead">Medication</div>
+      <div className="medicationhead" style={{paddingLeft:"50px"}}>Medication</div>
       <div className="nextappointment">
           
          

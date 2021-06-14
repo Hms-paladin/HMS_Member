@@ -350,12 +350,12 @@ overflow: hidden;
   font-weight: 500;
   font-size: 16px;
 }
-.tablets{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px;
-}
+// .tablets{
+//   display: flex;
+//   justify-content: space-between;
+//   width: 100%;
+//   padding: 20px 20px 20px 0px;
+// }
 .medicationhead{
   display: flex;
   width: 100%;
@@ -367,7 +367,7 @@ overflow: hidden;
 .medicationhead{
   font-size: 26px;
   font-weight: 700;
-  padding: 5px 20px 0px 50px;
+  // padding: 5px 20px 0px 50px;
 }
 .healthtip_collapse{
   padding-left: 50px;
@@ -579,12 +579,16 @@ opacity: 1;
   padding:2% 0% 0% 5% !important;
 }
 
-.medication_list svg{
+.medication_list .mor_icon{
   fill:#ccc !important;
-  font-size:2.5rem;
+  font-size:2.5rem !important;
   cursor: pointer;
 }
-
+.mor_iconchange {
+  fill:#83AF40 !important;
+  font-size:2.5rem !important;
+  cursor: pointer !important;
+}
 // prescription Details
 
 .pres_patient_detail .custom_labelbox .formdiv .brdrcls{

@@ -267,7 +267,7 @@ export const GetMedicationList = (patient) => async (dispatch) => {
     }
 };
 
-export const GetParticularMedicationList = (patientId) => async (dispatch) => {
+export const GetParticularMedicationList = (patientId,morning,afternoon,night) => async (dispatch) => {
     try {
         axios({
             method: 'POST',
@@ -275,9 +275,9 @@ export const GetParticularMedicationList = (patientId) => async (dispatch) => {
             data:  {
                "patientId":patientId,
                "currentDate":moment().format('YYYY-MM-DD'),
-	           "morningSession":false,
-	           "afternoonSession":false,
-	           "nightSession":false
+	           "morningSession":morning,
+	           "afternoonSession":afternoon,
+	           "nightSession":night
             }
         })
         .then((response) => {
