@@ -97,8 +97,37 @@ function Nursehistory(props) {
         dispatch(GetNationalityforNurse())
         dispatch(GetMinExperienceNurse())
         dispatch(GetMinCostNurse())
+        dispatch(GetPatientNurseSearch({
+            "withoutFilter": "",
+            "currentDate": "",
+            "advanceFilter": "",
+            "typeSearch": "",
+            "searchContent": "",
+            "eightHour": true,
+            "costFilter": "",
+            "experienceFilter": "",
+            "minCost": "",
+            "maxCost": "",
+            "minExp": "",
+            "maxExp": "",
+            "genderFilter": "",
+            "gender": "",
+            "nationalityFilter": "",
+            "nationalityId": "",
+            "dateFilter": "",
+            "fromDate": "",
+            "toDate": "",
+            "costBasedSorting": "",
+            "costBasedSortingOrder": "",
+            "expBasedSorting": "",
+            "expBasedSortingOrder": "",
+            "ageBasedSorting": "",
+            "ageBasedSortingOrder": "",
+            "pageno": 1,
+            "limit": 10
+        }))
     }, [])
-
+    // console.log(cost, experience, nurseField, toggleOpen, dateRange, searchdata, "nurse")
 
     useEffect(() => {
         setCost(props.GetMinCostNurse[0])
@@ -244,7 +273,7 @@ function Nursehistory(props) {
                     {nurseDetails && nurseDetails.map((data, index) =>
                         <Paper className="nurse_list_div">
                             <div style={{ width: "22%" }}><div style={{ width: "100%", height: "100%", display: "flex" }}><div style={{ width: "150px" }}>
-                                {/* <NavLink to="/nursedetails"> <div style={{ width: "100%", height: "100%" }}>{data.img}</div></NavLink> */}
+                                <NavLink to="/nursedetails"> <div style={{ width: "100%", height: "100%" }}>{data.profile_name}</div></NavLink>
                             </div></div></div>
                             <div className="scnd_chld">
                                 <p className="nur_name">{data.name}</p>
