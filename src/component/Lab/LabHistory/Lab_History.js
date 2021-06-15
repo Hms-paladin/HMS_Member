@@ -88,7 +88,6 @@ function Lab_History(props) {
 
   useEffect(() => {
     props.GetParticularLabDetails.map((data) => {
-      let latitude=10,longitude;
       setParticularLabDet(data)
       let startday = data.Labworkinghours[0].wh_weekday;
       let endday = data.Labworkinghours[data.Labworkinghours.length - 1].wh_weekday;
@@ -106,15 +105,12 @@ function Lab_History(props) {
   }, [props.GetParticularLabDetails])
 
   const onSubmit=()=>{
-    
     dispatch(GetLabPackageType(labid))
   }
    
   console.log(lat, long, "latlong")
   return (
     <div>
-
-
       {/* search part */}
       <div className="lab_srch_parent">
         <div className="lab_srch_div">
@@ -235,7 +231,7 @@ function Lab_History(props) {
                         <div className="mem_con_parentdiv">
                           <div>{HideAdrs ? <label className="lab_adrs">{ParticularLabDet.vendor_address}</label> : <label className="lab_adrs">{ParticularLabDet.vendor_address}</label>}
                             <span className="elipse" onClick={ElipseOpen}>...</span></div>
-                          <div><Link to="/clinicallab"><Button className="select_lab_butt" onClick={()=>onSubmit()}>Select</Button></Link></div>
+                          <div><Link to={{pathname:"/clinicallab",state:ParticularLabDet}}><Button className="select_lab_butt" onClick={()=>onSubmit()}>Select</Button></Link></div>
                         </div>
                       </FormGroup>
                     </Col>
