@@ -1,17 +1,12 @@
-import React from 'react'
+import React, { useEffect,useState} from 'react'
 import Grid from '@material-ui/core/Grid'
 import Button from  '@material-ui/core/Button'
 import {Modal} from 'antd'
+import {useDispatch,connect} from 'react-redux'
+import {CategoryMealPlans,DietInstructions} from '../../../actions/DietHistoryActions'
 import MenuListModal from './MenuListModal'
 import './MealPlanModal.scss'
-export default function MealPlanModal(props){
-    const Mealplan=[
-        {items:"Non Vegeterian"}, {items:"High Protein"}, {items:"Vegeterian"}, {items:"Vegan"},
-        {items:"Diabetes"}, {items:"Sea food"}, {items:"Gluten free"}
-    ]
-    const Salt=[
-        {items:"Salt"}, {items:"No Salt"}, {items:"Low Salt"}
-    ]
+ function MealPlanModal(props){
     const Spice=[
         {items:"Spice"}, {items:"Medium Spice"}, {items:"Low Spice"}
     ]
@@ -22,16 +17,49 @@ export default function MealPlanModal(props){
     const CloseModal=()=>{
         setopenmodal(false)
     }
+    let dispatch=useDispatch()
+    const [SaltList,setSaltList]=useState([])
+    const [CategoryPlan,setCategoryPlan]=useState([])
+    const [DietPlans,setDietPlans]=useState("")
+    useEffect(()=>{
+     dispatch(CategoryMealPlans())
+     dispatch(DietInstructions())
+    },[])
+    useEffect(()=>{
+        let SaltData=[]
+        let category=[]
+        props.Category_MealPlan.map((data)=>{
+            category.push(data) 
+        })
+        props.Diet_Instructions.map((data)=>{
+            SaltData.push(data) 
+        })
+        setCategoryPlan(category)
+        setSaltList(SaltData)
+    },[props.Category_MealPlan,props.Diet_Instructions,DietPlans])
+    const [ids,setid]=useState([])
+    const CategoryPush=(id)=>{
+        let array=[]
+      
+    //    setid(array)
+       let i=0;
+      for (i=0;i<CategoryPlan.length;i++){
+        array.push(id)
+      }
+       console.log("props",array)
+    }
     return(
         <div>
           <Grid container spacing={2}>
               <Grid item xs={12} md={5}>
                   <div className="d_plan_overview">
-                      <p className="d_head">Keto Diet</p>
-                      <p className="d_weeks">4 Weeks</p>
-                      <p className="d_amt">200 KWD</p>
-                      <p className="d_namehead">Vegetables and Legumes/beans</p>
-                      <p className="d_names">Brocolli,Cabbages,Cauliflower,ollives,Spinach,Cucumber</p>
+                      <p className="d_head">{props.MealsPlan.diet_package_name}</p>
+                      <p className="d_weeks">
+                          {props.MealsPlan.diet_duration/7+" "+"Weeks"}
+                      </p>
+                      <p className="d_amt">{props.MealsPlan.diet_price+" "+"KWD"}</p>
+                      {/* <p className="d_namehead">Vegetables and Legumes/beans</p> */}
+                      <p className="d_names">{props.MealsPlan.diet_description}</p>
                       <div className="diet_btns">
                       <Button className="d_cancel" onClick={()=>props.CloseModal(false)}>Cancel</Button>
                       <Button className="d_confirm" onClick={OpenModal}>Confirm</Button>
@@ -40,18 +68,21 @@ export default function MealPlanModal(props){
               </Grid>  
               <Grid item xs={12} md={7} className="diet_filter"> 
                  <p className="fil_cat">Filter Category</p>
-                 {Mealplan.map((data,index)=>
-                 <label className="filter_dplans">{data.items}</label>
+                 {CategoryPlan.map((data,index)=>
+                 <label className="filter_dplans" key={index} onClick={()=>CategoryPush(data.dietfiltercategoryId)}>{data.filter_category}</label>
                  )}
                  <p className="fil_cat">Instruction</p>
-                 {Salt.map((data,index)=>
-                 <label className="salt_dplans">{data.items}</label>
+                 {SaltList.map((data,index)=>
+                 <>
+                 <label className="salt_dplans">{data.inst_category}</label>
+                 <label className="salt_dplans">{data.instruction}</label>
+                 </>
                  )}
-                 <div>
+                 {/* <div>
                   {Spice.map((data,index)=>
                  <label className="spice_dplans">{data.items}</label>
                  )}
-                 </div>
+                 </div> */}
               </Grid>  
           </Grid>
           <Modal
@@ -68,3 +99,8 @@ export default function MealPlanModal(props){
         </div>
     )
 }
+const mapStateToProps=(state)=>({
+    Category_MealPlan:state.DietReducer.CategoryMealPlan,
+    Diet_Instructions:state.DietReducer.diet_Instructions
+})
+export default connect(mapStateToProps)(MealPlanModal);
