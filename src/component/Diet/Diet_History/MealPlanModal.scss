@@ -55,7 +55,7 @@
     font-size: 13px;
     font-weight: 500;
 }
-.filter_dplans{
+.filter_dplans,.filter_change_clr{
 background-color: #fff;
 border-radius: 50px;
 font-size: 13px;
@@ -84,6 +84,10 @@ cursor: pointer;
     margin-right: 10px;
     border:0.5px solid #D41461;
     cursor: pointer; 
+}
+.filter_change_clr{
+    background-color: #FF6D26;
+    color:#fff;
 }
 // modal css
 @media only screen and (max-width: 959px) {

@@ -483,14 +483,19 @@ padding-right: 0px !important;
   justify-content: center;
   color:black;
 }
-
+.box_circle_inner_div{
+  text-align: center;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 300;
+}
 .box_circle {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   position: absolute;
   top: 0px;
-background:ghostwhite;
+background:#fff;
   left: 0px;
   display: inline-block;
   box-shadow: 0px 3px 10px #00000040;

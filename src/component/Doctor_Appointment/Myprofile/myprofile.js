@@ -1,16 +1,8 @@
 import React,{useEffect, useState} from "react";
 import "./myprofile.scss";
-import Doctor from "../../../images/doctorappoinment.png";
 import Plus from "../../../images/plus.png";
-import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import {Popconfirm,message} from 'antd';
-import Nurse from "../../../images/nurse.png";
-import Report from "../../../images/report.png";
-import Trainer from "../../../images/trainer.png";
-import TrainingCenter from "../../../images/trainingcenter.png";
-import DietMeal from "../../../images/dietmeal.png";
-import Pharmacy from "../../../images/pharmacy.png";
 import address from "../../../images/address.svg";
 import calendar from "../../../images/calendar.svg";
 import driver from "../../../images/driver.svg";
@@ -27,6 +19,8 @@ import smart from '../../../images/smartwatch.jfif'
 import fitness from '../../../images/fitnessband.jpg'
 import camera from '../../../images/camera.jpg'
 import Avatar from '../../../helpers/Upload/Upload'
+import Doctor from "../../../images/doctorappoinment.png";
+import ChildInformation from '../../Mother/MotherProfile'
 import moment from 'moment'
 import {Skeleton} from 'antd'
 import { Tabs,Upload} from 'antd';
@@ -227,7 +221,7 @@ function Myprofile(props) {
             dispatch(UpdateBasicPatientDetails(formdata,profileDetails.patientId)).then(()=>{
               StateClear()
               setShowForm(false)
-              
+              setEditPatient(false)
             })
       } 
         else{  
@@ -449,24 +443,21 @@ function Myprofile(props) {
 
             </div>
             <div className="tabmenus">
-            {/* <Menu mode="horizontal"  style={{ zIndex: 1, width: '100%', left: "10%" }} onClick={handleClick} selectedKeys={[currentKey]}>
-                <Menu.Item key="1">Family Member</Menu.Item>
-                <Menu.Item key="2">Next Vaccination</Menu.Item>
-                <Menu.Item key="3">Next Appointment</Menu.Item>
-                <Menu.Item key="4">Medication</Menu.Item>
-                <Menu.Item key="5">Health Tips</Menu.Item>
-                <Menu.Item key="6">Prescription History</Menu.Item>
-                <Menu.Item key="7">Devices</Menu.Item>
-
-            </Menu> */}
              <Tabs defaultActiveKey="1" onChange={handleClick} activeKey={currentKey}>
              <TabPane tab="Family Member" key="1">
+
+             {profileDetails.patientId===4?
+            <ChildInformation Childinfo={props.ProfileDetails}/>
+            :null} 
+
              <div className="familymember">
             <div className="familymemberheader">
                 <div>{showForm ? "Add Family Members":"Family Members"}</div>
 
                 {!showForm && <img style={{cursor:"pointer"}} src={Plus} onClick={openForm} /> }
             </div>
+           
+
             {/* Form starts here */}
           {showForm &&  <div className="add_memberform">
                 <div className="img_cont">

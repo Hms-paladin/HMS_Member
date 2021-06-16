@@ -68,7 +68,7 @@ import TrainingCategory from '../component/TrainingCenter/TrainingCategory/Train
 import Training_History from '../component/TrainingCenter/TrainingCenterHistory/History'
 import Training_Details from '../component/TrainingCenter/TrainingDetails/TrainingDetails'
 // import Calendar from '../'
-import BookingShedule from '../component/TrainingCenter/AddMember/BookingShedule' 
+import BookingShedule from '../component/TrainingCenter/AddMember/BookingShedule'
 import Tra_Bookings from '../component/TrainingCenter/Training_Bookings/Tra_Bookings'
 import Tra_BookingHistory from '../component/TrainingCenter/Training_Bookings/Tra_BookingHistory'
 import Tc_BookingReShedule from '../component/TrainingCenter/BookingsCalender/Tc_Reschedule_bookings'
@@ -102,67 +102,63 @@ import PerscriptionHistory from '../component/Pregnant_Mother/PrescriptionModal'
 var hashHistory = require('react-router-redux')
 function Routes(props) {
     return (
-        <Router  history={hashHistory} basename="/HmsMember/?/">
+        <Router history={hashHistory} basename="/HmsMember/?/">
 
-        <HeaderLayout>
-          
-                        {/* Pharmacy */}
-                        <Switch location={props.location}>
-                           <Route path="/" component={Dashboard} exact />
-                        
-                        <Route path="/prescriptionhistory" component={PrescriptionHistory} exact/> 
-                        <Route path="/orderdetails" component={OrderTable} exact/> 
-                        <Route path="/paymentreceive" component={PaymentReceived} exact/>
-                        <Route path="/paymentmethod" component={PaymentMethod} exact/>
-                        <Route path="/orderpacking" component={OrderPacking} exact/>
-                         {/* reports */}
-                         <Route path="/reports" component={Reports}/>
-                         <Route path="/download" component={download}/>
-                        {/* Nurse */}
-                        <Route path="/nursehistory" component={Nursehistory}  exact/>
-                        {/* <Route path='/nursehistory/:Id' component={() => <Nursehistory Id={props.params.Id}/>} /> */}
-                        <Route path="/nursedetails" component={NurseDetails} exact/>
-                        <Route path="/bookingconfirmation" component={BookingConfirmation} exact/>
-                        <Route path="/nursebookings" component={Bookings}/>
-                        <Route path="/bookinghistory" component={BookingHistory}/>
-                        <Route path="/reschedulebookings" component={RescheduleBookings}/>
-                        <Route path="/myschedule" component={MySchedule}/>
-                        {/* Lab */}
-                        <Route path="/labhistory" component={Lab_History}/>
-                        <Route path="/clinicallab" component={Clinical_lab}/>
-                        <Route path="/LabBookings" component={Lab_Bookings}/>
-                        <Route path="/Lab_bookinghistory" component={Lab_BookingHistory}/>
-                        {/* Diet */}
-                        <Route path="/Advertisement_diet" component={AdvertisementDiet}/>
-                        <Route path="/Diet_history" component={Diet_History}/>
-                        <Route path="/DietBookings" component={Diet_Bookings}/>
-                        <Route path="/diet_bookinghistory" component={Diet_BookingHistory}/>
-                        <Route path="/goalweight" component={GoalWeight}/>
-                        {/* Pregnant Women */}
-                        <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact/>
-                        <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact/>
-                        {/* Doctor */}
-                        <Route path="/profile" component={Myprofile} exact/>
-                        <Route path="/doctorEdit" component={Editprofile} exact/>
-                        <Route path="/doctorappointment" component={Searchresult} exact/>
-                        <Route path="/feed" component={Feed} exact/>
-                        <Route path="/doctorbooking" component={Doctorbooking} exact/>
-                        <Route path="/appointment" component={Myappointment} exact/>
-                        <Route path="/history" component={History} exact/>
-                        <Route path="/paymentreceive" component={PaymentReceived} exact/>
-                        <Route path="/paymentmethod" component={PaymentMethod} exact/>
-                        <Route path="/doctorbookingreschedule" component={Doctorbookingreschedule} exact/>
-                          {/* Physiotheraphy */}
-                          <Route path="/physiotheraphy" component={Physiotheraphymain} exact/>
-                          <Route path="/physiotheraphyfeed" component={Physiotheraphyfeed} exact/>
-                          <Route path="/phy_appointment" component={Phy_Myappointment} exact/>
-                          <Route path="/physiotherapistbooking" component={Physiotherapistbooking} exact/>
-                          <Route path="/phy_history" component={Phy_History}/>
+            <HeaderLayout>
 
-                         {/* advertisement */}
-                         <Route path="/advertisement" component={Advertisement} exact/>
-                         <Route path='/physiotheraphy_ad' component={Ad_Physiotherphy}/>
+                {/* Pharmacy */}
+                <Switch location={props.location}>
+                    <Route path="/" component={Dashboard} exact />
 
+                    <Route path="/prescriptionhistory" component={PrescriptionHistory} exact />
+                    <Route path="/orderdetails/:rowId" component={OrderTable} exact />
+                    <Route path="/paymentreceive" component={PaymentReceived} exact />
+                    <Route path="/paymentmethod" component={PaymentMethod} exact />
+                    <Route path="/OrderDetails-Packed" component={OrderPacking} exact />
+
+                    {/* reports */}
+                    <Route path="/reports" component={Reports} />
+                    <Route path="/download" component={download} />
+                    {/* Nurse */}
+                    <Route path="/nursehistory" component={Nursehistory} exact />
+                    {/* <Route path='/nursehistory/:Id' component={() => <Nursehistory Id={props.params.Id}/>} /> */}
+                    <Route path="/nursedetails" component={NurseDetails} exact />
+                    <Route path="/bookingconfirmation" component={BookingConfirmation} exact />
+                    <Route path="/nursebookings" component={Bookings} />
+                    <Route path="/bookinghistory" component={BookingHistory} />
+                    <Route path="/reschedulebookings" component={RescheduleBookings} />
+                    <Route path="/myschedule" component={MySchedule} />
+                    {/* Lab */}
+                    <Route path="/labhistory" component={Lab_History} />
+                    <Route path="/clinicallab" component={Clinical_lab} />
+                    <Route path="/LabBookings" component={Lab_Bookings} />
+                    <Route path="/Lab_bookinghistory" component={Lab_BookingHistory} />
+                    {/* Diet */}
+                    <Route path="/Advertisement_diet" component={AdvertisementDiet} />
+                    <Route path="/Diet_history" component={Diet_History} />
+                    <Route path="/DietBookings" component={Diet_Bookings} />
+                    <Route path="/diet_bookinghistory" component={Diet_BookingHistory} />
+                    <Route path="/goalweight" component={GoalWeight} />
+                    {/* Pregnant Women */}
+                    <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact />
+                    <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact />
+                    {/* Doctor */}
+                    <Route path="/profile" component={Myprofile} exact />
+                    <Route path="/doctorEdit" component={Editprofile} exact />
+                    <Route path="/doctorappointment" component={Searchresult} exact />
+                    <Route path="/feed" component={Feed} exact />
+                    <Route path="/doctorbooking" component={Doctorbooking} exact />
+                    <Route path="/appointment" component={Myappointment} exact />
+                    <Route path="/history" component={History} exact />
+                    <Route path="/paymentreceive" component={PaymentReceived} exact />
+                    <Route path="/paymentmethod" component={PaymentMethod} exact />
+                    <Route path="/doctorbookingreschedule" component={Doctorbookingreschedule} exact />
+                    {/* Physiotheraphy */}
+                    <Route path="/physiotheraphy" component={Physiotheraphymain} exact />
+                    <Route path="/physiotheraphyfeed" component={Physiotheraphyfeed} exact />
+                    <Route path="/phy_appointment" component={Phy_Myappointment} exact />
+                    <Route path="/physiotherapistbooking" component={Physiotherapistbooking} exact />
+                    <Route path="/phy_history" component={Phy_History} />
 
                         {/* Book a Room */}
                         <Route path ="/hospitallist" component={HospitalList}/> 

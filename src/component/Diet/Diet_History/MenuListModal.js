@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DietImage from '../../../images/Diet_b.png'
 import Grid from '@material-ui/core/Grid'
 import StarIcon from '@material-ui/icons/Star';
@@ -24,14 +24,32 @@ export default function MenuListModal(props){
         {id:6,img:b_fast3,name:"Friendly breakfast"}
     ]
     const [ok,setok]=React.useState(false)
-    const TickClick=(key,id)=>{
-        if(images.id===id){
+    const [Items,setItems]=useState("")
+    const TickClick=(id)=>{
+        FoodSession.map((data)=>{
+        if(data.dietmenuitemid===id){
+        setItems(1)
         setok(!ok)
         }
+        else{
+            setItems(0)
+            setok(false)  
+        }
+    })
     }
-    const WeekDropdown=[
-        {id:"1",week:"Week1"},{id:2,week:"Week2"},{id:3,week:"Week3"},{id:4,week:"Week4"}
-    ]
+   
+    const [FoodSession,setFoodSession]=useState([])
+    const [sessionId,setsessionId]=useState("")
+    useEffect(()=>{
+        let mealData=[]
+        props.MealList[0]?.SessionList.map((data)=>{
+            mealData.push(data.foodSession)
+            setsessionId(data.dietsessionId)
+        })
+        
+        setFoodSession(mealData)
+    },[ props.MealList])
+    console.log(sessionId,"ddd")
     return(
         <div>
             <div>
@@ -50,7 +68,9 @@ export default function MenuListModal(props){
                        </p></div>
                        </div> 
                     </div>
-                    <div> <p className="menu_d_name">Keto Diet</p><p className="mplan_per">4weeks</p><p className="menu_amt">200 KWD</p></div>
+                    <div> <p className="menu_d_name">{props.MealList[0]?.diet_package_name}</p>
+                    <p className="mplan_per">{props.MealList[0]?.diet_duration/7} Weeks</p>
+                    <p className="menu_amt">{props.MealList[0]?.diet_price} KWD</p></div>
                 </div>
                 {/* to meanu of list choosing buttons */}
                 <ButtonGroup color="primary" aria-label="outlined primary button group" className="week_btns">
@@ -86,42 +106,28 @@ export default function MenuListModal(props){
         
                 <Tabs defaultActiveKey="1" centered>
                     <TabPane tab="Break fast" key="1">
-                        <div className="b_fast_container" >
-                        {images.map((data,index)=>
-                        <div className="b_fast_imgparent_div" onClick={()=>TickClick(data.id)} key={index}>
-                            <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
+                        <div className="b_fast_container">
+                        {sessionId===7&&FoodSession.map((data,index)=>{
+                            console.log(FoodSession.length,"files")
+                        return(
+                        <div className="b_fast_imgparent_div"  onClick={()=>TickClick(data.dietmenuitemid)} key={index}>
+                            <div className="b_fast_img_div" ><img src={data[0].diet_filename} className={"b_fast_img"}/></div>
                            <div className="bottom_labels_d">
-                               <label className="b_fast_name">{data.name}</label>
-                               {/* {ok?<CheckIcon className="b_fast_tick"/>:""} */}
+                               <label className="b_fast_name">{data[0].diet_itemname}</label>
+                               {Items===1&&ok?<CheckIcon className="b_fast_tick"/>:""}
                             </div>
                         </div>
-                        )}
+                        )})}
                         </div>
                     </TabPane>
                     <TabPane tab="Lunch" key="2">
-                    <div className="b_fast_container" >
-                        {images.map((data,index)=>
-                        <div className="b_fast_imgparent_div" onClick={()=>TickClick(data.id)} key={index}>
-                            <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
-                           <div className="bottom_labels_d">
-                               <label className="b_fast_name">{data.name}</label>
-                               {/* {ok?<CheckIcon className="b_fast_tick"/>:""} */}
-                            </div>
-                        </div>
-                        )}
-                        </div>
+                    <div className="b_fast_container">
+                        
+                    </div>
                     </TabPane>
                     <TabPane tab="Dinner" key="3">
                     <div className="b_fast_container" >
-                        {images.map((data,index)=>
-                        <div className="b_fast_imgparent_div" onClick={()=>TickClick(data.id)} key={index}>
-                            <div className="b_fast_img_div"><img src={data.img} className={"b_fast_img"}/></div>
-                           <div className="bottom_labels_d">
-                               <label className="b_fast_name">{data.name}</label>
-                               {/* {ok?<CheckIcon className="b_fast_tick"/>:""} */}
-                            </div>
-                        </div>
-                        )}
+                      
                         </div>
                     </TabPane>
                     </Tabs>

@@ -5,13 +5,17 @@ import {Modal} from 'antd'
 import {useDispatch,connect} from 'react-redux'
 import {CategoryMealPlans,DietInstructions} from '../../../actions/DietHistoryActions'
 import MenuListModal from './MenuListModal'
+import {DietAddMealPlan} from '../../../actions/DietHistoryActions'
 import './MealPlanModal.scss'
  function MealPlanModal(props){
     const Spice=[
         {items:"Spice"}, {items:"Medium Spice"}, {items:"Low Spice"}
     ]
-    const [openmodal,setopenmodal]=React.useState(false) 
+    const [openmodal,setopenmodal]=React.useState(false)
+    const [confirmTrue,setconfirmTrue] =useState(false)
     const OpenModal=()=>{
+        setconfirmTrue(true)
+        dispatch(DietAddMealPlan(props.DietVendorId,props.MealsPlan.dietpackageId,DietPlans))
         setopenmodal(true)
     } 
     const CloseModal=()=>{
@@ -20,11 +24,16 @@ import './MealPlanModal.scss'
     let dispatch=useDispatch()
     const [SaltList,setSaltList]=useState([])
     const [CategoryPlan,setCategoryPlan]=useState([])
-    const [DietPlans,setDietPlans]=useState("")
+    const [DietPlans,setDietPlans]=useState([])
     useEffect(()=>{
      dispatch(CategoryMealPlans())
      dispatch(DietInstructions())
     },[])
+    // useEffect(()=>{
+    //     if(confirmTrue){
+    //     dispatch(DietAddMealPlan(props.DietVendorId,props.MealsPlan.dietpackageId,DietPlans))
+    //     }
+    //    },[])
     useEffect(()=>{
         let SaltData=[]
         let category=[]
@@ -37,17 +46,17 @@ import './MealPlanModal.scss'
         setCategoryPlan(category)
         setSaltList(SaltData)
     },[props.Category_MealPlan,props.Diet_Instructions,DietPlans])
-    const [ids,setid]=useState([])
+    const [change_clr,setchange_clr]=useState([])
     const CategoryPush=(id)=>{
-        let array=[]
-      
-    //    setid(array)
-       let i=0;
-      for (i=0;i<CategoryPlan.length;i++){
-        array.push(id)
-      }
-       console.log("props",array)
+        // setchange_clr()
+        setDietPlans([...DietPlans,id]) 
+       
     }
+
+    console.log("props",props.DietAddMealPlan)
+
+
+
     return(
         <div>
           <Grid container spacing={2}>
@@ -69,7 +78,8 @@ import './MealPlanModal.scss'
               <Grid item xs={12} md={7} className="diet_filter"> 
                  <p className="fil_cat">Filter Category</p>
                  {CategoryPlan.map((data,index)=>
-                 <label className="filter_dplans" key={index} onClick={()=>CategoryPush(data.dietfiltercategoryId)}>{data.filter_category}</label>
+                
+                 <label className={change_clr[index]?"filter_change_clr":"filter_dplans"} key={index} onClick={()=>CategoryPush(data.dietfiltercategoryId)}>{data.filter_category}</label>
                  )}
                  <p className="fil_cat">Instruction</p>
                  {SaltList.map((data,index)=>
@@ -94,13 +104,14 @@ import './MealPlanModal.scss'
           className="meal_plan_modal"
           width={"lg"}
           >
-           <MenuListModal/>
+           <MenuListModal MealList={props.DietAddMealPlan} DietPlan={props.DietAddMealPlan}/>
           </Modal>
         </div>
     )
 }
 const mapStateToProps=(state)=>({
     Category_MealPlan:state.DietReducer.CategoryMealPlan,
-    Diet_Instructions:state.DietReducer.diet_Instructions
+    Diet_Instructions:state.DietReducer.diet_Instructions,
+    DietAddMealPlan:state.DietReducer.AddMealplan
 })
 export default connect(mapStateToProps)(MealPlanModal);

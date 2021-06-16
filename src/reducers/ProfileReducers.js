@@ -45,7 +45,7 @@ const GetProfileDetails= (state = initalState, action) => {
     case GET_PRESCRIPTION_HISTORY:
       return {...state,PerscriptionHistory:action.payload}
     case PARTICULAR_PRESCRIPTION_HISTORY:
-      return {...state,ParticularPerscription:action.payload}                 
+      return {...state,ParticularPerscription:action.payload}                  
     default:
       return state;
   }

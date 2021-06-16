@@ -194,7 +194,7 @@ const { Search } = Input;
            className="diet_planmodal"
            >
             
-             <MealPlanModal CloseModal={CloseModal} MealsPlan={FilterMealdata}/>
+             <MealPlanModal CloseModal={CloseModal} MealsPlan={FilterMealdata} DietVendorId={DietCompanyData.vendorId}/>
            </Modal>
        </div>
     )

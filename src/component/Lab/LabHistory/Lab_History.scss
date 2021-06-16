@@ -141,9 +141,10 @@
 .select_lab_butt{
     background-color: #83AF40  !important;
     border-radius: 50px !important;
-    color: #fff !important;
+    color:white !important;
     width:100px !important;
     text-transform: none !important;
+    >.MuiButton-label{color:white !important;}
 }
 .mem_con_parentdiv{
     display:flex;
