@@ -11,82 +11,88 @@ import StarIcon from '@material-ui/icons/Star';
 import Grid from '@material-ui/core/Grid';
 import BookingConfirmation from './BookingConfirmation'
 import DesignDuties from './DesignDuties'
-import SliderComp from '../../../helpers/Slider/Slider'
+import SliderComp from '../../../helpers/Slider/Slider';
+import { NavLink, useParams } from "react-router-dom";
 import './NurseDetails.scss'
-export default function NurseDetails(){
-    const [proceed,setproceed]=React.useState(false)
-    const [Duties,setDuties]=React.useState(false)
-    const [HideAdrs,setHideAdrs]=React.useState(false)
-    const ElipseOpen=()=>{
+export default function NurseDetails() {
+    const [proceed, setproceed] = React.useState(false)
+    const [Duties, setDuties] = React.useState(false)
+    const [HideAdrs, setHideAdrs] = React.useState(false)
+    let { nurseId } = useParams()
+
+    console.log(nurseId, "nurseId")
+
+    const ElipseOpen = () => {
+
         setHideAdrs(!HideAdrs)
     }
-    function ProceedClick(){
+    function ProceedClick() {
         setproceed(true)
     }
-    function DutiesClick(){
+    function DutiesClick() {
         setDuties(true)
     }
     var settings = {
         dots: true
-      };
-    return(
-        <div style={{width:"100%"}} className="nurse_de_parent">
-        <div className="nursede_parent">
-            <div style={{height:"250px",width:"100%"}}>
-            <img src={Nurse} className="Pro_tra_img"/>
+    };
+    return (
+        <div style={{ width: "100%" }} className="nurse_de_parent">
+            <div className="nursede_parent">
+                <div style={{ height: "250px", width: "100%" }}>
+                    <img src={Nurse} className="Pro_tra_img" />
+                </div>
             </div>
-        </div>
-        <Grid container>
-            <Grid item sm={4} md={4} className="nurse_de_fstgrid">
-            <div><img src={Nurse_circle} style={{width:"125px"}}/></div>
-            <div className="nurse_de_fstdiv"><div className="nurse_de_fstitems"><div className="nurse_star_rating"><label>4.0</label><StarIcon/></div></div>
-            <div className="nurs_review">161 Reviews</div>
-            <div style={{marginTop:"23px"}}><img src={Thumb} style={{width:"25px"}}/><label className="review_per">93%</label><label>(15 reviews)</label></div>
-            </div>
-            </Grid>
-            <Grid item sm={4} md={4} className="grid_seconditem">
-                <div style={{textAlign:"center"}}>
-            <div className="nurs_de_name">Rose</div>
-               <div><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="star_fill"/><StarIcon className="start_emp_fill"/></div> 
-               <div style={{fontSize:"22px",fontWeight:"600"}}>27 Years / Female</div>
-               <div style={{color:"#666666",fontSize:"22px"}}>Wellness company</div>
-               <div>{HideAdrs?<label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:<label className="lab_adrs">Jabriya</label>}
-                                   <span className="elipse" onClick={ElipseOpen}>...</span></div>
-               </div>
-            </Grid>
-            <Grid item sm={4} md={4} className="nurse_thirdgrid">
-            <div className="mnth_kwd">480 KWD / Month</div><div className="exp_yrs">5 Years</div>
-            </Grid>
-            <Grid item sm={12} md={12} className="cmy_sup">
-            <SliderComp>
-           
-            {[...Array(5)].map((img,index)=>(
-                <div ><div>Dalal</div>
-                <div>"I appreciate your timely support when I was in agony and facing a lot of anxiety.My heartfelt thank to wellness company".</div>
-                </div>))}
-                </SliderComp> 
-            </Grid>
+            <Grid container>
+                <Grid item sm={4} md={4} className="nurse_de_fstgrid">
+                    <div><img src={Nurse_circle} style={{ width: "125px" }} /></div>
+                    <div className="nurse_de_fstdiv"><div className="nurse_de_fstitems"><div className="nurse_star_rating"><label>4.0</label><StarIcon /></div></div>
+                        <div className="nurs_review">161 Reviews</div>
+                        <div style={{ marginTop: "23px" }}><img src={Thumb} style={{ width: "25px" }} /><label className="review_per">93%</label><label>(15 reviews)</label></div>
+                    </div>
+                </Grid>
+                <Grid item sm={4} md={4} className="grid_seconditem">
+                    <div style={{ textAlign: "center" }}>
+                        <div className="nurs_de_name">Rose</div>
+                        <div><StarIcon className="star_fill" /><StarIcon className="star_fill" /><StarIcon className="star_fill" /><StarIcon className="star_fill" /><StarIcon className="start_emp_fill" /></div>
+                        <div style={{ fontSize: "22px", fontWeight: "600" }}>27 Years / Female</div>
+                        <div style={{ color: "#666666", fontSize: "22px" }}>Wellness company</div>
+                        <div>{HideAdrs ? <label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label> : <label className="lab_adrs">Jabriya</label>}
+                            <span className="elipse" onClick={ElipseOpen}>...</span></div>
+                    </div>
+                </Grid>
+                <Grid item sm={4} md={4} className="nurse_thirdgrid">
+                    <div className="mnth_kwd">480 KWD / Month</div><div className="exp_yrs">5 Years</div>
+                </Grid>
+                <Grid item sm={12} md={12} className="cmy_sup">
+                    <SliderComp>
+
+                        {[...Array(5)].map((img, index) => (
+                            <div ><div>Dalal</div>
+                                <div>"I appreciate your timely support when I was in agony and facing a lot of anxiety.My heartfelt thank to wellness company".</div>
+                            </div>))}
+                    </SliderComp>
+                </Grid>
             </Grid>
             {/* nurse information */}
             <Grid container className="nurse_duties_container">
-            <Grid item sm={6} md={6}>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Flag} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Nationality</p><p>India</p></div></div>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Qualification} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Qualification</p><p>B.Sc.Nursing</p></div></div>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Language} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Languages</p><p>English,Malayalam,Arabic</p></div></div>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Skills} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Skills</p><p>Baby Care,Elderly Care</p></div></div>
-                <div className="nurse_detl"><div className="nurse_de_icons"><img src={Flag} style={{width:"35px"}}/></div><div><p className="nurse_dehead">Duty Hours</p><p>12:00 Hrs</p></div></div>
-            </Grid>
-            {/* design duties */}
-            
-            <Grid item sm={6} md={6}>
-                {proceed===false?
-                <DesignDuties ProceedClick={ProceedClick} />:
-                <div className="booking_confr"><BookingConfirmation DesignDuties={DutiesClick} Duties={Duties}/></div>}
-                
-            </Grid>
-        </Grid>
+                <Grid item sm={6} md={6}>
+                    <div className="nurse_detl"><div className="nurse_de_icons"><img src={Flag} style={{ width: "35px" }} /></div><div><p className="nurse_dehead">Nationality</p><p>India</p></div></div>
+                    <div className="nurse_detl"><div className="nurse_de_icons"><img src={Qualification} style={{ width: "35px" }} /></div><div><p className="nurse_dehead">Qualification</p><p>B.Sc.Nursing</p></div></div>
+                    <div className="nurse_detl"><div className="nurse_de_icons"><img src={Language} style={{ width: "35px" }} /></div><div><p className="nurse_dehead">Languages</p><p>English,Malayalam,Arabic</p></div></div>
+                    <div className="nurse_detl"><div className="nurse_de_icons"><img src={Skills} style={{ width: "35px" }} /></div><div><p className="nurse_dehead">Skills</p><p>Baby Care,Elderly Care</p></div></div>
+                    <div className="nurse_detl"><div className="nurse_de_icons"><img src={Flag} style={{ width: "35px" }} /></div><div><p className="nurse_dehead">Duty Hours</p><p>12:00 Hrs</p></div></div>
+                </Grid>
+                {/* design duties */}
 
-       
+                <Grid item sm={6} md={6}>
+                    {proceed === false ?
+                        <DesignDuties ProceedClick={ProceedClick} /> :
+                        <div className="booking_confr"><BookingConfirmation DesignDuties={DutiesClick} Duties={Duties} /></div>}
+
+                </Grid>
+            </Grid>
+
+
         </div>
     )
 }
