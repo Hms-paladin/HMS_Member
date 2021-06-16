@@ -31,8 +31,10 @@
 .clinicallab_parent .formdiv .MuiInputBase-input{
     padding:10px 0px 7px 10px !important; 
     font-size: 13px !important;
-    color:#ABA9A9 !important;
+    color:black !important;
 }
+.clinicallab_parent {
+>.MuiButtonBase-root, #date-picker-inline {color:black !important;}}
 .clinicallab_parent .formdiv .labeltxt{
      color:#333 !important;
     font-size: 15px !important;

@@ -8,35 +8,10 @@ import Lab_AddMember from './AddMember'
 import Lab_BookingConfirmation from './Lab_BookingConfirmation'
 import { connect, useDispatch } from "react-redux";
 import ValidationLibrary from "../../../helpers/validationfunction"
-import {GetLabTest} from "../../../actions/clinicalLabAction"
+import { GetLabTest } from "../../../actions/clinicalLabAction"
+import moment from 'moment';
 function Clinical_lab(props) {
     const dispatch = useDispatch();
-    const Test = [
-        {
-            id: 1,
-            test: "Blood Test",
-        },
-        {
-            id: 2,
-            test: "Root Test",
-        },
-        {
-            id: 3,
-            test: "Cavity Test",
-        },
-        {
-            id: 4,
-            test: "X ray-Teeth",
-        },
-        {
-            id: 5,
-            test: "Blood Test",
-        },
-        {
-            id: 6,
-            test: "Root Test"
-        },
-    ]
     const [clinicalLab, setClinicalLab] = useState({
         packageType: {
             value: "",
@@ -66,14 +41,21 @@ function Clinical_lab(props) {
     const [color, setcolor] = React.useState(false)
     const [ddlPackType, setPackType] = useState([])
     const location = useLocation()
-    const [params,setParams]=useState({labid:location.state.labId,labname:location.state.Lab,vendor_adr:location.state.vendor_address})
-    const [test,setTest]=useState([])
+    const [params, setParams] = useState({ labid: location.state.labId, labname: location.state.Lab, vendor_adr: location.state.vendor_address })
+    const [test, setTest] = useState([])
+    const [costAmt, setCostAmt] = useState(0)
     const ColorClick = (id) => {
-        test.map((data)=>{
-            if(data.testId==id){
-                data.color=(!data.color)
+
+        let cost;
+        test.map((data) => {
+            if (data.testId == id) {
+                data.color = (!data.color)
             }
         })
+        // let cost = test.find((data, index) => {
+        //     return (data.color == true)
+        // })
+
         setcolor(!color)
     }
     // confirm open add member
@@ -91,6 +73,12 @@ function Clinical_lab(props) {
     }
 
     const checkValidation = (data, key) => {
+     console.log(data,"kkkk")
+
+        // if (key === "Time") {
+        //     console.log(moment(data, "HH:mm:ss").format("hh:mm:ss A"), "check")
+            
+        // }
 
         var errorcheck = ValidationLibrary.checkValidation(
             data,
@@ -136,26 +124,37 @@ function Clinical_lab(props) {
         setPackType(packtype)
     }, [props.GetLabPackageType])
 
-    useEffect(()=>{
-        let id=params.labid;
-        let packtype=clinicalLab.packageType.value;
-        dispatch(GetLabTest(id,packtype))
-    },[clinicalLab.packageType.value])
+    useEffect(() => {
+        let id = params.labid;
+        let packtype = clinicalLab.packageType.value;
+        dispatch(GetLabTest(id, packtype))
+        setCostAmt(0)
+    }, [clinicalLab.packageType.value])
 
-    useEffect(()=>{
-        let testdet=[]
-        props.GetLabTest.map((data)=>{
+    useEffect(() => {
+        let testdet = []
+        props.GetLabTest.map((data) => {
             testdet.push({
-                testId:data.testId,
-                testName:data.testName,
-                cost:data.cost,
-                color:false
+                testId: data.testId,
+                testName: data.testName,
+                cost: data.cost,
+                color: false
             })
         })
         setTest(testdet)
-    },[props.GetLabTest])
+    }, [props.GetLabTest])
 
-    console.log(test,"test")
+    useEffect(() => {
+        let cost = 0;
+        test.map((data) => {
+            if (data.color == true) {
+                cost = cost + data.cost;
+            }
+        })
+        setCostAmt(cost)
+    }, [color])
+
+    console.log(clinicalLab, "clinicalLab")
     return (
         <div className="clinicallab_parent">
             <Grid container spacing={4}>
@@ -167,7 +166,7 @@ function Clinical_lab(props) {
                                 {HideAdrs ? <label className="lab_adrs">{params.vendor_adr}</label> : <label className="lab_adrs">{params.vendor_adr}</label>}
                                 <span className="elipse" onClick={ElipseOpen}>...</span></div>
                         </div>
-                        <label className="test_amt">50 KWD</label>
+                        <label className="test_amt">{costAmt + " KWD"}</label>
                     </div>
 
                     <div className="clinic_labdiv_parent">
@@ -176,8 +175,17 @@ function Clinical_lab(props) {
                                 changeData={(data) => checkValidation(data, "packageType")}
                                 value={clinicalLab.packageType.value} />
                             <div style={{ display: "flex", width: "100%" }}>
-                                <div style={{ width: "50%", paddingRight: "10px" }}><Labelbox type="datepicker" /></div>
-                                <div style={{ width: "50%", paddingLeft: "10px" }}><Labelbox type="timepicker" /></div></div>
+                                <div style={{ width: "50%", paddingRight: "10px" }}><Labelbox type="datepicker"
+                                    placeholder={"Test Date"}
+                                    changeData={(data) => checkValidation(data, "Date")}
+                                    value={clinicalLab.Date.value}
+                                    error={clinicalLab.Date.error}
+                                    errmsg={clinicalLab.Date.errmsg} /></div>
+                                <div style={{ width: "50%", paddingLeft: "10px" }}><Labelbox type="timepicker"
+                                changeData={(data) => checkValidation(data, "Time")}
+                                value={clinicalLab.Time.value}
+                                error={clinicalLab.Time.error}
+                                errmsg={clinicalLab.Time.errmsg} /></div></div>
                             {AddOpen === false ? <div><Button className="order_cancel">Cancel</Button><Button className="order_save" onClick={ConfirmOpen} >Confirm</Button></div> : null}
                         </div>
 
@@ -187,7 +195,7 @@ function Clinical_lab(props) {
 
 
                                 //  <label className={color?"change_clinic_test" : "clinic_test"} onClick={()=>ColorClick(data.id)}>{data.test}</label>
-                                <label className={data.color?"change_clinic_test":"clinic_test"} onClick={() => ColorClick(data.testId)}>{data.testName}</label>
+                                <label className={data.color ? "change_clinic_test" : "clinic_test"} onClick={() => ColorClick(data.testId)}>{data.testName}</label>
 
                             )}
 
@@ -211,6 +219,6 @@ function Clinical_lab(props) {
 }
 const mapStatetoProps = (state) => ({
     GetLabPackageType: state.clinicalLabReducer.getLabPackage || [],
-    GetLabTest:state.clinicalLabReducer.getLabTest || [],
+    GetLabTest: state.clinicalLabReducer.getLabTest || [],
 })
 export default connect(mapStatetoProps)(Clinical_lab);
