@@ -59,9 +59,12 @@ export default function Login(props){
           "patientMobileNumber": phone,
           "requestTime":ms 
           }).then(res => {
-            if (res.status === 1) {
-              setAuthTokens(res.data);
-              setLoggedIn(true);
+            if (res.data.status === 1) {
+              alert("true")
+              setAuthTokens(res.data)
+              setLoggedIn(true)
+        console.log("response",isLoggedIn)
+             
             }
           }).catch(e => {
             notification.error({
@@ -73,6 +76,7 @@ export default function Login(props){
           setsignup(false)
           setvisible(true)
         }
+
         // setLoggedIn(())
     }
     return(
@@ -95,7 +99,7 @@ export default function Login(props){
             <div className="join_member_text">Not a member yet?</div>
             <Button className="join_btn" onClick={ClickJoinHere}>Join here</Button>
             <div className="logging_ins_text">By logging in you agree to THE ONE MOMENT <span>Privacy policy</span> And <span>Terms and conditions</span></div>
-           {Error===false&& <Dialog
+           {!Error&& <Dialog
         open={visible}
         onClose={handleClose}
         fullWidth={true}

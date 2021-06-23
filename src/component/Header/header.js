@@ -68,7 +68,7 @@ function HeaderLayout(props) {
       history.push("/LabBookings")
 
     }
-    else if (path_name === "/Diet_history" || path_name === "/goalweight") {
+    else if (path_name === "/Diet_history" || path_name === "/goalweight" || path_name==="/diet_bookinghistory") {
       history.push("/DietBookings")
     }
     else if (path_name === "/feed" || path_name === "/doctorbooking" || path_name === "/profile" || path_name === "/doctorbookingreschedule" || path_name === "/doctorEdit") {

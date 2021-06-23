@@ -6,8 +6,17 @@ import Labelbox from '../../helpers/labelbox/labelbox'
 import PhoneInput from 'react-phone-input-2';
 import { TextField } from '@material-ui/core';
 import ValidationLibrary from '../../helpers/validationfunction'
+import ReactPhoneInput from 'react-phone-input-2';
+import { useAuth } from "../../context/auth";
+import {notification} from 'antd'
+import axios from 'axios'
+import {apiurl} from '../../utils/baseUrl'
+import 'react-phone-input-2/lib/style.css'
 export default function SignUpForm(props){
     const Btns=[{btn:"Male"},{btn:"Female"}]
+    const [Error,setError]=useState(false)
+    const { setAuthTokens } = useAuth();
+    const [phoneno,setphoneno]=useState("")
     const [logindata,setlogindata]=useState({
       date:{
         value: "",
@@ -16,6 +25,10 @@ export default function SignUpForm(props){
       errmsg: null,
       }
     })
+    const handleOnChange = (value,data) => {
+      setphoneno(value)
+      setError(false)
+    };
     function checkValidation(data, key) {
 
       var errorcheck = ValidationLibrary.checkValidation(
@@ -29,26 +42,27 @@ export default function SignUpForm(props){
           validation: logindata[key].validation,
       };
     }
-    const phoneInput = forwardRef((props, ref) => {
-
-        return (
-          <TextField
-            inputRef={ref}
-            id="outlined-basic"
-            fullWidth
-            label="Phone Number"
-            variant="outlined"
-            name="phone"
-            // onChange={props}
-          />
-          );
+    const SignUpDetails=()=>{
+      axios.post(apiurl+"Patient/insertPatientDetails", {
+        "name":"rani",
+        "dob":"1996-04-03",
+        "email": "kaveri2ganga@gmail.com", 
+        "phone_no":phoneno,
+        "gender":"Female",  
+        }).then(res => {
+          if (res.data.status === 1) {
+            setAuthTokens(res.data)
+            // setLoggedIn(true)
+      console.log("response",res)
+           
+          }
+        }).catch(e => {
+          notification.error({
+              message: 'something wrong',
+            });
         });
-        const ref = createRef();
-        const [phone,setphone]=useState('in')
-        const handleOnChange = value => {
-         //  alert(value)
-       setphone(value)
-       };
+       props.handleClose()
+    }
     return(
             <div className="login_parent">
             <CloseIcon className="l_closeicon" onClick={()=>props.handleClose(false)}/>
@@ -65,20 +79,21 @@ export default function SignUpForm(props){
    
             {/* <Input   placeholder="Phone number" className="input_field"/> */}
             <Input   placeholder="Enter your email address" className="input_field"/>
-              <PhoneInput 
+            
+              <ReactPhoneInput 
                
-               country={'kw'}
-               value={phone}
+               country={'in'}
+               
+               value={phoneno}
                onChange={handleOnChange}
-               placeholder="Enter your phone number"
-               ref={ref} inputComponent={phoneInput} 
             />
+            <div className="error_msg">{Error?"Please enter your mobile number":""}</div>
             <div className="sign_btns_div">
              {Btns.map((data,index)=>
              <Button key={index} className="gender_btns">{data.btn}</Button>
              )}
              </div>
-             <Button className="verify_btn" onClick={()=>props.handleClose(false)}>Continue</Button>  
+             <Button className="verify_btn" onClick={()=>SignUpDetails()}>Continue</Button>  
         
         </div>
     )

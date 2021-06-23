@@ -9,11 +9,12 @@ export default function VerifyOTP(props){
     const { setAuthTokens } = useAuth();
     const [isLoggedIn, setLoggedIn] = React.useState(false);
     const verifyOtp=(event)=>{
-          axios.post(apiurl+"Patient/patientLogin", {
+      alert("hai")
+          axios.post(apiurl+"Patient/verifypatientOTP", {
             "ccode": 91,   
             "patientMobileNumber": props.phoneno,  
-            "requestTime":1593512864340,
-            "otp":"",
+            "requestTime":298999,
+            "otp":5171,
             "token":""  
             }).then(res => {
               if (res.status === 1) {

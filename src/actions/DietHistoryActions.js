@@ -4,6 +4,7 @@ import {
     DIET_BOOKING_LIST,
     DIET_BOOKING_HISTORY,
     ADD_MEAL_PLAN,
+    ADD_REPEAT_MENU
 } from '../utils/Constants'
 import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
@@ -18,7 +19,7 @@ export const GetDietCompanyDetails = (searchValue,searchTrue) => async (dispatch
             data:  {    
 	        "Searchcontent":searchTrue,
 	        "dietcompanyName":searchValue,
-	        "limit":"1",
+	        "limit":"10",
 	        "pageno":"1"
             }
         })
@@ -88,15 +89,42 @@ export const DietAddMealPlan  = (DietVendorId,packageId,dietPlans) => async (dis
         method: "post",
         url: apiurl + "Patient/addmealplan",
         data: {
-            // "dietvendorId":DietVendorId,
-	        // "dietpackageId":packageId,
-	        // "dietfiltercategoryId":dietPlans,
-	        // "date":"2021-06-16"
-            "dietvendorId":"12",
-	"dietpackageId":"5",
-	"dietfiltercategoryId":[1,2],
-	"date":"2021-06-16"
+            "dietvendorId":12,
+	        "dietpackageId":packageId,
+	        "dietfiltercategoryId":dietPlans,
+	        "date":"2021-06-16"
         },
       });
     return dispatch({ type:ADD_MEAL_PLAN, payload: response.data.data });
 };
+
+
+
+
+
+
+export const  AddRepeatMenu= (data) => async (dispatch) => {
+    try {
+        axios({
+            method: 'post',
+            url: apiurl + 'Patient/getdietrepeatmenu',
+            data:{
+                "dietbookingid":data.dietbookingId,
+                "dietvendorId":data.dietvendorId,
+                "date":moment().format("YYYY-MM-DD")
+            }   
+        })
+        .then((response) => {
+
+            if(response.data.status===1){
+             notification.success({
+                 message:"This package repeatly added."
+             })   
+            dispatch({ type: ADD_REPEAT_MENU,payload: response.data.data })
+            return Promise.resolve();
+            }
+        })
+        
+    } catch (err) {
+    }
+}

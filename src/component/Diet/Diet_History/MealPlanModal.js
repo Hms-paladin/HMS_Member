@@ -1,23 +1,34 @@
 import React, { useEffect,useState} from 'react'
 import Grid from '@material-ui/core/Grid'
 import Button from  '@material-ui/core/Button'
-import {Modal} from 'antd'
+import {Modal, notification} from 'antd'
 import {useDispatch,connect} from 'react-redux'
 import {CategoryMealPlans,DietInstructions} from '../../../actions/DietHistoryActions'
 import MenuListModal from './MenuListModal'
 import {DietAddMealPlan} from '../../../actions/DietHistoryActions'
 import './MealPlanModal.scss'
+import { TramRounded } from '@material-ui/icons'
  function MealPlanModal(props){
     const Spice=[
         {items:"Spice"}, {items:"Medium Spice"}, {items:"Low Spice"}
     ]
     const [openmodal,setopenmodal]=React.useState(false)
-    const [confirmTrue,setconfirmTrue] =useState(false)
     const OpenModal=()=>{
-        setconfirmTrue(true)
-        dispatch(DietAddMealPlan(props.DietVendorId,props.MealsPlan.dietpackageId,DietPlans))
-        setopenmodal(true)
+        if(CategoryTrue){
+            setopenmodal(true)
+            dispatch(DietAddMealPlan(props.DietVendorId,props.MealsPlan.dietpackageId,DietPlans)).then(()=>{
+                setDietPlans([])
+                serCategoryTrue(false)
+            })
+        }else{
+            Notification()
+       }
     } 
+    const Notification=()=>{
+        notification.warning({
+            message:"Please choose filter category"
+          })
+    }
     const CloseModal=()=>{
         setopenmodal(false)
     }
@@ -46,14 +57,31 @@ import './MealPlanModal.scss'
         setCategoryPlan(category)
         setSaltList(SaltData)
     },[props.Category_MealPlan,props.Diet_Instructions,DietPlans])
-    const [change_clr,setchange_clr]=useState([])
-    const CategoryPush=(id)=>{
-        // setchange_clr()
-        setDietPlans([...DietPlans,id]) 
-       
+    const [change_clr,setchange_clr]=useState(false)
+    const [Items,setItems]=useState("")
+    const [CategoryTrue,serCategoryTrue]=useState(false)
+    const [DataId,setDataId]=useState([])
+    const CategoryPush=(id,index)=>{
+        serCategoryTrue(true)
+        // setDietPlans(id)
+        setDietPlans(item=>[...item,id]) 
+        if(CategoryPlan[index].dietfiltercategoryId===id){
+            setchange_clr(!change_clr)
+            setItems(1)
+        }
+        else{
+            setchange_clr(false)
+            setItems(0)
+        }
+
+        // var Data=CategoryPlan.filter((data,index)=>{
+        //     return DietPlans.includes(data.dietfiltercategoryId)
+
+        // })
+    
+        console.log("data",id,DietPlans)
     }
 
-    console.log("props",props.DietAddMealPlan)
 
 
 
@@ -77,10 +105,12 @@ import './MealPlanModal.scss'
               </Grid>  
               <Grid item xs={12} md={7} className="diet_filter"> 
                  <p className="fil_cat">Filter Category</p>
-                 {CategoryPlan.map((data,index)=>
-                
-                 <label className={change_clr[index]?"filter_change_clr":"filter_dplans"} key={index} onClick={()=>CategoryPush(data.dietfiltercategoryId)}>{data.filter_category}</label>
-                 )}
+                 {CategoryPlan.map((data,index)=>{
+                     const indexId=index+1
+                     console.log(DietPlans[2]?.id==data.dietfiltercategoryId,"true")
+                   return(   
+                 <label className={Items===1&&change_clr?"filter_change_clr":"filter_dplans"} key={index} onClick={()=>CategoryPush(data.dietfiltercategoryId,index)}>{data.filter_category}</label>
+                  )})}
                  <p className="fil_cat">Instruction</p>
                  {SaltList.map((data,index)=>
                  <>
@@ -104,7 +134,7 @@ import './MealPlanModal.scss'
           className="meal_plan_modal"
           width={"lg"}
           >
-           <MenuListModal MealList={props.DietAddMealPlan} DietPlan={props.DietAddMealPlan}/>
+           <MenuListModal MealList={props.DietAddMealPlan} DietPlan={props.DietAddMealPlan} DietCompany={props.DietCompany}/>
           </Modal>
         </div>
     )
@@ -112,6 +142,6 @@ import './MealPlanModal.scss'
 const mapStateToProps=(state)=>({
     Category_MealPlan:state.DietReducer.CategoryMealPlan,
     Diet_Instructions:state.DietReducer.diet_Instructions,
-    DietAddMealPlan:state.DietReducer.AddMealplan
+    DietAddMealPlan:state.DietReducer.AddMealplan||[]
 })
 export default connect(mapStateToProps)(MealPlanModal);

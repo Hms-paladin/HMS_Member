@@ -27,6 +27,7 @@ const { Search } = Input;
     const [search,setsearch]=useState(false)
     const [MealsPlan,setMealsPlan]=useState([])
     const [FilterMealdata,setFilterMealdata]=useState([])
+    const [dietmediaDetails,setdietmediaDetails]=useState([])
     const OpenModal=(id)=>{
         var Package=MealsPlan.find((data)=>{
            return(
@@ -41,11 +42,14 @@ const { Search } = Input;
     }
     useEffect(()=>{
       dispatch(GetDietCompanyDetails(searchValue,search))
-      dispatch(GetMealPlans(DietCompanyData.vendorId))
-    },[DietCompanyData.vendorId])
+     
+    },[])
  
     useEffect(()=>{
+        let DietDetails=[]
+        let MealsData=[]
         props.DietCompanyList[0]?.details.map((data)=>{
+            DietDetails.push(data)
             setDietCompanyData({
                 company_name:data.dietcompanyname,
                 address:data.vendor_address,
@@ -53,23 +57,52 @@ const { Search } = Input;
                 contact:data.vendor_contact,
                 vendorId:data.dietvendorId
             })
-        })
-      },[props.DietCompanyList])
-      useEffect(()=>{
-          let MealsData=[]
-        props.DietMealPlans[0]?.dietpackageDetails.map((data)=>{
-            MealsData.push(data)  
-        })
+            const vendorId=data.dietvendorId
+            if(vendorId){
+            dispatch(GetMealPlans(vendorId)).then((res)=>{ 
+                // MealsData.push(res.payload[0].dietpackageDetails)
+                res.payload[0].dietpackageDetails.map((data)=>{
+                    MealsData.push(data)
+                console.log("MealsData",MealsData)
+
+                })
+         
+            })
+        }
         setMealsPlan(MealsData)
-      },[props.DietMealPlans])
+          
+            
+
+
+        })
+      
+        console.log(MealsPlan,"MealsData")
+
+
+       
+        setdietmediaDetails(DietDetails)
+      },[props.DietCompanyList])
+    //   useEffect(()=>{
+    //     let MealsData=[]
+    //     props.DietMealPlans[0]?.dietpackageDetails.map((data)=>{
+    //         MealsData.push(data)
+    //     })
+    //     setMealsPlan(MealsData)
+    //     console.log(MealsData,"props.DietMealPlans")
+
+    //   },[props.DietMealPlans])
     const OnSearch=(e)=>{
         setsearchValue(e.target.value)
         setsearch(true)
+        if(search){
+            dispatch(GetDietCompanyDetails(searchValue,search)) 
+        }
     }
-    console.log("props",)
+    console.log("props",props)
     const SubmitSearchData=()=>{
         if(search){
-        dispatch(GetDietCompanyDetails(searchValue,search))
+        dispatch(GetDietCompanyDetails(searchValue,search)).then(()=>{
+        })
         }
     }
     return(
@@ -80,20 +113,22 @@ const { Search } = Input;
                       <div style={{position:"relative"}}><Input type="search " placeholder={"Search"} className="srch_his" onChange={OnSearch} value={searchValue}/><img src={searchImage} style={{position:"absolute",top:"7px",right:"17px"}} onClick={SubmitSearchData}/></div>
                    </div> 
                    </div> 
+                   {dietmediaDetails&&dietmediaDetails?.map((data,index)=>  
            <div className="diet_his_parent">
+          
            <Grid container style={{paddingTop:"10px"}}>
                  
                 <Grid item xs={12} md={6}>   
                   
                 <div style={{display:"flex",width:"100%"}}>
                 <div className="book_nurse_div">  
-                  <img src={DietCompanyData.profile} className="lab_his_img"/>
+                  <img src={data.vendor_filename} className="lab_his_img"/>
                    <div className="lab_his__text_div">
-                      <p className="lab_his_h_name">{DietCompanyData.company_name}</p>
+                      <p className="lab_his_h_name">{data.dietcompanyname}</p>
                       <div style={{display:"flex"}}>
                        {HideAdrs?
-                       <label className="lab_adrs">{DietCompanyData.contact+","+DietCompanyData.address}</label>
-                       :<label className="lab_adrs">{DietCompanyData.contact}</label>}
+                       <label className="lab_adrs">{data.vendor_contact+","+data.vendor_address}</label>
+                       :<label className="lab_adrs">{data.vendor_address}</label>}
                        <span className="elipse" onClick={ElipseOpen}>...</span></div> 
                        {/* star icons */}
                        <div className="star_ra_div">
@@ -116,7 +151,7 @@ const { Search } = Input;
                    </div>
                    <div className="reviews_div"><img src={Thumb} style={{width:"20px"}}/><label className="lab_r_per">95%</label><label className="re_per">(19 reviews)</label></div>  
                    {/* description in Diet */}
-                   <div className="lab_descrip">
+                   {/* <div className="lab_descrip">
                    <SliderComp>
            
                {[...Array(5)].map((img,index)=>(
@@ -128,7 +163,7 @@ const { Search } = Input;
                     </div>   
                 ))}
                </SliderComp>
-                    </div>
+                    </div> */}
           
                   
 
@@ -136,10 +171,9 @@ const { Search } = Input;
                    <div>
                    <div id="#carouselExampleIndicators" class="carousel slide" data-interval="false">
             <ol class="carousel-indicators">
-            {props.DietCompanyList[0]?.details[0]?.dietmediaDetails.map((data,index)=>{
-                return(
+            {props.DietCompanyList[0]?.details[0]?.dietmediaDetails.map((data,index)=>
               <li data-target="#carouselExampleIndicators" data-slide-to={index} class="active"></li>
-            )})}
+            )}
             </ol>
          <div class="carousel-inner"
 
@@ -153,8 +187,7 @@ const { Search } = Input;
          class='carousel item active'
         //  data-interval='8000'
          >
-         {data.media_type==="Video"?<VedioPlayer src={data.media_filename} playing poster={"/assets/poster.png"}/>:
-        data.Image==="Image"?<img src={data.media_filename}/>:""}
+         <VedioPlayer src={data.media_filename} playing poster={"/assets/poster.png"}/>
          </div>
         )})}
         </div>
@@ -166,7 +199,7 @@ const { Search } = Input;
                 <Grid item xs={12} md={6} className="part_snd_mplans">
                     <div className="meal_plan_head">Meal Plans</div>
                     <div className={MealsPlan.lenght>4?"parent_change_div":"parent_div_mplan"} >
-                    {MealsPlan&&MealsPlan.map((data,index)=>
+                    {MealsPlan.map((data,index)=>
                     <Paper className="parent_meals_paper" onClick={()=>OpenModal(data.dietpackageId)}>
                         <div className="meal_names_div">
                            <div style={{textAlign:"center"}}><p>{data.diet_package_name}</p>
@@ -183,8 +216,9 @@ const { Search } = Input;
                     </div>
                 </Grid>
                 </Grid>
-
            </div>
+            )} 
+
            <Modal
            visible={openmodal}
            onCancel={CloseModal}
@@ -194,7 +228,7 @@ const { Search } = Input;
            className="diet_planmodal"
            >
             
-             <MealPlanModal CloseModal={CloseModal} MealsPlan={FilterMealdata} DietVendorId={DietCompanyData.vendorId}/>
+             <MealPlanModal CloseModal={CloseModal} MealsPlan={FilterMealdata} DietCompany={props.DietMealPlans} DietVendorId={DietCompanyData.vendorId}/>
            </Modal>
        </div>
     )

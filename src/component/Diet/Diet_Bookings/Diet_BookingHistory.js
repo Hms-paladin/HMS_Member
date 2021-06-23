@@ -6,7 +6,7 @@ import {Modal} from 'antd'
 import Diet_CreateReview from './Diet_CreateReview'
 import BookingHistoryModal from './Diet_BookingHistoryModal'
 import { connect, useDispatch } from 'react-redux'
-import { DietBookingHistory } from '../../../actions/DietHistoryActions'
+import { DietBookingHistory,AddRepeatMenu} from '../../../actions/DietHistoryActions'
 import moment from 'moment'
  function Diet_BookingHistory(props){
      let dispatch=useDispatch()
@@ -37,6 +37,15 @@ import moment from 'moment'
     const ReviewClickClose=()=>{
         setReviewOpen(false)
         setopen(false)
+    }
+    const RepeatMenuAdded=(id)=>{
+        alert(id)
+        var RepeatId=BookingDetails.find((data)=>{
+            return(data.dietbookingId==id)
+        })
+        dispatch(AddRepeatMenu(RepeatId))
+       console.log("BookingDetails",RepeatId)
+
     }
    const [BookingDetails,setBookingDetails]=useState([])
    useEffect(()=>{
@@ -74,7 +83,7 @@ import moment from 'moment'
                  
                    <div className="book_his_parent">
                       <div className={data.cancel_status===1?"his_cancel":data.cancel_status===0?"his_reschedule":""} onClick={()=>ModalClickOpen(data.dietbookingId)}>{data.Bookingstatus}</div>
-                      <div><label className="his_review" onClick={ReviewClickOpen}>Review</label><label className="his_repeat" onClick={ModalClickOpen}>Repeat</label></div>
+                      <div><label className="his_review" onClick={ReviewClickOpen}>Review</label><label className="his_repeat" onClick={()=>RepeatMenuAdded(data.dietbookingId)}>Repeat</label></div>
                   </div>
              </div>
             )}

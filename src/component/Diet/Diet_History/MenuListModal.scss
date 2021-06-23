@@ -38,7 +38,7 @@
 }
 // buttons css
 .week_btns{
-    border-radius:0px 50px 50px !important;
+    border-radius:50px !important;
     margin-top: 20px;
 }
 .week_btns .MuiButton-root:last-child{
@@ -47,14 +47,17 @@
 .week_btns .MuiButton-root:first-child{
     border-radius: 50px 0px 0px 50px !important;
 }
-.week_btns .MuiButton-root{
+.week_btns .MuiButton-root,.weekBtn_change_clr .MuiButton-root{
     font-size: 14px !important;
     text-transform: none !important;
-    background-color: #F0F0F0 !important;
     border: none !important;
     padding:8px 30px !important;
     color:#333  !important;
     font-weight: 500 !important;
+}
+
+.weekBtn_change_clr .MuiButton-contained{
+    background-color: red !important;
 }
 // repeat menu css
 .re_menu_of{
