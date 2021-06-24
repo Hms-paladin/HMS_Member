@@ -20,7 +20,7 @@ function Clinical_lab(props) {
             errmsg: null,
         },
         testName: {
-            value: "",
+            value: [],
             validation: [{ name: "required" }],
             error: null,
             errmsg: null,
@@ -41,10 +41,18 @@ function Clinical_lab(props) {
     const [color, setcolor] = React.useState(false)
     const [ddlPackType, setPackType] = useState([])
     const location = useLocation()
-    const [params, setParams] = useState({ labid: location.state.labId, labname: location.state.Lab, vendor_adr: location.state.vendor_address })
+    const [params, setParams] = useState({
+        labid: location.state.labId,
+        labname: location.state.Lab,
+        vendor_adr: location.state.vendor_address,
+        vendor_filename:location.state.vendor_filename
+    })
     const [test, setTest] = useState([])
     const [costAmt, setCostAmt] = useState(0)
-    const ColorClick = (id) => {
+    const [booking, setBooking] = useState([])
+    var [test_category,setTestCat]=useState("");
+    
+    const ColorClick = (id, name) => {
 
         let cost;
         test.map((data) => {
@@ -52,6 +60,8 @@ function Clinical_lab(props) {
                 data.color = (!data.color)
             }
         })
+
+
         // let cost = test.find((data, index) => {
         //     return (data.color == true)
         // })
@@ -62,6 +72,21 @@ function Clinical_lab(props) {
     const [AddOpen, setAddOpen] = React.useState(false)
     const [HideAdrs, setHideAdrs] = React.useState(false)
     const ConfirmOpen = () => {
+        let data = []
+        data.push({
+            LabId:location.state.labId,
+            LabName: params.labname,
+            LabAddr: params.vendor_adr,
+            Lab_filename:params.vendor_filename,
+            PackageType:test_category.toString(),
+            TestName: clinicalLab.testName.value,
+            TestDate: moment(clinicalLab.Date.value).format("DD-MM-YYYY"),
+            TestTime: moment(clinicalLab.Time.value, "HH:mm").format("hh:mm A"),
+            cost:costAmt,
+            PatientName:"",
+            IsMember:2
+        })
+        setBooking(data)
         setAddOpen(true)
     }
     const ConfirmClose = () => {
@@ -73,11 +98,18 @@ function Clinical_lab(props) {
     }
 
     const checkValidation = (data, key) => {
-     console.log(data,"kkkk")
+        console.log(data, "kkkk")
+        let pack_type;
+        if(key=="packageType"){
+            pack_type = ddlPackType.find((item, index) => {
+                return (data === item.id)
+            })
+            setTestCat(pack_type.value);
+        }
+        
 
         // if (key === "Time") {
         //     console.log(moment(data, "HH:mm:ss").format("hh:mm:ss A"), "check")
-            
         // }
 
         var errorcheck = ValidationLibrary.checkValidation(
@@ -90,22 +122,6 @@ function Clinical_lab(props) {
             errmsg: errorcheck.msg,
             validation: clinicalLab[key].validation,
         };
-
-        //   // only for multi select (start)
-
-        //   let multipleIdList = [];
-
-        //   if (multipleId) {
-        //     multipleId.map((item) => {
-        //       for (let i = 0; i < data.length; i++) {
-        //         if (data[i] === item.value) {
-        //           multipleIdList.push(item.id);
-        //         }
-        //       }
-        //     });
-        //     dynObj.valueById = multipleIdList.toString();
-        //   }
-        //   // (end)
 
         setClinicalLab((prevState) => ({
             ...prevState,
@@ -146,15 +162,32 @@ function Clinical_lab(props) {
 
     useEffect(() => {
         let cost = 0;
+        let tests = [];
+        let count = countTrue()
         test.map((data) => {
             if (data.color == true) {
                 cost = cost + data.cost;
+                tests.push({ testId: data.testId, testName: data.testName });
+                clinicalLab["testName"].value = tests;
             }
+            if (count == 0) { clinicalLab["testName"].value = [] }
         })
         setCostAmt(cost)
     }, [color])
 
-    console.log(clinicalLab, "clinicalLab")
+    function countTrue() {
+        var count = 0;
+        test.map((data) => {
+            if (data.color === true) {
+                count++
+            }
+        })
+        return count;
+    }
+
+    
+    console.log(booking, "booking")
+    
     return (
         <div className="clinicallab_parent">
             <Grid container spacing={4}>
@@ -182,18 +215,17 @@ function Clinical_lab(props) {
                                     error={clinicalLab.Date.error}
                                     errmsg={clinicalLab.Date.errmsg} /></div>
                                 <div style={{ width: "50%", paddingLeft: "10px" }}><Labelbox type="timepicker"
-                                changeData={(data) => checkValidation(data, "Time")}
-                                value={clinicalLab.Time.value}
-                                error={clinicalLab.Time.error}
-                                errmsg={clinicalLab.Time.errmsg} /></div></div>
-                            {AddOpen === false ? <div><Button className="order_cancel">Cancel</Button><Button className="order_save" onClick={ConfirmOpen} >Confirm</Button></div> : null}
+                                    placeholder={"Test Time"}
+                                    changeData={(data) => checkValidation(data, "Time")}
+                                    value={clinicalLab.Time.value}
+                                    error={clinicalLab.Time.error}
+                                    errmsg={clinicalLab.Time.errmsg} /></div></div>
+                            {AddOpen === false ? <div><Button className="order_cancel">Cancel</Button><Button className="order_save" onClick={() => ConfirmOpen()} >Confirm</Button></div> : null}
                         </div>
 
                         {/* testlist */}
                         <div className="clinic_lab_div">
                             {test.map((data, index) =>
-
-
                                 //  <label className={color?"change_clinic_test" : "clinic_test"} onClick={()=>ColorClick(data.id)}>{data.test}</label>
                                 <label className={data.color ? "change_clinic_test" : "clinic_test"} onClick={() => ColorClick(data.testId)}>{data.testName}</label>
 
@@ -207,7 +239,7 @@ function Clinical_lab(props) {
                 <Grid item xs={12} md={4} className="lab_addMember_secondgrid">
                     {AddOpen ?
                         <div className="lab_booking_confirm">
-                            <Lab_BookingConfirmation ConfirmClose={ConfirmClose} />
+                            <Lab_BookingConfirmation ConfirmClose={ConfirmClose} Params={booking}/>
                         </div> : null}
 
                 </Grid>

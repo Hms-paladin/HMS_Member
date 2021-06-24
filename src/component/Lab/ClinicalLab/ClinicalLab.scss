@@ -35,6 +35,7 @@
 }
 .clinicallab_parent {
 >.MuiButtonBase-root, #date-picker-inline {color:black !important;}}
+// .MuiButtonBase-root, #date-picker-inline 
 .clinicallab_parent .formdiv .labeltxt{
      color:#333 !important;
     font-size: 15px !important;
@@ -53,6 +54,7 @@
     margin-right: 20px !important;
     font-weight: 600;
     font-size: 12px;
+    
 }
 .clinicallab_parent .order_save{
     border-radius: 50px !important;
@@ -63,6 +65,7 @@
     text-transform: none !important;
     font-weight: 600;
     font-size: 12px;
+    >.MuiButton-label{color:white !important;}
 }
 .clinic_test{
     background-color:#ECEDEF;
@@ -94,6 +97,7 @@
 }
 .clinic_lab_div{
     margin-left: 10px;
+    width: 70%;
 }
 .clinic_labdiv_parent{
     display:flex;

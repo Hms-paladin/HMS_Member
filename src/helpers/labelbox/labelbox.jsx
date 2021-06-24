@@ -155,21 +155,41 @@ export default class Labelbox extends Component {
 						{/*<DatePicker value={moment(this.props.value)?moment(this.props.value):new Date()} open={this.state.open}  onFocus={()=>this.setState({open:true})} onChange={(date)=>this.datepickerChange(date)}  className="datepickerchnge" style={{width:'100%',}} format="YYYY-MM-DD"  />*/}
 						<MuiPickersUtilsProvider utils={DateFnsUtils}>
 							<KeyboardDatePicker
-							    placeholder={this.props.placeholder}
-								disableToolbar={true}
+							    // placeholder={this.props.placeholder}
+								// disableToolbar={true}
+								// //autoOk={true}
+								// clearable={false}
+								// disableUnderline={true}
+								// disableFuture={this.props.disableFuture ? this.props.disableFuture : false}
+								// disablePast={this.props.disablePast ? this.props.disablePast : false}
+								// minDate={this.props.minDate ? this.props.minDate : null}
+								// variant="variant"
+								// format={this.props.format?this.props.format:"dd MMM yyyy"}
+								// margin="normal"
+								// id="date-picker-inline"
+								// hintText="Choose Date"
+								// defaultValue="07:30"
+								// emptyLabel={this.props.emptyLabel}
+								// value={this.props.value === "" ? null : this.props.value}
+								// onChange={(date) => this.datepickerChange(date)}
+
+
+								placeholder={this.props.placeholder}
+								disableToolbar={this.props.disableToolbar && this.props.disableToolbar}
 								// autoOk={true}
+								disabled={this.props.disabled}
+								views={this.props.view && this.props.view}
 								clearable={false}
 								disableUnderline={true}
 								disableFuture={this.props.disableFuture ? this.props.disableFuture : false}
-								disablePast={this.props.disablePast ? this.props.disablePast : false}
-								minDate={this.props.minDate ? this.props.minDate : null}
-								variant="variant"
-								format={this.props.format?this.props.format:"dd MMM yyyy"}
+								disablePast={this.props.disablePast && this.props.disablePast}
+								minDate={this.props.minDate && this.props.minDate}
+								inputVariant="outlined"
+								format={this.props.format ? this.props.format : "dd-MMM-yyyy"}
 								margin="normal"
 								id="date-picker-inline"
-								hintText="Choose Date"
-								defaultValue="07:30"
-								emptyLabel={this.props.emptyLabel}
+								// value={this.state.selecteddate}
+								InputProps={{ readOnly: true }}
 								value={this.props.value === "" ? null : this.props.value}
 								onChange={(date) => this.datepickerChange(date)}
 							/>

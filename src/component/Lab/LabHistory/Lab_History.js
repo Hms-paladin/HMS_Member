@@ -22,6 +22,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import SliderComp from '../../../helpers/Slider/Slider'
 import { GetLabList, GetParticularLabDetails } from '../../../actions/LabHistoryAction'
 import { GetLabPackageType } from "../../../actions/clinicalLabAction"
+import { GetPatientProfile } from "../../../actions/PatientProfileAction"
 import { connect, useDispatch } from "react-redux";
 import moment from 'moment';
 import { Redirect, Link } from "react-router-dom";
@@ -36,10 +37,10 @@ function Lab_History(props) {
   const [workingHour, setWorkingHour] = useState({})
   const [lat, setLat] = useState("")
   const [long, setLong] = useState("")
-  const [labid,setLabId]=useState(0)
-  
+  const [labid, setLabId] = useState(0)
 
-  
+
+
   // elipse function
   const ElipseOpen = () => {
     setHideAdrs(!HideAdrs)
@@ -76,6 +77,7 @@ function Lab_History(props) {
 
   useEffect(() => {
     dispatch(GetLabList())
+    dispatch(GetPatientProfile())
     // console.log(props.GetLabList,"props.GetLabList")
   }, [])
 
@@ -85,6 +87,21 @@ function Lab_History(props) {
     })
     console.log(props.GetLabList, "props.GetLabList")
   }, [props.GetLabList])
+
+  useEffect(() => {
+    let isMember = []
+    let pat_name = ""
+    props.GetPatientProfile.map((data) => {
+      pat_name = data.name
+      isMember.push(data.name)
+      data.patientmemberDetails.map((item) => {
+        isMember.push(item.name)
+      })
+    })
+    localStorage.setItem("patient_name", JSON.stringify(pat_name));
+    localStorage.setItem("IsMember", JSON.stringify(isMember));
+    // console.log(props.GetPatientProfile,"lllll")
+  }, [props.GetPatientProfile])
 
   useEffect(() => {
     props.GetParticularLabDetails.map((data) => {
@@ -104,17 +121,17 @@ function Lab_History(props) {
     })
   }, [props.GetParticularLabDetails])
 
-  const onSubmit=()=>{
+  const onSubmit = () => {
     dispatch(GetLabPackageType(labid))
   }
-   
-  console.log(lat, long, "latlong")
+
+  console.log(ParticularLabDet, "ParticularLabDet")
   return (
     <div>
       {/* search part */}
       <div className="lab_srch_parent">
         <div className="lab_srch_div">
-          <div style={{ position: "relative" }}><Input type="search " placeholder={"Search"} className="srch_his" /><img src={search} style={{ position: "absolute", top: "7px", right: "17px" }} />
+          <div style={{ position: "relative" }}><Input type="search" placeholder={"Search"} className="srch_his" /><img src={search} style={{ position: "absolute", top: "7px", right: "17px" }} />
             <div className="sorts_div"><span style={{ paddingRight: "10px" }}>Offer<img src={sort} className="lab_sort" /></span><span>Rating<img src={sort} className="lab_sort" /></span></div>
           </div>
         </div>
@@ -231,7 +248,7 @@ function Lab_History(props) {
                         <div className="mem_con_parentdiv">
                           <div>{HideAdrs ? <label className="lab_adrs">{ParticularLabDet.vendor_address}</label> : <label className="lab_adrs">{ParticularLabDet.vendor_address}</label>}
                             <span className="elipse" onClick={ElipseOpen}>...</span></div>
-                          <div><Link to={{pathname:"/clinicallab",state:ParticularLabDet}}><Button className="select_lab_butt" onClick={()=>onSubmit()}>Select</Button></Link></div>
+                          <div><Link to={{ pathname: "/clinicallab", state: ParticularLabDet }}><Button className="select_lab_butt" onClick={() => onSubmit()}>Select</Button></Link></div>
                         </div>
                       </FormGroup>
                     </Col>
@@ -243,7 +260,7 @@ function Lab_History(props) {
                                   </Col> */}
                   </Row>
                 </Form>
-                <div><Map latitude={lat} longitude={long}/></div>
+                <div><Map latitude={lat} longitude={long} /></div>
               </Paper>
             </Grid>
             : null}
@@ -274,5 +291,6 @@ const mapStatetoProps = (state) => ({
   GetLabList: state.LabHistoryReducer.getLabList || [],
   GetParticularLabDetails: state.LabHistoryReducer.getParticularLabDet || [],
   GetLabPackageType: state.clinicalLabReducer.getLabPackage || [],
+  GetPatientProfile: state.PatientProfileReducer.getPatientProfile || [],
 })
 export default connect(mapStatetoProps)(Lab_History);

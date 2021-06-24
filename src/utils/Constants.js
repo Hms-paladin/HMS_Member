@@ -29,3 +29,6 @@ export const GET_PARTICULAR_LAB_DETAILS="GET_PARTICULAR_LAB_DETAILS";
 //Clinical Lab
 export const GET_LAB_PACKAGE="GET_LAB_PACKAGE";
 export const GET_LAB_TEST="GET_LAB_TEST"
+
+//PatientProfile
+export const GET_PATIENT_PROFILE="GET_PATIENT_PROFILE";
