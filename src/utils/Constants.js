@@ -32,3 +32,4 @@ export const GET_LAB_TEST="GET_LAB_TEST"
 
 //PatientProfile
 export const GET_PATIENT_PROFILE="GET_PATIENT_PROFILE";
+export const PATIENT_LAB_BOOKING="PATIENT_LAB_BOOKING";

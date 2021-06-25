@@ -22,20 +22,16 @@ export default function BookingConfirmation(props) {
   const BookingDet=props.Params;
   const patient_name=JSON.parse(localStorage.getItem("patient_name"));
   const members_name=JSON.parse(localStorage.getItem("IsMember"));
-  const [IsMem,setIsMem]=useState(2)
   const ModalOpenClick = () => {
     BookingDet[0].PatientName=tempname;
     BookingDet[0].IsMember=2;
     members_name.map((item)=>{
       if(item==tempname){
-        setIsMem(1)
+        BookingDet[0].IsMember=1;
       }
     })
     setmodalOpen(true)
   }
-  useEffect(()=>{
-    BookingDet[0].IsMember=IsMem;
-  },[IsMem])
   const ModalCloseClick = () => {
     setmodalOpen(false)
   }
@@ -73,7 +69,7 @@ export default function BookingConfirmation(props) {
   }
   console.log(tempname, "tempname")
   console.log(BookingDet,"ppppp")
-  console.log(patient_name, "local")
+  console.log(members_name, "members_name")
   return (
     <div className="lab_booking_confir_root">
       <div className="member_parent_div">

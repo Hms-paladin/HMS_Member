@@ -12,6 +12,7 @@ import Credit from '../../../images/credit.jpg'
 import Labelbox from '../../../helpers/labelbox/labelbox';
 import {NavLink} from 'react-router-dom'
 import { Tabs, Radio } from 'antd';
+import { Redirect, Link } from "react-router-dom";
 const { TabPane } = Tabs;
 export default class CancelPayment extends React.Component{
     
@@ -25,6 +26,10 @@ export default class CancelPayment extends React.Component{
       handleModeChange = e => {
         const mode = e.target.value;
         this.setState({ mode });
+      };
+
+      payrReceivePush=()=>{
+        alert("hi")
       };
     
     render()
@@ -121,7 +126,7 @@ export default class CancelPayment extends React.Component{
                      
                       
               </div>
-              <div className="pay_now_container"><Button className="pay_cancel">Cancel Payment</Button><NavLink to="paymentreceive"><Button className="pay_now_button" onClick={this.payrReceivePush}>Pay Now</Button></NavLink></div>
+              <div className="pay_now_container"><Button className="pay_cancel">Cancel Payment</Button><Link to={{ pathname: "/paymentreceive" }}><Button className="pay_now_button" onClick={this.payrReceivePush}>Pay Now</Button></Link></div>
             </div>
         )
     }
