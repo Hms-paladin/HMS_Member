@@ -3,6 +3,7 @@ import './Lab_ConfirmationModal.scss'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
+import { Redirect, Link } from "react-router-dom";
 import { Col, Form, FormGroup, Label, Input,Row} from 'reactstrap';
 // import PaymentMethod from '../../Pharmacy/PaymentMethod/PaymentMethod'
 import {NavLink} from 'react-router-dom'
@@ -70,7 +71,7 @@ export default function ConfirmationModal(props){
           </Form>
           </Grid>
             <Grid item xs={12} md={12} style={{textAlign:"center"}}>
-               <NavLink to="/paymentmethod"><Button className="confirm_b_btn">Confirm</Button></NavLink>
+               <Link to={{ pathname: "/paymentmethod", state: Confirm_details }}><Button className="confirm_b_btn">Confirm</Button></Link>
                </Grid>   
            </Grid>
            

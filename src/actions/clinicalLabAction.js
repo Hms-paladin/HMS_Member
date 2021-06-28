@@ -41,25 +41,26 @@ export const GetLabTest = (labid, categoryid) => async dispatch => {
     catch (err) { }
 }
 
-export const PatientLabBooking = () => async dispatch => {
+export const PatientLabBooking = (params) => async dispatch => {
     try {
         axios({
             method: 'POST',
             url: newapiurl + 'Patient/patientLabBooking',
             data: {
-                patientId: "1",
-                lab_vendor_id: "2",
-                test_date: "2020-07-20",
-                test_time: "09:30",
-                total_amount: "8000",
+                patientId: localStorage.getItem("userid"),
+                lab_vendor_id: params.LabId,
+                test_date: params.TestDate,
+                test_time: params.TestTime,
+                total_amount: params.TotalAmt,
                 paymentStatus: "1",
-                isMember: 2,
-                tempMemberName: "Edwin",
-                test:"l"
+                isMember: params.isMember,
+                tempMemberName: params.MemberName,
+                test:params.test
             }
         })
             .then((response) => {
                 if (response.data.status === 1) {
+                    alert(response.data.status)
                     dispatch({
                         type: PATIENT_LAB_BOOKING, payload: response.data.data
                     })
