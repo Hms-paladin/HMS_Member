@@ -86,11 +86,11 @@ function Nursehistory(props) {
     }, [props.GetPatientNurseSearch, increament])
 
     const loopingRows = () => {
-
         let rows = []
         for (let i = 0; i < increament; i++) {
             rows.push(props.GetPatientNurseSearch[0]?.details[i])
         }
+        console.log(rows, "roewws")
         setNurseDetails(rows)
     }
 
@@ -104,16 +104,15 @@ function Nursehistory(props) {
     }, [props.GetNationalityforNurse])
 
     const fetchMoreData = () => {
-        console.log(increament <= props.GetPatientNurseSearch[0]?.details,"testing")
-        if (nurseCost === 0 && nurseExp === 0 && nurseField.nationality.value === "" && nurseField.gender.value === "") {
-            setTimeout(() => {
-                if (increament <= props.GetPatientNurseSearch[0]?.details) {
-                    setIncreament(increament + 10)
-                    loopingRows()
-                }
-            }, 500);
-        }
-        console.log(nurseCost, nurseExp, nurseField.nationality.value, nurseField.gender.value, "checking")
+        // if (nurseCost === 0 && nurseExp === 0 && nurseField.nationality.value === "" && nurseField.gender.value === "") {
+        setTimeout(() => {
+            if (increament <= props.GetPatientNurseSearch[0]?.details) {
+                setIncreament(increament + 10)
+                loopingRows()
+            }
+        }, 500);
+        // }
+        // console.log(nurseCost, nurseExp, nurseField.nationality.value, nurseField.gender.value, "checking")
 
     };
 
@@ -170,12 +169,12 @@ function Nursehistory(props) {
             }
             // else {
             //     alert("tset")
-            //     if (val.name === searchdata) {
-            //         searchrows.push(val)
-            //     }
+            if (val.name === searchdata) {
+                searchrows.push(val)
+            }
             // }
         })
-        console.log(searchrows, "onchange")
+        console.log(searchrows && searchrows.length, "onchange")
         setNurseDetails(searchrows)
     }
 
@@ -255,7 +254,7 @@ function Nursehistory(props) {
                     <InfiniteScroll
                         dataLength={nurseDetails && nurseDetails.length}
                         next={() => fetchMoreData()}
-                        hasMore={true}
+                        hasMore={false}
                         loader={<h4>Loading...</h4>}
                         height={500}
                         endMessage={
