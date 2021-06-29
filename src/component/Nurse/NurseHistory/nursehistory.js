@@ -42,6 +42,8 @@ function Nursehistory(props) {
     const [nurseCost, setNurseCost] = useState()
     const [nurseExp, setNurseExp] = useState()
     const [increament, setIncreament] = useState(10)
+    const [hasMores, setHasMores] = useState(true)
+
     // const [item, setItem] = useState({
     //     items: props.GetPatientNurseSearch[0]?.details,
     //     hasMore: true
@@ -84,13 +86,13 @@ function Nursehistory(props) {
     useEffect(() => {
         loopingRows()
     }, [props.GetPatientNurseSearch, increament])
+    console.log(increament, "roewws")
 
     const loopingRows = () => {
         let rows = []
         for (let i = 0; i < increament; i++) {
             rows.push(props.GetPatientNurseSearch[0]?.details[i])
         }
-        console.log(rows, "roewws")
         setNurseDetails(rows)
     }
 
@@ -104,15 +106,18 @@ function Nursehistory(props) {
     }, [props.GetNationalityforNurse])
 
     const fetchMoreData = () => {
-        // if (nurseCost === 0 && nurseExp === 0 && nurseField.nationality.value === "" && nurseField.gender.value === "") {
-        setTimeout(() => {
-            if (increament <= props.GetPatientNurseSearch[0]?.details) {
-                setIncreament(increament + 10)
-                loopingRows()
-            }
-        }, 500);
-        // }
-        // console.log(nurseCost, nurseExp, nurseField.nationality.value, nurseField.gender.value, "checking")
+        if (nurseCost === 0 && nurseExp === 0 && nurseField.nationality.value === "" && nurseField.gender.value === "") {
+            setTimeout(() => {
+                if (increament <= props.GetPatientNurseSearch[0]?.details?.length) {
+                    setIncreament(increament + 10)
+                    loopingRows()
+                }
+                else {
+                    setHasMores(false)
+                }
+            }, 500);
+        }
+        console.log(nurseCost, nurseExp, nurseField.nationality.value, nurseField.gender.value, "checking")
 
     };
 
@@ -187,7 +192,6 @@ function Nursehistory(props) {
                             <div className="fli_head">Filter</div>
                             <div className="mnth_cost"><label className="fli">Monthly Cost Range</label><label className="mnth_amt">500 KWD</label></div>
                             <div>
-
                                 <Slider
                                     defaultValue={0}
                                     getAriaValueText={Costvaluetext}
@@ -254,9 +258,9 @@ function Nursehistory(props) {
                     <InfiniteScroll
                         dataLength={nurseDetails && nurseDetails.length}
                         next={() => fetchMoreData()}
-                        hasMore={false}
+                        hasMore={hasMores ? true : false}
                         loader={<h4>Loading...</h4>}
-                        height={500}
+                        height={550}
                         endMessage={
                             <p style={{ textAlign: "center" }}>
                                 <b>Yay! You have seen it all</b>
