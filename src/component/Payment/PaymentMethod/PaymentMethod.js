@@ -21,7 +21,7 @@ function CancelPayment(props) {
   const dispatch = useDispatch();
   const location = useLocation()
   const [params, setParams] = useState({
-    LabId: location.state[0].LabId,
+    Lab_vendor_id: location.state[0].Lab_vendor_id,
     TestDate: location.state[0].TestDate,
     TestTime: location.state[0].TestTime,
     TotalAmt: location.state[0].cost,
@@ -45,7 +45,6 @@ function CancelPayment(props) {
   };
 
   const payrReceivePush = () => {
-    alert("hi")
     dispatch(PatientLabBooking(params))
   };
 

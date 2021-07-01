@@ -9,9 +9,11 @@ import Lab_BookingConfirmation from './Lab_BookingConfirmation'
 import { connect, useDispatch } from "react-redux";
 import ValidationLibrary from "../../../helpers/validationfunction"
 import { GetLabTest } from "../../../actions/clinicalLabAction"
+import dateFormat from 'dateformat';
 import moment from 'moment';
 function Clinical_lab(props) {
     const dispatch = useDispatch();
+    const [lab_vendor_id,setVendorId]=useState(0);
     const [clinicalLab, setClinicalLab] = useState({
         packageType: {
             value: "",
@@ -45,13 +47,13 @@ function Clinical_lab(props) {
         labid: location.state.labId,
         labname: location.state.Lab,
         vendor_adr: location.state.vendor_address,
-        vendor_filename:location.state.vendor_filename
+        vendor_filename: location.state.vendor_filename
     })
     const [test, setTest] = useState([])
     const [costAmt, setCostAmt] = useState(0)
     const [booking, setBooking] = useState([])
-    var [test_category,setTestCat]=useState("");
-    
+    var [test_category, setTestCat] = useState("");
+
     const ColorClick = (id, name) => {
 
         let cost;
@@ -74,20 +76,22 @@ function Clinical_lab(props) {
     const ConfirmOpen = () => {
         let data = []
         data.push({
-            LabId:location.state.labId,
+            Lab_vendor_id: params.labid,
             LabName: params.labname,
             LabAddr: params.vendor_adr,
-            Lab_filename:params.vendor_filename,
-            PackageType:test_category.toString(),
+            Lab_filename: params.vendor_filename,
+            PackageType: test_category.toString(),
             TestName: clinicalLab.testName.value,
             TestDate: moment(clinicalLab.Date.value).format("DD-MM-YYYY"),
             TestTime: moment(clinicalLab.Time.value, "HH:mm").format("hh:mm A"),
-            cost:costAmt,
-            PatientName:"",
-            IsMember:2
+            // TestTime:(clinicalLab.Time.value).toLocaleTimeString(),
+            cost: costAmt,
+            PatientName: "",
+            IsMember: 2
         })
         setBooking(data)
         setAddOpen(true)
+        handleCancel()
     }
     const ConfirmClose = () => {
         setAddOpen(false)
@@ -100,13 +104,27 @@ function Clinical_lab(props) {
     const checkValidation = (data, key) => {
         console.log(data, "kkkk")
         let pack_type;
-        if(key=="packageType"){
+        if (key == "packageType") {
             pack_type = ddlPackType.find((item, index) => {
                 return (data === item.id)
             })
             setTestCat(pack_type.value);
         }
-        
+
+        // if(key=="Date"){
+        //     let vendor_id;
+        //     var dateObj = new Date(data.toString())
+        //     var weekday = dateObj.toLocaleString("default", { weekday: "long" })
+        //     let working_hours=location.state.Labworkinghours;
+        //     console.log(working_hours,"weekday")
+        //     working_hours.map((data)=>{
+        //         if(weekday==data.wh_weekday){
+        //             vendor_id=data.LobworkinghrsId;
+        //             console.log(weekday,vendor_id,"vendorid")
+        //             setVendorId(vendor_id);
+        //         }
+        //     })
+        // }
 
         // if (key === "Time") {
         //     console.log(moment(data, "HH:mm:ss").format("hh:mm:ss A"), "check")
@@ -167,7 +185,7 @@ function Clinical_lab(props) {
         test.map((data) => {
             if (data.color == true) {
                 cost = cost + data.cost;
-                tests.push({ testId: data.testId, testName: data.testName });
+                tests.push({ lab_test_id: data.testId, test_amount: data.cost });
                 clinicalLab["testName"].value = tests;
             }
             if (count == 0) { clinicalLab["testName"].value = [] }
@@ -185,9 +203,26 @@ function Clinical_lab(props) {
         return count;
     }
 
-    
+    function handleCancel() {
+        let keys = [
+            "packageType", "testName", "Date", "Time"
+        ]
+
+        keys.map((data) => {
+            clinicalLab[data].value = ""
+            if (data == "testName") { clinicalLab[data].value = [] }
+        })
+        setClinicalLab(prevState => ({
+            ...prevState,
+        }));
+        setTest([])
+    }
+
+
     console.log(booking, "booking")
-    
+    console.log(clinicalLab, "clinicalLab")
+    console.log(test,"test")
+
     return (
         <div className="clinicallab_parent">
             <Grid container spacing={4}>
@@ -239,7 +274,7 @@ function Clinical_lab(props) {
                 <Grid item xs={12} md={4} className="lab_addMember_secondgrid">
                     {AddOpen ?
                         <div className="lab_booking_confirm">
-                            <Lab_BookingConfirmation ConfirmClose={ConfirmClose} Params={booking}/>
+                            <Lab_BookingConfirmation ConfirmClose={ConfirmClose} Params={booking} />
                         </div> : null}
 
                 </Grid>

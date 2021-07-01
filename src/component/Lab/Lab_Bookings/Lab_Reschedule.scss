@@ -11,9 +11,11 @@
 }
 .re_date{
     margin-right: 10px;
+    >.MuiButtonBase-root, #date-picker-inline {color:black !important}
 }
-.re_time{
+.re_time .formdiv .MuiInputBase-input  {
     margin-left: 10px;
+    color:black !important;
 }
 .lab_res_btn{
     background-color: #83AF40 !important;
