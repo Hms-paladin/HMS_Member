@@ -195,11 +195,11 @@ export default class Labelbox extends Component {
 							/>
 						</MuiPickersUtilsProvider>
 
-						{/* {
+						{
 							<div className="Errormsg">
 								<div>{data.error && data.errmsg}</div>
 							</div>
-						} */}
+						}
 					</div>
 
 				</div>

@@ -6,6 +6,7 @@ import ReportReducer from "./ReportReducer"
 import LabHistoryReducer from "./LabHistoryReducer";
 import clinicalLabReducer from "./clinicalLabReducer"
 import PatientProfileReducer from "./PatientProfileReducer"
+import LabBookingHistoryReducer from "./LabBookingHistoryReducer"
 
 export default combineReducers({
    doctorAppointmentReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
    LabHistoryReducer,
    clinicalLabReducer,
    PatientProfileReducer,
+   LabBookingHistoryReducer,
 })
 

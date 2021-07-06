@@ -7,7 +7,7 @@ import './Lab_Bookings.scss'
 import Lab_Reschedule from './Lab_Reschedule'
 import { connect, useDispatch } from "react-redux";
 import BookingHistoryModal from './Lab_BookingHistoryModal'
-import { GetLabBookingList } from "../../../actions/clinicalLabAction"
+import { GetLabBookingList,CancelBooking } from "../../../actions/clinicalLabAction"
 import moment from 'moment';
 function Lab_Bookings(props){
     const dispatch = useDispatch();
@@ -18,6 +18,7 @@ function Lab_Bookings(props){
     const[particularBookDet,setPartBookDet]=useState({})
     const CancelClick=()=>{
         setCancelOpen(!CancelOpen)
+        dispatch(CancelBooking())
     }
      // elipse function
      const ElipseOpen=()=>{
@@ -46,6 +47,7 @@ function Lab_Bookings(props){
         })
         setBookingList(details)
     },[props.GetLabBookingList])
+
     console.log(particularBookDet,"particularBookDet")
     return(
         <div className="lab_bookings_parentdiv">
@@ -68,7 +70,7 @@ function Lab_Bookings(props){
                    </div> 
                   <div style={{width:"25%"}}>
                       <div className="duty_div"><p style={{color:"#AEADAD",fontSize:"13px"}}>{moment(data.test_time, "HH:mm").format("hh:mm A")}</p></div>
-                      <div className="duty_snddiv"><label className="book_shedule" onClick={()=>ReOpenClick(data.labbookingId)}>Reschedule</label><label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={CancelClick}>Cancel</label></div>
+                      <div className="duty_snddiv"><label className="book_shedule" onClick={()=>ReOpenClick(data.labbookingId)}>Reschedule</label><label className={CancelOpen?"b_cancel_change":"b_cancel"} onClick={()=>CancelClick()}>Cancel</label></div>
                    </div>
                    </div> 
                {/* To click cancel button to open this part */}
@@ -111,5 +113,6 @@ function Lab_Bookings(props){
 }
 const mapStatetoProps = (state) => ({
     GetLabBookingList: state.clinicalLabReducer.getLabBookingList || [],
+    CancelBooking:state.clinicalLabReducer.cancelBooking||[],
 })
 export default connect(mapStatetoProps)(Lab_Bookings);

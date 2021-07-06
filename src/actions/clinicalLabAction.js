@@ -1,6 +1,7 @@
-import { GET_LAB_PACKAGE, GET_LAB_TEST, PATIENT_LAB_BOOKING, GET_LAB_BOOKING_LIST } from "../utils/Constants";
+import { GET_LAB_PACKAGE, GET_LAB_TEST, PATIENT_LAB_BOOKING, GET_LAB_BOOKING_LIST, CANCEL_BOOKING, BOOKING_RESCHEDULE } from "../utils/Constants";
 import { newapiurl } from "../utils/baseUrl";
 import axios from "axios";
+import { notification } from "antd";
 export const GetLabPackageType = (labid) => async dispatch => {
     try {
         axios({
@@ -88,6 +89,70 @@ export const GetLabBookingList = () => async dispatch => {
                     })
                 }
             })
+    }
+    catch (err) { }
+}
+
+export const CancelBooking = () => async dispatch => {
+    try {
+        axios({
+            method: 'POST',
+            url: newapiurl + 'Patient/Cancellabbooking',
+            data: {
+                cancelstatus: "1",
+                labbookingId: "1",
+                patientId: "1"
+            }
+        })
+            .then((response) => {
+
+                if (response.data.status === 1) {
+                    notification.success({
+                        message: "Cancelled Successfully",
+                    });
+                    dispatch({
+                        type: CANCEL_BOOKING, payload: response.data.status
+                    })
+                    return Promise.resolve();
+                }
+            })
+
+    }
+    catch (err) { }
+}
+
+export const BookingReschedule = (reschedule_det) => async dispatch => {
+    try {
+        alert(reschedule_det.tempMemberName)
+        axios({
+            method: 'POST',
+            url: newapiurl + 'Patient/patientLabBookingReschedule',
+            data: {
+                oldBookingId:reschedule_det.oldBookingId,
+                patientId: reschedule_det.patientId,
+                lab_vendor_id: reschedule_det.lab_vendor_id,
+                test_date: reschedule_det.test_date,
+                test_time: reschedule_det.test_time,
+                total_amount: reschedule_det.total_amount,
+                paymentStatus: "1",
+                isMember: reschedule_det.isMember,
+                tempMemberName: reschedule_det.tempMemberName,
+                test:reschedule_det.test 
+            }
+        })
+            .then((response) => {
+
+                if (response.data.status === 1) {
+                    notification.success({
+                        message: "Rescheduled Successfully",
+                    });
+                    dispatch({
+                        type: BOOKING_RESCHEDULE, payload: response.data.status
+                    })
+                    return Promise.resolve();
+                }
+            })
+
     }
     catch (err) { }
 }

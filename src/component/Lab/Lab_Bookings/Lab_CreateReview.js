@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button'
 import Labelbox from '../../../helpers/labelbox/labelbox'
 import "./Lab_CreateReview.scss"
 export default function Lab_CreateReview(props){
+    const review=props.Review
+    console.log(review,"review")
     const BookingDetails = [
         {
             id: 1,
@@ -31,8 +33,8 @@ export default function Lab_CreateReview(props){
            {/* img part */}
            <div className="create_r_pro_div">
                <div className="create_r_pro_childdiv">
-                   <div className="create_pro_imgdiv"><img src={Nurse} className="create_r_pro"/>
-                   <div className="nur_r_name">YIACO Medical Center</div></div>
+                   <div className="create_pro_imgdiv"><img src={review.vendor_filename} className="create_r_pro"/>
+                   <div className="nur_r_name">{review.Lab}</div></div>
                </div>
             </div>
             {/*Rating  */}

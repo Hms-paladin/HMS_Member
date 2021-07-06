@@ -13,7 +13,9 @@ import dateFormat from 'dateformat';
 import moment from 'moment';
 function Clinical_lab(props) {
     const dispatch = useDispatch();
-    const [lab_vendor_id,setVendorId]=useState(0);
+    const [lab_vendor_id, setVendorId] = useState(0);
+    const [time, setTime] = useState("")
+    const [testName, setTestName] = useState([])
     const [clinicalLab, setClinicalLab] = useState({
         packageType: {
             value: "",
@@ -23,7 +25,7 @@ function Clinical_lab(props) {
         },
         testName: {
             value: [],
-            validation: [{ name: "required" }],
+            validation: [],
             error: null,
             errmsg: null,
         },
@@ -74,24 +76,42 @@ function Clinical_lab(props) {
     const [AddOpen, setAddOpen] = React.useState(false)
     const [HideAdrs, setHideAdrs] = React.useState(false)
     const ConfirmOpen = () => {
-        let data = []
-        data.push({
-            Lab_vendor_id: params.labid,
-            LabName: params.labname,
-            LabAddr: params.vendor_adr,
-            Lab_filename: params.vendor_filename,
-            PackageType: test_category.toString(),
-            TestName: clinicalLab.testName.value,
-            TestDate: moment(clinicalLab.Date.value).format("DD-MM-YYYY"),
-            TestTime: moment(clinicalLab.Time.value, "HH:mm").format("hh:mm A"),
-            // TestTime:(clinicalLab.Time.value).toLocaleTimeString(),
-            cost: costAmt,
-            PatientName: "",
-            IsMember: 2
-        })
-        setBooking(data)
-        setAddOpen(true)
-        handleCancel()
+        var targetkeys = Object.keys(clinicalLab)
+        for (var i in targetkeys) {
+            var errorcheck = ValidationLibrary.checkValidation(
+                clinicalLab[targetkeys[i]].value,
+                clinicalLab[targetkeys[i]].validation
+            )
+            clinicalLab[targetkeys[i]].error = !errorcheck.state
+            clinicalLab[targetkeys[i]].errmsg = errorcheck.msg
+        }
+        var filtererr = targetkeys.filter((data) => clinicalLab[data].error === true)
+        if (filtererr.length > 0) { }
+        else {
+            let data = []
+            data.push({
+                Lab_vendor_id: params.labid,
+                LabName: params.labname,
+                LabAddr: params.vendor_adr,
+                Lab_filename: params.vendor_filename,
+                PackageType: test_category.toString(),
+                TestName: clinicalLab.testName.value,
+                TestDate: moment(clinicalLab.Date.value).format("YYYY-MM-DD"),
+                // TestTime: moment(clinicalLab.Time.value, "HH:mm").format("hh:mm A"),
+                TestTime: time,
+                cost: costAmt,
+                PatientName: "",
+                IsMember: 2,
+                testItems: testName
+            })
+            setBooking(data)
+            setAddOpen(true)
+            handleCancel()
+        }
+        setClinicalLab(prevState => ({
+            ...prevState,
+        }));
+
     }
     const ConfirmClose = () => {
         setAddOpen(false)
@@ -126,9 +146,10 @@ function Clinical_lab(props) {
         //     })
         // }
 
-        // if (key === "Time") {
-        //     console.log(moment(data, "HH:mm:ss").format("hh:mm:ss A"), "check")
-        // }
+        if (key === "Time") {
+            let date = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds()
+            setTime(date)
+        }
 
         var errorcheck = ValidationLibrary.checkValidation(
             data,
@@ -145,6 +166,8 @@ function Clinical_lab(props) {
             ...prevState,
             [key]: dynObj,
         }));
+
+
     }
 
     useEffect(() => {
@@ -181,12 +204,15 @@ function Clinical_lab(props) {
     useEffect(() => {
         let cost = 0;
         let tests = [];
+        let test_items = [];
         let count = countTrue()
         test.map((data) => {
             if (data.color == true) {
                 cost = cost + data.cost;
                 tests.push({ lab_test_id: data.testId, test_amount: data.cost });
+                test_items.push(data.testName)
                 clinicalLab["testName"].value = tests;
+                setTestName(test_items)
             }
             if (count == 0) { clinicalLab["testName"].value = [] }
         })
@@ -221,7 +247,7 @@ function Clinical_lab(props) {
 
     console.log(booking, "booking")
     console.log(clinicalLab, "clinicalLab")
-    console.log(test,"test")
+    console.log(testName, "testName")
 
     return (
         <div className="clinicallab_parent">
@@ -241,7 +267,9 @@ function Clinical_lab(props) {
                         <div>
                             <Labelbox type="select" placeholder={"General Test"} dropdown={ddlPackType}
                                 changeData={(data) => checkValidation(data, "packageType")}
-                                value={clinicalLab.packageType.value} />
+                                value={clinicalLab.packageType.value}
+                                error={clinicalLab.packageType.error}
+                                errmsg={clinicalLab.packageType.errmsg} />
                             <div style={{ display: "flex", width: "100%" }}>
                                 <div style={{ width: "50%", paddingRight: "10px" }}><Labelbox type="datepicker"
                                     placeholder={"Test Date"}

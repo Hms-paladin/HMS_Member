@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Nurse from '../../../images/nurse.png'
 import { Redirect, Link } from "react-router-dom";
 import { Col, Form, FormGroup, Label, Input,Row} from 'reactstrap';
+import moment from 'moment';
 // import PaymentMethod from '../../Pharmacy/PaymentMethod/PaymentMethod'
 import {NavLink} from 'react-router-dom'
 export default function ConfirmationModal(props){
@@ -37,19 +38,28 @@ export default function ConfirmationModal(props){
           <Col md={3}>
             <FormGroup>
             <p className="mem_con_namehead">Test</p>
-            <p className="mem_con_name">{Confirm_details[0].PackageType}</p> 
+            {/* <p className="mem_con_name">{Confirm_details[0].PackageType}</p> 
+             */}
+             {Confirm_details[0].testItems.map((data, index) => {
+              return (
+                <>
+                  {index == 0 ? <p className="mem_con_name">{data}</p> :
+                    <p className="mem_con_name">{"," + data}</p>}
+                </>
+              )
+            })}
             </FormGroup>
           </Col>
           <Col md={3}>
             <FormGroup>
             <p className="mem_con_namehead">Date</p>
-            <p className="mem_con_name">{Confirm_details[0].TestDate}</p> 
+            <p className="mem_con_name">{moment(Confirm_details[0].TestDate).format("DD-MM-YYYY")}</p> 
             </FormGroup>
           </Col>
           <Col md={3}>
             <FormGroup>
             <p className="mem_con_namehead">Time</p>
-            <p className="mem_con_name">{Confirm_details[0].TestTime}</p> 
+            <p className="mem_con_name">{moment(Confirm_details[0].TestTime, "HH:mm").format("hh:mm A")}</p> 
             </FormGroup>
           </Col>
           <Col md={3}>
