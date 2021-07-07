@@ -25,7 +25,7 @@ function Clinical_lab(props) {
         },
         testName: {
             value: [],
-            validation: [],
+            validation: [{ name: "required" }],
             error: null,
             errmsg: null,
         },
@@ -215,8 +215,10 @@ function Clinical_lab(props) {
                 setTestName(test_items)
             }
             if (count == 0) { clinicalLab["testName"].value = [] }
+            if (count > 0) { checkValidation(tests, "testName") }
         })
         setCostAmt(cost)
+
     }, [color])
 
     function countTrue() {
@@ -293,9 +295,8 @@ function Clinical_lab(props) {
                                 <label className={data.color ? "change_clinic_test" : "clinic_test"} onClick={() => ColorClick(data.testId)}>{data.testName}</label>
 
                             )}
-
+                            <div style={{ color: "red", fontSize: "11px" }}>{clinicalLab.testName.error == true && "Atleast one Required"}</div>
                         </div>
-
                     </div>
                 </Grid>
 

@@ -15,11 +15,15 @@ import './Lab_BookingConfirmation.scss'
 import ConfirmationModal from './Lab_ConfirmationModal'
 import AddMember from './AddMember'
 import CloseIcon from '@material-ui/icons/Close';
+import { GetPatientProfile } from "../../../actions/PatientProfileAction"
 import { Modal } from 'antd'
 import moment from 'moment';
-export default function BookingConfirmation(props) {
+import { connect, useDispatch } from "react-redux";
+function BookingConfirmation(props) {
   // modal functions
+  const dispatch = useDispatch();
   const [modalOpen, setmodalOpen] = React.useState(false)
+  const[members,setMembers]=React.useState([])
   const BookingDet = props.Params;
   console.log(props.Params, "rrrrrrrrr")
   const patient_name = JSON.parse(localStorage.getItem("patient_name"));
@@ -47,6 +51,21 @@ export default function BookingConfirmation(props) {
   const ModalCloseClick = () => {
     setmodalOpen(false)
   }
+  useEffect(() => {
+    dispatch(GetPatientProfile())
+  }, [])
+
+  useEffect(() => {
+    let Member = []
+    props.GetPatientProfile.map((data) => {
+      data.patientmemberDetails.map((item) => {
+        Member.push({Mem_name:item.name,Mem_Img:item.patientMemberImage})
+      })
+    })
+    console.log(Member,"member")
+    setMembers(Member)
+  }, [props.GetPatientProfile])
+
 
   const [tempname, setTempName] = useState(patient_name)
   // end
@@ -79,6 +98,12 @@ export default function BookingConfirmation(props) {
   function NameChange(data) {
     setTempName(data)
   }
+
+
+
+  
+
+
   console.log(tempname, "tempname")
   console.log(BookingDet, "ppppp")
   console.log(members_name, "members_name")
@@ -86,11 +111,11 @@ export default function BookingConfirmation(props) {
     <div className="lab_booking_confir_root">
       <div className="member_parent_div">
         <div className="mem_left_icon"><ChevronLeftIcon className="mem_left" /></div>
-        {images.map((data) => {
+        {members.map((data) => {
           return (
             <div className="nurse_img_cont">
-              <img src={data.img} className="mem_img" />
-              <div className="mem_name">{data.name}</div>
+              <img src={data.Mem_Img} className="mem_img" />
+              <div className="mem_name">{data.Mem_name}</div>
             </div>
           )
         })}
@@ -170,3 +195,7 @@ export default function BookingConfirmation(props) {
 
   )
 }
+const mapStatetoProps = (state) => ({
+  GetPatientProfile: state.PatientProfileReducer.getPatientProfile || [],
+})
+export default connect(mapStatetoProps)(BookingConfirmation);

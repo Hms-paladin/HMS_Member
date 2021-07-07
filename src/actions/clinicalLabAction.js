@@ -123,7 +123,6 @@ export const CancelBooking = () => async dispatch => {
 
 export const BookingReschedule = (reschedule_det) => async dispatch => {
     try {
-        alert(reschedule_det.tempMemberName)
         axios({
             method: 'POST',
             url: newapiurl + 'Patient/patientLabBookingReschedule',
