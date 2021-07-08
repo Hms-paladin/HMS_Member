@@ -46,10 +46,10 @@ box-shadow: 0px 0px 5px 1px #ccc;
   border-radius: 30px !important;
   margin-top: 15px !important;
 }
-.tabmenus{
-  padding-left: 50px;
-  padding-right: 30px;
-}
+// .tabmenus{
+//   padding-left: 50px;
+//   padding-right: 30px;
+// }
 
 .add_memberform{
   padding: 20px 30px 20px 50px;
@@ -206,12 +206,27 @@ overflow: hidden;
 
 .nextvaccination{
   margin: 20px 30px 20px 50px;
-  
+  height:90px;
   box-shadow: 0px 2px 5px 2px #ccc;
   border-radius: 10px;
   display: flex;
   align-items: center;
   position: relative;
+}
+.nextvaccination_medic,.next_vaccination_change,.nextvaccination_medic_div{
+  margin: 20px 30px 20px 50px;
+  height:90px;
+  box-shadow: 0px 2px 5px 2px #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.next_vaccination_change{
+  background-color: #83AF40;
+}
+.nextvaccination_medic_div{
+  justify-content: space-between;
 }
 .vaccinationimg{
   display: flex;
@@ -335,12 +350,12 @@ overflow: hidden;
   font-weight: 500;
   font-size: 16px;
 }
-.tablets{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px;
-}
+// .tablets{
+//   display: flex;
+//   justify-content: space-between;
+//   width: 100%;
+//   padding: 20px 20px 20px 0px;
+// }
 .medicationhead{
   display: flex;
   width: 100%;
@@ -352,7 +367,7 @@ overflow: hidden;
 .medicationhead{
   font-size: 26px;
   font-weight: 700;
-  padding: 5px 20px 0px 50px;
+  // padding: 5px 20px 0px 50px;
 }
 .healthtip_collapse{
   padding-left: 50px;
@@ -411,12 +426,6 @@ padding-right: 0px !important;
 .prescription_collapse .ant-collapse-borderless{
   background-color:#fff !important ;
 }
-.prescription_content{
-  display: flex;
-  box-shadow: 0px 2px 5px 2px #ccc;
-  border-radius: 10px;
-  flex-wrap: wrap;
-}
 .prescription_box{
   margin: 10px 20px;
   font-weight: 500;
@@ -474,14 +483,19 @@ padding-right: 0px !important;
   justify-content: center;
   color:black;
 }
-
+.box_circle_inner_div{
+  text-align: center;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 300;
+}
 .box_circle {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   position: absolute;
   top: 0px;
-background:ghostwhite;
+background:#fff;
   left: 0px;
   display: inline-block;
   box-shadow: 0px 3px 10px #00000040;
@@ -527,4 +541,94 @@ opacity: 1;
   height: 30px ;
   border-bottom-right-radius: 10px !important;
 
+}
+
+// spinner css
+.fade_div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+// prescription css
+.D_name{
+  font-size: 25px;
+  color:#83AF40;
+  font-weight: bold;
+}
+.d_years{
+  color: #333;
+  font-weight: 500 !important;
+  padding-left: 10px;
+  font-size: 18px !important;
+}
+.doctor_name{
+  font-size: 25px;
+  font-weight: 500;
+  padding:8px 0px;
+}
+.d_date{
+  color:#939393;
+  font-size: 17px;
+}
+.d_time{
+  color:#939393;
+  font-size: 15px;
+  padding-left: 10px;
+}
+.first_grid_pres{
+  padding:2% 0% 0% 5% !important;
+}
+
+.medication_list .mor_icon{
+  fill:#ccc !important;
+  font-size:2.5rem !important;
+  cursor: pointer;
+}
+.mor_iconchange {
+  fill:#83AF40 !important;
+  font-size:2.5rem !important;
+  cursor: pointer !important;
+}
+// prescription Details
+
+.pres_patient_detail .custom_labelbox .formdiv .brdrcls{
+  margin:0px 15px 0px 0px !important;
+  height:35px !important;
+  width:200px !important;
+}
+.last_div .formdiv .labeltxt{
+   display: none !important;
+}
+.pres_days_deta .custom_labelbox .formdiv .brdrcls{
+  height:35px !important;
+  width:60px !important;
+}
+.last_div .custom_labelbox .formdiv .brdrcls{
+  height:35px !important;
+  width:500px !important;
+}
+.pres_days_deta,.pres_patient_detail{
+  display: flex;
+}
+.pres_days_child{
+  display: flex;  
+}
+.pres_parent{
+    padding: 10px;
+    background-color: #cccccc52;
+    margin: 0px 0px 0px 8px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.prescrip_detail .slick-slide{
+   height: 300px !important;
+}
+.pres_history{
+  font-weight: bold;
+  font-size: 20px;
 }

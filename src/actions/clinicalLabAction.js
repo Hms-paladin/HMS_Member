@@ -1,12 +1,12 @@
 import { GET_LAB_PACKAGE, GET_LAB_TEST, PATIENT_LAB_BOOKING, GET_LAB_BOOKING_LIST, CANCEL_BOOKING, BOOKING_RESCHEDULE } from "../utils/Constants";
-import { newapiurl } from "../utils/baseUrl";
+import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
 import { notification } from "antd";
 export const GetLabPackageType = (labid) => async dispatch => {
     try {
         axios({
             method: 'POST',
-            url: newapiurl + 'patient/getLabpackageType',
+            url: apiurl + 'patient/getLabpackageType',
             data: {
                 LabId: labid
             }
@@ -25,7 +25,7 @@ export const GetLabTest = (labid, categoryid) => async dispatch => {
     try {
         axios({
             method: 'POST',
-            url: newapiurl + 'patient/getLabtest',
+            url: apiurl + 'patient/getLabtest',
             data: {
                 labId: labid,
                 labcategoryId: categoryid
@@ -46,7 +46,7 @@ export const PatientLabBooking = (params) => async dispatch => {
     try {
         axios({
             method: 'POST',
-            url: newapiurl + 'Patient/patientLabBooking',
+            url: apiurl + 'Patient/patientLabBooking',
             data: {
                 // patientId: localStorage.getItem("userid"),
                 patientId: "1",
@@ -75,7 +75,7 @@ export const GetLabBookingList = () => async dispatch => {
     try {
         axios({
             method: 'POST',
-            url: newapiurl + 'Patient/getlabbookinglist',
+            url: apiurl + 'Patient/getlabbookinglist',
             data: {
                 patientId: "1",
                 limit: 10,
@@ -97,7 +97,7 @@ export const CancelBooking = () => async dispatch => {
     try {
         axios({
             method: 'POST',
-            url: newapiurl + 'Patient/Cancellabbooking',
+            url: apiurl + 'Patient/Cancellabbooking',
             data: {
                 cancelstatus: "1",
                 labbookingId: "1",
@@ -125,7 +125,7 @@ export const BookingReschedule = (reschedule_det) => async dispatch => {
     try {
         axios({
             method: 'POST',
-            url: newapiurl + 'Patient/patientLabBookingReschedule',
+            url: apiurl + 'Patient/patientLabBookingReschedule',
             data: {
                 oldBookingId:reschedule_det.oldBookingId,
                 patientId: reschedule_det.patientId,

@@ -3,7 +3,8 @@ import Slider from "react-slick";
 import './Slider.scss'
 export default function SliderComp(props){
     var settings = {
-        dots: true
+        dots: true,
+        nextArrow:false,
       };
     return(
         <Slider {...settings} className="slick_parent_comp">

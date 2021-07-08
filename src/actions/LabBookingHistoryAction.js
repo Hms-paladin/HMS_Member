@@ -1,12 +1,12 @@
 import {GET_LAB_BOOKING_HISTORY} from "../utils/Constants";
-import { newapiurl } from "../utils/baseUrl";
+import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
 import { notification } from "antd";
 export const GetLabBookingHistory = () => async dispatch => {
     try {
         axios({
             method: 'POST',
-            url: newapiurl + 'Patient/getlabbookinghistory',
+            url: apiurl + 'Patient/getlabbookinghistory',
             data: {
                     patientId:1,
                     limit:10,

@@ -105,6 +105,7 @@
 .g_owt_head{
     font-size: 13px;
     padding-top: 10px;
+    // text-transform: uppercase;
 }
 .star_la_gwt{
     color:#FFAB40;
@@ -114,7 +115,33 @@
     padding-left: 7px;
     font-size: 10px;
 }
+.goalweight_img{
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+    background-color:#FFAB40;
+  
+}
+.goalweight_img{
+    animation: glow 1s infinite alternate;
+}
 
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 15px -15px #FFD180;
+    }
+    to {
+      box-shadow: 0 0 15px 15px #FFD180;
+    }
+  }
+.g_wei_parent{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 30px 0px 15px 0px;
+}
 // slider css
 .goal_weight_parent .ant-slider-track{
     background-color: #83AE40 !important;

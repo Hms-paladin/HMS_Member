@@ -285,7 +285,7 @@ function Clinical_lab(props) {
                                     value={clinicalLab.Time.value}
                                     error={clinicalLab.Time.error}
                                     errmsg={clinicalLab.Time.errmsg} /></div></div>
-                            {AddOpen === false ? <div><Button className="order_cancel">Cancel</Button><Button className="order_save" onClick={() => ConfirmOpen()} >Confirm</Button></div> : null}
+                            {AddOpen === false ? <div><Button className="order_cancel" onClick={()=>handleCancel()} >Cancel</Button><Button className="order_save" onClick={() => ConfirmOpen()} >Confirm</Button></div> : null}
                         </div>
 
                         {/* testlist */}

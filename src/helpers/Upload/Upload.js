@@ -11,7 +11,7 @@ function getBase64(img, callback) {
 }
 
 function beforeUpload(file) {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png' || file.type==='image/svg';
   if (!isJpgOrPng) {
     message.error('You can only upload JPG/PNG file!');
   }
@@ -19,12 +19,14 @@ function beforeUpload(file) {
   if (!isLt2M) {
     message.error('Image must smaller than 2MB!');
   }
-  return isJpgOrPng && isLt2M;
+  return isJpgOrPng;
 }
 
 export default class Avatar extends React.Component {
   state = {
     loading: false,
+    FileList:[],
+    imageChanged:false
   };
 
   handleChange = info => {
@@ -33,18 +35,29 @@ export default class Avatar extends React.Component {
       return;
     }
     if (info.file.status === 'done') {
+
+      this.setState({FileList:info})
+      
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl =>
         this.setState({
           imageUrl,
           loading: false,
+          imageChanged:true
         }),
       );
     }
+    this.props.IMageChange(this.state.FileList,this.state.imageChanged,this.state.imageUrl)
   };
-
+  componentDidMount(){
+      //  if(this.props.imageChanged){
+      this.setState({FileList:this.props.FileList,imageChanged:this.state.imageChanged})
+      //  }
+  }
   render() {
     const { loading, imageUrl } = this.state;
+    console.log("imageUrl",this.state.FileList)
+
     const uploadButton = (
       <div>
         {/* {loading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -53,20 +66,19 @@ export default class Avatar extends React.Component {
       </div>
     );
     return (
-      <div className="uploads">
-        <Upload
-          name="avatar"
-          listType="picture-card"
-          className="avatar-uploader"
-          showUploadList={false}
-          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-          beforeUpload={beforeUpload}
-          onChange={this.handleChange}
-        >
-          {imageUrl ? <img src={imageUrl} alt="avatar" style={{
-            width: '100%', height: '100%',
-            borderRadius: '50px' }} /> : uploadButton}
-        </Upload>
+        <div className="uploads">
+      <Upload
+        name="avatar"
+        listType="picture-card"
+        className="avatar-uploader"
+        showUploadList={false}
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        beforeUpload={beforeUpload}
+        onChange={this.handleChange}
+        // fileList={this.state.FileList}
+      >
+        {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+      </Upload>
       </div>
     );
   }

@@ -15,7 +15,7 @@ div.ad_doc_btn > a > button.MuiButtonBase-root > span.MuiButton-label {
     margin-bottom: 10px !important;
 
 }
-#date-picker-inline{
+.feed_layout #date-picker-inline{
     text-align: center !important;;
 }
 .MuiTypography-root, .MuiMenuItem-gutters, .MuiSelect-selectMenu{
@@ -25,9 +25,9 @@ h4.MuiTypography-h4, h6.MuiPickersToolbarText-toolbarTxt{
     color: #fff !important;
 }
 
-.MuiButtonBase-root,  #date-picker-inline {
-    color: #fff !important;
-}
+// .MuiButtonBase-root,  #date-picker-inline {
+//     color: #fff !important;
+// }
 .divcalendar{
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
@@ -77,12 +77,12 @@ h4.MuiTypography-h4, h6.MuiPickersToolbarText-toolbarTxt{
     {
     height: 5px !important;
 }
-.MuiInputBase-input{
-    color: #fff !important;
-}
-.filter_container .MuiSlider-root, .MuiButton-label {
-    color: #83AF40;
-}
+// .MuiInputBase-input{
+//     color: #fff !important;
+// }
+// .filter_container .MuiSlider-root, .MuiButton-label {
+//     color: #83AF40;
+// }
 .Costfiler{
     margin-top: 10px;
 }
@@ -498,6 +498,6 @@ width: 80px !important;
 .online_type{
     position: relative;
 }
-.ant-popover-buttons{
-    display: none;
-}
+// .ant-popover-buttons{
+//     display: none;
+// }

@@ -108,3 +108,24 @@
     align-items: center;
     padding: 15px 0px;
 }
+.diet_booking_listitem{
+    display: flex;
+    padding: 10px 23px;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.bookhistory_list_item_parent{
+    border-radius: 20px;
+    opacity: 1;
+    width: 100%;
+    font-weight: 500;
+}
+.bookhistory_list_item_parent p{
+    margin-bottom: 4px;
+}
+.dietb_parentdiv{
+    box-shadow: 0px 1px 7px #00000021;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}

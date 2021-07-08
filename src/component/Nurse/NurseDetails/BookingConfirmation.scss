@@ -2,10 +2,14 @@
     width:100%;
     border-radius: 50%;
 }
-.nurse_img_cont{
+.nurse_img_cont,.img_cont_diet{
     width:70px;
     height: 50px;
     margin:0px 10px;
+    cursor: pointer;
+}
+.img_cont_diet .mem_name{
+  color:#83AF40 !important;
 }
 .mem_name{
     text-align: center;
@@ -54,9 +58,10 @@
 }
 .edit_nur_name{
     color: #83AE40 !important;
-    font-size: 1rem !important;
+    font-size: 1.2rem !important;
     padding-left: 3px;
     cursor: pointer;
+    // margin-bottom: 10px;
 }
 // button css
 .nurse_cancel{

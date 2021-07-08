@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Nurseimage1 from '../../../images/pharmacy.png'
 import Nurseimage2 from '../../../images/nurse.png'
 import Nurseimage3 from '../../../images/doctorappoinment.png'
@@ -16,9 +16,24 @@ import './Diet_BookingConfirmation.scss'
 import AddMember from './AddMember'
 import CloseIcon from '@material-ui/icons/Close';
 import {Modal} from 'antd'
+import ValidationLibrary from '../../../helpers/validationfunction'
+import {UpdatePatientDetails} from '../../../actions/ProfileActions'
+import { useDispatch } from 'react-redux';
 export default function BookingConfirmation(props){
   // modal functions
+  let dispatch=useDispatch()
   const [modalOpen,setmodalOpen]=React.useState(false)
+  const [Familymember,setFamilymember]=useState([])
+  const [memberTrue,setmemberTrue]=useState(false)
+  const [Members,setMembers]=useState([])
+  const [Patients,setPatients]=useState({
+    name:{
+      value:""
+    },
+    address:{
+      value:""
+    }
+  })
   const ModalOpenClick=()=>{
      setmodalOpen(true)
   }
@@ -34,11 +49,29 @@ export default function BookingConfirmation(props){
     const[editOpen,seteditOpen]=React.useState(false)
     const[HideAdrs,setHideAdrs]=React.useState(false)
     const[BookOpen,setBookOpen]=React.useState(false)
-    function EditClick(){
+    const [ValueId,setValueId]=useState("")
+    function EditClick(data,value){
+
+      if(data==="name"){
+      Patients.name.value=localStorage.getItem("name") 
+      seteditOpen(true)
+      setValueId(value)
+    }
+    else if(data==="address"){
+      Patients.address.value=localStorage.getItem("address") 
       seteditOpen(true)
     }
+   
+    }
     function SaveClick(){
-      seteditOpen(false)
+      dispatch(UpdatePatientDetails(Patients,localStorage.getItem("patientId"))).then(()=>{
+        seteditOpen(false)
+      })
+      setPatients((prevState)=>({
+        ...prevState,
+    }))
+    Patients.address.value=""
+
     }
   
     function BookClick(){
@@ -51,14 +84,52 @@ export default function BookingConfirmation(props){
    const ElipseOpen=()=>{
     setHideAdrs(!HideAdrs)
 }
+function checkValidation(data, key) {
+  let dynObj = {
+      value: data,
+  };
+  setPatients((prevState)=>({
+      ...prevState,
+      [key]: dynObj,
+  }))
+}
+useEffect(()=>{
+  let Members=[JSON.parse(localStorage.getItem("MemberDetails"))]
+  if(Members){
+  Members.map((data)=>{
+      setFamilymember(data)
+  })
+  
+}
+
+},[])
+const FindGoalWeight=(id)=>{
+    
+    setmemberTrue(true)
+    // if(memberTrue){
+    var Member=Familymember.find((data)=>{
+      console.log("data",data)
+      
+      return(data.PatientMemberId==id)
+    })
+  // }
+  setMembers(Member)
+  props.FindGoalWeight(Members,memberTrue)
+
+
+}
+  
+console.log(Members,"props")
     return(
         <div className="lab_booking_confir_root">
          <div className="member_parent_div">
             <div className="mem_left_icon"><ChevronLeftIcon className="mem_left"/></div>
-              {images.map((data)=>{
+              {Familymember.map((data,index)=>{
             return(
-             <div className="nurse_img_cont">
-                 <img src = {data.img} className="mem_img"/>
+             <div className={Members?.PatientMemberId===data.PatientMemberId?"img_cont_diet":"nurse_img_cont"} onClick={()=>FindGoalWeight(data.PatientMemberId)}>
+                 <img src = {data.patientMemberImage} 
+                //  onError={(e)=>{e.target.onerror = null; e.target.src={Nurseimage3}}}
+                 className="mem_img"/>
                 <div className="mem_name">{data.name}</div>
             </div> 
             ) 
@@ -69,32 +140,45 @@ export default function BookingConfirmation(props){
             </div>
         </div>
         {BookOpen===true?<AddMember BookClose={BookClose}/>:null}
-        <div className="confir_div"><div style={{fontSize:"18px",fontWeight:"600"}}>BookingConfirmation</div><div style={{color:"#83AE40",fontWeight:"600"}}>Healthy Eats<span style={{color:"#939393",paddingLeft:"10px"}}>Keto Diet</span></div></div>
+        <div className="confir_div">
+          <div style={{fontSize:"18px",fontWeight:"600"}}>BookingConfirmation</div>
+          <div style={{color:"#83AE40",fontWeight:"600"}}>{props.DietCompany[0].dietcompanyname}<span style={{color:"#939393",paddingLeft:"10px"}}>{props.GetData[0]?.packagename}</span></div></div>
         {/* form details */}
        
         <Form className="form_items">
       <FormGroup row>
         <Label for="exampleEmail" sm={6} >Name</Label>
         <Col sm={6}>
-        {editOpen===false?<label className="Nurse_form_de">Dalal</label>
-           :<Labelbox type="text"/>}
-         {editOpen===false?<EditIcon className="edit_nur_name" onClick={EditClick}/>:
-          <SaveIcon className="edit_nur_name" onClick={SaveClick}/>}
+        {editOpen===false?<label className="Nurse_form_de">{memberTrue?Members.name:localStorage.getItem("name")}</label>
+           :<div style={{display:"flex",alignItems:"center"}}><Labelbox type="text"
+           changeData={(data) => checkValidation(data, "name")}
+           value={Patients.name.value}
+           />
+          <SaveIcon className="edit_nur_name" onClick={SaveClick}/>
+           </div>}
+           {editOpen===false&&<EditIcon className="edit_nur_name" onClick={()=>EditClick("name",1)}/>}
+       
         </Col>
       </FormGroup>
       <FormGroup row>
         <Label for="exampleEmail" sm={6} >Delivery Address</Label>
         <Col sm={6}>
-        <label className="Nurse_form_de">Jabriya</label>
-        
-         <EditIcon className="edit_nur_name"/>
+       
+         {editOpen===false?<label className="Nurse_form_de">{localStorage.getItem("address")}</label>
+           :<div style={{display:"flex",alignItems:"center"}}><Labelbox type="text"
+           changeData={(data) => checkValidation(data, "address")}
+           value={Patients.address.value}
+           />
+          <SaveIcon className="edit_nur_name" onClick={SaveClick}/>
+           </div>}
+         {editOpen===false&&<EditIcon className="edit_nur_name" onClick={()=>EditClick("address")}/>}
         
         </Col>
       </FormGroup>
       <FormGroup row>
         <Label for="exampleEmail" sm={6} >Total Days</Label>
         <Col sm={6}>
-        <label className="Nurse_form_de">28</label>
+        <label className="Nurse_form_de">{props.GetData[0]?.duration}</label>
         </Col>
       </FormGroup>
       
@@ -102,21 +186,21 @@ export default function BookingConfirmation(props){
       <FormGroup row>
         <Label for="exampleEmail" sm={6} >Cost Per Month (KWD)</Label>
         <Col sm={6}>
-        <label className="Nurse_form_de">200</label>
+        <label className="Nurse_form_de">{props.GetData[0]?.amount}</label>
         </Col>
       </FormGroup>
       
       <FormGroup row>
         <Label for="exampleEmail" sm={6} >Start Date</Label>
         <Col sm={6}>
-        <label className="Nurse_form_de">29 Apr 2021</label>
+        <label className="Nurse_form_de">{props.GetData[0]?.from_date}</label>
         </Col>
       </FormGroup>
       
       <FormGroup row>
         <Label for="exampleEmail" sm={6} >End Date</Label>
         <Col sm={6}>
-        <label className="Nurse_form_de">27 May 2021</label>
+        <label className="Nurse_form_de">{props.GetData[0]?.to_date}</label>
         </Col>
       </FormGroup>
     
@@ -133,7 +217,7 @@ export default function BookingConfirmation(props){
         // maxWidth={"md"}
         // style={{width:"800px"}}
        >
-         <ConfirmationModal ModalCloseClick={ModalCloseClick}/>
+         <ConfirmationModal ModalCloseClick={ModalCloseClick} GetData={props.GetData} sessionId={props.sessionId} BookingData={props.BookingData} DietCompany={props.DietCompany}/>
        </Modal> 
         </div>
        

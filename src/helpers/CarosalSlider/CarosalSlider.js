@@ -68,7 +68,7 @@ const CarosalComp = (props) => {
  
 
   return (
-    <div className="carosal_root">
+    <div className="carosal_root_div">
      <Row justify="center">
         <Col span={20}  justify="center">
           <Slider  {...settings} autoplay>
