@@ -37,6 +37,7 @@ import Diet_History from '../component/Diet/Diet_History/Diet_history'
 import Diet_Bookings from '../component/Diet/Diet_Bookings/Diet_Bookings'
 import Diet_BookingHistory from '../component/Diet/Diet_Bookings/Diet_BookingHistory'
 import GoalWeight from '../component/Diet/GoalWeight/GoalWeight'
+import DietDetails from '../component/Diet/Diet_History/DietDetails'
 // PregnantWomen
 import PregnantWomen_Profile from '../component/Pregnant_Women/PregnantWomen_Profile'
 import PregnantMotherProfile from "../component/Pregnant_Mother/PregnantMother_profile.js";
@@ -139,6 +140,7 @@ function Routes(props) {
                     <Route path="/DietBookings" component={Diet_Bookings} />
                     <Route path="/diet_bookinghistory" component={Diet_BookingHistory} />
                     <Route path="/goalweight" component={GoalWeight} />
+                    <Route path="/DietDetails" component={DietDetails}/>
                     {/* Pregnant Women */}
                     <Route path="/pregnantmotherprofile" component={PregnantMotherProfile} exact />
                     <Route path="/pregnantwomen_profile" component={PregnantWomen_Profile} exact />

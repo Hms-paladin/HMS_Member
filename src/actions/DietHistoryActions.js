@@ -4,14 +4,15 @@ import {
     DIET_BOOKING_LIST,
     DIET_BOOKING_HISTORY,
     ADD_MEAL_PLAN,
-    ADD_REPEAT_MENU
+    ADD_REPEAT_MENU,
+    INSERT_DIET_BOOKINGS
 } from '../utils/Constants'
 import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
 import moment from 'moment'
 import { notification } from "antd";
 import Nurse from "../images/nurse.png"
-export const GetDietCompanyDetails = (searchValue,searchTrue) => async (dispatch) => {
+export const GetDietCompanyDetails = (searchValue,searchTrue,limit,total_count) => async (dispatch) => {
     try {
         axios({
             method: 'POST',
@@ -19,8 +20,8 @@ export const GetDietCompanyDetails = (searchValue,searchTrue) => async (dispatch
             data:  {    
 	        "Searchcontent":searchTrue,
 	        "dietcompanyName":searchValue,
-	        "limit":"10",
-	        "pageno":"1"
+	        "limit":limit,
+	        "pageno":total_count
             }
         })
         .then((response) => {
@@ -64,7 +65,7 @@ export const DietBookingList  = () => async (dispatch) => {
         url: apiurl + "Patient/getdietbookinglist",
         data: {
             "patientId":"38",
-            "limit":"10",
+            "limit":"60",
             "pageno":1
         },
       });
@@ -77,7 +78,7 @@ export const DietBookingHistory  = () => async (dispatch) => {
         url: apiurl + "Patient/getdietbookinghistory",
         data: {
             "patientId":"38",
-            "limit":"10",
+            "limit":"60",
             "pageno":1
         },
       });
@@ -128,3 +129,31 @@ export const  AddRepeatMenu= (data) => async (dispatch) => {
     } catch (err) {
     }
 }
+
+
+export const  InsertDietBookings= (data) => async (dispatch) => {
+    try {
+        axios({
+            method: 'POST',
+            url: apiurl + 'Patient/insertdietbooking',
+            data:data     
+        })
+        .then((response) => {
+
+            if(response.data.status===1){
+             notification.success({
+                 message:"Diet booking inserted successfully"
+             })   
+            dispatch({ type: INSERT_DIET_BOOKINGS,payload: response.data.data })
+            return Promise.resolve();
+            }
+            else if(response.data.status===0){
+                notification.error({
+                    message:response.data.msg
+                })  
+            }
+        })
+        
+    } catch (err) {
+    }
+};

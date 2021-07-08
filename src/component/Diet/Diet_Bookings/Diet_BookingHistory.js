@@ -39,7 +39,6 @@ import moment from 'moment'
         setopen(false)
     }
     const RepeatMenuAdded=(id)=>{
-        alert(id)
         var RepeatId=BookingDetails.find((data)=>{
             return(data.dietbookingId==id)
         })

@@ -179,7 +179,7 @@ function Lab_History(props) {
                     {data.LabmediaDetails.map((items, index) => {
                       return (
                         <>
-                          <div class={index == 0 ? "carousel-item active" : "carousel-item"}>
+                          <div class={index === 0 ? "carousel-item active" : "carousel-item"}>
                             {items.media_type == "Image" && <img src={items.media_filename} style={{ width: "100%", height: "100%" }} />}
                             {items.media_type == "Video" && <VedioPlayer src={items.media_filename} />}
                           </div></>)

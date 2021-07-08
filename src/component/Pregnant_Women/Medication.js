@@ -32,11 +32,9 @@ const handleProfileClick = (name) => {
       setmorning(false)
       setafternoon(false)
     }
-    console.log("divya222",morning,afternoon,night)
     dispatch(GetParticularMedicationList(props.MedicationList.patientId,morning,afternoon,night))
   };
   useEffect(()=>{
-    console.log("divya111",morning,afternoon,night)
     if(props.MedicationList.patientId){
     dispatch(GetParticularMedicationList(props.MedicationList.patientId,morning,afternoon,night))
   }

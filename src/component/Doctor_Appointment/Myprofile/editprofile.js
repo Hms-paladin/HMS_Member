@@ -158,22 +158,8 @@ setpatientId(props.location.state.PatientData[0].patientId)
 console.log(patientId,"PatientData")
 
 const Update=()=>{
-  var formdata=new FormData();
-  
-  // uploadFile:""
-  formdata.set("name",ProfileDetails.name.value)
-  formdata.set("dob",ProfileDetails.dob.value)
-  formdata.set("email",ProfileDetails.email.value)
-  formdata.set("gender",ProfileDetails.gender.value)
-  formdata.set("phone_no",ProfileDetails.mobile.value)
-  formdata.set("address",ProfileDetails.address.value)
-  formdata.set("expected_del_date",ProfileDetails.D_date.value)
-  formdata.set("modifiedby",0)
-  formdata.set("userType",0)
-  formdata.set("id",patientId)
-  formdata.set("babyName",ProfileDetails.babyname.value)
-  formdata.append("uploadFile","")
-  dispatch(UpdatePatientDetails(formdata,patientId)).then(()=>{
+
+  dispatch(UpdatePatientDetails(ProfileDetails,patientId)).then(()=>{
     StateClear()
   })
   history.push("/profile");

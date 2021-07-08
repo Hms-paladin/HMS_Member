@@ -199,26 +199,8 @@ function Myprofile(props) {
         if(EditPatient){
             
         
-            var formdata=new FormData();
-            formdata.set("name",FamilyProfile.name.value)
-            formdata.set("dob",FamilyProfile.date.value)
-            formdata.set("height",FamilyProfile.height.value)
-            formdata.set("gender",FamilyProfile.gender.value)
-            formdata.set("heightUnit","CM")
-            formdata.set("weight",FamilyProfile.weight.value)
-            formdata.set("weightUnit","Kg")
-            formdata.set("bmi","")
-            formdata.set("intakeCal","")
-            formdata.set("durationDays","")
-            formdata.set("anyMedication","")
-            formdata.set("anyDisease","")
-            formdata.set("anySurgery","")
-            formdata.set("anyGoals","")
-            formdata.set("goalWeight","")
-            formdata.set("goalWeightUnit","")
-            formdata.set("parrentPatientId",patient_id.PatientMemberId)
-            formdata.set("patientId",profileDetails.patientId)
-            dispatch(UpdateBasicPatientDetails(formdata,profileDetails.patientId)).then(()=>{
+            
+            dispatch(UpdateBasicPatientDetails(FamilyProfile,profileDetails.patientId,patient_id.PatientMemberId)).then(()=>{
               StateClear()
               setShowForm(false)
               setEditPatient(false)
@@ -563,7 +545,7 @@ function Myprofile(props) {
                <div><div>Height</div><div className="snd_part">{data.height+ data.height_unit}</div></div>
                <div><div>Weight</div><div className="snd_part">{data.weight+data.weight_unit}</div></div>
                <div><div>Relationship</div><div className="snd_part">{data.relation_id}</div></div>
-               <div><div>Date of Birth</div><div className="snd_part">{data.dob}</div></div>
+               <div><div>Date of Birth</div><div className="snd_part">{moment(data.dob).format("DD-MMM-YYYY")}</div></div>
                </div>
                
                 }
