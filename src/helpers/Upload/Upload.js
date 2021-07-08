@@ -49,22 +49,24 @@ export default class Avatar extends React.Component {
       <div>
         {/* {loading ? <LoadingOutlined /> : <PlusOutlined />}
         <div style={{ marginTop: 8 }}>Upload</div> */}
-        <AvatarImage className="avatar_img"/>
+        <AvatarImage className="avatar_img" />
       </div>
     );
     return (
-        <div className="uploads">
-      <Upload
-        name="avatar"
-        listType="picture-card"
-        className="avatar-uploader"
-        showUploadList={false}
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-        beforeUpload={beforeUpload}
-        onChange={this.handleChange}
-      >
-        {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
-      </Upload>
+      <div className="uploads">
+        <Upload
+          name="avatar"
+          listType="picture-card"
+          className="avatar-uploader"
+          showUploadList={false}
+          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          beforeUpload={beforeUpload}
+          onChange={this.handleChange}
+        >
+          {imageUrl ? <img src={imageUrl} alt="avatar" style={{
+            width: '100%', height: '100%',
+            borderRadius: '50px' }} /> : uploadButton}
+        </Upload>
       </div>
     );
   }
