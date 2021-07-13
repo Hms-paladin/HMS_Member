@@ -8,8 +8,9 @@ import Lab_AddMember from './AddMember'
 import Lab_BookingConfirmation from './Lab_BookingConfirmation'
 import { connect, useDispatch } from "react-redux";
 import ValidationLibrary from "../../../helpers/validationfunction"
-import { GetLabTest } from "../../../actions/clinicalLabAction"
+import { GetLabTest, GetTimeValidation } from "../../../actions/clinicalLabAction"
 import dateFormat from 'dateformat';
+import { DatePicker, notification } from "antd";
 import moment from 'moment';
 function Clinical_lab(props) {
     const dispatch = useDispatch();
@@ -55,7 +56,7 @@ function Clinical_lab(props) {
     const [costAmt, setCostAmt] = useState(0)
     const [booking, setBooking] = useState([])
     var [test_category, setTestCat] = useState("");
-
+    const [val, setVal] = useState(0)
     const ColorClick = (id, name) => {
 
         let cost;
@@ -87,6 +88,7 @@ function Clinical_lab(props) {
         }
         var filtererr = targetkeys.filter((data) => clinicalLab[data].error === true)
         if (filtererr.length > 0) { }
+        else if (val == 0) { }
         else {
             let data = []
             data.push({
@@ -107,6 +109,7 @@ function Clinical_lab(props) {
             setBooking(data)
             setAddOpen(true)
             handleCancel()
+            // setVal(0)
         }
         setClinicalLab(prevState => ({
             ...prevState,
@@ -146,11 +149,10 @@ function Clinical_lab(props) {
         //     })
         // }
 
-        if (key === "Time") {
-            let date = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds()
-            setTime(date)
+        if (key == "Time") {
+            let timee = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds()
+            setTime(timee)
         }
-
         var errorcheck = ValidationLibrary.checkValidation(
             data,
             clinicalLab[key].validation
@@ -166,9 +168,17 @@ function Clinical_lab(props) {
             ...prevState,
             [key]: dynObj,
         }));
-
-
     }
+
+    useEffect(() => {
+        let time = clinicalLab.Time.value
+        let date = clinicalLab.Date.value
+        if (time != "" && date != "") {
+            let timee = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()
+            console.log(date, timee, "pppppppp")
+            dispatch(GetTimeValidation(params.labid, date, timee))
+        }
+    }, [clinicalLab.Time.value, clinicalLab.Date.value])
 
     useEffect(() => {
         let packtype = []
@@ -200,6 +210,12 @@ function Clinical_lab(props) {
         })
         setTest(testdet)
     }, [props.GetLabTest])
+
+    useEffect(() => {
+        let status = props.GetTimeValidation
+        console.log(status, "status")
+        setVal(status)
+    }, [props.GetTimeValidation])
 
     useEffect(() => {
         let cost = 0;
@@ -249,7 +265,7 @@ function Clinical_lab(props) {
 
     console.log(booking, "booking")
     console.log(clinicalLab, "clinicalLab")
-    console.log(testName, "testName")
+    console.log(val, "val")
 
     return (
         <div className="clinicallab_parent">
@@ -284,8 +300,9 @@ function Clinical_lab(props) {
                                     changeData={(data) => checkValidation(data, "Time")}
                                     value={clinicalLab.Time.value}
                                     error={clinicalLab.Time.error}
-                                    errmsg={clinicalLab.Time.errmsg} /></div></div>
-                            {AddOpen === false ? <div><Button className="order_cancel" onClick={()=>handleCancel()} >Cancel</Button><Button className="order_save" onClick={() => ConfirmOpen()} >Confirm</Button></div> : null}
+                                    errmsg={clinicalLab.Time.errmsg} />
+                                </div></div>
+                            {AddOpen === false ? <div><Button className="order_cancel" onClick={() => handleCancel()} >Cancel</Button><Button className="order_save" onClick={() => ConfirmOpen()} >Confirm</Button></div> : null}
                         </div>
 
                         {/* testlist */}
@@ -316,5 +333,6 @@ function Clinical_lab(props) {
 const mapStatetoProps = (state) => ({
     GetLabPackageType: state.clinicalLabReducer.getLabPackage || [],
     GetLabTest: state.clinicalLabReducer.getLabTest || [],
+    GetTimeValidation: state.clinicalLabReducer.timeValidation || [],
 })
 export default connect(mapStatetoProps)(Clinical_lab);

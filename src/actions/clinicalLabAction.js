@@ -1,4 +1,4 @@
-import { GET_LAB_PACKAGE, GET_LAB_TEST, PATIENT_LAB_BOOKING, GET_LAB_BOOKING_LIST, CANCEL_BOOKING, BOOKING_RESCHEDULE } from "../utils/Constants";
+import { GET_LAB_PACKAGE, GET_LAB_TEST, PATIENT_LAB_BOOKING, GET_LAB_BOOKING_LIST, CANCEL_BOOKING, BOOKING_RESCHEDULE, TIME_VALIDATION } from "../utils/Constants";
 import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
 import { notification } from "antd";
@@ -127,7 +127,7 @@ export const BookingReschedule = (reschedule_det) => async dispatch => {
             method: 'POST',
             url: apiurl + 'Patient/patientLabBookingReschedule',
             data: {
-                oldBookingId:reschedule_det.oldBookingId,
+                oldBookingId: reschedule_det.oldBookingId,
                 patientId: reschedule_det.patientId,
                 lab_vendor_id: reschedule_det.lab_vendor_id,
                 test_date: reschedule_det.test_date,
@@ -136,7 +136,7 @@ export const BookingReschedule = (reschedule_det) => async dispatch => {
                 paymentStatus: "1",
                 isMember: reschedule_det.isMember,
                 tempMemberName: reschedule_det.tempMemberName,
-                test:reschedule_det.test 
+                test: reschedule_det.test
             }
         })
             .then((response) => {
@@ -152,6 +152,34 @@ export const BookingReschedule = (reschedule_det) => async dispatch => {
                 }
             })
 
+    }
+    catch (err) { }
+}
+
+export const GetTimeValidation = (id, date, time) => async dispatch => {
+    try {
+        console.log(id, date, time, "qqqqqqqqqqqqqqqq")
+        axios({
+            method: 'POST',
+            url: apiurl + 'patient/bookingTimeValidationForLab',
+            data: {
+                lab_vendor_id: id,
+                test_date: date,
+                test_time: time
+            }
+        })
+            .then((response) => {
+                if (response.data.status === 1) {
+                    dispatch({
+                        type: TIME_VALIDATION, payload: response.data.status
+                    })
+                }
+                if (response.data.status === 0) {
+                    notification.warning({
+                        message: response.data.msg,
+                    });
+                }
+            })
     }
     catch (err) { }
 }

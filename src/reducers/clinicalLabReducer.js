@@ -1,11 +1,12 @@
-import {GET_LAB_PACKAGE,GET_LAB_TEST,PATIENT_LAB_BOOKING,GET_LAB_BOOKING_LIST,CANCEL_BOOKING,BOOKING_RESCHEDULE} from "../utils/Constants";
+import {GET_LAB_PACKAGE,GET_LAB_TEST,PATIENT_LAB_BOOKING,GET_LAB_BOOKING_LIST,CANCEL_BOOKING,BOOKING_RESCHEDULE,TIME_VALIDATION} from "../utils/Constants";
 const initialState = {
     getLabPackage: [],
     getLabTest:[],
     postPatientLabBooking:[],
     getLabBookingList:[],
     cancelBooking:'',
-    bookingReschedule:''
+    bookingReschedule:'',
+    timeValidation:''
 }
 export default function (state = initialState, action) {
     const { type, payload } = action;
@@ -22,6 +23,8 @@ export default function (state = initialState, action) {
             return { ...state, cancelBooking: payload }
             case BOOKING_RESCHEDULE:
             return { ...state, bookingReschedule: payload }
+            case TIME_VALIDATION:
+            return { ...state, timeValidation: payload }
         default:
             return state;
     }
