@@ -91,7 +91,7 @@ export const GetPatientPerscription = (patientId) => async (dispatch) => {
     }
 };
 export const  AddPatientDetails= (data,patientId,uploaddata,imageChanged) => async (dispatch) => {
-console.log("data",patientId)
+console.log("data",imageChanged,uploaddata)
 var formdata=new FormData()
 formdata.set("name",data.name.value)
 formdata.set("gender",data.gender.value)
@@ -101,12 +101,10 @@ formdata.set("heightcm",data.height.value)
 formdata.set("weightkg",data.weight.value)
 formdata.set("phoneno",data.mobileno.value)
 formdata.set("parentpatientId",patientId)
-// if(imageChanged===true){
-//  for(var i=0 ; i>= uploaddata.length;i++)  { 
-// formdata.append("uploadFile",uploaddata[i].originFileObj)
+// if(imageChanged){
+//  for(let i in uploaddata.length)  { 
+formdata.append("uploadFile",uploaddata)
 //  }  
-// }else{
-formdata.append("uploadFile","")
 // }
 
     try {
