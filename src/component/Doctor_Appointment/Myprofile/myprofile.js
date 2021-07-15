@@ -98,11 +98,12 @@ function Myprofile(props) {
         }
         if (info.file.status === 'done') {
     
-            setfilelist(info)
+            
           
           // Get this url from response in real world.
           getBase64(info.file.originFileObj, imageUrl =>{
            setimageUrl(imageUrl)
+           setfilelist(info.file.originFileObj)
            setimageChanged(true)
             }) 
         }

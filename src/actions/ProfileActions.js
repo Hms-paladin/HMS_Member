@@ -90,25 +90,24 @@ export const GetPatientPerscription = (patientId) => async (dispatch) => {
     } catch (err) {
     }
 };
-export const AddPatientDetails = (data, patientId, uploaddata, imageChanged) => async (dispatch) => {
-    console.log("dataaaaaaa", data,patientId,uploaddata)
-    var formdata = new FormData()
-    formdata.set("name", data.name.value)
-    formdata.set("gender", data.gender.value)
-    formdata.set("dob", data.date.value)
-    formdata.set("relationId", data.relationship.value)
-    formdata.set("heightcm", data.height.value)
-    formdata.set("weightkg", data.weight.value)
-    formdata.set("phoneno", data.mobileno.value)
-    formdata.set("parentpatientId", patientId)
-    // if(imageChanged===true){
-    //  for(var i=0 ; i>= uploaddata.length;i++)  { 
-    // formdata.append("uploadFile",uploaddata[i].originFileObj)
-    //  }  
-    // }else{
-    formdata.append("uploadFile", uploaddata)
-    // }
-    console.log(formdata,"formdata")
+export const  AddPatientDetails= (data,patientId,uploaddata,imageChanged) => async (dispatch) => {
+console.log("data",imageChanged,uploaddata)
+var formdata=new FormData()
+formdata.set("name",data.name.value)
+formdata.set("gender",data.gender.value)
+formdata.set("dob",data.date.value)
+formdata.set("relationId",data.relationship.value)
+formdata.set("heightcm",data.height.value)
+formdata.set("weightkg",data.weight.value)
+formdata.set("phoneno",data.mobileno.value)
+formdata.set("parentpatientId",patientId)
+// if(imageChanged){
+//  for(let i in uploaddata.length)  { 
+formdata.append("uploadFile",uploaddata)
+//  }  
+// }
+
+
     try {
         axios({
             method: 'POST',
