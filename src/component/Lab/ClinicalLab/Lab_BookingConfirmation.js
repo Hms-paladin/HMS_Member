@@ -25,6 +25,7 @@ function BookingConfirmation(props) {
   const [modalOpen, setmodalOpen] = React.useState(false)
   const[members,setMembers]=React.useState([])
   const BookingDet = props.Params;
+  const[render,setRender]=useState([])
   console.log(props.Params, "rrrrrrrrr")
   const patient_name = JSON.parse(localStorage.getItem("patient_name"));
   const members_name = JSON.parse(localStorage.getItem("IsMember"));
@@ -66,6 +67,18 @@ function BookingConfirmation(props) {
     setMembers(Member)
   }, [props.GetPatientProfile])
 
+  // useEffect(()=>{
+  //   let comp=[];
+  //   {members.map((data) => {
+  //     return (
+  //       <div className="nurse_img_cont">
+  //         <img src={data.Mem_Img} className="mem_img" onClick={()=>memfunc(data.Mem_name)}/>
+  //         <div className="mem_name">{data.Mem_name}</div>
+  //       </div>
+  //     )
+  //   })}
+  // },[members])
+
 
   const [tempname, setTempName] = useState(patient_name)
   // end
@@ -88,6 +101,10 @@ function BookingConfirmation(props) {
     setBookOpen(true)
   }
   function BookClose() {
+    setMembers((prevState) => ({
+            ...prevState,
+        }));
+
     setBookOpen(false)
   }
   // elipse function
@@ -98,11 +115,9 @@ function BookingConfirmation(props) {
   function NameChange(data) {
     setTempName(data)
   }
-
-
-
-  
-
+  function memfunc(name){
+    setTempName(name)
+  }
 
   console.log(tempname, "tempname")
   console.log(BookingDet, "ppppp")
@@ -114,7 +129,7 @@ function BookingConfirmation(props) {
         {members.map((data) => {
           return (
             <div className="nurse_img_cont">
-              <img src={data.Mem_Img} className="mem_img" />
+              <img src={data.Mem_Img} className="mem_img" onClick={()=>memfunc(data.Mem_name)}/>
               <div className="mem_name">{data.Mem_name}</div>
             </div>
           )

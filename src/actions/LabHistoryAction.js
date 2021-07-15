@@ -9,7 +9,7 @@ export const GetLabList = () => async dispatch => {
             url: apiurl + 'Patient/getlabList',
             data: {
                 Searchcontent: false,
-                currentDate: "2020-06-02",
+                currentDate: "2021-07-14",
                 Lab: "l",
                 offerBasedSorting: false,
                 offerBasedSortingOrder: "ASC",

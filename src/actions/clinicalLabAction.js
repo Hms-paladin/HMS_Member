@@ -159,7 +159,7 @@ export const BookingReschedule = (reschedule_det) => async dispatch => {
 export const GetTimeValidation = (id, date, time) => async dispatch => {
     try {
         console.log(id, date, time, "qqqqqqqqqqqqqqqq")
-        axios({
+        const response=await axios({
             method: 'POST',
             url: apiurl + 'patient/bookingTimeValidationForLab',
             data: {
@@ -167,19 +167,21 @@ export const GetTimeValidation = (id, date, time) => async dispatch => {
                 test_date: date,
                 test_time: time
             }
-        })
-            .then((response) => {
+        });
+            
                 if (response.data.status === 1) {
                     dispatch({
                         type: TIME_VALIDATION, payload: response.data.status
                     })
+                    return response;
                 }
                 if (response.data.status === 0) {
                     notification.warning({
                         message: response.data.msg,
                     });
+                    return response;
                 }
-            })
+            
     }
     catch (err) { }
 }

@@ -11,6 +11,8 @@ import ValidationLibrary from "../../../helpers/validationfunction"
 import { GetLabTest, GetTimeValidation } from "../../../actions/clinicalLabAction"
 import dateFormat from 'dateformat';
 import { DatePicker, notification } from "antd";
+import { apiurl } from "../../../utils/baseUrl";
+import axios from "axios";
 import moment from 'moment';
 function Clinical_lab(props) {
     const dispatch = useDispatch();
@@ -76,7 +78,9 @@ function Clinical_lab(props) {
     // confirm open add member
     const [AddOpen, setAddOpen] = React.useState(false)
     const [HideAdrs, setHideAdrs] = React.useState(false)
+
     const ConfirmOpen = () => {
+        let timee;
         var targetkeys = Object.keys(clinicalLab)
         for (var i in targetkeys) {
             var errorcheck = ValidationLibrary.checkValidation(
@@ -87,30 +91,60 @@ function Clinical_lab(props) {
             clinicalLab[targetkeys[i]].errmsg = errorcheck.msg
         }
         var filtererr = targetkeys.filter((data) => clinicalLab[data].error === true)
-        if (filtererr.length > 0) { }
-        else if (val == 0) { }
-        else {
-            let data = []
-            data.push({
-                Lab_vendor_id: params.labid,
-                LabName: params.labname,
-                LabAddr: params.vendor_adr,
-                Lab_filename: params.vendor_filename,
-                PackageType: test_category.toString(),
-                TestName: clinicalLab.testName.value,
-                TestDate: moment(clinicalLab.Date.value).format("YYYY-MM-DD"),
-                // TestTime: moment(clinicalLab.Time.value, "HH:mm").format("hh:mm A"),
-                TestTime: time,
-                cost: costAmt,
-                PatientName: "",
-                IsMember: 2,
-                testItems: testName
-            })
-            setBooking(data)
-            setAddOpen(true)
-            handleCancel()
-            // setVal(0)
+
+        let time = clinicalLab.Time.value
+        let date = clinicalLab.Date.value
+        if (time != "" && date != "") {
+            timee = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()
         }
+        console.log(params.labid, timee, "let timee")
+        if (filtererr.length > 0) { }
+        else {
+            try {
+                axios({
+                    method: 'POST',
+                    url: apiurl + 'patient/bookingTimeValidationForLab',
+                    data: {
+                        lab_vendor_id: params.labid,
+                        test_date: date,
+                        test_time: timee
+                    }
+                })
+                    .then(function (response) {
+                        if (response.data.status === 1) {
+                            let data = []
+                            data.push({
+                                Lab_vendor_id: params.labid,
+                                LabName: params.labname,
+                                LabAddr: params.vendor_adr,
+                                Lab_filename: params.vendor_filename,
+                                PackageType: test_category.toString(),
+                                TestName: clinicalLab.testName.value,
+                                TestDate: moment(clinicalLab.Date.value).format("YYYY-MM-DD"),
+                                // TestTime: moment(clinicalLab.Time.value, "HH:mm").format("hh:mm A"),
+                                TestTime: time,
+                                cost: costAmt,
+                                PatientName: "",
+                                IsMember: 2,
+                                testItems: testName
+                            })
+                            setBooking(data)
+                            setAddOpen(true)
+                            handleCancel()
+                        }
+
+                        if (response.data.status === 0) {
+                            notification.warning({
+                                message: response.data.msg,
+                            });
+                            return Promise.resolve();
+                        }
+                    });
+
+            } catch (err) { }
+        }
+
+
         setClinicalLab(prevState => ({
             ...prevState,
         }));
@@ -163,6 +197,9 @@ function Clinical_lab(props) {
             errmsg: errorcheck.msg,
             validation: clinicalLab[key].validation,
         };
+        setVal((prevState) => ({
+            ...prevState,
+        }));
 
         setClinicalLab((prevState) => ({
             ...prevState,
@@ -170,15 +207,15 @@ function Clinical_lab(props) {
         }));
     }
 
-    useEffect(() => {
-        let time = clinicalLab.Time.value
-        let date = clinicalLab.Date.value
-        if (time != "" && date != "") {
-            let timee = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()
-            console.log(date, timee, "pppppppp")
-            dispatch(GetTimeValidation(params.labid, date, timee))
-        }
-    }, [clinicalLab.Time.value, clinicalLab.Date.value])
+    // useEffect(() => {
+    //     let time = clinicalLab.Time.value
+    //     let date = clinicalLab.Date.value
+    //     if (time != "" && date != "") {
+    //         let timee = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()
+    //         console.log(date, timee, "pppppppp")
+    //         dispatch(GetTimeValidation(params.labid, date, timee))
+    //     }
+    // }, [clinicalLab.Time.value, clinicalLab.Date.value])
 
     useEffect(() => {
         let packtype = []
@@ -211,11 +248,12 @@ function Clinical_lab(props) {
         setTest(testdet)
     }, [props.GetLabTest])
 
-    useEffect(() => {
-        let status = props.GetTimeValidation
-        console.log(status, "status")
-        setVal(status)
-    }, [props.GetTimeValidation])
+    // useEffect(() => {
+    //     let status = props.GetTimeValidation
+    //     console.log(status, "status")
+    //     setVal(status)
+    //     // alert(status)
+    // }, [props.GetTimeValidation])
 
     useEffect(() => {
         let cost = 0;
@@ -333,6 +371,6 @@ function Clinical_lab(props) {
 const mapStatetoProps = (state) => ({
     GetLabPackageType: state.clinicalLabReducer.getLabPackage || [],
     GetLabTest: state.clinicalLabReducer.getLabTest || [],
-    GetTimeValidation: state.clinicalLabReducer.timeValidation || [],
+    // GetTimeValidation: state.clinicalLabReducer.timeValidation || [],
 })
 export default connect(mapStatetoProps)(Clinical_lab);

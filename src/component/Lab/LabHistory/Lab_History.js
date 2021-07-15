@@ -59,15 +59,15 @@ function Lab_History(props) {
       re_per: 85,
       img: LabImage,
     },
-    // {
-    //     id:2,
-    //     labname:"YIACO Medical Center",
-    //     off:15,
-    //     rating:4.7,
-    //     review:16,
-    //     re_per:93,
-    //     img:LabImage2,
-    // }
+    {
+        id:2,
+        labname:"YIACO Medical Center",
+        off:15,
+        rating:4.7,
+        review:16,
+        re_per:93,
+        img:LabImage2,
+    }
   ]
   const [openmodal, setopenmodal] = React.useState(true)
 
@@ -124,7 +124,6 @@ function Lab_History(props) {
   const onSubmit = () => {
     dispatch(GetLabPackageType(labid))
   }
-
   console.log(ParticularLabDet, "ParticularLabDet")
   return (
     <div>
@@ -163,10 +162,10 @@ function Lab_History(props) {
                   <div className="per_lab_part">
                     <div style={{ position: "relative" }}>
                       <img src={percentage} style={{ width: "55px" }} />
-                      <div className="per_inside_div"><p>{data.off + "%"}</p><p>off</p></div>
+                      <div className="per_inside_div"><p>{data.dealValue + "%"}</p><p>off</p></div>
                     </div>
                     <div>
-                      <span className="star_ic_div"><label>{data.rating}</label><StarIcon /></span>
+                      <span className="star_ic_div"><label>{Lab_history[index].rating}</label><StarIcon /></span>
                       {/* {open? */}
                       <div className="star_open_ic" onClick={() => Opened(data.labId)}>Open</div>
 
@@ -174,7 +173,7 @@ function Lab_History(props) {
                     </div>
                   </div>
                 </div>
-                <div className="reviews_div"><img src={Thumb} style={{ width: "20px" }} /><label className="lab_r_per">{data.re_per + "%"}</label><label className="re_per">({data.review + "reviews"})</label></div>
+                <div className="reviews_div"><img src={Thumb} style={{ width: "20px" }} /><label className="lab_r_per">{data.dealValue + "%"}</label><label className="re_per">({Lab_history[index].review + "reviews"})</label></div>
                 {/* description in lab */}
                 <div className="lab_descrip">
 
