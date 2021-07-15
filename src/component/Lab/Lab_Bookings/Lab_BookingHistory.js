@@ -1,19 +1,33 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Nurse from '../../../images/lab_history.jpg'
 import './Lab_BookingHistory.scss'
 import {Modal} from 'antd'
 import CreateReview from './Lab_CreateReview'
 import BookingHistoryModal from './Lab_BookingHistoryModal'
-export default function Lab_BookingHistory(props){
+import { connect, useDispatch } from "react-redux";
+import {GetLabBookingHistory} from "../../../actions/LabBookingHistoryAction"
+import moment from 'moment';
+function Lab_BookingHistory(props){
+    const dispatch = useDispatch();
     const [ModalOpen,setModalOpen]=React.useState(false)
-    const ModalClickOpen=()=>{
+    const[History,setHistory]=useState([])
+    const[bookinfo,setBookInfo]=useState({})
+    const ModalClickOpen=(id)=>{
+        let book_info = History.find((data, index) => {
+            return (id === data.labbookingId)
+        })
+        setBookInfo(book_info)
         setModalOpen(true)
     }
     const ModalClickClose=()=>{
         setModalOpen(false)
     }
     const [ReviewOpen,setReviewOpen]=React.useState(false)
-    const ReviewClickOpen=()=>{
+    const ReviewClickOpen=(id)=>{
+        let book_info = History.find((data, index) => {
+            return (id === data.labbookingId)
+        })
+        setBookInfo(book_info)
         setReviewOpen(true)
     }
     const ReviewClickClose=()=>{
@@ -49,32 +63,47 @@ export default function Lab_BookingHistory(props){
      const ElipseOpen=()=>{
         setHideAdrs(!HideAdrs)
     }
+    useEffect(()=>{
+        dispatch(GetLabBookingHistory())
+    },[])
+    useEffect(()=>{
+        console.log(props.GetLabBookingHistory,"GetLabBookingHistory")
+        let details=[]
+        props.GetLabBookingHistory.map((data)=>{
+            data.details.map((item)=>{
+                details.push(item)
+            })
+        })
+        setHistory(details)
+    },[props.GetLabBookingHistory])
+    console.log(History,"History")
+    console.log(bookinfo,"bookinfo")
      return(
         <div className="Lab_history">
              <div className="book_headdiv">
             <label className="book_h">Booking History</label>
             </div>
-            {BookingDetails.map((data,index)=>
+            {History.map((data,index)=>
 
             <div className="bookhistory_list_parent">
              <div className="bookhistory_list_item">
                 <div className="book_nurse_div">  
-                  <img src={Nurse} className="book_nur_img" onClick={ModalClickOpen}/><div className="book_text_div">
-                      <p className="book_h_name">{data.name}</p>
-                      <div>{HideAdrs?<label className="lab_adrs">Dalal,Al-Jabriya,PO Box 48001,54404 KUWAIT AL-JABRIYA</label>:<label className="lab_adrs">Jabriya</label>}
+                  <img src={data.vendor_filename} className="book_nur_img" onClick={()=>ModalClickOpen(data.labbookingId)}/><div className="book_text_div">
+                      <p className="book_h_name">{data.Lab}</p>
+                      <div>{HideAdrs?<label className="lab_adrs">{data.vendor_address}</label>:<label className="lab_adrs">{data.vendor_address}</label>}
                        <span className="elipse" onClick={ElipseOpen}>...</span></div>
-                      <p>{data.Date}</p>
+                      <p>{moment(data.test_date).format("DD-MM-YYYY")}</p>
                       </div>
                 </div> 
 
                 <div style={{width:"35%"}}>
-                   <div className="duty_div"><label style={{color:"#AEADAD",fontSize:"13px",fontWeight:"500"}}>{data.dutyhours}</label></div>
+                   <div className="duty_div"><label style={{color:"#AEADAD",fontSize:"13px",fontWeight:"500"}}>{moment(data.test_time, "HH:mm").format("hh:mm A")}</label></div>
                 </div>
                 </div> 
                  
                    <div className="book_his_parent">
-                      <div className={data.historyid===8?"his_cancel":"his_reschedule"} onClick={ModalClickOpen}>{data.history}</div>
-                      <div><label className="his_review" onClick={ReviewClickOpen}>Review</label><label className="his_repeat" onClick={ModalClickOpen}>Repeat</label></div>
+                      <div className={data.cancel_status==1?"his_cancel":"his_reschedule"} onClick={()=>ModalClickOpen(data.labbookingId)}>{data.cancel_status==1&&"Cancelled" ||data.is_rescheduled==1&&"Rescheduled" }</div>
+                      <div><label className="his_review" onClick={()=>ReviewClickOpen(data.labbookingId)}>Review</label><label className="his_repeat" onClick={()=>ModalClickOpen(data.labbookingId)}>Repeat</label></div>
                   </div>
              </div>
             )}
@@ -89,7 +118,7 @@ export default function Lab_BookingHistory(props){
               onCancel={ModalClickClose}
              >
                  {/* <CreateReview ModalClickClose={ModalClickClose}/> */}
-                 <BookingHistoryModal History={BookingDetails}/>
+                 <BookingHistoryModal History={bookinfo}/>
 
              </Modal>
              <Modal
@@ -102,7 +131,7 @@ export default function Lab_BookingHistory(props){
             //   className="confirm_modal"
               onCancel={ReviewClickClose}
              >
-                 <CreateReview ModalClickClose={ReviewClickClose}/> 
+                 <CreateReview ModalClickClose={ReviewClickClose} Review={bookinfo}/> 
                 
 
              </Modal>
@@ -110,3 +139,7 @@ export default function Lab_BookingHistory(props){
          </div>       
      )
 }
+const mapStatetoProps = (state) => ({
+    GetLabBookingHistory: state.LabBookingHistoryReducer.getLabBookingHistory || [],
+})
+export default connect(mapStatetoProps)(Lab_BookingHistory);

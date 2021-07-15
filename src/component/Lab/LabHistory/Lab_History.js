@@ -21,8 +21,11 @@ import Lab_ad from '../../../images/Lab_ad1.png'
 import CloseIcon from '@material-ui/icons/Close';
 import SliderComp from '../../../helpers/Slider/Slider'
 import { GetLabList, GetParticularLabDetails } from '../../../actions/LabHistoryAction'
+import { GetLabPackageType } from "../../../actions/clinicalLabAction"
+import { GetPatientProfile } from "../../../actions/PatientProfileAction"
 import { connect, useDispatch } from "react-redux";
 import moment from 'moment';
+import { Redirect, Link } from "react-router-dom";
 import { LensTwoTone } from '@material-ui/icons'
 const { Search } = Input;
 function Lab_History(props) {
@@ -32,15 +35,19 @@ function Lab_History(props) {
   const [LabDetails, setLabDetails] = useState([])
   const [ParticularLabDet, setParticularLabDet] = useState([])
   const [workingHour, setWorkingHour] = useState({})
-  const [lat,setLat]=useState("")
-  const [long,setLong]=useState("")
+  const [lat, setLat] = useState("")
+  const [long, setLong] = useState("")
+  const [labid, setLabId] = useState(0)
+
+
+
   // elipse function
   const ElipseOpen = () => {
     setHideAdrs(!HideAdrs)
   }
   const Opened = (labid) => {
     dispatch(GetParticularLabDetails(labid))
-    setClose(!open)
+    setLabId(labid)
   }
   const Lab_history = [
     {
@@ -67,10 +74,13 @@ function Lab_History(props) {
   const CloseModal = () => {
     setopenmodal(false)
   }
+
   useEffect(() => {
     dispatch(GetLabList())
+    dispatch(GetPatientProfile())
     // console.log(props.GetLabList,"props.GetLabList")
   }, [])
+
   useEffect(() => {
     props.GetLabList.map((data) => {
       setLabDetails(data.details)
@@ -79,31 +89,49 @@ function Lab_History(props) {
   }, [props.GetLabList])
 
   useEffect(() => {
+    let isMember = []
+    let pat_name = ""
+    props.GetPatientProfile.map((data) => {
+      pat_name = data.name
+      isMember.push(data.name)
+      data.patientmemberDetails.map((item) => {
+        isMember.push(item.name)
+      })
+    })
+    localStorage.setItem("patient_name", JSON.stringify(pat_name));
+    localStorage.setItem("IsMember", JSON.stringify(isMember));
+    // console.log(props.GetPatientProfile,"lllll")
+  }, [props.GetPatientProfile])
+
+  useEffect(() => {
     props.GetParticularLabDetails.map((data) => {
       setParticularLabDet(data)
       let startday = data.Labworkinghours[0].wh_weekday;
       let endday = data.Labworkinghours[data.Labworkinghours.length - 1].wh_weekday;
-      let starttime = moment(data.Labworkinghours[0].wh_fromtime, 'hh:mm A').format('HH:mm A');
-      let endtime = moment(data.Labworkinghours[data.Labworkinghours.length - 1].wh_totime, 'hh:mm A').format('HH:mm A');
+      let starttime = moment(data.Labworkinghours[0].wh_fromtime, 'HH:mm').format('hh:mm A');
+      let endtime = moment(data.Labworkinghours[data.Labworkinghours.length - 1].wh_totime, 'HH:mm').format('hh:mm A');
       setWorkingHour({ startday: startday, endday: endday, starttime: starttime, endtime: endtime })
       var match = data.vendor_latlong.split(',')
-      console.log(match,"match")
-      for(var a in match){
+      console.log(match, "match")
+      for (var a in match) {
         setLat(match[0])
         setLong(match[1])
       }
+      setClose(!open)
     })
   }, [props.GetParticularLabDetails])
 
-  
+  const onSubmit = () => {
+    dispatch(GetLabPackageType(labid))
+  }
+
+  console.log(ParticularLabDet, "ParticularLabDet")
   return (
     <div>
-
-
       {/* search part */}
       <div className="lab_srch_parent">
         <div className="lab_srch_div">
-          <div style={{ position: "relative" }}><Input type="search " placeholder={"Search"} className="srch_his" /><img src={search} style={{ position: "absolute", top: "7px", right: "17px" }} />
+          <div style={{ position: "relative" }}><Input type="search" placeholder={"Search"} className="srch_his" /><img src={search} style={{ position: "absolute", top: "7px", right: "17px" }} />
             <div className="sorts_div"><span style={{ paddingRight: "10px" }}>Offer<img src={sort} className="lab_sort" /></span><span>Rating<img src={sort} className="lab_sort" /></span></div>
           </div>
         </div>
@@ -151,13 +179,12 @@ function Lab_History(props) {
                 <div className="lab_descrip">
 
                   <SliderComp>
-
                     {[...Array(5)].map((img, index) => (
                       <div>
                         <label>Dalal</label>
                         <div>
                           Lab is clean.Home pick up sample service is really fine.On time service.
-                       </div>
+                        </div>
                       </div>
                     ))}
                   </SliderComp>
@@ -211,7 +238,7 @@ function Lab_History(props) {
                     </Col>
                     <Col md={5} sm={5}>
                       <FormGroup>
-                        <p className="mem_con_namehead">Email  ID:</p>
+                        <p className="mem_con_namehead">Email ID:</p>
                         <p className="mem_con_name">{ParticularLabDet.vendor_email}</p>
                       </FormGroup>
                     </Col>
@@ -221,7 +248,7 @@ function Lab_History(props) {
                         <div className="mem_con_parentdiv">
                           <div>{HideAdrs ? <label className="lab_adrs">{ParticularLabDet.vendor_address}</label> : <label className="lab_adrs">{ParticularLabDet.vendor_address}</label>}
                             <span className="elipse" onClick={ElipseOpen}>...</span></div>
-                          <div><NavLink to="/clinicallab"><Button className="select_lab_butt">Select</Button></NavLink></div>
+                          <div><Link to={{ pathname: "/clinicallab", state: ParticularLabDet }}><Button className="select_lab_butt" onClick={() => onSubmit()}>Select</Button></Link></div>
                         </div>
                       </FormGroup>
                     </Col>
@@ -233,9 +260,8 @@ function Lab_History(props) {
                                   </Col> */}
                   </Row>
                 </Form>
-                <div><Map Lat={lat} Long={long}/></div>
+                <div><Map latitude={lat} longitude={long} /></div>
               </Paper>
-
             </Grid>
             : null}
 
@@ -264,5 +290,7 @@ function Lab_History(props) {
 const mapStatetoProps = (state) => ({
   GetLabList: state.LabHistoryReducer.getLabList || [],
   GetParticularLabDetails: state.LabHistoryReducer.getParticularLabDet || [],
+  GetLabPackageType: state.clinicalLabReducer.getLabPackage || [],
+  GetPatientProfile: state.PatientProfileReducer.getPatientProfile || [],
 })
 export default connect(mapStatetoProps)(Lab_History);

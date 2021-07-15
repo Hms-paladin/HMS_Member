@@ -62,7 +62,7 @@ export default class Avatar extends React.Component {
       <div>
         {/* {loading ? <LoadingOutlined /> : <PlusOutlined />}
         <div style={{ marginTop: 8 }}>Upload</div> */}
-        <AvatarImage className="avatar_img"/>
+        <AvatarImage className="avatar_img" />
       </div>
     );
     return (

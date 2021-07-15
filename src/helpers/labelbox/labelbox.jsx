@@ -203,7 +203,7 @@ export default class Labelbox extends Component {
 					<label className="labeltxt">{data.labelname}</label>
 					<div >
 
-						{/*<TimePicker value={this.props.value} onChange={(time)=>this.onChange(time)} />*/}
+						{/* {/<TimePicker value={this.props.value} onChange={(time)=>this.onChange(time)} />/} */}
 						<MuiPickersUtilsProvider utils={DateFnsUtils} >
 							<KeyboardTimePicker
 								margin="normal"

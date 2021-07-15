@@ -7,7 +7,9 @@ import DietReducer from './DietHistoryReducers'
 import prescriptionhistoryReducer from './prescriptionhistoryreducer';
 import ReportReducer from "./ReportReducer"
 import LabHistoryReducer from "./LabHistoryReducer";
-import PatientNurseSearch from './nursingmodulereducer';
+import clinicalLabReducer from "./clinicalLabReducer"
+import PatientProfileReducer from "./PatientProfileReducer"
+import LabBookingHistoryReducer from "./LabBookingHistoryReducer"
 
 export default combineReducers({
    doctorAppointmentReducer,
@@ -19,6 +21,8 @@ export default combineReducers({
    GetProfileDetails,
    ReportReducer,
    LabHistoryReducer,
-   PatientNurseSearch
+   clinicalLabReducer,
+   PatientProfileReducer,
+   LabBookingHistoryReducer,
 })
 
