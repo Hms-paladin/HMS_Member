@@ -18,6 +18,13 @@
 .nurse_de_fstgrid{
     padding-left:3%;
 }
+
+.nurse_profile {
+        width: 93px;
+        border-radius: 50px;
+        height: 94px;
+        border: 3px solid white;
+}
 .nurse_de_parent .formdiv .Errormsg{
    display: none !important;
 }
@@ -52,7 +59,8 @@ font-weight: 600;
 border-radius: 3px;
 }
 .nurse_de_fstdiv{
-    padding-left: 25px;
+    padding-left: 15px;
+    padding-top: 10px;
 }
 .nurse_thirdgrid{
     padding-top: 32px;

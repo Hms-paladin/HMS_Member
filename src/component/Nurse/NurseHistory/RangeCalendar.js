@@ -22,7 +22,7 @@ export default function RangeCalendar(props) {
     setState([item.selection])
 
   }
-  props.addExperience(state)
+  // props.addExperience(state)
 
   // console.log(state, "statestate")
   return (
