@@ -101,11 +101,11 @@ formdata.set("heightcm",data.height.value)
 formdata.set("weightkg",data.weight.value)
 formdata.set("phoneno",data.mobileno.value)
 formdata.set("parentpatientId",patientId)
-// if(imageChanged){
+if(imageChanged){
 //  for(let i in uploaddata.length)  { 
 formdata.append("uploadFile",uploaddata)
 //  }  
-// }
+}
 
 
     try {

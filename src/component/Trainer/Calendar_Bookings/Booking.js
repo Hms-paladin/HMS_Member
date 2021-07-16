@@ -13,9 +13,9 @@ export default function BookingShedule(props){
                    <Calendar
                    heading="Booking"
                    SelectDate="enable"
-                   category={props.location.state.tr_package_name}
-                   amt={props.location.state.tr_cost + "KWD"}
-                   Name_of_type={props.location.data.trainerList.trainerName}
+                   category={props.location.state.dataToChild?.tr_package_name}
+                   amt={props.location.state.dataToChild?.tr_cost + "KWD"}
+                   Name_of_type={props.location.state.dataToC?.trainerName}
                    />
                 </Grid>
                 <Grid item xs={12} md={7} className="tra_booing_parent">

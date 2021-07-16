@@ -55,9 +55,9 @@ function Training_Details(props){
         dispatch(GetParticularTrainerDetails(data));
       }, []);
       
-    console.log("const trainertype", trainerType)
+    console.log("props", props)
 const[typeTraining, setTypeTraining] = useState();
-    console.log("props training details", props)
+    console.log("props training details", props.trainerList)
     const  trainingType =(type) => {
         console.log("trainingType", type)
         if(type == "home"){
@@ -153,7 +153,7 @@ const[typeTraining, setTypeTraining] = useState();
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-          <ProgramModal  dataToChild={modalData} dataToC={props} />
+          <ProgramModal  dataToChild={modalData} dataToC={props.trainerList} />
     </Dialog>
     {/* chat window */}
     <div className="chat_ic_div"><ReactSVG src={Chat} onClick={HandleOpenChat}/></div>
