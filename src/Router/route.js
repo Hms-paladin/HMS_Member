@@ -79,6 +79,7 @@ import Tc_Myschedule from '../component/TrainingCenter/BookingsCalender/Tc_Mysch
 import TrainerList from "../component/Trainer/TrainerList/TainerList";
 import TrainerDetails from '../component/Trainer/TrainerDetails/TrainerDetails'
 import ChatWindow from '../component/Trainer/ChatWindow/chatwindow'
+// import TrainerBooking from '../component/Trainer/Calendar_Bookings/Booking'
 import TrainerBooking from '../component/Trainer/Calendar_Bookings/Booking'
 import GoalWeight_Trainer from '../component/Trainer/GoalWeight/GoalWeight'
 import TrainerBookings from '../component/Trainer/Trainer_Bookings/Trainer_Bookings'
