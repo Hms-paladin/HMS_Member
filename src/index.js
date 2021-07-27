@@ -11,9 +11,6 @@ import 'font-awesome/css/font-awesome.min.css';
 // import 'swiper/swiper.scss';
 //import "react-id-swiper/src/styles/scss/swiper.scss";
 import "video-react/dist/video-react.css";
-
-
-
 ReactDOM.render(
   <Provider store = {store}>
     <App />

@@ -50,14 +50,14 @@ export const PatientLabBooking = (params) => async dispatch => {
             data: {
                 // patientId: localStorage.getItem("userid"),
                 patientId: "1",
-                lab_vendor_id: params.Lab_vendor_id,
-                test_date: params.TestDate,
-                test_time: params.TestTime,
-                total_amount: params.TotalAmt,
+                lab_vendor_id: params[0].Lab_vendor_id,
+                test_date: params[0].TestDate,
+                test_time: params[0].TestTime,
+                total_amount: params[0].TotalAmt,
                 paymentStatus: "1",
-                isMember: params.isMember,
-                tempMemberName: params.MemberName,
-                test: params.test
+                isMember: params[0].isMember,
+                tempMemberName: params[0].MemberName,
+                test: params[0].test
             }
         })
             .then((response) => {

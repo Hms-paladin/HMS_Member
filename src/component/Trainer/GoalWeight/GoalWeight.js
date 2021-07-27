@@ -8,7 +8,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Goal from '../../../images/goal.svg'
 import './GoalWeight.scss'
 import Slider from '@material-ui/core/Slider';
-export default function GoalWeight_Trainer(){
+export default function GoalWeight_Trainer(props){
+    console.log(props,"propsssss")
     const [feet,setfeet]=React.useState(true)
     const [cms,setcms]=React.useState(false)
     const [kgs,setkgs]=React.useState(true)
@@ -132,7 +133,7 @@ function valuetext(value) {
                 {/* add member */}
                 <Grid item xs={12} md={4}>
                <div className="diet_booking_confirm">
-                  <Trainer_BookingConfirmation ConfirmClose={ConfirmClose}/>
+                  <Trainer_BookingConfirmation ConfirmClose={ConfirmClose} BookingDet={props.location.state}/>
                </div>
                 </Grid>
             </Grid>

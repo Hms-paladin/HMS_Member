@@ -55,9 +55,9 @@ function Training_Details(props){
         dispatch(GetParticularTrainerDetails(data));
       }, []);
       
-    console.log("const trainertype", trainerType)
+    console.log("props", props)
 const[typeTraining, setTypeTraining] = useState();
-    console.log("props training details", props)
+    console.log("props training details", props.trainerList)
     const  trainingType =(type) => {
         console.log("trainingType", type)
         if(type == "home"){
@@ -73,6 +73,7 @@ const[typeTraining, setTypeTraining] = useState();
             setTypeTraining(type); 
         }
     }
+    console.log(trainerType,"typeTraining")
     return(
         <div style={{width:"100%",position:"relative"}} className="nurse_de_parent">
         <div className="nursede_parent">
@@ -127,7 +128,7 @@ const[typeTraining, setTypeTraining] = useState();
                     <div onClick={()=>setModalData(img)}>                        
                      <div style={{position: "absolute",top:"-25px",right:"-10px"}}>
                          <img src={percentage} style={{width:"55px"}}/>
-                         <div className="per_in_div"><p>{"20"+"%"}</p><p>off</p></div>
+                         <div className="per_in_div"><p>{img.dealValue+"%"}</p><p>off</p></div>
                       </div>
                       <div>
                     <div>{img.tr_package_name}</div>
@@ -153,7 +154,7 @@ const[typeTraining, setTypeTraining] = useState();
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-          <ProgramModal  dataToChild={modalData} dataToC={props} />
+          <ProgramModal  dataToChild={modalData} dataToC={props.trainerList} />
     </Dialog>
     {/* chat window */}
     <div className="chat_ic_div"><ReactSVG src={Chat} onClick={HandleOpenChat}/></div>

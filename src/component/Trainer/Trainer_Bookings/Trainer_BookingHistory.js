@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import './Trainer_BookingHistory.scss'
 import {Modal} from 'antd'
 import Trainer_CreateReview from './Trainer_CreateReview'
@@ -10,7 +10,11 @@ import Gym from '../../../images/gym.svg'
 import Trainer from "../../../images/trainer.png";
 import VideocamIcon from '@material-ui/icons/Videocam';
 import { NavLink } from 'react-router-dom'
-export default function Trainer_BookingHistory(props){
+import moment from 'moment';
+import { connect, useDispatch } from "react-redux";
+import {PatientTrainingBookingHistoryDetials} from "../../../actions/trainerdetailsaction"
+function Trainer_BookingHistory(props){
+    const dispatch = useDispatch();
     const [ModalOpen,setModalOpen]=React.useState(false)
     const [open,setopen]=React.useState(false)
     const ModalClickOpen=()=>{
@@ -57,6 +61,12 @@ export default function Trainer_BookingHistory(props){
      const ElipseOpen=()=>{
         setHideAdrs(!HideAdrs)
     }
+    useEffect(()=>{
+        dispatch(PatientTrainingBookingHistoryDetials())
+    },[])
+    useEffect(()=>{
+        console.log(props.TrainerBookingHistory,"TrainerBookingHistory")
+    },[props.TrainerBookingHistory])
      return(
         <div className="Tc_history">
              <div className="book_headdiv">
@@ -119,3 +129,7 @@ export default function Trainer_BookingHistory(props){
          </div>       
      )
 }
+const mapStateToProps = (state) => ({
+    TrainerBookingHistory: state.trainerListReducer.getPatientTrainerBookingHistory || [],
+});
+export default connect(mapStateToProps)(Trainer_BookingHistory)

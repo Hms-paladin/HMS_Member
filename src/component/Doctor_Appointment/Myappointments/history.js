@@ -151,7 +151,7 @@ const dataBooking = {
                   <div>{data.afternoon}</div>
                   <div>{data.night}</div></div>
            </div>
-           <div className="paracetomaldesc">{data.instruction}}</div>
+           <div className="paracetomaldesc">{data.instruction}</div>
 
         </div>
                ))}

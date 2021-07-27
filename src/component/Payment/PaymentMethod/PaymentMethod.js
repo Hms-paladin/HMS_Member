@@ -16,19 +16,13 @@ import { Redirect, Link } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import {PatientLabBooking} from '../../../actions/clinicalLabAction'
+import {PatientTrainerBooking} from '../../../actions/trainerdetailsaction'
 const { TabPane } = Tabs;
 function CancelPayment(props) {
   const dispatch = useDispatch();
   const location = useLocation()
-  const [params, setParams] = useState({
-    Lab_vendor_id: location.state[0].Lab_vendor_id,
-    TestDate: location.state[0].TestDate,
-    TestTime: location.state[0].TestTime,
-    TotalAmt: location.state[0].cost,
-    isMember: location.state[0].IsMember,
-    MemberName: location.state[0].PatientName,
-    test: location.state[0].TestName
-  })
+  console.log(location.state,"stsststs")
+  const [params, setParams] = useState()
 
   // constructor(props) {
   //     super(props);
@@ -45,8 +39,34 @@ function CancelPayment(props) {
   };
 
   const payrReceivePush = () => {
-    dispatch(PatientLabBooking(params))
+    if(location.state.key=="ClinicalLab"){
+      dispatch(PatientLabBooking(params))
+    }
+    if(location.state.key=="Trainer"){
+      dispatch(PatientTrainerBooking(params))
+    }
   };
+
+  useEffect(()=>{
+    let dataToPass=[]
+    if(location.state.key=="ClinicalLab"){
+      dataToPass.push(
+        {
+          Lab_vendor_id: location.state!=null&&location.state.Confirm_details[0].Lab_vendor_id,
+          TestDate: location.state!=null&&location.state.Confirm_details[0].TestDate,
+          TestTime: location.state!=null&&location.state.Confirm_details[0].TestTime,
+          TotalAmt: location.state!=null&&location.state.Confirm_details[0].cost,
+          isMember: location.state!=null&&location.state.Confirm_details[0].IsMember,
+          MemberName: location.state!=null&&location.state.Confirm_details[0].PatientName,
+          test: location.state!=null&&location.state.Confirm_details[0].TestName
+        }
+      )
+      setParams(dataToPass)
+    }
+    if(location.state.key=="Trainer"){
+      setParams(location.state.Trainer)
+    }
+  },[location])
 
   const { mode } = Mode;
   console.log(params, "params")
@@ -82,12 +102,6 @@ function CancelPayment(props) {
           </Grid>
           <Grid item xs={8} md={5}>
             <div className="payment_method">
-
-
-
-
-
-
               <div>
                 <Radio.Group onChange={() => handleModeChange()} value={Mode} style={{ marginBottom: 8 }}>
 
@@ -136,10 +150,7 @@ function CancelPayment(props) {
               </div>
             </div>
           </Grid>
-
         </Grid>
-
-
       </div>
       <div className="pay_now_container"><Button className="pay_cancel">Cancel Payment</Button><Link to={{ pathname: "/paymentreceive" }}><Button className="pay_now_button" onClick={() => payrReceivePush()}>Pay Now</Button></Link></div>
     </div>

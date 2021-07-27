@@ -81,7 +81,7 @@ export default function ConfirmationModal(props){
           </Form>
           </Grid>
             <Grid item xs={12} md={12} style={{textAlign:"center"}}>
-               <Link to={{ pathname: "/paymentmethod", state: Confirm_details }}><Button className="confirm_b_btn">Confirm</Button></Link>
+               <Link to={{ pathname: "/paymentmethod", state: {Confirm_details,key:"ClinicalLab"} }}><Button className="confirm_b_btn">Confirm</Button></Link>
                </Grid>   
            </Grid>
            

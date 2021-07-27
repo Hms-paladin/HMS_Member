@@ -16,16 +16,46 @@ font-weight: bold;
     flex-wrap: wrap;
     flex: 0 32%;
     margin:10% 30px 0px 30px ;
-    Button{
-        background: #83AF4040;
-     border: 1px solid #83AF40;
+    // Button{
+    // background: #83AF4040;
+    // border: 1px solid #83AF40;
+    // border-radius: 3px;
+    // color: #83AF40;
+    // height:45px;
+    // width:120px;
+    // flex: 0 0 33.333333%;
+    // margin-bottom: 30px;
+    // }
+}
+.slot_parent_inner_div .btn_avail{
+    background: #83AF4040;
+    border: 1px solid #a9ada2;
+    border-radius: 3px;
+    color: #000000;
+    height:45px;
+    width:120px;
+    flex: 0 0 33.333333%;
+    margin-bottom: 30px;
+}
+.slot_parent_inner_div .btn_booked{
+    background: #dadada40;
+    border: 1px solid #f97f8a;
+    border-radius: 3px;
+    color: #f97f8a;
+    height:45px;
+    width:120px;
+    flex: 0 0 33.333333%;
+    margin-bottom: 30px;
+}
+.slot_parent_inner_div .btn_selected{
+    background: #e1fdb6;
+    border: 1px solid #83AF40;
     border-radius: 3px;
     color: #83AF40;
     height:45px;
     width:120px;
     flex: 0 0 33.333333%;
     margin-bottom: 30px;
-    }
 }
 .b_dot_avail_up{
     background-color: #83AF40;

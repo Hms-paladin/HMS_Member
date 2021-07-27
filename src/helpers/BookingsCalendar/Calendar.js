@@ -370,6 +370,8 @@ export default class Calendar extends React.Component {
     else {
       datearr.push(`selectedclr${d}_${this.month()}_${this.year()}`)
     }
+    console.log(from_to_date[0],from_to_date.pop(),"from_to_date")//from date and to date here...
+    this.props.changeData && this.props.changeData(from_to_date);
 
     this.setState(
       {
