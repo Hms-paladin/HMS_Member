@@ -152,8 +152,6 @@ function Nursehistory(props) {
             validation: nurseField[key].validation,
         };
 
-
-
         setNurseField((prevState) => ({
             ...prevState,
             [key]: dynObj,
@@ -167,19 +165,24 @@ function Nursehistory(props) {
     const searchNurse = () => {
         var searchrows = []
         props.GetPatientNurseSearch[0]?.details.filter((val, index) => {
-            // || val.experience <= nurseExp || val.nationality_id === nurseField.nationality.value || val.gender === (nurseField.gender.value === 1 ? "Male" : "Female")
 
-            if (val.Cost <= nurseCost || val.experience <= nurseExp || val.nationality_id === nurseField.nationality.value || val.gender === (nurseField.gender.value === 1 ? "Male" : "Female")) {
+            if (val.Cost <= nurseCost) {
                 searchrows.push(val)
             }
-            // else {
-            //     alert("tset")
+
+            if (val.experience <= nurseExp) {
+                searchrows.push(val)
+            }
+            // || 
+            if (val.nationality_id === nurseField.nationality.value || val.gender === (nurseField.gender.value === 1 ? "Male" : "Female")) {
+                searchrows.push(val)
+            }
+
             if (val.name === searchdata) {
                 searchrows.push(val)
             }
-            // }
         })
-        console.log(searchrows && searchrows.length, "onchange")
+        console.log(searchrows, searchrows && searchrows.length, "onchange")
         setNurseDetails(searchrows)
     }
 

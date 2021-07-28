@@ -17,6 +17,8 @@ function NurseDetails(props) {
     const [Duties, setDuties] = React.useState(false)
     const [HideAdrs, setHideAdrs] = React.useState(false)
     const [nurseDetails, setNurseDetails] = useState([])
+    const [bookingdata, setBookingata] = useState()
+    const [workList, setWorkList] = useState([])
 
     let { nurseId } = useParams()
 
@@ -28,14 +30,18 @@ function NurseDetails(props) {
         setNurseDetails(nurse)
     }, [props.GetPatientNurseSearch, nurseId])
 
-    console.log(nurseDetails.length, "nurse")
+    console.log(nurseDetails, "nurse")
 
     const ElipseOpen = () => {
         setHideAdrs(!HideAdrs)
     }
-    function ProceedClick() {
+    function ProceedClick(designDuties, workLists) {
         setproceed(true)
+        setBookingata(designDuties)
+        setWorkList(workLists)
     }
+    console.log(workList, "work")
+
     function DutiesClick() {
         setDuties(true)
     }
@@ -97,7 +103,7 @@ function NurseDetails(props) {
                             <Grid item sm={6} md={6}>
                                 {proceed === false ?
                                     <DesignDuties ProceedClick={ProceedClick} /> :
-                                    <div className="booking_confr"><BookingConfirmation DesignDuties={DutiesClick} Duties={Duties} /></div>}
+                                    <div className="booking_confr"><BookingConfirmation DesignDuties={DutiesClick} Duties={Duties} bookingdata={bookingdata} workLists={workList} nurseDetails={nurseDetails} /></div>}
 
                             </Grid>
                         </Grid>
