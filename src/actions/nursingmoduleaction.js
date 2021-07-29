@@ -133,3 +133,50 @@ export const GetMinExperienceNurse = () => async dispatch => {
 
     }
 }
+
+
+// export const PatientNurseBooking = () => async dispatch => {
+//     let d = new Date()
+//     try {
+//         axios({
+//             method: 'POST',
+//             url: apiurl + 'patientNurseBooking',
+//             data: {
+//                 "patientId": "28",
+//                 "nurseId": 52,
+//                 "nurseVendorId": 5,
+//                 "fromDate": "2020-09-07",
+//                 "toDate": "2020-09-28",
+//                 "fromTime": "12:00",
+//                 "toTime": "16:00",
+//                 "workingHours": "12:00",
+//                 "bookedDate": "2020-06-09",
+//                 "amount": "100",
+//                 "paymentStatus": "1",
+//                 "excludeDate": "2020-07-09,2020-07-11",
+//                 "isMember": 2,
+//                 "tempMemberName": "Edwin",
+//                 "designedDuties": [
+//                     {
+//                         "dutyname": "carring"
+//                     },
+//                     {
+//                         "dutyname": "helping"
+//                     },
+//                     {
+//                         "dutyname": "Babby carring"
+//                     }
+//                 ]
+//             }
+//         })
+//             .then((response) => {
+
+//                 if (response.data.status === 1) {
+//                     dispatch({ type: GET_PATIENT_NURSE_SEARCH, payload: response.data.data })
+//                 }
+//                 // console.log(response.data.data, "response.data.data")
+//             })
+
+//     } catch (err) {
+//     }
+// }
