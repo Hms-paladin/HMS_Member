@@ -1,13 +1,14 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {NavLink, useHistory} from "react-router-dom";
 import HistoryButton from '../../../images/history-button.svg'
 import Hospital  from "../../../images/BookaRoom/room_img.png"
 import './BookingDetails.css';
 import {Modal} from 'antd';
+import { connect, useDispatch } from 'react-redux'
 import HospitalView from "../BookroomHistory/HospitalViewModal"
-
+import { GetRoomBookingDetails } from '../../../actions/Book a RoomActions'
 function BookingDetails(props){
-
+  let dispatch=useDispatch()
   const [ ModalOpen, setModalOpen]=React.useState(false)
    const ModalClickOpen=()=>{
     setModalOpen(true)
@@ -24,6 +25,12 @@ function BookingDetails(props){
      function ReshedulePage(){
        history.push("/reschedulepage")
     }
+    useEffect(()=>{
+       dispatch(GetRoomBookingDetails())
+    },[])
+    useEffect(()=>{
+   },[])
+   console.log("props",props)
     return(
         <div className="bookings_parentdiv">
 {/* Booking header */}
@@ -63,7 +70,7 @@ function BookingDetails(props){
           }
          
       </div>
-      <Modal
+               <Modal
                   title={false}
                   visible={ModalOpen}
                   footer={false}
@@ -80,8 +87,10 @@ function BookingDetails(props){
    </div>
     )
 }
-export default BookingDetails;
+const mapStateToProps=(state)=>({
+  BookList:state.BookRoom.BookList || []
 
-
+})
+export default connect(mapStateToProps)(BookingDetails);
 
 

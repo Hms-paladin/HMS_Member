@@ -241,7 +241,6 @@ const { Search } = Input;
             
              <MealPlanModal CloseModal={CloseModal} MealsPlan={FilterMealdata} DietCompany={props.DietMealPlans} DietVendorId={DietCompanyData.vendorId}/>
            </Modal> */}
-           <Pagination limit={limit} total_count={total_count} getAdDetails={SubmitSearchData}/>
        </div>
     )
 }

@@ -1,5 +1,5 @@
 
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import './HospitalList.scss';
 import Rating from '@material-ui/lab/Rating';
 import PropTypes from 'prop-types';
@@ -21,17 +21,12 @@ import Thumb from "../../../images/BookaRoom/round-thumb.svg";
 import search from "../../../images/loupe.png";
 import { Input,Modal } from 'antd';
 import HospitalOffer from "../HospitalList/HospitalOffer";
-
-
+import { useDispatch,connect} from "react-redux";
+import {BookRoomDetails} from '../../../actions/Book a RoomActions'
+import ValidationLibrary from '../../../helpers/validationfunction'
 var hashHistory = require('react-router-redux')
 
 const { Search } = Input;
-
-const onSearch = value => console.log(value);
-
-
-
-
 const StyledRating = withStyles({
   iconFilled: {
     color: '#ff6d75',
@@ -91,16 +86,25 @@ function valuetext(value) {
                
 
 function HospitalList(props) {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+   let dispatch=useDispatch()
   const [ModalOpen,setModalOpen]=React.useState(false)
-const ModalClickOpen=()=>{
+  const [BookRoomList,setBookRoomList]=useState([])
+  const [VendorRoomList,setVendorRoomList]=useState()
+  const [searchValue,setsearchValue]=useState("")
+  const [SearchKey,setSearchKey]=useState({
+    fromdate:{
+      value:""
+    },
+    todate:{
+      value:""
+    }
+  })
+const ModalClickOpen=(id)=>{
     setModalOpen(true)
+    var Data=props.BookList.find((data)=>{
+      return data.roomVendorId==id
+    })
+    setVendorRoomList(Data)
 }
 const ModalClickClose=()=>{
   setModalOpen(false)
@@ -112,17 +116,55 @@ const ModalClickClose=()=>{
     history.push("/doctorbooking")
 }
     const classes = useStyles();
-    
+    useEffect(()=>{
+      dispatch(BookRoomDetails())
+
+     },[])
+     useEffect(()=>{
+       let RoomList=[]
+      props.BookList.map((data)=>{
+        RoomList.push(data)
+      })
+      setBookRoomList(RoomList)
+
+     },[props.BookList])
+     console.log("bookroom",BookRoomList)
+     function checkValidation(data, key) {
+       if(data&&key==="todate"){
+         var Todate=data
+         dispatch(BookRoomDetails(SearchKey.fromdate.value,Todate))
+       }
+      let dynObj = {
+        value: data,
+      };
+    setSearchKey((prevState) => ({
+        ...prevState,
+        [key]: dynObj,
+    }))
+     }
+     const OnSearch=(e)=>{
+          setsearchValue(e.target.value)
+          if(searchValue){
+          dispatch(BookRoomDetails(SearchKey.fromdate.value,SearchKey.todate.value,searchValue)).then(()=>{
+          }) 
+        }
+  } 
     return(  
         <div className="hos_list_container">
            <div  className="filter_div">
             <div className="filter_div"> Filter </div>
             <div className="date_fil_div">
                 <div className="date_pic_childdiv">
-                <Labelbox type="datepicker" />
+                <Labelbox type="datepicker" 
+                  changeData={(data) => checkValidation(data, "fromdate")}
+                  value={SearchKey.fromdate.value}
+                />
                 </div>
                 <div className="date_pic_childdiv">
-                    <Labelbox type="datepicker"/></div>
+                    <Labelbox type="datepicker"
+                    changeData={(data) => checkValidation(data, "todate")}
+                    value={SearchKey.todate.value}
+                    /></div>
             </div>
 
            </div>
@@ -134,17 +176,18 @@ const ModalClickClose=()=>{
                 style={{ width: 300, margin: '0 10px' }}
            /> 
                 <img className="searchicon_hos"src={search} />  */}
-        <div style={{position:"relative",width:"500px"}}><Input type="search " placeholder={"Search"} className="srch_his"/><img src={search} style={{position:"absolute",top:"7px",right:"17px",width:"20px"}}/></div>
+        <div style={{position:"relative",width:"500px"}}><Input type="search " placeholder={"Search"} value={searchValue}
+        className="srch_his" onChange={OnSearch} /><img src={search} style={{position:"absolute",top:"7px",right:"17px",width:"20px"}}/></div>
 
           </div> 
 
-        
+           {BookRoomList.map((data)=>
             <div className="second_div">
                <div className="second_details">
-                  <div className="snd_deta"><div className="avatar_div"> <img src={avatar}onClick={ModalClickOpen}  /></div>
+                  <div className="snd_deta"><div className="avatar_div"> <img src={data.vendorProfileImage}onClick={()=>ModalClickOpen(data.roomVendorId)}  /></div>
                    <div className="hos_details">
-                     <div className="detail_1">Mayo Clinic Hospital</div>
-                     <div className="detail_2">Shaab sea View</div>
+                     <div className="detail_1">{data.roomVendorName}</div>
+                     <div className="detail_2">{data.roomVendorAddress}</div>
                      <div  className="star_rating">
                             {[...Array(5)].map((img,index)=>(
                             
@@ -153,43 +196,48 @@ const ModalClickClose=()=>{
                       </div>
                     </div>
                     </div> 
-                     <div className="rate_numeric"> <div className="number_rating">4.5<img src={star}/></div></div>
+                     <div className="rate_numeric"> <div className="number_rating">0.0<img src={star}/></div></div>
                </div>
                 <div style={{display:'flex', marginTop:'10px'}} >
                    <img className="thumb_size" src={Thumb}/>
-                   <p style={{color:'#83AF40', marginTop:'0px', marginBottom:'0px', marginRight:'10px'}}>93%</p>
-                   <p style={{marginTop:'0px', marginBottom:'0px'}}>(15reviews)</p>
+                   <p style={{color:'#83AF40', marginTop:'0px', marginBottom:'0px', marginRight:'10px'}}>0%</p>
+                   <p style={{marginTop:'0px', marginBottom:'0px'}}>(0 reviews)</p>
                 </div>
-                <div className="box_align">
+                {/* <div className="box_align">
                     <p className="box_first_text">Dalal</p>
                     <p className="box_second_text">The ambiance and room maintenance are very good</p>
-                </div>
-                   <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                             <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-                            </div>
-                            <div class="carousel-item">
-                             <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+                </div> */}
+                   {/* Vedio */}
 
-                            </div>
-                            <div class="carousel-item">
-                             <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-                            </div>
-                        </div>
-                    </div>
-                     
+                   <div>
+                   <div id="#carouselExampleIndicators" class="carousel slide" data-interval="false" >
+            <ol class="carousel-indicators">
+            {data.mediaDetails.map((data,index)=>
+              <li data-target="#carouselExampleIndicators" data-slide-to={index} class="active"></li>
+            )}
+            </ol>
+         <div class="carousel-inner"
+
+         >
+        {data.mediaDetails.map((data,index)=>{
+            return(
+         <div  key={index} class={index == 0 ? "carousel-item active" : "carousel-item"} >
+         {data.media_type==="Image"?<img src={data.media_filename}/>: 
+         data.media_type==="Vedio"?<VedioPlayer src={data.media_filename} playing poster={"/assets/poster.png"}/>:""
+         }
+         </div>
+        )})}
             </div>
+                </div>
+                   </div> 
+                 {/* end vedio */}
+            </div>
+           )}
+
            </div>
-         
 
            <Modal
-                  title="Mayo Clinic Hospital"
+                  title={VendorRoomList&&VendorRoomList.roomVendorName}
                   visible={ModalOpen}
                   footer={false}
                   fullwidth={true}
@@ -201,11 +249,15 @@ const ModalClickClose=()=>{
                   onCancel={ModalClickClose}
                  >
                   
-                     < HospitalOffer/>
+                     <HospitalOffer VendorRoomList={VendorRoomList}/>
     
                  </Modal>
         </div> 
 
     ) 
 }
-export default HospitalList;
+const mapStateToProps=(state)=>({
+  BookList:state.BookRoom.BookList || []
+
+})
+export default connect(mapStateToProps)(HospitalList);

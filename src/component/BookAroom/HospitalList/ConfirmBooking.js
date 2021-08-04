@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import './ConfirmBooking.scss';
 import Labelbox from "../../../helpers/labelbox/labelbox";
 import ReactPlayer from 'react-player';
@@ -10,9 +10,11 @@ import  TVImage from '../../../images/BookaRoom/television.svg';
 import { useHistory } from 'react-router-dom';
 import Slider from "react-slick";
 import VedioPlayer from '../../../helpers/VedioPlayer/VedioPlayer'
-function ConfirmBooking(){
+import {ParticularRoomDetails} from '../../../actions/Book a RoomActions'
+import { useDispatch,connect} from 'react-redux';
+function ConfirmBooking(props){
   let history = useHistory();
-  
+  let dispatch=useDispatch()
   function proceedPage(){
     history.push('/proceedpage')
   }
@@ -46,21 +48,54 @@ function ConfirmBooking(){
    
 
   ]
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+ 
+  const RoomDetail=props.location.state
+  const [RoomList,setRoomList]=useState([])
+  const [SearchKey,setSearchKey]=useState({
+    fromdate:{
+      value:""
+    },
+    todate:{
+      value:""
+    }
+  })
+  function checkValidation(data, key) {
+    if(data&&key==="todate"){
+      var Todate=data
+      // dispatch(BookRoomDetails(SearchKey.fromdate.value,Todate))
+    }
+   let dynObj = {
+     value: data,
+   };
+ setSearchKey((prevState) => ({
+     ...prevState,
+     [key]: dynObj,
+ }))
+  }
+  useEffect(()=>{
+    dispatch(ParticularRoomDetails(RoomDetail))
+
+  },[])
+  useEffect(()=>{
+    var RoomData=[]
+   props.RoomDetails.map((data)=>{
+      RoomData.push(data)  
+   })
+   setRoomList(RoomData)
+   if(RoomDetail){
+    SearchKey.fromdate.value=RoomDetail.br_from_date
+    SearchKey.todate.value=RoomDetail.br_to_date
+   }
+  },[props.RoomDetails])
+  console.log("propsdd",RoomDetail)
+
     return(
       <div>
        <div style = {{display:'flex'}}>
          <div style={{width:'70%', margin:'25px'}}>
   {/* header part */}
               <div>
-                  <h5 className="reschedule_head">Mayo Clinic Hospital</h5>
-                  <h5 className="reschedule_head">Lulwa</h5>
+                  <h5 className="reschedule_head">{RoomList[0]?.roomVendorName}</h5>
               </div>
   {/*date and carousel  */}
             <div style={{display:'flex'}}>
@@ -68,39 +103,48 @@ function ConfirmBooking(){
                       <div style={{display:'flex'}}>
                           <div className="date_div_reschedule">
                             <div className="date_second_div_reschedule">
-                                <Labelbox type="datepicker"/>
+                                <Labelbox type="datepicker"
+                                  changeData={(data) => checkValidation(data, "fromdate")}
+                                  value={SearchKey.fromdate.value}
+                                />
                             </div>
                             <div className="date_pic_childdiv">
-                                <Labelbox type="datepicker"/>
+                                <Labelbox type="datepicker"
+                                  changeData={(data) => checkValidation(data, "todate")}
+                                  value={SearchKey.todate.value}
+                                />
                             </div>
                           </div>   
                       </div>  
-                          {/* vedioplayer */}
-                          <div style={{marginLeft:"30px"}}>
-                      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-    </div>
-    <div class="carousel-item">
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+                      <div>
+                   <div id="#carouselExampleIndicators" class="carousel slide" data-interval="false" >
+            <ol class="carousel-indicators">
+            {RoomList[0]?.mediaDetails.map((data,index)=>
+              <li data-target="#carouselExampleIndicators" data-slide-to={index} class="active"></li>
+            )}
+            </ol>
+         <div class="carousel-inner"
 
-    </div>
-    <div class="carousel-item">
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-      
-    </div>
-  </div>
- 
-</div>
-</div>
+         >
+        {RoomList[0]?.mediaDetails.map((data,index)=>{
+            {console.log("checked",data.media_type)}
+            return(
+         <div 
+         key={index}
+        //  active={index === 0}
+         class={index == 0 ? "carousel-item active" : "carousel-item"}
+        //  data-interval='8000'
+         >
+         {data.br_file_type==="image"?<img src={data.media_filename}/>: 
+         data.br_file_type==="video"?<VedioPlayer src={data.media_filename} playing poster={"/assets/poster.png"}/>:""
+         }
+         </div>
+        )})}
+        </div>
+        </div>
+        </div>
+        {/* vedio end */}
 
-                    {/* end */}
    
                   </div>
                   <div>
@@ -108,15 +152,15 @@ function ConfirmBooking(){
                   <div style={{display:'flex', margin:'20px'}}>  
                     <div style={{marginRight:'7px'}}>
                       <label className="label_align_reshedule">Address</label>
-                  .   <p style={{color:'#858585'}}>Shaab sea view<span className="dot_align">...</span></p>
+                  .   <p style={{color:'#858585'}}>{RoomList[0]?.roomVendorAddress}<span className="dot_align">...</span></p>
                    </div>
                    <div style={{marginRight:'13px'}}>
                         <label  className="label_align_reshedule">Phone</label>
-                        <p styl={{color:'#858585'}}>+965098755</p>
+                        <p styl={{color:'#858585'}}>+{RoomList[0]?.vendor_phone}</p>
                     </div>
                     <div >
                         <label  className="label_align_reshedule">Email ID</label>
-                        <p styl={{color:'#858585'}}>info@Mayoclinichospital.com</p>
+                        <p styl={{color:'#858585'}}>{RoomList[0]?.vendor_email}</p>
                      </div>
                     </div>
 
@@ -124,17 +168,18 @@ function ConfirmBooking(){
                       <p className="room_facility">Room Facilities</p>
                       <div>
                       <div className="row row_align"  >
-                  {roomImage.map((imageItem)=>{
+                  {RoomList[0]?.facility.map((imageItem,index)=>{
+                    var Index=index+1
                       return(
                         <>
                           <div className="col-sm-3">
     
                               <div className="card card_reschedule">
 
-                                <span>{imageItem.id}</span>
-                              <img src={imageItem.image} className="menu_align"/> 
+                                <span>{Index}</span>
+                              <img src={imageItem.icon} className="menu_align"/> 
                               </div>
-                              <p style={{display:'flex', justifyContent:'center'}}>{imageItem.Name}</p>
+                              <p style={{display:'flex', justifyContent:'center'}}>{imageItem.facilityName}</p>
 
                           </div>
                         </>
@@ -168,5 +213,9 @@ function ConfirmBooking(){
        </div>
     )
 }
-export default ConfirmBooking;
 
+const mapStateToProps=(state)=>({
+  RoomDetails:state.BookRoom.RoomDetails || []
+
+})
+export default connect(mapStateToProps)(ConfirmBooking);

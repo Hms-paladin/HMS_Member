@@ -1,95 +1,88 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Hospital from '../../../images/BookaRoom/room_img.png';
 import './BookroomHistory.css'
 import {Modal} from 'antd';
 import BookCreateReview from "./BookCreateReview";
 import HospitalView from './HospitalViewModal';
+import {connect, useDispatch} from 'react-redux'
 import BookroomRepeat from './BookroomRepeat';
-
-export default function BookroomHistory(props){
-   
+import { GetRoomBookingHistoryDetails } from  '../../../actions/Book a RoomActions'
+import moment from 'moment'
+import { useHistory } from 'react-router-dom';
+function BookroomHistory(props){
+        let dispatch=useDispatch()
+        let history=useHistory()
         const [ModalOpen,setModalOpen]=React.useState(false)
-        const ModalClickOpen=()=>{
+        const [bookingHistory,setbookingHistory]=useState([])
+        const [Historydetails,setHistorydetails]=useState("")
+        const ModalClickOpen=(id)=>{
+            var Data= props.BookingHistory.find((data)=>{
+                return data.roomBookingId==id
+            })
             setModalOpen(true)
+            setHistorydetails(Data)
         }
-        const ModalClickClose=()=>{
-            setModalOpen(false)
-        }
+       
         const [ReviewOpen,setReviewOpen]=React.useState(false)
-        const ReviewClickOpen=()=>{
+        const ReviewClickOpen=(id)=>{
+            var Data= props.BookingHistory.find((data)=>{
+                return data.roomBookingId==id
+            })
+            setHistorydetails(Data)
             setReviewOpen(true)
-        }
-        const ReviewClickClose=()=>{
-            setReviewOpen(false)
         }
         const [RepeatOpen,setRepeatOpen]= React.useState(false)
         const RepeatClickOpen=()=>{
-            setRepeatOpen(true)   
+            history.push('/proceedpage')
+            // setRepeatOpen(true)   
         }
-        const RepeatClickClose=()=>{
-            setRepeatOpen(false)   
-        }
-        const BookingDetails=[
-            {
-                id:1,
-                name:"Royal Clinic Hospital",
-                location:"Shamiya",
-                Date:"26 Nov 2020",
-                hos_name:"Dasman",
-               
-            },
-            {
-                id:2,
-                name:"Mayo Clinic Hospital",
-                location:"Shaab Sea view",
-                Date:"15 Nov 2020",
-                history:"Rescheduled",
-                hos_name:"Lulwa",
-                historyid:10
-            },
-            {
-                id:3,
-                name:"Dar AlSalam Hospital",
-                location:"Shaab Sea view",
-                Date:"20 Nov 2020",
-                hos_name:"Lulwa",
-                history:"Cancelled",
-                historyid:8
-            }
-        ]
+     
+     
+        useEffect(()=>{
+          dispatch(GetRoomBookingHistoryDetails())
+        },[])
+        useEffect(()=>{
+            var History=[]
+            props.BookingHistory.map((data)=>{
+                History.push(data)
+            })
+            setbookingHistory(History)
+        },[props.BookingHistory])
          return(
             <div className="bookings_parentdiv">
                  <div className="book_headdiv">
                 <label className="book_h">Booking History</label>
                 </div>
-                {BookingDetails.map((data,index)=>
+                {bookingHistory.map((data,index)=>{
+                    
+                    return(
     
                 <div className="bookhistory_list_parent">
                     <div className="bookhistory_list_item">
                         <div className="book_room_div">  
-                        <img src={Hospital} className="book_room_img" onClick={RepeatClickOpen}/>
+                        <img src={data?.vendorProfileImage} className="book_room_img" onClick={()=>ModalClickOpen(data.roomBookingId)} alt={"1"}/>
                         <div className="book_text_div">
-                            <p className="book_h_name">{data.name}</p>
-                            <p className="loaction_align">{data.location}<span className="dot_align" onClick={ModalClickOpen}>...</span></p>
-                            <p>{data.Date}</p>
-                            <div className={data.historyid===8?"book_his_cancel":"history_reschedule"} >{data.history}</div>
+                            <p className="book_h_name">{data.roomVendorName}</p>
+                            <p className="loaction_align">{data.vendor_address}<span className="dot_align" onClick={()=>ModalClickOpen(data.roomBookingId)}>...</span></p>
+                            <p>{moment(data.booked_date).format("DD-MMM-YYYY")}</p>
+                            <div className={data.cancel_status==1?"book_his_cancel":"history_reschedule"} >{data.rescheduled_booking_id==1 && "Resheduled" || data.cancel_status==1 && "Cancelled" || "Completed"}</div>
                         </div>
                         </div> 
         
                         <div style={{width:"35%"}}>
                             <div className="room_div">
                                 <label>Room Type</label>
-                                <label style={{color:"#AEADAD",fontSize:"13px"}}>{data.hos_name}</label>
+                                <label style={{color:"#AEADAD",fontSize:"13px"}}>{data.br_room_type}</label>
                                 <div>
-                            <label className="history_review" onClick={ReviewClickOpen}>Review</label>
-                            <label className="history_repeat" onClick={RepeatClickOpen}>Repeat</label>
+                            <label className="history_review" onClick={()=>ReviewClickOpen(data.roomBookingId)}>Review</label>
+                            <label className="history_repeat" onClick={()=>RepeatClickOpen(data.roomBookingId)}>Repeat</label>
                         </div>
                             </div>
                         </div>
                     </div> 
                         
                  </div>
-                )}
+                )})}
                  <Modal
                   title={false}
                   visible={ModalOpen}
@@ -99,13 +92,13 @@ export default function BookroomHistory(props){
                   centered
                   width={1000}
                 //   className="confirm_modal"
-                  onCancel={ModalClickClose}
+                  onCancel={()=>setModalOpen(false)}
                  >
                   
-                     <HospitalView />
+                     <HospitalView BookingList={Historydetails}/>
     
                  </Modal>
-                 <Modal
+                 {/* <Modal
                   title={false}
                   visible={RepeatOpen}
                   footer={false}
@@ -114,12 +107,12 @@ export default function BookroomHistory(props){
                   centered
                   width={650}
                   className="confirm_modal"
-                  onCancel={RepeatClickClose}
+                  onCancel={()=>setRepeatOpen(false)}
                  >
                   
                      <BookroomRepeat />
     
-                 </Modal>
+                 </Modal> */}
                  <Modal
                   title={false}
                   visible={ReviewOpen}
@@ -128,11 +121,10 @@ export default function BookroomHistory(props){
                   {...props}
                   centered
                 //   className="confirm_modal"
-                  onCancel={ReviewClickClose}
+                  onCancel={()=>setReviewOpen(false)}
                  >
-                     <BookCreateReview ModalClickClose={ReviewClickClose}/> 
+                     <BookCreateReview ModalClickClose={()=>setReviewOpen(false)} BookingList={Historydetails}/> 
                     
-    
                  </Modal>
                
              </div>       
@@ -140,3 +132,8 @@ export default function BookroomHistory(props){
     
     
 }
+const mapStateToProps=(state)=>({
+    BookingHistory:state.BookRoom.BookingHistory || []
+
+})
+export default connect(mapStateToProps)(BookroomHistory);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './ProceedScreen.scss';
 import Labelbox from "../../../../helpers/labelbox/labelbox";
 import ReactPlayer from 'react-player';
@@ -26,11 +26,15 @@ import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import Pin from "../../../../images/pin.png"
 import ProceedConfirm from '../../ProceedConfirm/ProceedConfirm';
 import Avatar from '../../../../helpers/Upload/Upload'
-
-
+import { useDispatch,connect} from 'react-redux';
+import ValidationLibrary from '../../../../helpers/validationfunction'
+import { ParticularRoomDetails } from '../../../../actions/Book a RoomActions'
+import { GetRelationship, AddPatientDetails } from '../../../../actions/ProfileActions'
+import moment from 'moment'
 function ProceedScreen(props){
-
+    let dispatch=useDispatch()
     const [ModalOpen,setModalOpen]=React.useState(false)
+    const [confirm,setconfirm]=useState(true)
     const ModalClickOpen=()=>{
         setModalOpen(true)
     }
@@ -42,7 +46,7 @@ function ProceedScreen(props){
       setShowForm(true)
      }
     const closeForm = () => {
-        setShowForm(false)
+      setconfirm(true)
     }
 
     const [addmemberForm,setaddmemberForm] = React.useState (false)
@@ -61,45 +65,165 @@ const ModalCloseClick=()=>{
    setmodalOpen(false)
 }
 
-   
-  const roomImage=[
-   {
-     id:1,
-     image:BedImage,
-     Name:"Bed"
-   },
-   {
-    id:2,
-    image:BathImage,
-    Name:"Bathroom"
-  },
-  {
-    id:3,
-    image:WaterImage,
-    Name:"Bed"
-  },
-  {
-    id:4,
-    image:ACImage,
-    Name:"AC"
-  },
-  {
-    id:1,
-    image:TVImage,
-    Name:"TV"
-  },
 
-   
+  const RoomDetail=props.location.state
+  const [RoomList,setRoomList]=useState([])
+  const [relationship, setRelation] = useState([])
+  const [Familymember, setFamilymember] = useState([])
+  const [SearchKey,setSearchKey]=useState({
+    fromdate:{
+      value:""
+    },
+    todate:{
+      value:""
+    }
+  })
+  const [MemberDetails, setMemberDetails] = useState({
+    name: {
+        value: "",
+        validation: [{ name: "required" }],
+        error: null,
+        errmsg: null
+    },
+    gender: {
+        value: "",
+        validation: [{ name: "required" }],
+        error: null,
+        errmsg: null
+    },
+    date: {
+        value: "",
+        validation: [{ name: "required" }],
+        error: null,
+        errmsg: null
+    },
+    mobileno: {
+        value: "",
+        validation: [],
+        error: null,
+        errmsg: null
+    },
+    relationship: {
+        value: "",
+        validation: [{ name: "required" }],
+        error: null,
+        errmsg: null
+    },
+    height: {
+        value: "",
+        validation: [{ name: "required" }],
+        error: null,
+        errmsg: null
+    },
+    weight: {
+        value: "",
+        validation: [{ name: "required" }],
+        error: null,
+        errmsg: null
+    },
+})
+function checkValidation(data, key) {
 
-  ]
+    var errorcheck = ValidationLibrary.checkValidation(
+        data,
+        MemberDetails[key].validation
+    );
+    let dynObj = {
+        value: data,
+        error: !errorcheck.state,
+        errmsg: errorcheck.msg,
+        validation: MemberDetails[key].validation,
+    };
+    setMemberDetails((prevState) => ({
+        ...prevState,
+        [key]: dynObj,
+    }))
+}
+const Submit = () => {
+    const vendorId = localStorage.getItem("patientId")
+    var mainvalue = {};
+    var targetkeys = Object.keys(MemberDetails);
+    for (var i in targetkeys) {
+        var errorcheck = ValidationLibrary.checkValidation(
+            MemberDetails[targetkeys[i]].value,
+            MemberDetails[targetkeys[i]].validation
+        );
+        MemberDetails[targetkeys[i]].error = !errorcheck.state;
+        MemberDetails[targetkeys[i]].errmsg = errorcheck.msg;
+        mainvalue[targetkeys[i]] = MemberDetails[targetkeys[i]].value;
+    }
+    var filtererr = targetkeys.filter((obj) => MemberDetails[obj].error == true);
+    if (filtererr.length > 0) {
+
+    } else {
+        dispatch(AddPatientDetails(MemberDetails, vendorId)).then(() => {
+            props.BookClose()
+        })
+
+    }
+    setMemberDetails((prevState) => ({
+        ...prevState,
+    }))
+}
+useEffect(() => {
+  dispatch(GetRelationship())
+}, [])
+useEffect(() => {
+  let relation = []
+  props.Relationship && props.Relationship.map((data) => {
+      relation.push({
+          id: data.PatientrealationshipId, value: data.realationship
+      })
+  })
+  setRelation(relation)
+console.log(props.Relationship,"Relation")
+}, [props.Relationship])
+  function Validation(data, key) {
+    if(data&&key==="todate"){
+      var Todate=data
+      // dispatch(BookRoomDetails(SearchKey.fromdate.value,Todate))
+    }
+   let dynObj = {
+     value: data,
+   };
+ setSearchKey((prevState) => ({
+     ...prevState,
+     [key]: dynObj,
+ }))
+  }
+  useEffect(()=>{
+    dispatch(ParticularRoomDetails(RoomDetail))
+
+  },[])
+  useEffect(()=>{
+    var RoomData=[]
+   props.RoomDetails.map((data)=>{
+      RoomData.push(data)  
+   })
+   setRoomList(RoomData)
+   if(RoomDetail){
+    SearchKey.fromdate.value=RoomDetail.br_from_date
+    SearchKey.todate.value=RoomDetail.br_to_date
+   }
+  },[props.RoomDetails])
+ 
+  console.log("propsdd",RoomDetail)
+  useEffect(()=>{
+    let Members=[JSON.parse(localStorage.getItem("MemberDetails"))]
+    if(Members){
+    Members.map((data)=>{
+        setFamilymember(data)
+    })
+    
+  }
+  },[])
     return(
       <div>
        <div style = {{display:'flex'}}>
          <div style={{width:'70%', margin:'25px'}}>
   {/* header part */}
               <div>
-                  <h5 className="reschedule_head">Mayo Clinic Hospital</h5>
-                  <h5 className="reschedule_head">Lulwa</h5>
+                  <h5 className="reschedule_head">{RoomList[0]?.roomVendorName}</h5>
               </div>
   {/*date and carousel  */}
             <div style={{display:'flex'}}>
@@ -107,54 +231,66 @@ const ModalCloseClick=()=>{
                       <div style={{display:'flex'}}>
                           <div className="date_div_reschedule">
                             <div className="date_second_div_reschedule">
-                                <Labelbox type="datepicker"/>
+                                <Labelbox type="datepicker"
+                                changeData={(data) => Validation(data, "fromdate")}
+                                value={SearchKey.fromdate.value}
+                                />
                             </div>
                             <div className="date_pic_childdiv">
-                                <Labelbox type="datepicker"/>
+                                <Labelbox type="datepicker"
+                                changeData={(data) => Validation(data, "todate")}
+                                value={SearchKey.todate.value}
+                                />
                             </div>
                           </div>   
                       </div> 
                       {/* vedioplayer */}
-                      <div style={{marginLeft:"30px"}}>
-                      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-    </div>
-    <div class="carousel-item">
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
+                      <div>
+                   <div id="#carouselExampleIndicators" class="carousel slide" data-interval="false" >
+            <ol class="carousel-indicators">
+            {RoomList[0]?.mediaDetails.map((data,index)=>
+              <li data-target="#carouselExampleIndicators" data-slide-to={index} class="active"></li>
+            )}
+            </ol>
+         <div class="carousel-inner"
 
-    </div>
-    <div class="carousel-item">
-     <VedioPlayer src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'/>
-      
-    </div>
-  </div>
- 
-</div>
-</div>
+         >
+        {RoomList[0]?.mediaDetails.map((data,index)=>{
+            {console.log("checked",data.media_type)}
+            return(
+         <div 
+         key={index}
+        //  active={index === 0}
+         class={index == 0 ? "carousel-item active" : "carousel-item"}
+        //  data-interval='8000'
+         >
+         {data.br_file_type==="image"?<img src={data.media_filename}/>: 
+         data.br_file_type==="video"?<VedioPlayer src={data.media_filename} playing poster={"/assets/poster.png"}/>:""
+         }
+         </div>
+        )})}
+        </div>
+        </div>
+        </div>
+        {/* vedio end */}
+       
 
-                    {/* end */}
+
                   </div>
                   <div>
 
                   <div style={{display:'flex', margin:'20px'}}>  
                     <div style={{marginRight:'7px'}}>
                       <label className="label_align_reshedule">Address</label>
-                  .   <p style={{color:'#858585'}}>Shaab sea view<span className="dot_align">...</span></p>
+                  .   <p style={{color:'#858585'}}>{RoomList[0]?.roomVendorAddress}<span className="dot_align">...</span></p>
                    </div>
                    <div style={{marginRight:'13px'}}>
                         <label  className="label_align_reshedule">Phone</label>
-                        <p styl={{color:'#858585'}}>+965098755</p>
+                        <p styl={{color:'#858585'}}>+{RoomList[0]?.vendor_phone}</p>
                     </div>
                     <div >
                         <label  className="label_align_reshedule">Email ID</label>
-                        <p styl={{color:'#858585'}}>info@Mayoclinichospital.com</p>
+                        <p styl={{color:'#858585'}}>{RoomList[0]?.vendor_email}</p>
                      </div>
                     </div>
 
@@ -162,18 +298,19 @@ const ModalCloseClick=()=>{
                       <p className="room_facility">Room Facilities</p>
                       <div>
                       <div className="row row_align"  >
-                  {roomImage.map((imageItem)=>{
+                  {RoomList[0]?.facility.map((imageItem,index)=>{
+                    const Index=index+1
                       return(
                         <>
                           <div className="col-sm-3">
     
                               <div className="card card_reschedule">
 
-                                <span>{imageItem.id}</span>
-                              <img src={imageItem.image} className="menu_align"/> 
+                                <span>{Index}</span>
+                              <img src={imageItem.icon} className="menu_align"/> 
 
                               </div>
-                              <p>{imageItem.Name}</p>
+                              <p>{imageItem.facilityName}</p>
 
                           </div>
                         </>
@@ -187,171 +324,150 @@ const ModalCloseClick=()=>{
             </div>
          </div>
          {/* cancel */}
+         {confirm?
+         <div style={{width:'30%'}}>
+            <div style={{marginTop:'40px', marginRight:'40px'}}>
+              <label className="reschedule_cancel">Cancel</label>
+              <label className="reschedule_align" onClick={(()=>setconfirm(false))}>Confirm</label>
+            </div>
+
+         </div>
+         :
+         
          <div style={{width:'25%'}}>
             <div className="proceedform">
           <>
             <ReactSVG className="close_ico_proceed" onClick={closeForm} src={close}/>
               <div className="hosmembers">
+              {Familymember.map((data)=>
+
                 <div className="hosphoto_div">
-                    <img src={Nurse}/>
-                     <div>Jethro</div>
+                    <img src={data.patientMemberImage} lassName="mem_img"/>
+                     <div>{data.name}</div>
                 </div>
-                <div className="hosphoto_div">
-                    <img src={Nurse}/>
-                    <div>Jethro</div>
-                </div>
-                <div className="hosphoto_div">
-                    <img src={Nurse}/>
-                    <div>Jethro</div>
-                </div>
-                <div className="hosphoto_div">
-                      <img src={Nurse}/>
-                      <div>Jethro</div>
-                </div>
-                <div className="hosphoto_div">
-                      <img src={Nurse}/>
-                      <div>Jethro</div>
-                 </div>
+               )}
                  <div className="newhosphoto_div" onClick={openaddmemberForm}>
                      <ReactSVG className="plussvg" src={plus}/>
                      <div className="new">New</div>
                     </div>
                 </div>
-              
              </>
+
+             {/* start insert card details */}
              {
                 addmemberForm && <div className="addmember_mini">
-                  <div className="avatar_uploaderdiv">
-                   
-                      <Avatar/>
-                      <div>Add Photo</div></div>
-                  <div><Labelbox type="text"labelname="Name"/></div>
-                  <div className="formflex"><Labelbox type="select"labelname="Gender"/><Labelbox type="text"labelname="Date of Birth"/></div>
-                  <div><Labelbox type="text"labelname="Mobile number"/></div>
-                  <div><Labelbox type="select"labelname="Relationship"/></div>
-                  <div className="heightformflex"><Labelbox type="text"labelname="Height"/><span>cms</span><Labelbox type="text"labelname="Weight"/><span>kgs</span></div>
-
-                  <div className="avatar_uploaderdiv_btns"><Button className="cancel" onClick={closeaddmemberForm}>Cancel</Button><Button className="submit"onClick={closeaddmemberForm}>Submit</Button></div>
+                 <div style={{ textAlign: "center" }}>
+                <Avatar/>
+                <div className="Add_ph">Add Photo</div>
+              </div>
+            <Labelbox type="text" labelname="Name"
+                changeData={(data) => checkValidation(data, "name")}
+                value={MemberDetails.name.value}
+                error={MemberDetails.name.error}
+                errmsg={MemberDetails.name.errmsg}
+            />
+            <div className="gender_date_div">
+                <div style={{ width: "50%", paddingRight: "10px" }}>
+                    <Labelbox type="select" labelname="Gender"
+                        dropdown={[{ id: 1, value: "Male" }, { id: 2, value: "Female" }]}
+                        changeData={(data) => checkValidation(data, "gender")}
+                        value={MemberDetails.gender.value}
+                        error={MemberDetails.gender.error}
+                        errmsg={MemberDetails.gender.errmsg}
+                    />
+                </div>
+                <div style={{ width: "50%", marginBottom: "10px", paddingLeft: "10px" }}>
+                    <Labelbox type="datepicker" labelname="Date of Birth"
+                        changeData={(data) => checkValidation(data, "date")}
+                        value={MemberDetails.date.value}
+                        error={MemberDetails.date.error}
+                        errmsg={MemberDetails.date.errmsg}
+                    />
+                </div></div>
+            <Labelbox type="text" labelname="Mobile Number"
+                changeData={(data) => checkValidation(data, "mobileno")}
+                value={MemberDetails.mobileno.value}
+                error={MemberDetails.mobileno.error}
+                errmsg={MemberDetails.mobileno.errmsg}
+            />
+            <Labelbox type="select" labelname="Relationship"
+                dropdown={relationship}
+                changeData={(data) => checkValidation(data, "relationship")}
+                value={MemberDetails.relationship.value}
+                error={MemberDetails.relationship.error}
+                errmsg={MemberDetails.relationship.errmsg}
+            />
+            <div className="gender_date_div"><div style={{ width: "50%", display: "flex", paddingRight: "5px" }}>
+                <Labelbox type="text" labelname="Height"
+                    changeData={(data) => checkValidation(data, "height")}
+                    value={MemberDetails.height.value}
+                    error={MemberDetails.height.error}
+                    errmsg={MemberDetails.height.errmsg}
+                />
+                <div className="height_cms">Cms</div></div>
+                <div style={{ width: "50%", display: "flex", paddingLeft: "5px" }}>
+                    <Labelbox type="text" labelname="Weight"
+                        changeData={(data) => checkValidation(data, "weight")}
+                        value={MemberDetails.weight.value}
+                        error={MemberDetails.weight.error}
+                        errmsg={MemberDetails.weight.errmsg}
+                    /><div className="height_cms">Kgs</div>
+                  </div>
+                </div>
+                <div style={{ textAlign: "center", padding: "10px 10px" }}>
+                <Button className="nurse_cancel" onClick={() =>setaddmemberForm(false)}>Cancel</Button>
+                <Button className="nurse_book_btn" onClick={Submit}>Submit</Button></div>
                 </div>
               }
+              {/* end add deatils */}
+
                 <Paper className="paper_align">
                   <p className="paper_booking"> Booking Confirmation</p>
                   <div style={{display:'flex', justifyContent:'center'}}>
-                    <p style={{color:'#83AF40'}}>Mayo Clinic Hospital</p>
+                    <p style={{color:'#83AF40'}}>{RoomList[0]?.roomVendorName}</p>
                     <img src={Pin} style={{width:'18px', height:'18px'}}/>
                   </div>
                 </Paper>
                 
                 <div className="proceed_formrow">
                   <div className="first">Name</div>
-                  <div className="second nameedit">Dalal <ReactSVG className="edit" src={edit} />
+                  <div className="second nameedit">{localStorage.getItem("name")}<ReactSVG className="edit" src={edit} />
                   </div>                   
                 </div>
                 <div className="proceed_formrow">
                   <div className="first">Check In</div>
-                  <div className="second">27 Dec 2020</div>
+                  <div className="second">{moment(RoomDetail.br_from_date).format("DD-MMM-YYYY")}</div>
 
                 </div><div className="proceed_formrow">
                   <div className="first">Check Out</div>
-                  <div className="second">01:00PM,01:30PM</div>
+                  <div className="second">{moment(RoomDetail.br_to_date).format("DD-MMM-YYYY")}</div>
 
                 </div><div className="proceed_formrow">
                   <div className="first">Room Type</div>
-                  <div className="second">Lulwa</div>
+                  <div className="second">{RoomDetail.roomType}</div>
 
                 </div><div className="proceed_formrow">
                   <div className="first">Total Days</div>
-                  <div className="second">2</div>
+                  <div className="second">1</div>
 
                 </div>
                 <div className="proceed_formrow">
                   <div className="first">Cost Per Day(KWD)</div>
-                  <div className="second">400</div>
+                  <div className="second">{RoomDetail.cost}</div>
 
                 </div>
                 <div className="proceed_formrow">
                   <div className="first">Total Cost(KWD)</div>
-                  <div className="second">900</div>
+                  <div className="second">{RoomDetail.cost}</div>
 
                 </div>
                 <div className="bookbtnflex"><Button onClick={ModalOpenClick}>Proceed</Button></div>
                 </div>
-{/* Confirmation Modal */}
-                {/* <Modal
-                  title={<div className="proceed_confirmation">Booking Confirmation</div>}
-                  visible={modalOpen}
-                  footer={false}
-                  onCancel={ModalCloseClick}
-                  className="confirm_modal border_modal"
-                >
-        <div className="bookconfirmmodal_confirm">
-          <div className="userhospic">
-             <img src={roomimg}/>
-             <div style={{display:'flex'}}>
-               <p>Mayo Clinic Hospital</p>
-               <img src={Pin} style={{width:'18px', height:'18px'}}/>
+         </div>
+         }
+       </div>
 
-
-             </div>
-              <span>Shaab Sea View<span className="dot_align">...</span></span>
-             </div>
-             <Form style={{marginLeft:'30px'}}>
-        <Row form>
-          <Col md={4}>
-            <FormGroup>
-            <p className="modal_head">Name</p>
-            <p className="mem_con_name">Dalal</p> 
-            </FormGroup>
-          </Col>
-          <Col md={4}>
-            <FormGroup>
-                <p className="modal_head">Check In</p>
-                <p className="mem_con_name">08 Dec 2020</p>
-            </FormGroup>
-          </Col>
-          <Col md={4}>
-            <FormGroup>
-               <p className="modal_head">Check Out</p>
-               <p className="mem_con_name">08 Dec 2020</p>
-            
-            </FormGroup>
-          </Col>
-          <Col md={4}>
-            <FormGroup>
-            <p className="modal_head">Room Type</p>
-            <p className="mem_con_name">Lulwa</p>
-            </FormGroup>
-          </Col>
-          <Col md={4}>
-            <FormGroup>
-            <p className="modal_head">Total Days</p>
-                   <p className="mem_con_name">2</p>
-            </FormGroup>
-          </Col>
-
-          <Col md={4}>
-            <FormGroup>
-            <p className="modal_head">Cost Per Day(KWD)</p>
-            <p className="mem_con_name">400</p>
-           
-            </FormGroup>
-          </Col>
-          <Col md={4}>
-            <FormGroup>
-            <p className="modal_head">Total Cost(KWD)</p>
-            <p className="mem_con_name">800</p>
-            </FormGroup>
-          </Col>
-   
-        </Row>
-        </Form>   
-        </div>
-        <div className="cnfrmbtn"> <NavLink to="paymentmethod"><Button>Confirm</Button></NavLink></div>
-
-       </Modal>
-        */}
-
-<Modal
+                <Modal
                   title={<div className="bookconfirm">Booking Confirmation</div>}
                   visible={modalOpen}
                   footer={false}
@@ -362,17 +478,17 @@ const ModalCloseClick=()=>{
                   // className="confirm_modal"
                   onCancel={ModalCloseClick}
                  >
-                   <ProceedConfirm/>
+                   <ProceedConfirm  RoomDetail={RoomDetail}/>
                   
     
                  </Modal>
-         </div>
-       </div>
-
-
       
        </div>
     )
 }
-export default ProceedScreen;
 
+const mapStateToProps=(state)=>({
+  RoomDetails:state.BookRoom.RoomDetails || [],
+  Relationship: state.GetProfileDetails.Relationship,
+})
+export default connect(mapStateToProps)(ProceedScreen);

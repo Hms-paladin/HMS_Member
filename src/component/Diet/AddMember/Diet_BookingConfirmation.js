@@ -115,8 +115,6 @@ const FindGoalWeight=(id)=>{
   // }
   setMembers(Member)
   props.FindGoalWeight(Members,memberTrue)
-
-
 }
   
 console.log(Members,"props")
