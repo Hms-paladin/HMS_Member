@@ -1,8 +1,8 @@
-import { GET_TRAINERLIST_PATIENT, GET_PARTICULAR_TRAINER_DETAILS, GET_SLOTS_TRAINER_BOOKING, PATIENT_TRAINER_BOOKING, PATIENT_TRAINING_BOOKING_DETAILS, GET_PATIENT_TRAINER_BOOKING_HISTORY } from "../utils/Constants";
+import { GET_TRAINERLIST_PATIENT, GET_PARTICULAR_TRAINER_DETAILS, GET_SLOTS_TRAINER_BOOKING, PATIENT_TRAINER_BOOKING, PATIENT_TRAINING_BOOKING_DETAILS, GET_PATIENT_TRAINER_BOOKING_HISTORY, PATIENT_TRAINER_CANCEL, PATIENT_TRAINER_MYSCHEDULE } from "../utils/Constants";
 
 const intialState = {
     getTrainerListPatient: [], getParticularTrainerDetails: [], getSlotsTrainerBooking: [], patientTrainerBooking: '',
-    getPatientTrainerBookings: [], getPatientTrainerBookingHistory:[]
+    getPatientTrainerBookings: [], getPatientTrainerBookingHistory: [], cancelBooking: '', getMySchedule: []
 }
 
 const trainerListReducer = (state = intialState, action) => {
@@ -20,6 +20,10 @@ const trainerListReducer = (state = intialState, action) => {
             return { ...state, getPatientTrainerBookings: action.payload }
         case GET_PATIENT_TRAINER_BOOKING_HISTORY:
             return { ...state, getPatientTrainerBookingHistory: action.payload }
+        case PATIENT_TRAINER_CANCEL:
+            return { ...state, cancelBooking: action.payload }
+        case PATIENT_TRAINER_MYSCHEDULE:
+            return { ...state, getMySchedule: action.payload }
         default:
             return state;
     }

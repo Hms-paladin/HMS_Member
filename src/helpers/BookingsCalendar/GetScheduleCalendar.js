@@ -13,6 +13,7 @@ const moment = extendMoment(originalMoment);
 const Current_date = (dateFormat(new Date(), "ddd, dd mmm yyyy"))
 
 export default class Calendar extends React.Component {
+
   weekdayshort = moment.weekdaysShort();
 
   state = {
@@ -33,6 +34,7 @@ export default class Calendar extends React.Component {
     spinLoad: true,
     ModalOpen:false,
     disblerange:[],
+    scheduleDates:[]
   };
   handleClose=()=>{
     this.setState({ModalOpen:false})
@@ -386,6 +388,7 @@ export default class Calendar extends React.Component {
     );
   };
 
+
   componentDidMount(){
     
   }
@@ -411,6 +414,8 @@ export default class Calendar extends React.Component {
     var hidepastdataleft = []
     var disble=[]
     var disblerange=[]
+    var scheduleDate=this.props.OnScheduleDate;
+    // var scheduleDate={complete_date:["2021-08-18","2021-08-19","2021-08-20","2021-08-21","2021-08-22","2021-08-23","2021-08-24","2021-08-25","2021-08-26", "2021-08-27","2021-08-28","2021-08-29","2021-08-30","2021-08-31","2021-09-01"], resch_date: ["2021-09-02","2021-09-03","2021-09-04","2021-09-05","2021-09-06","2021-09-07","2021-09-08"], toberesch_date:["2021-09-09","2021-09-10","2021-09-11","2021-09-12","2021-09-13","2021-09-14"], remain_dates: ["2021-09-15","2021-09-16","2021-09-17","2021-09-18"]}
 
     for (let p = 1; p <= this.daysInMonth(); p++) {
     
@@ -432,26 +437,29 @@ export default class Calendar extends React.Component {
         var hidepastdata = false
       }
     }
+
     if(hidepastdata){
     for (let d = 1; d <= this.daysInMonth(); d++) {
       const startdate = `selectedclr${d}_${this.state.dateObject.format("MMM")}_${this.state.dateObject.format("Y")}`
       let currentDay = d == this.currentDay() ? "today" : "";
       var textgreyhide = new Date() < new Date(dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd")) || dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd") === dateformat(new Date(),"yyyy,mm,dd") 
       disblerange.push(new Date().d==5)
+      var match_date=new Date(dateformat(this.year()+" "+this.month()+" "+d,"yyyy,mm,dd"))
+      var mom_date=moment(match_date).format("YYYY-MM-DD")
       console.log(disblerange,"fghjk")
       daysInMonth.push(
 
         <td key={d} className={`calendar-day ${currentDay} ${!textgreyhide && "cursornonehide"} `} onClick={textgreyhide && (e => { this.onDayClick(e, d); })}>
           <div className="range_parent w-100">
-
-            <div className="range_child w-25">
-            </div>
-            <div
-              className={` ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
-                startdate === this.state.rangeSelect[this.state.rangeSelect.length - 1] && "table_sec_sel" ||
-                this.state.rangeSelect.includes(startdate) && "table_inter_sel" }`}
+            <div className="range_child w-25"></div>
+            {console.log("mommmm",scheduleDate)}
+            <div 
+            className={`${scheduleDate.length>0&&scheduleDate[0].complete_date.includes(mom_date)&&"day_cmplt"||scheduleDate.length>0&&scheduleDate[0].resch_date.includes(mom_date)&&"day_resch"||scheduleDate.length>0&&scheduleDate[0].toberesch_date.includes(mom_date)&&"to_be_resh"||scheduleDate.length>0&&scheduleDate[0].remain_dates.includes(mom_date)&&"day_remain"||scheduleDate.length>0&&scheduleDate[0].gap_dates.includes(mom_date)&&""}`}
+              // className={` ${startdate === this.state.rangeSelect[0] && "table_fir_sel" ||
+              //   startdate === this.state.rangeSelect[this.state.rangeSelect.length - 1] && "table_sec_sel" ||
+              //   this.state.rangeSelect.includes(startdate) && "table_inter_sel" }`}
             >
-              <span className={`${!textgreyhide && "colornonepast"} table-body`} >
+              <span className={`${!textgreyhide && "colornonepast"} table-body`}>
                 {d}
               </span>
             </div>

@@ -33,31 +33,6 @@ function Lab_BookingHistory(props){
     const ReviewClickClose=()=>{
         setReviewOpen(false)
     }
-    const BookingDetails=[
-        {
-            id:1,
-            name:"YIACO Medical Center",
-            Date:"16 Apr 2021",
-            history:"Cancelled",
-            dutyhours:"09:00 AM",
-            historyid:8
-        },
-        {
-            id:2,
-            name:"YIACO Medical Center",
-            Date:"18 Apr 2021",
-            history:"Rescheduled",
-            dutyhours:"09:00 AM",
-            historyid:10
-        },
-        {
-            id:3,
-            name:"YIACO Medical Center",
-            Date:"20 Apr 2021",
-            dutyhours:"09:00 AM"
-
-        }
-    ]
     const[HideAdrs,setHideAdrs]=React.useState(false)
      // elipse function
      const ElipseOpen=()=>{

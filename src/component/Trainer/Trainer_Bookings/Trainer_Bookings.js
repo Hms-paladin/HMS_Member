@@ -11,16 +11,20 @@ import Gym from '../../../images/gym.svg'
 import Trainer from "../../../images/trainer.png";
 import { connect, useDispatch } from "react-redux";
 import moment from 'moment';
+import { useHistory, useLocation } from 'react-router-dom'
 import VideocamIcon from '@material-ui/icons/Videocam';
-import { PatientTrainingBookingDetials } from '../../../actions/trainerdetailsaction'
+import { PatientTrainingBookingDetials,PatientTrainerCancelBooking} from '../../../actions/trainerdetailsaction'
+import RescheduleBooking from '../../Nurse/RescheduleBooking/RescheduleBooking';
 function Tra_Bookings(props) {
+    let history = useHistory()
     const dispatch = useDispatch();
     const [CancelOpen, setCancelOpen] = React.useState(false)
     const [HideAdrs, setHideAdrs] = React.useState(false)
     const [BookingInfo, setBookingInfo] = useState([])
     console.log("props training", props)
 
-    const CancelClick = () => {
+    const CancelClick = (id) => {
+        dispatch(PatientTrainerCancelBooking(id))
         setCancelOpen(!CancelOpen)
     }
     // elipse function
@@ -33,6 +37,19 @@ function Tra_Bookings(props) {
     }
     const ReOpenClose = () => {
         setReOpen(false)
+    }
+    const Reschedule=(index)=>{
+        history.push({
+            pathname: "/trainer_bookigreschedule",
+            state: BookingInfo[index]
+            
+          })
+    }
+    const Schedule=(index)=>{
+        history.push({
+            pathname: "/trainer_myschedule",
+            state: BookingInfo[index]
+          })
     }
     useEffect(() => {
         dispatch(PatientTrainingBookingDetials())
@@ -47,7 +64,7 @@ function Tra_Bookings(props) {
             <div className="book_headdiv">
                 <label className="book_h">Bookings</label><NavLink to="/Trainer_BookingHistory"><img src={HistoryButton} style={{ cursor: "pointer", width: "20px" }} /></NavLink>
             </div>
-            {BookingInfo && BookingInfo.map((data) => {
+            {BookingInfo && BookingInfo.map((data,index) => {
                 return (
                     <div className="bookhistory_list_parent">
                         <div className="diet_bookhistory_list">
@@ -75,12 +92,11 @@ function Tra_Bookings(props) {
                                     <p style={{ fontSize: "15px", color: "#AEADAD" }}>{moment(data.from_time, "HH:mm").format("hh:mm A") + " to " + moment(data.to_time, "HH:mm").format("hh:mm A")}</p>
                                     <p style={{ fontSize: "20px" }}>Burn IT</p>
                                     <p style={{ fontSize: "20px" }}>{data.tr_session +" Sessions"} </p>
-
                                     <div>
                                         <label><VideocamIcon className="tra_vd_icon" /></label>
-                                        <NavLink to="/trainer_myschedule"><label style={{ color: "#F2951B", cursor: "pointer" }}>My schedule</label></NavLink>
-                                        <NavLink to="/trainer_bookigreschedule"><label style={{ color: "#83AF40", margin: "0px 20px", cursor: "pointer" }}>Reschedule</label></NavLink>
-                                        <label className={CancelOpen ? "b_cancel_change" : "b_cancel"} onClick={CancelClick}>Cancel</label>
+                                        <label style={{ color: "#F2951B", cursor: "pointer" }} onClick={()=>Schedule(index)}>My schedule</label>
+                                        <label style={{ color: "#83AF40", margin: "0px 20px", cursor: "pointer" }} onClick={()=>Reschedule(index)}>Reschedule</label>
+                                        <label className={CancelOpen ? "b_cancel_change" : "b_cancel"} onClick={()=>CancelClick(data.trainerBookingId)}>Cancel</label>
                                     </div>
                                 </div>
                             </div>

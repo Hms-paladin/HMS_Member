@@ -34,14 +34,16 @@ function BookingConfirmation(props) {
   const [tempname, setTempName] = useState('')
   const [trainer, setTrainer] = useState([])
   const [member, setMembers] = useState([])
+  const [confirmData,setConfirmData]=useState()
   const ModalOpenClick = () => {
-    trainer[0].tempMemberName = tempname;
+    trainer[0].patientName = tempname;
     trainer[0].isMember = 2;
     member.map((item) => {
       if (item.Mem_name == tempname) {
         trainer[0].isMember = 1;
       }
     })
+    setConfirmData(trainer[0])
     setmodalOpen(true)
   }
   const ModalCloseClick = () => {
@@ -78,28 +80,30 @@ function BookingConfirmation(props) {
     dispatch(GetMemberProfile())
     training_det.push(
       {
-        trainer_name: props.BookingDet.TrainerDetails.dataToC.trainerName,
+        trainerName: props.BookingDet.TrainerDetails.dataToC.trainerName,
         from_date: props.BookingDet.BookDate.sd,
         to_date: props.BookingDet.BookDate.ed,
         from_time: props.BookingDet.TrainerDetails.dataToChild.tr_from_time,
         to_time: props.BookingDet.TrainerDetails.dataToChild.tr_to_time,
-        sessions: props.BookingDet.TrainerDetails.dataToChild.tr_session,
-        address: props.BookingDet.TrainerDetails.dataToC.vendor_address,
-        cost: props.BookingDet.TrainerDetails.dataToChild.tr_cost,
+        tr_session: props.BookingDet.TrainerDetails.dataToChild.tr_session,
+        vendor_address: props.BookingDet.TrainerDetails.dataToC.vendor_address,
+        amount: props.BookingDet.TrainerDetails.dataToChild.tr_cost,
         trainerId: props.BookingDet.TrainerDetails.dataToC.trainerId,
         packageId: props.BookingDet.TrainerDetails.dataToChild.tr_package_id,
         appointmentScheduleId: props.BookingDet.TrainerDetails.dataToChild.appointmentScheduleId,
         bookedDate: moment(new Date()).format("YYYY-MM-DD"),
         isVIP: props.BookingDet.TrainerDetails.dataToChild.is_vip,
-        trainingMode: props.BookingDet.TrainerDetails.dataToChild.tr_training_mode,
-        profile: props.BookingDet.TrainerDetails.dataToC.vendor_profile_path,
-        paymentStatus: 1,
+        training_mode: props.BookingDet.TrainerDetails.dataToChild.tr_training_mode,
+        vendor_profile_path: props.BookingDet.TrainerDetails.dataToC.vendor_profile_path,
+        payment_status: 1,
         isMember: 2,
-        tempMemberName: '',
+        patientName: '',
+        key:"Trainer_Booking"
       }
     )
     setTrainer(training_det)
   }, [])
+  
   useEffect(() => {
     console.log(props.ProfileDetails, "ProfileDetails")
     let Member = [];
@@ -136,9 +140,9 @@ function BookingConfirmation(props) {
           {trainer && trainer.map((data) => {
             return (
               <>
-                {data.trainingMode == 1 && <div className="home_icon_inner_p"><div><HomeIcon /><div>Home</div></div></div>}
-                {data.trainingMode == 2 && <div className="internet_div_tra_inner_p"><div className="inter_net_img"><ReactSVG src={Internet} /><div>Online</div></div></div>}
-                {data.trainingMode == 3 && <div className="internet_div_gym_inner_p"><div className="inter_net_img"><ReactSVG src={Gym} /><div>Centre</div></div></div>}
+                {data.training_mode == 1 && <div className="home_icon_inner_p"><div><HomeIcon /><div>Home</div></div></div>}
+                {data.training_mode == 2 && <div className="internet_div_tra_inner_p"><div className="inter_net_img"><ReactSVG src={Internet} /><div>Online</div></div></div>}
+                {data.training_mode == 3 && <div className="internet_div_gym_inner_p"><div className="inter_net_img"><ReactSVG src={Gym} /><div>Centre</div></div></div>}
               </>
             )
           })}
@@ -160,7 +164,7 @@ function BookingConfirmation(props) {
             <FormGroup row>
               <Label for="exampleEmail" sm={6} >Trainer</Label>
               <Col sm={6}>
-                <label className="Nurse_form_de">{data.trainer_name}</label>
+                <label className="Nurse_form_de">{data.trainerName}</label>
 
                 {/* <EditIcon className="edit_nur_name"/> */}
 
@@ -192,19 +196,19 @@ function BookingConfirmation(props) {
             <FormGroup row>
               <Label for="exampleEmail" sm={6} >Sessions</Label>
               <Col sm={6}>
-                <label className="Nurse_form_de">{data.sessions}</label>
+                <label className="Nurse_form_de">{data.tr_session}</label>
               </Col>
             </FormGroup>
             <FormGroup row>
               <Label for="exampleEmail" sm={6} >Address</Label>
               <Col sm={6}>
-                <label className="Nurse_form_de">{data.address}</label>
+                <label className="Nurse_form_de">{data.vendor_address}</label>
               </Col>
             </FormGroup>
             <FormGroup row>
               <Label for="exampleEmail" sm={6} >Cost (KWD)</Label>
               <Col sm={6}>
-                <label className="Nurse_form_de">{data.cost}</label>
+                <label className="Nurse_form_de">{data.amount}</label>
               </Col>
             </FormGroup>
 
@@ -223,7 +227,7 @@ function BookingConfirmation(props) {
       // maxWidth={"md"}
       // style={{width:"800px"}}
       >
-        <ConfirmationModal ModalCloseClick={ModalCloseClick} Params={trainer} />
+        <ConfirmationModal ModalCloseClick={ModalCloseClick} Params={confirmData} />
       </Modal>
     </div>
   )

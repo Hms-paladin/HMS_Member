@@ -16,7 +16,9 @@ function BookingShedule(props){
         console.log(datearr,"startdate_enddate")
         if(datearr.length>0){
             let appoint_id=trainerDet.location.state.dataToChild.appointmentScheduleId;
-            let slots=[{sd: datearr[0],ed:datearr.pop(),appoint_id}]
+            let len=datearr.length
+            let slots=[{sd: datearr[0],ed:datearr[len-1],appoint_id}]
+            console.log(slots,datearr,"slotttttts")
             dispatch(GetSlotsTrainerBooking(slots))
             setBookDate({sd: datearr[0],ed:datearr.pop(),appoint_id})
         }

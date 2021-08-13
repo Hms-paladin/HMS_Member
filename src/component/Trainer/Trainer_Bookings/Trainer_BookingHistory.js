@@ -11,11 +11,13 @@ import Trainer from "../../../images/trainer.png";
 import VideocamIcon from '@material-ui/icons/Videocam';
 import { NavLink } from 'react-router-dom'
 import moment from 'moment';
+import HomeIcon from '@material-ui/icons/Home';
 import { connect, useDispatch } from "react-redux";
 import {PatientTrainingBookingHistoryDetials} from "../../../actions/trainerdetailsaction"
 function Trainer_BookingHistory(props){
     const dispatch = useDispatch();
     const [ModalOpen,setModalOpen]=React.useState(false)
+    const [History,setHistory]=useState([])
     const [open,setopen]=React.useState(false)
     const ModalClickOpen=()=>{
         setModalOpen(true)
@@ -37,25 +39,6 @@ function Trainer_BookingHistory(props){
         setReviewOpen(false)
         setopen(false)
     }
-    const BookingDetails=[
-        {
-            id:1,
-            name:"Healthy Eats",
-            Date:"16 Apr 2021",
-            history:"Cancelled",
-            diet:"Keto Diet",
-            historyid:8,
-            img:Trainer
-        },
-        {
-            id:3,
-            name:"Lina's & Dina's",
-            Date:"20 Apr 2021",
-            diet:"Fiber Diet",
-            img:Trainer
-
-        }
-    ]
     const[HideAdrs,setHideAdrs]=React.useState(false)
      // elipse function
      const ElipseOpen=()=>{
@@ -66,45 +49,46 @@ function Trainer_BookingHistory(props){
     },[])
     useEffect(()=>{
         console.log(props.TrainerBookingHistory,"TrainerBookingHistory")
+        setHistory(props.TrainerBookingHistory)
     },[props.TrainerBookingHistory])
+    console.log(History,"History")
      return(
         <div className="Tc_history">
              <div className="book_headdiv">
             <label className="book_h">Booking History</label>
             </div>
-            {BookingDetails.map((data,index)=>
+            {History.map((data,index)=>
 
             <div className="bookhistory_list_parent">
              <div className="bookhistory_list_item">
                 <div className="book_nurse_div">  
                   <div>
-                    <div><img src={data.img} className="book_nur_img"/></div>
-                    <div className={data.historyid===8?"his_cancel":"his_reschedule"} >{data.history}</div>
+                    <div><img src={data.vendor_profile_path} className="book_nur_img"/></div>
+                    <div className={data.cancel_status===1?"his_cancel":"his_reschedule"} >{data.cancel_status===1&&"Cancelled"||data.is_rescheduled===1&&"Reschedule"}</div>
                     <div className ="tainerlist_home_inner_booking">
-                  {/* <div className="home_icon_inner_p"><div><HomeIcon/><div>Home</div></div></div> */}
-                  <div className="internet_div_tra_inner_p"><div  className="inter_net_img"><ReactSVG src={Internet}/><div>Online</div></div></div>
-                  {/* <div className="internet_div_gym_inner_p"><div  className="inter_net_img"><ReactSVG src={Gym}/><div>Centre</div></div></div> */}
+                  {data.training_mode===1&&<div className="home_icon_inner_p"><div><HomeIcon/><div>Home</div></div></div>}
+                  {data.training_mode===2&&<div className="internet_div_tra_inner_p"><div  className="inter_net_img"><ReactSVG src={Internet}/><div>Online</div></div></div>}
+                  {data.training_mode===3&&<div className="internet_div_gym_inner_p"><div  className="inter_net_img"><ReactSVG src={Gym}/><div>Centre</div></div></div>}
                  </div>
                   </div>
                     <div className="book_text_div">
-                    <p className="book_h_name">Farah</p>
-                      <p  style={{color:"#AEADAD",fontSize:"15px"}}>34 Years / Female</p>
-                      <span><label className="book_h_name">Amount</label><label className="tc_amt_kwd">160 KWD</label></span>
-                      <p style={{color:"#AEADAD",fontSize:"15px"}}>Shamiya</p>
+                    <p className="book_h_name">{data.trainerName}</p>
+                      <p  style={{color:"#AEADAD",fontSize:"15px"}}>{"34 Years /"+data.vendor_contact_gender}</p>
+                      <span><label className="book_h_name">Amount</label><label className="tc_amt_kwd">{data.amount+" KWD"}</label></span>
+                      <p style={{color:"#AEADAD",fontSize:"15px"}}>{data.vendor_address}</p>
                       </div>
                 </div> 
 
                 <div style={{textAlign:"end",fontWeight:"500"}}>
-                  <div><label style={{color:"#666666",fontSize:"13px"}}>01 Apr 2021</label>
-                  <label style={{fontSize:"15px",color:"#AEADAD"}}>08:00 AM To 09:00 AM</label></div>
-                   <p>Cancelled Date & Time</p>
-                   <p style={{fontWeight:"400",color:"#666666"}}>03 Apr 2021</p>
-                   <p style={{fontWeight:"400",color:"#666666"}}>10.30 PM</p>
+                  <div><label style={{color:"#666666",fontSize:"13px"}}>{moment(data.book_date).format("DD-MM-YYYY")}</label>
+                  <label style={{fontSize:"15px",color:"#AEADAD"}}>{moment(data.from_time, "HH:mm").format("hh:mm A") + " to " + moment(data.to_time, "HH:mm").format("hh:mm A")}</label></div>
+                   <p>{data.cancel_status===1&&"Cancelled Date & Time"||data.is_rescheduled===1&&"Reschedule Date & Time"}</p>
+                   <p style={{fontWeight:"400",color:"#666666"}}>{data.cancel_status===1&&data.cancel_date!=null&&moment(data.cancel_date).format("DD-MM-YYYY")||data.is_rescheduled===1&&data.reschedule_date&&moment(data.reschedule_date).format("DD-MM-YYYY")}</p>
+                   <p style={{fontWeight:"400",color:"#666666"}}>{data.cancel_status===1&&data.cancel_date!=null&&moment(data.cancel_date,"HH:mm").format("hh:mm A")||data.is_rescheduled===1&&data.reschedule_date&&moment(data.reschedule_date,"HH:mm").format("hh:mm A")}</p>
                    <p style={{fontSize:"20px"}}>Burn IT</p>
-                   <p style={{fontSize:"20px"}}>30 Sessions</p>
+                   <p style={{fontSize:"20px"}}>{data.tr_session+" Sessions"}</p>
                 </div>
                 </div> 
-                 
                    <div className="book_his_parent">
                       <div><label className="his_review" onClick={ReviewClickOpen}>Review</label><NavLink to="/trainerbooking"><label className="his_repeat">Repeat</label></NavLink></div>
                   </div>

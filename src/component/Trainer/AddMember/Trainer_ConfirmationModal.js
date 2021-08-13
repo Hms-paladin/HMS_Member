@@ -28,7 +28,7 @@ export default function ConfirmationModal(props){
            <Grid container spacing={4} className="book_confirm_container">
                <Grid item sm={12} md={3} className="confirm_nurse_imggrid">
                   <div className="Nurse_img_div">
-                    <img src={Trainer[0].profile} className="confir_nurse"/>
+                    <img src={Trainer.vendor_profile_path} className="confir_nurse"/>
                   <div className="confirm_b_name"></div>
                    
                     </div>
@@ -39,7 +39,7 @@ export default function ConfirmationModal(props){
           <Col md={3} sm={6}>
             <FormGroup>
             <p className="mem_con_namehead">Name</p>
-            <p className="mem_con_name">{Trainer[0].tempMemberName}</p> 
+            <p className="mem_con_name">{Trainer.patientName}</p> 
             </FormGroup>
           </Col>
           <Col md={3} sm={6}>
@@ -47,49 +47,49 @@ export default function ConfirmationModal(props){
             <p className="mem_con_namehead">Trainer</p>
             {/* <p className="mem_con_name">Jabriya</p>  */}
            
-        <label className="mem_con_name">{Trainer[0].trainer_name}</label>
+        <label className="mem_con_name">{Trainer.trainerName}</label>
             </FormGroup>
           </Col>
           <Col md={3} sm={6}>
             <FormGroup>
             <p className="mem_con_namehead">From Date</p>
-            <p className="mem_con_name">{Trainer[0].from_date}</p> 
+            <p className="mem_con_name">{moment(Trainer.from_date).format("DD-MM-YYYY")}</p> 
             </FormGroup>
           </Col>
           <Col md={3} sm={6}>
             <FormGroup>
             <p className="mem_con_namehead">To Date</p>
-            <p className="mem_con_name">{Trainer[0].to_date}</p> 
+            <p className="mem_con_name">{moment(Trainer.to_date).format("DD-MM-YYYY")}</p> 
             </FormGroup>
           </Col>
          
           <Col md={3} sm={6}>
             <FormGroup>
             <p className="mem_con_namehead">Time</p>
-            <p className="mem_con_name">{moment(Trainer[0].from_time, "HH:mm").format("hh:mm A")+" to "+
-            moment(Trainer[0].to_time, "HH:mm").format("hh:mm A")}</p> 
+            <p className="mem_con_name">{moment(Trainer.from_time, "HH:mm").format("hh:mm A")+" to "+
+            moment(Trainer.to_time, "HH:mm").format("hh:mm A")}</p> 
             </FormGroup>
           </Col>
           <Col md={3} sm={6}>
             <FormGroup>
             <p className="mem_con_namehead">Sessions</p>
-            <p className="mem_con_name">{Trainer[0].sessions}</p> 
+            <p className="mem_con_name">{Trainer.tr_session}</p> 
             </FormGroup>
           </Col>
           <Col md={3} sm={6}>
             <FormGroup>
             <p className="mem_con_namehead">Training Location</p>
              <div className ="tainerlist_home_inner_booking">
-                  {Trainer[0].trainingMode==1&&<div className="home_icon_inner_p"><div><HomeIcon/><div>Home</div></div></div>}
-                  {Trainer[0].trainingMode==2&&<div className="internet_div_tra_inner_p"><div  className="inter_net_img"><ReactSVG src={Internet}/><div>Online</div></div></div>}
-                  {Trainer[0].trainingMode==3&&<div className="internet_div_gym_inner_p"><div  className="inter_net_img"><ReactSVG src={Gym}/><div>Centre</div></div></div>}
+                  {Trainer.training_mode==1&&<div className="home_icon_inner_p"><div><HomeIcon/><div>Home</div></div></div>}
+                  {Trainer.training_mode==2&&<div className="internet_div_tra_inner_p"><div  className="inter_net_img"><ReactSVG src={Internet}/><div>Online</div></div></div>}
+                  {Trainer.training_mode==3&&<div className="internet_div_gym_inner_p"><div  className="inter_net_img"><ReactSVG src={Gym}/><div>Centre</div></div></div>}
                  </div>
             </FormGroup>
           </Col>
           <Col md={3} sm={6}>
             <FormGroup>
             <p className="mem_con_namehead">Cost (KWD)</p>
-            <p className="mem_con_name">{Trainer[0].cost}</p> 
+            <p className="mem_con_name">{Trainer.amount}</p> 
             </FormGroup>
           </Col>
           </Row>

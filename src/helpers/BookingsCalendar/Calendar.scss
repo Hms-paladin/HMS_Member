@@ -142,6 +142,10 @@
   .date_arrow{
     cursor: pointer;
   }
+
+  .diffbgColor{
+    background-color: pink;
+  }
   
   .date_select_cont{
     text-align: center;
@@ -257,3 +261,15 @@
     width:100% !important;
   }
 }
+
+.day_cmplt{
+  background-color: #E0EBCF;
+}
+.day_resch{
+  background-color: #F7B930;
+}
+.day_remain{
+  background-color:#83AF40
+}
+.to_be_resh{background-color:#11A0D9}
+.change_bg{background-color:#11A0D9}

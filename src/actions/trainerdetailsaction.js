@@ -1,4 +1,4 @@
-import { GET_PARTICULAR_TRAINER_DETAILS, GET_SLOTS_TRAINER_BOOKING, PATIENT_TRAINER_BOOKING, PATIENT_TRAINING_BOOKING_DETAILS,GET_PATIENT_TRAINER_BOOKING_HISTORY } from "../utils/Constants";
+import { GET_PARTICULAR_TRAINER_DETAILS, GET_SLOTS_TRAINER_BOOKING, PATIENT_TRAINER_BOOKING, PATIENT_TRAINING_BOOKING_DETAILS, GET_PATIENT_TRAINER_BOOKING_HISTORY, PATIENT_TRAINER_CANCEL, PATIENT_TRAINER_MYSCHEDULE } from "../utils/Constants";
 import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
 import moment from "moment";
@@ -38,11 +38,18 @@ export const PatientTrainingBookingDetials = () => async dispatch => {
             }
         })
             .then((response) => {
-                dispatch({
-                    type: PATIENT_TRAINING_BOOKING_DETAILS,
-                    payload: response.data.data[0].details
-                })
-                console.log("Trainer Details", response);
+                if (response.data.status === 1) {
+                    dispatch({
+                        type: PATIENT_TRAINING_BOOKING_DETAILS,
+                        payload: response.data.data[0].details
+                    })
+                    console.log("Trainer Details", response);
+                }
+                else {
+                    notification.warning({
+                        message: response.data.msg
+                    })
+                }
             })
 
     } catch (err) {
@@ -75,30 +82,33 @@ export const GetSlotsTrainerBooking = (slots) => async dispatch => {
 }
 export const PatientTrainerBooking = (data) => async dispatch => {
     try {
-        console.log(data, "dataaaaa")
+        console.log(moment(data.from_date).format("YYYY-MM-DD"), "dataaaaa")
         axios({
             method: 'POST',
             url: apiurl + 'Patient/patientTrainerBooking',
             data: {
-                "patientId": localStorage.getItem("user_id"),
+                // "patientId": localStorage.getItem("user_id"),
+                "patientId": 38,
                 "trainerId": data.trainerId,
                 "packageId": data.packageId,
                 "appointmentScheduleId": data.appointmentScheduleId,
-                "fromDate": data.from_date,
-                "toDate": data.to_date,
+                "fromDate": moment(data.from_date).format("YYYY-MM-DD"),
+                "toDate": moment(data.to_date).format("YYYY-MM-DD"),
                 "bookedDate": data.bookedDate,
-                "amount": data.cost,
+                "amount": data.amount,
                 "fromTime": data.from_time,
                 "toTime": data.to_time,
                 "isVIP": data.isVIP,
-                "trainingMode": data.trainingMode,
-                "paymentStatus": data.paymentStatus,
+                "trainingMode": data.training_mode,
+                "paymentStatus": data.payment_status,
                 "isMember": data.IsMember,
-                "tempMemberName": data.tempMemberName
+                "tempMemberName": data.patientName
             }
         })
             .then((response) => {
-                if (response.data.status) {
+                alert("hiiiii")
+                console.log(response.data.status, "statussssssss")
+                if (response.data.status === 1) {
                     notification.success({
                         message: "Trainer Booked successfully"
                     })
@@ -108,6 +118,7 @@ export const PatientTrainerBooking = (data) => async dispatch => {
                     })
                     return Promise.resolve();
                 }
+                else { alert("not inserted") }
             })
 
     } catch (err) {
@@ -131,6 +142,69 @@ export const PatientTrainingBookingHistoryDetials = () => async dispatch => {
                     type: GET_PATIENT_TRAINER_BOOKING_HISTORY,
                     payload: response.data.data[0].details
                 })
+            })
+
+    } catch (err) {
+        console.log("actionerr", err)
+    }
+}
+
+export const PatientTrainerCancelBooking = (data) => async dispatch => {
+    try {
+        axios({
+            method: 'POST',
+            url: apiurl + 'Patient/patientTrainerCancelBooking',
+            data: {
+                "trainerBookingId": data
+            }
+        })
+            .then((response) => {
+                if (response.data.status == 1) {
+                    notification.success({
+                        message: "Cancelled successfully"
+                    })
+                }
+                if (response.data.status == 0) {
+                    notification.warning({
+                        message: response.data.msg
+                    })
+                }
+                dispatch({
+                    type: PATIENT_TRAINER_CANCEL,
+                    payload: response.data.data
+                })
+            })
+
+    } catch (err) {
+        console.log("actionerr", err)
+    }
+}
+
+export const PatientTrainerScheduleDetails = (item) => async dispatch => {
+    try {
+        console.log(moment().format("YYYY-MM-DD"), "todayyy")
+        axios({
+            method: 'POST',
+            url: apiurl + 'Patient/patientTrainerScheduleDetails',
+            data: {
+                "fromDate": moment(item.from_date).format("YYYY-MM-DD"),
+                "toDate": moment(item.to_date).format("YYYY-MM-DD"),
+                "trainerBookingId": item.trainerBookingId,
+                "currentDate": moment().format("YYYY-MM-DD")
+
+                // "fromDate": "2021-08-01",
+                // "toDate": "2021-08-31",
+                // "trainerBookingId": "398",
+                // "currentDate": "2021-08-12"
+            }
+        })
+            .then((response) => {
+                if (response.data.status == 1) {
+                    dispatch({
+                        type: PATIENT_TRAINER_MYSCHEDULE,
+                        payload: response.data.data
+                    })
+                }
             })
 
     } catch (err) {
