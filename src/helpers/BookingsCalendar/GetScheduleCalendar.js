@@ -500,7 +500,7 @@ export default class Calendar extends React.Component {
           console.log("resch_date",resch_date,toberesch)
           this.props.changeData&&this.props.changeData(0,toberesch,resch_date)
         }
-        else{this.props.changeData&&this.props.changeData(0,0,0)}
+        // else{this.props.changeData&&this.props.changeData(0,0,0)}
         for (let d = 1; d <= this.daysInMonth(); d++) {
           const startdate = `selectedclr${d}_${this.state.dateObject.format("MMM")}_${this.state.dateObject.format("Y")}`
           let currentDay = d == this.currentDay() ? "today" : "";
