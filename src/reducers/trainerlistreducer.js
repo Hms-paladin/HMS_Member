@@ -1,8 +1,9 @@
-import { GET_TRAINERLIST_PATIENT, GET_PARTICULAR_TRAINER_DETAILS, GET_SLOTS_TRAINER_BOOKING, PATIENT_TRAINER_BOOKING, PATIENT_TRAINING_BOOKING_DETAILS, GET_PATIENT_TRAINER_BOOKING_HISTORY, PATIENT_TRAINER_CANCEL, PATIENT_TRAINER_MYSCHEDULE } from "../utils/Constants";
+import { GET_TRAINERLIST_PATIENT, GET_PARTICULAR_TRAINER_DETAILS, GET_SLOTS_TRAINER_BOOKING, PATIENT_TRAINER_BOOKING, PATIENT_TRAINING_BOOKING_DETAILS, GET_PATIENT_TRAINER_BOOKING_HISTORY, PATIENT_TRAINER_CANCEL, PATIENT_TRAINER_MYSCHEDULE,PATIENT_TRAINER_RESCHDULE } from "../utils/Constants";
 
 const intialState = {
     getTrainerListPatient: [], getParticularTrainerDetails: [], getSlotsTrainerBooking: [], patientTrainerBooking: '',
-    getPatientTrainerBookings: [], getPatientTrainerBookingHistory: [], cancelBooking: '', getMySchedule: []
+    getPatientTrainerBookings: [], getPatientTrainerBookingHistory: [], cancelBooking: '', getMySchedule: [],
+    getPatientTrainerReschedule:''
 }
 
 const trainerListReducer = (state = intialState, action) => {
@@ -24,6 +25,8 @@ const trainerListReducer = (state = intialState, action) => {
             return { ...state, cancelBooking: action.payload }
         case PATIENT_TRAINER_MYSCHEDULE:
             return { ...state, getMySchedule: action.payload }
+        case PATIENT_TRAINER_RESCHDULE:
+            return { ...state, getPatientTrainerReschedule: action.payload }
         default:
             return state;
     }

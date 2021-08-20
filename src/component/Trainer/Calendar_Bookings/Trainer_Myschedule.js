@@ -13,6 +13,7 @@ function Trainer_Myschedule(props) {
    // modal functions
    const [modalOpen, setmodalOpen] = React.useState(false)
    const [secheduleDates,setSecheduleDates]=useState([])
+   const [remainingDays,setRemainingDays]=useState('')
    
    const ModalOpenClick = () => {
       setmodalOpen(true)
@@ -24,16 +25,19 @@ function Trainer_Myschedule(props) {
       dispatch(PatientTrainerScheduleDetails(trainerDt))
    }, [trainerDt])
    useEffect(() => {
-      let completedDate = [],rescheduleDate=[],toBeRescheduled=[],remainingdates=[],PassArr=[],gapDays=[]
+      let completedDate = [],rescheduleDate=[],toBeRescheduled=[],remainingdates=[],PassArr=[],gapDays=[];
+      let remainDays=''
       let today=moment().format("YYYY-MM-DD")
+      console.log(props.getMySchedule,"getMySchedule")
       props.getMySchedule.map((data)=>{
+         remainDays=data.remainingDays;
          data.caldendarData.map((x) => {
             if(x.completedDate==true&&x.currentDayId!=5){completedDate.push(x.selected_date)}
             if(x.rescheduledDate==true&&x.currentDayId!=5){rescheduleDate.push(x.selected_date)}
             if(x.toBeRescheduled==true&&x.currentDayId!=5){toBeRescheduled.push(x.selected_date)}
             if(x.toBeRescheduled==false&&x.rescheduledDate==false&&x.completedDate==false)
             {
-               if(x.selected_date>=today&&x.currentDayId!=5)
+               if(x.bookedDate==true&&x.currentDayId!=5)
                remainingdates.push(x.selected_date)
             }
             if(x.currentDayId==5){gapDays.push(x.selected_date)}
@@ -41,6 +45,7 @@ function Trainer_Myschedule(props) {
       })
       PassArr.push({complete_date:completedDate,resch_date:rescheduleDate,toberesch_date:toBeRescheduled,remain_dates:remainingdates,gap_dates:gapDays})
       setSecheduleDates(PassArr)
+      setRemainingDays(remainDays)
    }, [props.getMySchedule])
 
    console.log(secheduleDates,trainerDt, "locccc")
@@ -56,6 +61,8 @@ function Trainer_Myschedule(props) {
                   upcomingdays="enable"
                   trainer_MyShedule_dots="enable"
                   OnScheduleDate={secheduleDates}
+                  RemainingDays={remainingDays}
+                  Session={1}
                />
             </Grid>
          </Grid>

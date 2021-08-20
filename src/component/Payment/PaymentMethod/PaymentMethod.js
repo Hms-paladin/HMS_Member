@@ -16,7 +16,8 @@ import { Redirect, Link } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import {PatientLabBooking} from '../../../actions/clinicalLabAction'
-import {PatientTrainerBooking} from '../../../actions/trainerdetailsaction'
+import {PatientTrainerBooking,PatientTrainerReschedule} from '../../../actions/trainerdetailsaction'
+import moment from "moment";
 const { TabPane } = Tabs;
 function CancelPayment(props) {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function CancelPayment(props) {
     if(location.state.key=="Trainer"){
       dispatch(PatientTrainerBooking(params))
     }
+    if(location.state.key=="Reschedule"){
+      dispatch(PatientTrainerReschedule(params))
+    }
   };
 
   useEffect(()=>{
@@ -66,10 +70,50 @@ function CancelPayment(props) {
     if(location.state.key=="Trainer"){
       setParams(location.state.Trainer)
     }
+    if(location.state.key=="Reschedule"){
+      let trainer_info=location.state.Trainer;
+      let resch_info=location.state.ReschInfo;
+      dataToPass.push({
+        "oldBookingId":trainer_info.trainerBookingId,
+        "patientId":trainer_info.patient_id,
+        "trainerId":trainer_info.trainer_id,
+        "packageId":trainer_info.package_id,
+        "appointmentScheduleId":trainer_info.appointment_id,
+        "fromDate":moment(resch_info.FromDate).format('YYYY-MM-DD'),
+        "toDate":moment(resch_info.ToDate).format('YYYY-MM-DD'),
+        "bookedDate":trainer_info.book_date,
+        "amount":trainer_info.amount,
+        "fromTime":trainer_info.from_time,
+        "toTime":trainer_info.to_time,
+        "isVIP":trainer_info.is_vip,
+        "trainingMode":trainer_info.training_mode,
+        "paymentStatus":trainer_info.payment_status,
+        "isMember":1,
+        "tempMemberName":"Edwin",
+        "name":"Edwin",
+        "dob":"1997-07-02",
+        "gender":"M",
+        "height":"175",
+        "heightUnit":"CM",
+        "weight":"60",
+        "weightUnit":"Kg",
+        "bmi":"120",
+        "intakeCal":"10",
+        "durationDays":"10",
+        "anyMedication":"any medication",
+        "anyDisease":"",
+        "anySurgery":"",
+        "anyGoals":"",
+        "goalWeight":"70",
+        "goalWeightUnit":"Kg",
+        "parrentPatientId":"1"
+      })
+      setParams(dataToPass)
+    }
   },[location])
 
   const { mode } = Mode;
-  console.log(params, "params")
+  console.log(params,location.state.Trainer,location.state.ReschInfo, "params")
   return (
     <div className="PaymentMethod">
       <div className="option_container">

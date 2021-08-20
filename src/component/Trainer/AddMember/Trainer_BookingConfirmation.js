@@ -184,7 +184,6 @@ function BookingConfirmation(props) {
                 <label className="Nurse_form_de">{data.to_date}</label>
               </Col>
             </FormGroup>
-
             <FormGroup row>
               <Label for="exampleEmail" sm={6} >Time</Label>
               <Col sm={6}>
@@ -227,7 +226,7 @@ function BookingConfirmation(props) {
       // maxWidth={"md"}
       // style={{width:"800px"}}
       >
-        <ConfirmationModal ModalCloseClick={ModalCloseClick} Params={confirmData} />
+        <ConfirmationModal ModalCloseClick={ModalCloseClick} Params={confirmData} Origin="Trainer_Booking"/>
       </Modal>
     </div>
   )

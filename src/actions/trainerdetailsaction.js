@@ -1,8 +1,9 @@
-import { GET_PARTICULAR_TRAINER_DETAILS, GET_SLOTS_TRAINER_BOOKING, PATIENT_TRAINER_BOOKING, PATIENT_TRAINING_BOOKING_DETAILS, GET_PATIENT_TRAINER_BOOKING_HISTORY, PATIENT_TRAINER_CANCEL, PATIENT_TRAINER_MYSCHEDULE } from "../utils/Constants";
+import { GET_PARTICULAR_TRAINER_DETAILS, GET_SLOTS_TRAINER_BOOKING, PATIENT_TRAINER_BOOKING, PATIENT_TRAINING_BOOKING_DETAILS, GET_PATIENT_TRAINER_BOOKING_HISTORY, PATIENT_TRAINER_CANCEL, PATIENT_TRAINER_MYSCHEDULE, PATIENT_TRAINER_RESCHDULE } from "../utils/Constants";
 import { apiurl } from "../utils/baseUrl";
 import axios from "axios";
 import moment from "moment";
 import { notification } from "antd";
+
 
 export const GetParticularTrainerDetails = (data) => async dispatch => {
     try {
@@ -106,7 +107,6 @@ export const PatientTrainerBooking = (data) => async dispatch => {
             }
         })
             .then((response) => {
-                alert("hiiiii")
                 console.log(response.data.status, "statussssssss")
                 if (response.data.status === 1) {
                     notification.success({
@@ -181,14 +181,19 @@ export const PatientTrainerCancelBooking = (data) => async dispatch => {
 }
 
 export const PatientTrainerScheduleDetails = (item) => async dispatch => {
+        // let dt = new Date(moment(item.to_date).format("MMM") + "-" + moment(item.to_date).format("Y") + "-" + moment(item.to_date).getDate())
+        // const copy = new Date(Number(dt))
+        // copy.setDate(dt.getDate() + 50)
+        console.log(item, "todayyy")
     try {
-        console.log(moment().format("YYYY-MM-DD"), "todayyy")
+      
         axios({
             method: 'POST',
             url: apiurl + 'Patient/patientTrainerScheduleDetails',
             data: {
                 "fromDate": moment(item.from_date).format("YYYY-MM-DD"),
-                "toDate": moment(item.to_date).format("YYYY-MM-DD"),
+                // "toDate": moment(item.to_date).format("YYYY-MM-DD"),
+                "toDate": "2022-10-10",
                 "trainerBookingId": item.trainerBookingId,
                 "currentDate": moment().format("YYYY-MM-DD")
 
@@ -203,6 +208,36 @@ export const PatientTrainerScheduleDetails = (item) => async dispatch => {
                     dispatch({
                         type: PATIENT_TRAINER_MYSCHEDULE,
                         payload: response.data.data
+                    })
+                }
+            })
+
+    } catch (err) {
+        console.log("actionerr", err)
+    }
+}
+
+export const PatientTrainerReschedule = (RescheduleInfo) => async dispatch => {
+    try {
+        console.log(RescheduleInfo, "todayyy")
+        axios({
+            method: 'POST',
+            url: apiurl + 'Patient/patientTrainerBookingReschedule',
+            data: RescheduleInfo
+        })
+            .then((response) => {
+                if (response.data.status == 1) {
+                    notification.success({
+                        message: "Rescheduled successfully"
+                    })
+                    dispatch({
+                        type: PATIENT_TRAINER_RESCHDULE,
+                        payload: response.data.data
+                    })
+                }
+                if (response.data.status == 0) {
+                    notification.warning({
+                        message: response.data.msg
                     })
                 }
             })
