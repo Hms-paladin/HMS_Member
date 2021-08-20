@@ -101,13 +101,15 @@ function BookingReSchedule(props) {
       slots["ToDate"]=datearr.pop();
       
     }
-    else{
+    // else{setList([])}
+    if(d1.length>0&&d2.length>0){
       let appoint_id=trainer.appointment_id;
       let from_date=trainer.from_date;
       let to_date=trainer.to_date;
       let Slots = [{ sd: from_date, ed:to_date, appoint_id }]
       dispatch(GetSlotsTrainerBooking(Slots))
     }
+    // else{setList([])}
   }
   useEffect(() => {
     let items=[]
@@ -132,7 +134,7 @@ function BookingReSchedule(props) {
       key:"reshedule"
     }))
   },[location.state])
-  console.log(slots,trainer, "slots")
+  console.log(list, "slots")
 
 
  useEffect(() => {
