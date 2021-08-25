@@ -7,7 +7,16 @@
     margin: 16px 24px 16px 0;
     float: left;
 }
-
+div.login_btndiv > button.signup_btn > span.MuiButton-label{
+    color: #fff !important;
+}
+.change_cal_icon{
+    display: none;
+}
+.cal_icon{
+   width:20px;
+   cursor: pointer;
+}
 .site-layout .site-layout-background {
     background: #fff;
 }
@@ -16,18 +25,260 @@
     background:#fff !important;
     box-shadow: -2px 0px 5px 0px rgba(222,213,222,1);
 }
-
-.ant-layout-header{
-    height: 66px !important;
+.temp
+{
+    // line-height: 0px !important;
 }
+.layot_header .ant-layout-header{
+    height: 66px !important;
+    // line-height: 0px !important;
 
+    padding: 0px 20px !important;
+}
 // custom css
-
 .HMSlogo{
-    position: fixed;
     left: 6px;
     top: 3px;
-    width: 67px;
+    width: 60px;
+    height: 45px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.avatar_cont #dropdown-basic{
+width: 40px !important;
+height: 40px !important;
+border-radius: 50px !important;
+background-color: #ddd;
+padding: 0px !important;
+border: 0px;
+margin-left: 10px !important;
+}
+.avatar_cont #dropdown-basic img{
+   width: 100%;
+    }
+  .avatar_cont .dropdown-toggle::after{
+      display: none;
+  }
+    .avatar_cont .dropdown-item{
+        height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px !important;
+        font-weight: 500;
+
+    }
+    .search_dropdown #dropdown-basic{
+        padding: 0px !important;
+        background-color: #fff !important;
+        border: 0px;
+        
+    }
+    .search_dropdown #dropdown-basic:focus{
+        box-shadow: none !important;
+        
+    }
+    .search_dropdown .ant-input-search-button{
+        border-left: 0px !important;
+        height: 31.5px !important;
+    }
+    .search_dropdown .ant-input-affix-wrapper:focus{
+        border-color: unset !important;
+        box-shadow: none !important;
+        box-shadow:0px 0px 5px 2px #ccc !important;
+
+    }
+    .search_dropdown .ant-input-affix-wrapper:hover{
+        border-color: unset !important;
+        box-shadow: none !important;
+        box-shadow:0px 0px 5px 2px #ccc !important;
+
+    }
+    // .search_dropdown .ant-input-affix-wrapper{
+    // border-radius: 20px !important;
+    // border: 0px !important;
+    // box-shadow:0px 0px 5px 0px #ccc !important;
+    // padding-right: 30px;
+    // }
+    .search_dropdown .ant-input-group .ant-input{
+    border-radius: 20px !important;
+    border: 0px !important;
+    box-shadow:0px 0px 5px 0px #ccc !important;
+    padding-right: 30px; 
+    }
+    .search_dropdown .ant-input-search-button,.ant-input-group-addon{
+        display: none !important;
+
+    }
+    .search_dropdown .dropdown-menu.show{
+        width: 300px !important;
+        inset: 0px auto auto 10px !important;
+        height:80px !important;
+        display: flex !important;
+        box-shadow:0px 0px 5px 1px #ccc !important;
+        border: 0px !important;
+
+    }
+    .search_dropdown .dropdown-item:hover{
+        background-color: unset !important;
+        cursor: default !important;
+    }
+    .categorybtn{
+        background-color: #ddd!important;
+        border-radius: 20px !important;
+        font-weight: 500;
+        height: 35px !important;
+        color: grey !important;
+    }
+.searchico{
+    position: absolute;
+    right: 50px;
+    height: 18px;
+    top: 25px;
+    z-index: 1;
+}
+// login button css
+.login_btn{
+font-size: 12px !important;
+font-weight: 600 !important;
+padding: 3px 5px !important;
+/* height: 30px; */
+border: 1px solid #A5A5A5 !important;
+border-radius: 50px !important;
+text-transform: none !important;
+color: #82AE40 !important;
+margin-right: 15px !important;
+}
+.signup_btn{
+    font-size: 12px !important;
+font-weight: 600;
+padding: 3px 5px !important;
+background-color: #82AE40 !important;
+/* height: 30px; */
+border: 1px solid #A5A5A5 !important;
+color: #fff !important;
+border-radius: 50px !important;
+text-transform: none !important;
+}
+.login_btndiv{
+    display: flex;
+    align-items: center;
 }
 
-  
+// notification css
+.notif_icon{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 9px;
+    cursor: pointer;
+    svg{
+        fill:#666666;
+    }
+    div{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background-color: #82AE40;
+    position: absolute;
+    top: -3px;
+    left: 11px;
+    bottom: 21px;
+    }
+}
+
+
+
+.noti_cont #dropdown-basic{
+width: 40px !important;
+// height: 40px !important;
+border-radius: 50px !important;
+background-color: #fff;
+padding: 0px !important;
+border: 0px;
+margin-left: 10px !important;
+}
+.noti_cont .dropdown-toggle::after{
+    display: none;
+}
+.noti_cont .dropdown-menu{
+    border: none !important;
+    padding: 10px;
+    width: 350px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.notifi_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 5px;
+}
+.notifi_div p{
+    margin-bottom: 0px !important;
+}
+
+
+.noti_open{
+    position: absolute;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width:350px;
+    right: 11px;
+    top: 69px;
+    background-color: #fff;
+    height: 30px;
+    line-height: 0px;
+}
+.noti_cont {
+    line-height: 1.5;
+    display: flex;
+}
+.profile_img_div{
+    margin-right: 10px;
+    img{
+        border-radius: 50%;
+        width:70px;
+        
+        height:100%;
+    }
+}
+// .noti_open div{
+//     margin-bottom: -70px;
+// }
+.vd_icon{
+    fill:#82AE40 !important;
+    margin-top: 15px !important;
+}
+ .btn-primary:focus  {
+     box-shadow: none !important;
+
+ }
+ .btn-primary:focus {
+ }
+
+
+//  active header
+.active_color{
+    box-shadow: 0.2px 10px 10px #B4B4B448;
+border-radius: 0px 0px 20px 20px;
+color: #83AF40 !important;
+border-bottom: 0px !important;
+font-weight: bold;
+font-size: 14px;
+width:100px !important;
+text-align: center;
+
+}
+.active_color:hover{
+    color: #83AF40 !important;
+    border-bottom: 0px !important;
+    box-shadow: 0.2px 10px 10px #B4B4B448;
+}
+.header_link_css{
+    font-size: 14px;
+    width:100px !important;
+    text-align: center;
+    color:#333 !important;
+    border-bottom: 0px !important;
+}

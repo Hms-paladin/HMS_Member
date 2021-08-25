@@ -1,0 +1,103 @@
+.pro_modal_parent{
+    color: #242134CC;
+    label{
+        margin-bottom: 0px;
+    }
+}
+.p_title_head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    label {
+        font-size: 25px;
+        font-weight: bold;
+    }
+    Button{
+        border: 0.5px solid #83AF40;
+        border-radius: 50px;
+        color:#83AF40 ;
+        text-transform: none;
+        width:120px;
+        padding: 4px 0px;
+        font-weight: 500;
+    }
+}
+.mem_h{
+    label:nth-child(1){
+        font-size: 20px;
+    }
+    label:nth-child(2){
+       font-size: 21px;
+       font-weight: bold;
+       margin-left: 10px;
+    }
+}
+.w_hrs{
+    div:first-child{
+    font-size: 20px;
+    font-weight: bold;
+    }
+    div:nth-child(2){
+        font-weight: 500;
+        label{
+            font-size: 13px;
+        }
+        label:nth-child(2){
+            font-weight: 400;
+            margin-left: 10px;
+        }
+    }
+}
+.p_det{
+    div{
+        font-size: 23px;
+        font-weight: bold;
+        }
+        label{
+            font-size: 13px;
+            font-weight: 500;
+        }
+}
+.modal_sessions_cont{
+    display:flex;
+    align-items: center;
+    padding: 10px 0px;
+    line-height: 1.2;
+    label{
+        font-size: 4rem;
+        font-weight: bold;
+    }
+}
+.ses_text{
+    margin: 0px 15px;
+    font-size: 20px;
+    div:nth-child(2){
+        color:#83AF40
+    }
+}
+.program_det_tra{
+    font-size: 17px;
+    font-weight: 400;
+    color: #ABA9A9;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+.type_fitness{
+  font-size: 22px;
+  font-weight: 500;
+}
+.tra_per_inside_div {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+}
+.tra_per_inside_div p{
+    margin-bottom: 2px;
+    font-size: 15px;
+}
+.tra_per_inside_div p:nth-child(1){
+    font-size: 20px;
+}

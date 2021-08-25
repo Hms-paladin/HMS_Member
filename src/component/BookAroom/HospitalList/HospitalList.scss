@@ -1,0 +1,273 @@
+// @import "slick-carousel/slick/slick.css";
+// @import "slick-carousel/slick/slick-theme.css";
+
+
+.hos_list_container{
+    padding: 30px 73px;
+}
+.filter_div{
+    padding: 10px;
+    width: 40%;
+    font-weight: 500;
+    border-radius: 10px;
+    margin-right: 80px;
+    height: 100%;
+    font-size: 24px;
+}
+.filter_div .MuiSlider-rail,.MuiSlider-track,.MuiSlider-mark
+    {
+    height: 5px !important;
+}
+.filter_div .MuiSlider-root {
+    color: #83AF40;
+}
+
+.hos_list_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.second_head{
+    width: 90%;
+}
+
+
+@media only screen and (max-width: 1220px) {
+    .hos_list_container{
+        padding: 30px 50px;
+    }
+  }
+  @media only screen and (max-width: 1000px) {
+    .hos_list_container{
+        padding: 30px 30px;
+    }
+    .filter_div{
+        margin-right: 30px;
+    }
+  }
+  @media only screen and (max-width: 970px) {
+    .hos_list_container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .filter_div{
+        width: 70%;
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+    .second_head{
+        width: 70%;
+    }
+  }
+  @media only screen and (max-width: 759px) {
+    .filter_div{
+        width: 100%;}
+        .second_head{
+            width: 100%;
+        }
+  }
+.second_div{
+    box-shadow: 0px 0px 4px 1px #ccc;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 10px;
+    margin-bottom: 15px ;
+    margin-top: 20px;
+}
+.second_details{
+    display: flex;
+    align-items: center;
+}
+.avatar_div{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+.avatar_div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+.hos_details{
+    margin-left: 15px;
+    // width: 50%;
+}
+.snd_deta{
+    display: flex;
+    align-items: center;
+}
+.hos_details .detail3,.detail_2{
+    color: grey;
+}
+.hos_details .detail3{
+    font-size: 10px !important;
+    display: flex;
+    align-items: center;
+}
+
+.second_details{
+    justify-content: space-between;
+}
+.second_details .MuiRating-root {
+    font-size: 2.5em !important;
+}
+.second_details .MuiRating-label {
+    margin-bottom: 0px !important;
+}
+
+
+
+.carousel-indicators li{
+    height: 10px !important;
+    width: 10px !important;
+    border-radius: 50px !important;
+    border: 0px !important;
+    background-color: grey !important;
+    opacity: unset !important;
+}
+.carousel-indicators .active {
+    background-color: #ccc !important;
+}
+
+.carousel-item {
+    height: 400px;
+    margin-top: 15px;
+
+}
+.carousel-item img{
+    width: 100%;
+    height:100%
+}
+.carousel-inner .react_video{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.rating_numerics{
+   margin-right: 10px;
+}
+
+
+.number_rating{
+    width: 50px;
+    height: 25px;
+    background-color: #83AF40;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 3px;
+    padding: 5px;
+}
+.number_rating img{
+    width: 15px;
+    height: 15px;
+}
+
+.rating_numerics{
+    display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+}
+
+.star_rating{
+    display: flex;
+}
+.star_icon{
+    fill:#83AF40 !important;
+    font-size: 1rem !important;
+}
+.thumb_size{
+    width: 20px;
+    margin-right:10px;
+}
+.box_align{
+    box-shadow: 0px 1px 7px #00000021;
+    margin: 5px;
+    padding: 8px;
+}
+.box_first_text{
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: #696969;
+    font-style: italic;
+}
+.box_second_text{
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: #666666;
+}
+.date_fil_div{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+
+}
+.search_hospitallist{
+    margin: 20px;
+}
+.search_hospitallist #dropdown-basic{
+    padding: 0px !important;
+    background-color: #fff !important;
+    border: 0px;
+    
+}
+.search_hospitallist #dropdown-basic:focus{
+    box-shadow: none !important;
+    
+}
+.search_hospitallist .ant-input-search-button{
+    border-left: 0px !important;
+    height: 31.5px !important;
+}
+.search_hospitallist .ant-input-affix-wrapper:focus{
+    border-color: unset !important;
+    box-shadow: none !important;
+    box-shadow:0px 0px 5px 2px #ccc !important;
+
+}
+.search_hospitallist .ant-input-affix-wrapper:hover{
+    border-color: unset !important;
+    box-shadow: none !important;
+    box-shadow:0px 0px 5px 2px #ccc !important;
+
+}
+.search_hospitallist .ant-input-affix-wrapper{
+border-radius: 20px !important;
+border: 0px !important;
+box-shadow:0px 0px 5px 0px #ccc !important;
+padding-right: 30px;
+}
+.search_hospitallist .ant-input-search-button,.ant-input-group-addon{
+    display: none !important;
+
+}
+.search_hospitallist .dropdown-menu.show{
+    width: 300px !important;
+    inset: 0px auto auto 10px !important;
+    height:80px !important;
+    display: flex !important;
+    box-shadow:0px 0px 5px 1px #ccc !important;
+    border: 0px !important;
+
+}
+.search_hospitallist .dropdown-item:hover{
+    background-color: unset !important;
+    cursor: default !important;
+}
+.searchicon_hos{
+    position: absolute;
+    width: 13px;
+    margin-left: -36px;
+    position: relative;
+    height: 20px;
+    margin-top: 7px;   
+}
+.sort_bestoff{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}

@@ -1,0 +1,16 @@
+.carosal_root_div .slick-slide {
+    margin: 0 20px;
+  }
+  .carosal_root_div .slick-next:before, .slick-prev:before{
+      color:rgb(131, 175, 64) !important;
+      font-size: 35px !important;
+  }
+  .carosal_root_div .slick-next{
+    right: -37px !important;
+  }
+//   .slick-prev:before{
+
+//   }
+  .carosal_root_div .slick-prev{
+      display: none !important;
+  }

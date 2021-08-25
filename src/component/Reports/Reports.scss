@@ -1,0 +1,131 @@
+.reports_fst_grid{
+    background-color: #F7FAF3;
+    height:100%;
+    width:100%;
+    padding: 3% 10px 0px;
+}
+.medical_report_paper{
+    box-shadow: 0px 1px 8px #00000029 !important;
+    border: 1px solid #83AF40;
+    border-radius: 7px !important;
+    margin:10px 10px 15% 10px;
+    padding:10px 8%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.medical_family_member{
+    box-shadow: 0px 0px 4px 1px #00000029 !important; 
+    border-radius: 7px !important;
+    margin:15px 10px;
+    padding:10px 8%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.member_img{
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 6px #00000029;
+}
+.medical_rpt_head{
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+.med_name{
+    font-size: 18px;
+    font-weight: 600;
+}
+.med_div{
+    padding-left: 25px;
+}
+.med_div p{
+    margin-bottom: 0px !important;
+}
+.member_reports_parent{
+    overflow-y: scroll;
+    height: 500px;
+}
+.repts{
+    font-size: 13px;
+}
+// second part
+.r_sort{
+    width:12px;
+}
+.r_sort_div{
+    text-align: end;
+    font-weight: 500;
+    cursor: pointer;
+}
+.r_sort_div :first-child{
+    margin-left: 10px;
+}
+.reports_snd_grid{
+    height:100%;
+    width:100%;
+    padding: 3% 10px 0px;
+}
+.medical_reports_paper{
+    box-shadow: 0px 0px 4px 1px #00000029 !important; 
+    border-radius: 7px !important;
+    margin:15px 10px;
+    padding:2% 3%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.med_icons_div{
+    display: flex;
+    text-align: center;
+}
+.report_icons{
+    fill:#83AF40 !important;
+    cursor: pointer;
+}
+.report_icon_head{
+    color:#83AF40;
+    
+}
+.report_view{
+   fill: #2781EB !important;
+   cursor: pointer;
+}
+.report_test_name{
+    font-size: 20px;
+    margin-bottom: 6px !important;
+}
+.report_icon_view{
+    color:#2680EB;
+}
+.report_test_date{
+    font-size: 15px;
+    margin-bottom: 6px !important;
+    color:#939393;
+    font-weight: 0 !important;
+}
+// view modal css
+.med_rpt_view_text{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    width:100%;
+}
+.share_icons{
+    display: flex;
+    margin: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+    >.react-share__ShareButton{
+        padding: 5px !important;
+    }
+}
+.share_title{
+    font-size: 23px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 15px;
+}

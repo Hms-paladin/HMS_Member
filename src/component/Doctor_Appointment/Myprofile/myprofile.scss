@@ -1,0 +1,585 @@
+
+.cover_image_cont{
+    width: 100%;
+    height: 35vh;
+}
+.cover_image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.major_detail{
+    padding-left: 50px;
+    padding-right: 30px;
+    display: flex;
+    position: relative;
+}
+.profileimg_cont{
+    border-radius: 100px;
+    height: 120px;
+    width: 120px;
+    box-shadow: 0px 0px 2px 3px #ccc;
+    top: -35px;
+    background: #fff;
+    padding: 3px;
+    position: absolute;
+}
+.profileimg{
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+}
+.Nameinfo{
+    font-weight: 500;
+    margin-top: 10px;
+    width: 80%;
+}
+.Nameinfo .name{
+    font-size: 20px;
+    font-weight: 600;
+}
+.editbtn{
+  box-shadow: 0px 0px 5px 1px #ccc;
+    color: #83AF40 !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+    border-radius: 30px !important;
+    margin-top: 15px !important;
+}
+// .tabmenus{
+//     padding-left: 50px;
+//     padding-right: 30px;
+// }
+
+.add_memberform{
+    padding: 20px 30px 20px 50px;
+    background: #ddd;
+    border-bottom: 2px dashed #bbb;
+    display: flex;
+    justify-content: space-between;
+
+}
+.addmemberbtn{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.addmemberbtn .cancelbtn{
+    border: 1px solid grey;
+    border-radius: 25px;
+    width: 45%;
+    font-weight: 500 !important;
+    color: grey !important;
+    height: 45px;
+}
+.addmemberbtn .submitbtn{
+    border-radius: 25px;
+    width: 45%;
+    font-weight: 500 !important;
+    color: #fff !important;
+    background-color: #83AF40 !important;
+    height: 45px;
+}
+.add_memberform .img_cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 20px;
+    width: 15%;
+}
+.add_memberform .name_cont{
+    margin: 0px 20px;
+    width: 30%;
+
+}
+.add_memberform     .relationship_cont{
+    margin: 0px 20px;
+    width: 30%;
+}
+.relationship_cont .height{
+ display: flex;
+ justify-content: space-between;
+}
+.height .unit{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: 500;
+    color: grey;
+}
+
+.add_memberform .name_cont .gender{
+    display: flex;
+    justify-content: space-between;
+}
+.add_memberform .img_cont img{
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+}
+.familymemberheader{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    font-size: 30px;
+    font-weight: 500;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 30px;
+}
+.memberimg{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+
+}
+.memberimg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    box-shadow: 0px 0px 3px 2px #ccc;
+
+}
+.familymember_imgs{
+    display: flex;
+    padding-left: 50px;
+    padding-right: 30px;
+    background-color: #ddd;
+    flex-wrap: wrap;
+}
+.membername{
+    text-align: center;
+}
+.moredetail{
+    margin: 20px 30px 20px 50px;
+    position: relative;
+    box-shadow: 0px 2px 5px 2px #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.elp{
+    color:#2043CC;
+    text-decoration: underline;
+    padding-left: 2px;
+    cursor: pointer;
+}
+.minicard{
+    display: flex;
+    align-items: center;
+    width: 200px;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: 400;
+}
+.minicard img{
+    height: 100%;
+    width: 100%;
+    
+}
+.minicard_icon{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+
+
+}
+.minicard .name{
+    font-weight: 600;
+}
+.minicard .details{
+overflow: hidden;
+    text-overflow: ellipsis;
+    width: 160px;
+}
+.vaccinationimg_cont{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 5px;
+   
+    display:flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+.nextvacci_scroll{
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow-x: scroll; 
+}
+
+.vaccinationimg_cont img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+
+.nextvaccination_head{
+    margin: 20px 30px 20px 50px;
+    box-shadow: 0px 2px 5px 2px #ccc;
+    border-radius: 10px;
+}
+.nextvacci{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.vaccination_img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+.vaccination_pimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0px 0px 0px;
+}
+.vaccinationdetail{
+    color: grey;
+    margin-left: 20px;
+}
+.vaccinationhead_p{
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+    padding:10px 0px 0px 10px;
+    font-weight: 700;
+}
+.nextvaccination .viewbtn{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: #83AF40 !important;
+    color: #fff !important;
+    text-transform: none !important;
+    height: 30px !important;
+    border-bottom-right-radius: 10px !important;
+}
+.prescription_parent .viewbtn{
+    bottom: 0px;
+    right: 0px;
+    background-color: #83AF40 !important;
+    color: #fff !important;
+    text-transform: none !important;
+    height: 30px !important;
+    border-bottom-right-radius: 10px !important;
+}
+.view_pre_parent{
+    display: flex;
+    justify-content: flex-end;
+}
+.appointmentdetail{
+    margin: 20px 30px 20px 50px;
+    
+    box-shadow: 0px 2px 5px 2px #ccc;
+    border-radius: 10px;
+    display: flex;
+
+    position: relative;  
+}
+.selfcont{
+    width: 70px;
+    height: 70px;
+
+}
+.selfcont img{
+    width: 100%;
+    height: 100%;
+}
+.appointmenthead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.appointmenthead .head{
+    font-size: 20px;
+    font-weight: 700;
+}
+.appointmenthead .doctor{
+    font-weight: 600;
+}
+.appointmentdate{
+    font-weight: 500;
+}
+.nextappointment .viewbtn{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: #83AF40 !important;
+    color: #fff !important;
+    text-transform: none !important;
+    height: 30px !important;
+    border-bottom-right-radius: 10px !important;
+}
+.fitness{
+    display: flex;
+    margin: 30px 30px 30px 50px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.watchimg{
+    width: 150px;
+    height: 150px;
+    box-shadow: 0px 0px 5px 2px #ccc;
+    border-radius: 100px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+.watchimg span{
+    font-weight: 500;
+}
+
+
+.watchimg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+}
+.smalldot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background-color: #ccc;
+    margin-right: 10px;
+}
+.bigdot{
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color: #ccc;
+    margin-right: 20px;
+}
+.dashedline{
+    width: 100%;
+    border-bottom: 2px dashed grey;
+    height: 15px;
+}
+.tabletname{
+    margin-right: 5px;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 16px;
+
+}
+.dosage{
+    margin-left: 5px;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 16px;
+}
+.tablets{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 20px 20px 0px;
+
+}
+.medicationhead{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0px;
+
+}
+.medicationhead{
+    font-size: 26px !important;
+    font-weight: 700;
+    // padding: 5px 20px 0px 50px;
+}
+.healthtip_collapse{
+    padding-left: 50px;
+    padding-right: 30px;
+}
+.healthtip_collapse .ant-collapse-borderless{
+    background-color:#fff !important ;
+}
+
+.healthtip_collapse .ant-collapse-header{
+    font-size: 26px;
+    font-weight: 700;
+    padding-left: 0px !important;
+}
+.healthtip_collapse .ant-collapse-arrow{
+    right: 0px !important;
+    left: unset !important;
+    font-size: 16px !important;
+    color: black !important;
+}
+.healthtip_content{
+    box-shadow: 0px 2px 5px 2px #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.healthtip_collapse .ant-collapse-content-box{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.healthtip_content .subhead{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.healthtip_content .msg{
+    color: grey;
+    font-size: 16px;
+}
+.prescription_collapse{
+    padding-left: 50px;
+    padding-right: 30px;
+}
+.prescription_collapse .ant-collapse-header{
+    font-size: 26px;
+    font-weight: 700;
+    padding-left: 0px !important;
+}
+.prescription_collapse .ant-collapse-arrow{
+    right: 0px !important;
+    left: unset !important;
+    font-size: 16px !important;
+    color: black !important;
+}
+.prescription_collapse .ant-collapse-borderless{
+    background-color:#fff !important ;
+}
+.prescription_content{
+    display: flex;
+    
+    flex-wrap: wrap;
+}
+.prescription_parent{
+    box-shadow: 0px 2px 5px 2px #ccc;
+        border-radius: 10px;
+}
+.prescription_box{
+    margin: 10px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.pres_img{
+    width: 100px;
+    height: 130px;
+}
+.pres_img img{
+    width: 100%;
+    height: 100%;
+}
+.prescription_collapse .ant-collapse-content-box{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .gender .formdiv .MuiFormControl-marginNormal{
+      background-color: #fff;
+  }
+  .gender .ant-select-selector{
+      width:120px !important;
+  }
+  .ad_elpse{
+      position: absolute;
+      padding: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0px 6px 8px #00000029;
+      border-radius: 5px;
+      background-color: #fff;
+      width: 225px;
+      right: 46px;
+      top: -83px;
+      color:#4A4A4A;
+  }
+  .profile_dummy_img{
+    font-size: 3.7rem !important;
+    background: #ccc;
+    border-radius: 50%;
+    fill: #fff !important;
+    padding: 5px;
+    cursor: pointer;
+  }
+  .tabmenus .ant-tabs-nav .ant-tabs-tab{
+    font-size: 18px !important;
+    border-left: 1px   solid #ccc !important;
+    font-weight: bold;
+  }
+  .tabmenus .ant-tabs-ink-bar{
+      height:3px !important;
+      background:#83AF40 !important;
+  }
+  .tabmenus .ant-tabs-tab-btn{
+      margin-left: 10px !important;
+  }
+  .tabmenus .ant-tabs-nav-list {
+    justify-content: space-evenly !important;
+    width: 100%;
+  }
+  .tabmenus .ant-tabs-tab{
+      width:100%;
+      margin:0px 5px 0px 0px !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+  }
+  .tabmenus .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+      color:#83AF40 !important;
+      font-weight: bold !important;
+  }
+  
+
+
+//   edit profile
+.edit_patient_profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    width:900px;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+.snd_part{
+    color: #777777;
+    margin-top: 10px;
+    font-weight: 400 !important;
+}
+.medication_list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.prescription_content,.nextvaccination_head .ant-skeleton-paragraph{
+    padding:15px !important;
+}
+.edit_patient_profile .ant-btn-sm{
+   height:30px !important;
+   font-weight: 600 !important;
+   width:100px !important
+}
+ .vaccination_img_div{
+display: flex;
+/* flex-direction: column; */
+align-items: center;
+margin: 15px;
+}
+

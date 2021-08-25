@@ -1,0 +1,63 @@
+.bookconfirm{
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+.confir_nurse{
+    width:105px;
+    height:105px;
+    border-radius: 50%;
+    
+}
+.confirm_nurse_imggrid{
+    display:flex;
+    align-items: center;
+}
+.confirm_b_name{
+    color:rgb(131, 174, 64);
+    font-weight: 600;
+    text-align: center;
+}
+.Nurse_img_div{
+    // width:20%;
+    font-size: 16px;
+    text-align: center;
+}
+// text details
+.mem_con_namehead{
+    color:#242134CC;
+    font-weight: bold !important;
+    margin-bottom: 0px !important;
+}
+.mem_con_name{
+   color:#ABA9A9;
+   font-weight: 400;
+}
+.book_con_snd_part p{
+    margin-bottom: 6px !important;
+}
+.book_con_snd_part{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.booking_confirm .ant-modal-content  {
+    width:870px !important;
+}
+.booking_confirm .ant-modal{
+    top:120px !important;
+    right:140px !important;
+}
+.book_confirm_container{
+  padding-top: 20px;
+}
+// butt confirm
+.confirm_b_btn{
+    border-radius: 50px !important;
+    min-width: 26% !important;
+    padding:8px !important;
+    color:#fff !important;
+    background-color: #83AF40 !important;
+    text-transform: none !important;
+    font-weight: bold !important;
+}
